@@ -5,5 +5,12 @@ beautiful cpp minutes and examples
 
 # Notes
 
-* [Morder C++](./note/modern_cpp.md)
+* [Mordern C++](./note/modern_cpp.md)
 * [Word Bank Example](./note/word_bank_note.md)
+
+# Demo
+
+```
+scons
+ls ./bin
+```
