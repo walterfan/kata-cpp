@@ -1,6 +1,9 @@
 # Prerequisites
 *.d
-
+.sconsign.dblite
+logs/
+bin/
+bld/
 # Compiled Object files
 *.slo
 *.lo
