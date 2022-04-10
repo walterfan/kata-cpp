@@ -1,0 +1,346 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>C++ Evolution &mdash; Beautiful C++ 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="C++ Lambda" href="cpp_lambda.html" />
+    <link rel="prev" title="C++ Interview Questions" href="cpp_interview.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Beautiful C++
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">C++ Language</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cpp.html">C++</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_interview.html">C++ Interview Questions</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">C++ Evolution</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#history">History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-98">C++ 98</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-11">C++ 11</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-14">C++ 14</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-17">C++ 17</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-20">C++ 20</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_lambda.html">C++ Lambda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_memory.html">Resource management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_stl.html">C++ STL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_thread.html">C++ Thread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_rvalue.html">右值引用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_object_model.html">C++ Object Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_server.html">C++ Server</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../library/index.html">C++ Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool/index.html">Tools</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Beautiful C++</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">C++ Language</a> &raquo;</li>
+        
+      <li>C++ Evolution</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/language/cpp_evolution.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="c-evolution">
+<h1>C++ Evolution<a class="headerlink" href="#c-evolution" title="Permalink to this headline">¶</a></h1>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 32%" />
+<col style="width: 68%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Abstract</strong></p></td>
+<td><p>C++ Evolution</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Authors</strong></p></td>
+<td><p>Walter Fan</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Status</strong></p></td>
+<td><p>v1</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Updated</strong></p></td>
+<td><p>2022-04-10</p></td>
+</tr>
+</tbody>
+</table>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#history" id="id1">History</a></p></li>
+<li><p><a class="reference internal" href="#c-98" id="id2">C++ 98</a></p></li>
+<li><p><a class="reference internal" href="#c-11" id="id3">C++ 11</a></p></li>
+<li><p><a class="reference internal" href="#c-14" id="id4">C++ 14</a></p></li>
+<li><p><a class="reference internal" href="#c-17" id="id5">C++ 17</a></p></li>
+<li><p><a class="reference internal" href="#c-20" id="id6">C++ 20</a></p></li>
+</ul>
+</div>
+<div class="section" id="history">
+<h2><a class="toc-backref" href="#id1">History</a><a class="headerlink" href="#history" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>1979年,基于C语言实现了C++的前身: with classes</p></li>
+<li><p>1983年,正式命名为C++</p></li>
+<li><p>1990年,C++标准委员会成立,C++标准化进程开始。</p></li>
+<li><p>1994年,委员会完成草案登记。</p></li>
+<li><p>1998年,发布C++98,第一个C++正式标准。</p></li>
+<li><p>2003年,发布C++03,对C++98仅有很少的修订。</p></li>
+<li><p>2011年,发布C++11,是C++标准的重大升级,增加大量新特性。</p></li>
+<li><p>2014年,发布C++14,小幅度扩充</p></li>
+<li><p>2017年,发布C++17,对C++14再做修订,主要增强了标准库。</p></li>
+<li><p>2020年,发布C++20,增加了概念、模块、协程等重磅特性,堪比c++11</p></li>
+</ul>
+</div>
+<div class="section" id="c-98">
+<h2><a class="toc-backref" href="#id2">C++ 98</a><a class="headerlink" href="#c-98" title="Permalink to this headline">¶</a></h2>
+<p>C++98标准是C++的第一个国际标准,与早期的++相比,它有了重大进步,包括
+新的语言特性,如模板、名字空间、布尔类型、类型转换关键字等
+异常处理体系,包括标准的 exception和若干派生子类,以及异常规范。
+输入输出流操作,这是对早期流库的重构标准化。
+数值处理,在内建的整数、实数之外增加了复数和数值数组。
+C89程序库,涵盖了C语言1989年的标准所定义的所有内容。
+国际化支持,如 wchar、 locale等用于国际化软件开发的特性。
+字符串类,如标准的 string和 wstring,使程序员可以更方便地处理字符串。
+最重要的组成部分——标准库(STL),包括泛型容器、泛型算法、迭代器、函数对象、内存分配器等诸多组件。</p>
+</div>
+<div class="section" id="c-11">
+<h2><a class="toc-backref" href="#id3">C++ 11</a><a class="headerlink" href="#c-11" title="Permalink to this headline">¶</a></h2>
+<p>C++98标准并没有解决所有问题,比如它遗漏了hsh_table这样重要的数据结构,
+因此1998年后,标准委员会就开始为新的标准做准备新的标准最初预计于21世纪的第
+一个十年内推出。因为日期的不确定性,新标准曾经一度被称为“c++0x”
+但标准的制订工作比想象要难,C++0x标准被数度延期,委员会对于要在新语言中增
+加或放弃哪些特性争论不休,最终草案在2011年8月获得全票通过,并在同年9月正式
+出版公布。
+新的C++11标准较C++98提供了众多“与时俱进”的新特性,更容易学习和使用,对
+程序员更加“友好”,也更加安全。例如:
+新的nulptr关键字,取代了容易引起错误的NULL宏或0
+新的 noexcept关键字,取代了原有的异常规范。
+新的 constexpr关键字,编译期常量表达式,有利于模板元编程。
+新的auto/decltype关键字,可以自动推导类型声明。
+新的 default和 delete用法,可以明确地控制函数的实现(默认或禁用)
+新的for循环语法,可以更容易地遍历容器,代码更简洁。
+原始(raw)字符串,用形如R”()”的方式来书写字符串,不必用“”转义。
+右值引用、完美转发和转移(move)语义,可以更高效地返回对象。
+可变参数模板,可以更容易地编写泛型代码,不必使用晦涩的预处理。
+语言级别的1 ambda表达式,可以非常容易地编写匿名函数对象。
+废弃了异常规范、auto_ptr和关键字 export、 register
+极大地增强了标准库,添加了许多新的组件,其中有数个基于Boost,如 array
+bind、 function random shared_ptr、 thread、 tuple等</p>
+</div>
+<div class="section" id="c-14">
+<h2><a class="toc-backref" href="#id4">C++ 14</a><a class="headerlink" href="#c-14" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="c-17">
+<h2><a class="toc-backref" href="#id5">C++ 17</a><a class="headerlink" href="#c-17" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="c-20">
+<h2><a class="toc-backref" href="#id6">C++ 20</a><a class="headerlink" href="#c-20" title="Permalink to this headline">¶</a></h2>
+<p>C++20是继C++11之后的另一个重大升级,之前被移出的部分特性和库在经过更充分
+的讨论后终于再次加入标准,其中,某些库已经被广大用户期待和呼吁了多年,具体如下。</p>
+<ul class="simple">
+<li><p>range</p></li>
+</ul>
+<p>类似 boost range,可以用“1”串联起多个算法。</p>
+<ul class="simple">
+<li><p>span</p></li>
+</ul>
+<p>类似 string view,是序列容器的子视图。</p>
+<ul class="simple">
+<li><p>module</p></li>
+</ul>
+<p>取代include语句,更“现代化”的模块机制。</p>
+<ul class="simple">
+<li><p>coroutine:语言级别的协程功能。</p></li>
+<li><p>concurrency:语言级别的并发支持</p></li>
+<li><p>concept: 重新设计、精简后的概念检查库。</p></li>
+<li><p>network1ng: 标准内置的网络开发库</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="cpp_lambda.html" class="btn btn-neutral float-right" title="C++ Lambda" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="cpp_interview.html" class="btn btn-neutral float-left" title="C++ Interview Questions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, Walter Fan.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,770 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>git &mdash; Beautiful C++ 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="cmake" href="cmake.html" />
+    <link rel="prev" title="Tools" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Beautiful C++
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../language/index.html">C++ Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../library/index.html">C++ Library</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tools</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">git</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#work-flow">work flow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tips">Tips</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#compare-with-svn">Compare with SVN</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#book-and-tips">Book and tips</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#three-states">Three states</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ares">ares</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#commands">commands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#git-branch-r">git branch -r</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#branch-management">branch management</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-branch">create branch</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#tutorial">Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spark-build-pipeline">Spark build pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tools">Tools</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#install-on-centos">Install On CentOS</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#faq">FAQ</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#how-to-set-up-a-secure-git-server-at-home-osx">how-to-set-up-a-secure-git-server-at-home-osx</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#q-ssh-t-git-github-com-permission-denied">Q 使用命令 ssh -T git&#64;github.com 的时候，系统总是提示 permission denied</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-to-disable-gnome-ssh-askpass">How to disable gnome-ssh-askpass?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-to-use-submodule">How to use submodule</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#q-unable-to-access-git-ssl-certificate-problem-invalid-certificate-chain">Q. unable to access git SSL certificate problem: Invalid certificate chain</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#reference">Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cmake.html">cmake</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Beautiful C++</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Tools</a> &raquo;</li>
+        
+      <li>git</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/tool/git.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="git">
+<h1>git<a class="headerlink" href="#git" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#overview" id="id14">overview</a></p>
+<ul>
+<li><p><a class="reference internal" href="#work-flow" id="id15">work flow</a></p>
+<ul>
+<li><p><a class="reference internal" href="#prepare" id="id16">Prepare</a></p></li>
+<li><p><a class="reference internal" href="#work-for-project" id="id17">Work For Project</a></p></li>
+<li><p><a class="reference internal" href="#coding-and-git-commit" id="id18">Coding and git commit</a></p></li>
+<li><p><a class="reference internal" href="#code-review" id="id19">Code Review</a></p></li>
+<li><p><a class="reference internal" href="#push-code" id="id20">Push code</a></p></li>
+<li><p><a class="reference internal" href="#create-local-and-remote-branch" id="id21">create local and remote branch</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#tips" id="id22">Tips</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id1" id="id23">1. 代码会存在于三个区域：</a></p></li>
+<li><p><a class="reference internal" href="#id2" id="id24">5. 代码从拉到推</a></p></li>
+<li><p><a class="reference internal" href="#id3" id="id25">3. 替换本地改动</a></p></li>
+<li><p><a class="reference internal" href="#id4" id="id26">4. 创新切换删除分支</a></p></li>
+<li><p><a class="reference internal" href="#id5" id="id27">4) 查看分支</a></p></li>
+<li><p><a class="reference internal" href="#id6" id="id28">5) 重命名分支</a></p></li>
+<li><p><a class="reference internal" href="#id7" id="id29">6) 比较分支</a></p></li>
+<li><p><a class="reference internal" href="#id8" id="id30">5. 查看历史</a></p></li>
+<li><p><a class="reference internal" href="#id9" id="id31">6. 比较区别</a></p></li>
+<li><p><a class="reference internal" href="#id10" id="id32">7. 管理标签</a></p></li>
+<li><p><a class="reference internal" href="#id11" id="id33">8. 子模块</a></p></li>
+<li><p><a class="reference internal" href="#id12" id="id34">1. 回退</a></p></li>
+<li><p><a class="reference internal" href="#id13" id="id35">10. 冲突解决</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#compare-with-svn" id="id36">Compare with SVN</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#book-and-tips" id="id37">Book and tips</a></p>
+<ul>
+<li><p><a class="reference internal" href="#three-states" id="id38">Three states</a></p></li>
+<li><p><a class="reference internal" href="#ares" id="id39">ares</a></p></li>
+<li><p><a class="reference internal" href="#commands" id="id40">commands</a></p></li>
+<li><p><a class="reference internal" href="#git-branch-r" id="id41">git branch -r</a></p></li>
+<li><p><a class="reference internal" href="#branch-management" id="id42">branch management</a></p></li>
+<li><p><a class="reference internal" href="#create-branch" id="id43">create branch</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#tutorial" id="id44">Tutorial</a></p></li>
+<li><p><a class="reference internal" href="#spark-build-pipeline" id="id45">Spark build pipeline</a></p></li>
+<li><p><a class="reference internal" href="#tools" id="id46">Tools</a></p>
+<ul>
+<li><p><a class="reference internal" href="#install-on-centos" id="id47">Install On CentOS</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#faq" id="id48">FAQ</a></p>
+<ul>
+<li><p><a class="reference internal" href="#how-to-set-up-a-secure-git-server-at-home-osx" id="id49">how-to-set-up-a-secure-git-server-at-home-osx</a></p></li>
+<li><p><a class="reference internal" href="#q-ssh-t-git-github-com-permission-denied" id="id50">Q 使用命令 ssh -T git&#64;github.com 的时候，系统总是提示 permission denied</a></p></li>
+<li><p><a class="reference internal" href="#how-to-disable-gnome-ssh-askpass" id="id51">How to disable gnome-ssh-askpass?</a></p></li>
+<li><p><a class="reference internal" href="#how-to-use-submodule" id="id52">How to use submodule</a></p></li>
+<li><p><a class="reference internal" href="#q-unable-to-access-git-ssl-certificate-problem-invalid-certificate-chain" id="id53">Q. unable to access git SSL certificate problem: Invalid certificate chain</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#reference" id="id54">Reference</a></p></li>
+</ul>
+</div>
+<div class="section" id="overview">
+<h2><a class="toc-backref" href="#id14">overview</a><a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="work-flow">
+<h3><a class="toc-backref" href="#id15">work flow</a><a class="headerlink" href="#work-flow" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="prepare">
+<h4><a class="toc-backref" href="#id16">Prepare</a><a class="headerlink" href="#prepare" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><ul class="simple">
+<li><p>git clone <a class="reference external" href="https://yafan&#64;stash-eng-chn-sjc1.cisco.com/stash/scm/cctg/webex-telephony-tahoe.git">https://yafan&#64;stash-eng-chn-sjc1.cisco.com/stash/scm/cctg/webex-telephony-tahoe.git</a></p></li>
+<li><p>git remote add cctgfork <a class="reference external" href="https://yafan&#64;stash-eng-chn-sjc1.cisco.com/stash/scm/cctgfork/webex-telephony-tahoe.git">https://yafan&#64;stash-eng-chn-sjc1.cisco.com/stash/scm/cctgfork/webex-telephony-tahoe.git</a></p></li>
+<li><p>git remote add cctg <a class="reference external" href="https://yafan&#64;stash-eng-chn-sjc1.cisco.com/stash/scm/cctg/webex-telephony-tahoe.git">https://yafan&#64;stash-eng-chn-sjc1.cisco.com/stash/scm/cctg/webex-telephony-tahoe.git</a></p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="work-for-project">
+<h4><a class="toc-backref" href="#id17">Work For Project</a><a class="headerlink" href="#work-for-project" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><ul class="simple">
+<li><p>git fetch -n cctg master</p></li>
+<li><p>git checkout -b workspace cctg/master</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="coding-and-git-commit">
+<h4><a class="toc-backref" href="#id18">Coding and git commit</a><a class="headerlink" href="#coding-and-git-commit" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><ul class="simple">
+<li><p>git push origin workspace:master</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="code-review">
+<h4><a class="toc-backref" href="#id19">Code Review</a><a class="headerlink" href="#code-review" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><ul class="simple">
+<li><p>pull request</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="push-code">
+<h4><a class="toc-backref" href="#id20">Push code</a><a class="headerlink" href="#push-code" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><ul class="simple">
+<li><p>git fetch -n cctg master</p></li>
+<li><p>git merge cctg/master</p></li>
+<li><p>git push cctgfork workspace:gate/yafan</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="create-local-and-remote-branch">
+<h4><a class="toc-backref" href="#id21">create local and remote branch</a><a class="headerlink" href="#create-local-and-remote-branch" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><ul class="simple">
+<li><p>从cctg仓库的master分支创建本支master, 创建一个自己的分支并push 到远程仓库</p></li>
+</ul>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="o">-</span><span class="n">b</span> <span class="n">master</span> <span class="n">cctg</span><span class="o">/</span><span class="n">master</span>
+<span class="n">git</span> <span class="n">checkout</span> <span class="o">-</span><span class="n">b</span> <span class="n">feature</span><span class="o">/</span><span class="n">customize_ivr</span>
+<span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">feature</span><span class="o">/</span><span class="n">customize_ivr</span><span class="p">:</span><span class="n">feature</span><span class="o">/</span><span class="n">customize_ivr</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="tips">
+<h3><a class="toc-backref" href="#id22">Tips</a><a class="headerlink" href="#tips" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id1">
+<h4><a class="toc-backref" href="#id23">1. 代码会存在于三个区域：</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<ol class="arabic simple">
+<li><p>工作区 working directory</p></li>
+<li><p>暂存区 staging area</p></li>
+<li><p>仓库区 repository</p></li>
+</ol>
+</div>
+<div class="section" id="id2">
+<h4><a class="toc-backref" href="#id24">5. 代码从拉到推</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<p>git fetch origin &lt;branch&gt;
+git merge &lt;branch&gt;</p>
+<p>以上两条命令等于 git pull origin &lt;branch&gt;</p>
+<p>git fetch origin &lt;branch&gt;
+git rebase &lt;branch&gt;</p>
+<p>以上两条命令等于 git pull origin &lt;branch&gt; –rebase</p>
+<p>git add xxx
+git commit -m “xxx”
+git push origin &lt;branch&gt;</p>
+</div>
+<div class="section" id="id3">
+<h4><a class="toc-backref" href="#id25">3. 替换本地改动</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><ul class="simple">
+<li><p>撤销工作区修改</p></li>
+</ul>
+</div></blockquote>
+<p>git checkout – &lt;filepath&gt;</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>撤销暂存区修改</p></li>
+</ul>
+</div></blockquote>
+<p>git reset HEAD &lt;filepath&gt;</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>用远程仓库中的代码覆盖本地代码</p></li>
+</ul>
+</div></blockquote>
+<p>git fetch remote &lt;branchname&gt;
+git checkout remote/branch – a/file b/file
+git reset –hard remote/branch
+git reset –hard HEAD
+git reset &lt;commit_hash_id&gt; &lt;filepath&gt;</p>
+</div>
+<div class="section" id="id4">
+<h4><a class="toc-backref" href="#id26">4. 创新切换删除分支</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<ol class="arabic simple">
+<li><p>创新分支 git checkout -b &lt;branchname&gt;</p></li>
+<li><p>切换分支 git checkout &lt;branchname&gt;</p></li>
+<li><p>删除分支 git branch -d &lt;branchname&gt;</p></li>
+</ol>
+<ul class="simple">
+<li><p>删除远程分支: git push origin –delete &lt;branchname&gt;
+or git push origin :&lt;branchname&gt;</p></li>
+<li><p>清空本地分支: git remote prune origin</p></li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h4><a class="toc-backref" href="#id27">4) 查看分支</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<p>git branch -a</p>
+</div>
+<div class="section" id="id6">
+<h4><a class="toc-backref" href="#id28">5) 重命名分支</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<p>git branch -m &lt;old_branch_name&gt; &lt;new_branch_name&gt;
+git push origin &lt;new_branch_name&gt;</p>
+<p>note: origin is a remote repo
+git remote add &lt;repo_name&gt; &lt;git_url&gt;</p>
+</div>
+<div class="section" id="id7">
+<h4><a class="toc-backref" href="#id29">6) 比较分支</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
+<p>git diff &lt;branch1&gt;..&lt;branch2&gt; –stat</p>
+</div>
+<div class="section" id="id8">
+<h4><a class="toc-backref" href="#id30">5. 查看历史</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>显示最近5次的提交的概要历史记录</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">log</span> <span class="o">--</span><span class="n">graph</span> <span class="o">--</span><span class="n">stat</span> <span class="o">--</span><span class="n">oneline</span> <span class="o">-</span><span class="mi">5</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>显示最近3次的提交的详细历史记录</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">log</span> <span class="o">-</span><span class="n">p</span> <span class="o">-</span><span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id9">
+<h4><a class="toc-backref" href="#id31">6. 比较区别</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
+<ol class="arabic simple">
+<li><p>比较工作区和暂存区 git diff</p></li>
+<li><p>比较暂存区和仓库区 git diff –cached</p></li>
+<li><p>比较工作区和仓库区 git diff HEAD</p></li>
+<li><p>比较两个分支 git diff branch_1..branch_2</p></li>
+</ol>
+</div>
+<div class="section" id="id10">
+<h4><a class="toc-backref" href="#id32">7. 管理标签</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>显示标签</p></li>
+</ul>
+<p>git tag</p>
+<ul class="simple">
+<li><p>添加标签</p></li>
+</ul>
+<p>git tag -a &lt;tagname&gt; -m &lt;comments&gt;</p>
+<ul class="simple">
+<li><p>推送标签</p></li>
+</ul>
+<p>git push –tags</p>
+<ul class="simple">
+<li><p>获取远程标签</p></li>
+</ul>
+<p>git fetch origin tag &lt;tagname&gt;</p>
+<ul class="simple">
+<li><p>删除标签</p></li>
+</ul>
+<p>git tag -d &lt;tagname&gt;
+git push origin :refs/tags/&lt;tagname&gt;
+git push origin –delete tag &lt;tagname&gt;</p>
+<ul class="simple">
+<li><p>检出标签对应的代码</p></li>
+</ul>
+<p>git checkout tags/&lt;tag_name&gt;</p>
+</div>
+<div class="section" id="id11">
+<h4><a class="toc-backref" href="#id33">8. 子模块</a><a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>添加子模块</p></li>
+</ul>
+<p>git submodule addhttps://chromium.googlesource.com/v8/v8.git</p>
+<ul class="simple">
+<li><p>初始化子模块</p></li>
+</ul>
+<p>git submodule init</p>
+<ul class="simple">
+<li><p>修改子模块</p></li>
+</ul>
+<p>git submodule update</p>
+</div>
+<div class="section" id="id12">
+<h4><a class="toc-backref" href="#id34">1. 回退</a><a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>git log -10</p></li>
+<li><p>git reset xxx</p></li>
+<li><p>git push origin &lt;branchname&gt; –force</p></li>
+</ul>
+</div>
+<div class="section" id="id13">
+<h4><a class="toc-backref" href="#id35">10. 冲突解决</a><a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h4>
+<p>git stash
+git stash pop</p>
+</div>
+</div>
+<div class="section" id="compare-with-svn">
+<h3><a class="toc-backref" href="#id36">Compare with SVN</a><a class="headerlink" href="#compare-with-svn" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p>GIT is distributed, SVN is not:</p></li>
+<li><p>GIT stores content as metadata, SVN stores just files:</p></li>
+<li><p>GIT branches are not the same as SVN branches:</p></li>
+<li><p>GIT does not have a global revision no. like SVN do:</p></li>
+<li><p>GIT’s content integrity is better than SVN’s:</p></li>
+<li><ul>
+<li><p>refer to [<a class="reference external" href="http://boxysystems.com/index.php/5-fundamental-differences-between-git-svn/">http://boxysystems.com/index.php/5-fundamental-differences-between-git-svn/</a>]</p></li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="book-and-tips">
+<h2><a class="toc-backref" href="#id37">Book and tips</a><a class="headerlink" href="#book-and-tips" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>every version is snapshot, not diff</p></li>
+</ul>
+<div class="section" id="three-states">
+<h3><a class="toc-backref" href="#id38">Three states</a><a class="headerlink" href="#three-states" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><ol class="arabic simple">
+<li><p>modified</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="2">
+<li><p>staged &lt;– git add</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="3">
+<li><p>committed &lt;– git commit</p></li>
+</ol>
+</li>
+<li><p>unmodified</p></li>
+<li><p>untracked</p></li>
+</ul>
+</div>
+<div class="section" id="ares">
+<h3><a class="toc-backref" href="#id39">ares</a><a class="headerlink" href="#ares" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>working directory</p></li>
+<li><p>staging area</p></li>
+<li><p>git directory(repository)</p></li>
+</ul>
+</div>
+<div class="section" id="commands">
+<h3><a class="toc-backref" href="#id40">commands</a><a class="headerlink" href="#commands" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>git remote -v</p></li>
+<li><p>git checkout -b &lt;branchname&gt;</p></li>
+<li><p>git branch</p></li>
+<li><p>git reset # cancel add</p></li>
+<li><p>git rebase/merge #</p></li>
+<li><p>git reflog # change list</p></li>
+<li><p>git diff –cached</p></li>
+</ul>
+</div>
+<div class="section" id="git-branch-r">
+<h3><a class="toc-backref" href="#id41">git branch -r</a><a class="headerlink" href="#git-branch-r" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>origin/HEAD -&gt; origin/master</p></li>
+<li><p>origin/master</p></li>
+<li><p>HEAD 最新的代码</p></li>
+<li><p>origin is remote server</p></li>
+</ul>
+</div>
+<div class="section" id="branch-management">
+<h3><a class="toc-backref" href="#id42">branch management</a><a class="headerlink" href="#branch-management" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>git fetch</p></li>
+<li><p>git merge</p></li>
+<li><p>git rebase</p></li>
+<li><p>git gc</p></li>
+</ul>
+</div>
+<div class="section" id="create-branch">
+<h3><a class="toc-backref" href="#id43">create branch</a><a class="headerlink" href="#create-branch" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>git branch dev</p></li>
+<li><p>git checkout dev</p></li>
+<li><p><a class="reference external" href="http://blog.jobbole.com/23398/">http://blog.jobbole.com/23398/</a></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="tutorial">
+<h2><a class="toc-backref" href="#id44">Tutorial</a><a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Git simple tutorial</p>
+<p><a class="reference external" href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000">http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000</a></p>
+</li>
+<li><p>setup a git server on macosx
+<a class="reference external" href="http://www.tomdalling.com/blog/software-processes/how-to-set-up-a-secure-git-server-at-home-osx/">http://www.tomdalling.com/blog/software-processes/how-to-set-up-a-secure-git-server-at-home-osx/</a></p></li>
+</ul>
+</div>
+<div class="section" id="spark-build-pipeline">
+<h2><a class="toc-backref" href="#id45">Spark build pipeline</a><a class="headerlink" href="#spark-build-pipeline" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>fork the cloud-apps to another repo, such as https://sqbu-github.cisco.com/yafan/cloud-apps
+then clone the repoe and add remote repo like below
+git remote add gauntlet https://gauntlet.wbx2.com/api/git/cloud-apps
+git remote add origin https://sqbu-github.cisco.com/WebExSquared/cloud-apps.git
+git remote add yafan https://sqbu-github.cisco.com/yafan/cloud-apps.git
+
+Do some codes change, then commit , and push the fork repo ( suppose the local branch name is issue4337 )
+git checkout -b issue4337
+git pull origin master
+git add &lt;changed_files&gt;
+git commit -m &quot;change comments&quot;
+git push yafan issue4337
+then create a pull request between WebExSquared:master from yafan:issue4337 for reviewing, send the pull request url to your reviewer
+if the pull request is approved, then push the codes to gauntlet
+git push gauntlet issue4337: master
+
+Note:  gauntlet uses a different password, please use the tool here to generate:
+https://sqbu-jenkins-01.cisco.com:8443/job/utilities/job/internal-utilities-password-changer/
+
+
+then check the front door build pipeline: https://gauntlet.wbx2.com/queue.html?queue=cloud-apps
+if the codes change is in waitng quue firlst ,If it goes to vestibule list then, that&#39;s ok.
+Otherwise, you need to check the failed reason. If the error is not caused by your codes change, you can click the retry button to retry the build again.
+</pre></div>
+</div>
+</div>
+<div class="section" id="tools">
+<h2><a class="toc-backref" href="#id46">Tools</a><a class="headerlink" href="#tools" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>gitosis: <a class="reference external" href="https://github.com/res0nat0r/gitosis">https://github.com/res0nat0r/gitosis</a></p></li>
+<li><p>gitweb</p>
+<ul>
+<li><p>install and setup: <a class="reference external" href="http://help.github.com/win-set-up-git/">http://help.github.com/win-set-up-git/</a></p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git config --global user.name &quot;Walter Fan&quot;
+$ git config --global user.email &quot;walter.fan@gmail.com&quot;
+
+Global setup:
+Set up git
+  git config --global user.name &quot;Walter Fan&quot;
+  git config --global user.email walter.fan@gmail.com
+
+Next steps:
+  mkdir WFJUtils
+  cd WFJUtils
+  git init
+  touch README
+  git add README
+  git commit -m &#39;first commit&#39;
+  git remote add origin git@github.com:wind007/WFJUtils.git
+  git push -u origin master
+
+Existing Git Repo?
+  cd existing_git_repo
+  git remote add origin git@github.com:wind007/WFJUtils.git
+  git push -u origin master
+</pre></div>
+</div>
+<div class="section" id="install-on-centos">
+<h3><a class="toc-backref" href="#id47">Install On CentOS</a><a class="headerlink" href="#install-on-centos" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>new version</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">yum</span> <span class="n">install</span> <span class="n">libcurl</span><span class="o">-</span><span class="n">devel</span> <span class="o">-</span><span class="n">y</span> <span class="o">--</span><span class="n">nogpgcheck</span>
+<span class="n">yum</span> <span class="n">install</span> <span class="n">perl</span><span class="o">-</span><span class="n">devel</span> <span class="o">-</span><span class="n">y</span> <span class="o">--</span><span class="n">nogpgcheck</span>
+<span class="n">yum</span> <span class="n">install</span> <span class="n">gettext</span><span class="o">-</span><span class="n">devel</span> <span class="o">-</span><span class="n">y</span> <span class="o">--</span><span class="n">nogpgcheck</span>
+<span class="n">make</span>
+<span class="n">make</span> <span class="n">install</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Old version</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel -y --nogpgcheck
+$ wget http://www.codemonkey.org.uk/projects/git-snapshots/git/git-latest.tar.gz
+
+$ tar xzvf git-latest.tar.gz
+$ cd git-{date}
+$ autoconf
+$ ./configure --with-curl=/usr/local
+$ make
+$ make install
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>ssh-keygen -t rsa -C “<a class="reference external" href="mailto:walter&#46;fan&#37;&#52;&#48;gmail&#46;com">walter<span>&#46;</span>fan<span>&#64;</span>gmail<span>&#46;</span>com</a>”</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="faq">
+<h2><a class="toc-backref" href="#id48">FAQ</a><a class="headerlink" href="#faq" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="how-to-set-up-a-secure-git-server-at-home-osx">
+<h3><a class="toc-backref" href="#id49">how-to-set-up-a-secure-git-server-at-home-osx</a><a class="headerlink" href="#how-to-set-up-a-secure-git-server-at-home-osx" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="http://www.tomdalling.com/blog/software-processes/how-to-set-up-a-secure-git-server-at-home-osx/">http://www.tomdalling.com/blog/software-processes/how-to-set-up-a-secure-git-server-at-home-osx/</a></p>
+</div>
+<div class="section" id="q-ssh-t-git-github-com-permission-denied">
+<h3>Q 使用命令 ssh -T <a class="reference external" href="mailto:git&#37;&#52;&#48;github&#46;com">git<span>&#64;</span>github<span>&#46;</span>com</a> 的时候，系统总是提示 permission denied<a class="headerlink" href="#q-ssh-t-git-github-com-permission-denied" title="Permalink to this headline">¶</a></h3>
+<ol class="upperalpha simple">
+<li><p>修改/etc/ssh/sshd_config</p></li>
+</ol>
+<p>修改/etc/ssh/sshd_config文件.将其中的PermitRootLogin no修改为yes
+或者用 ssh -vvv <a class="reference external" href="mailto:git&#37;&#52;&#48;github&#46;com">git<span>&#64;</span>github<span>&#46;</span>com</a> 查看一下，是不是公钥没上传正确</p>
+</div>
+<div class="section" id="how-to-disable-gnome-ssh-askpass">
+<h3><a class="toc-backref" href="#id51">How to disable gnome-ssh-askpass?</a><a class="headerlink" href="#how-to-disable-gnome-ssh-askpass" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>unset SSH_ASKPASS</p></li>
+</ul>
+</div>
+<div class="section" id="how-to-use-submodule">
+<h3><a class="toc-backref" href="#id52">How to use submodule</a><a class="headerlink" href="#how-to-use-submodule" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>git submodule add <a class="reference external" href="https://github.com/libevent/libevent.git">https://github.com/libevent/libevent.git</a> third_party/libevent</p></li>
+<li><p>git submodule add <a class="reference external" href="https://chromium.googlesource.com/v8/v8.git">https://chromium.googlesource.com/v8/v8.git</a></p></li>
+<li><p>git submodule init</p></li>
+<li><p>git submodule update</p></li>
+</ul>
+</div>
+<div class="section" id="q-unable-to-access-git-ssl-certificate-problem-invalid-certificate-chain">
+<h3><a class="toc-backref" href="#id53">Q. unable to access git SSL certificate problem: Invalid certificate chain</a><a class="headerlink" href="#q-unable-to-access-git-ssl-certificate-problem-invalid-certificate-chain" title="Permalink to this headline">¶</a></h3>
+<ol class="upperalpha simple">
+<li><p>git config –global http.sslVerify false</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="reference">
+<h2><a class="toc-backref" href="#id54">Reference</a><a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="http://rogerdudler.github.com/git-guide/index.zh.html">http://rogerdudler.github.com/git-guide/index.zh.html</a></p></li>
+<li><p>rebase: <a class="reference external" href="https://git-scm.com/book/zh/ch3-6.html">https://git-scm.com/book/zh/ch3-6.html</a></p></li>
+<li><p><a class="reference external" href="http://git-scm.com/book/zh/v1">http://git-scm.com/book/zh/v1</a></p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="cmake.html" class="btn btn-neutral float-right" title="cmake" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Tools" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, Walter Fan.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
