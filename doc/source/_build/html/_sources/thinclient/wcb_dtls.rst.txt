@@ -1,0 +1,118 @@
+##############################
+WCB DTLS
+##############################
+
+
+receive turn server data, check the first data byte
+
+ - RTP or RTCP
+ - DTLS
+
+* CWCBPeerConnection
+
+.. code-block:: c
+
+    // The peerConnect data from the Turn Server through OnTurnPacket()
+    //   which is originally from the Thin Client.
+    int CWCBPeerConnection::OnReceiveRawData(u8 *pData, u32 len)
+
+
+
+
+.. code-block:: c
+
+  // call from the Turn Server to pass the media/messging data
+  int OnTurnPacket(u8 *pData,int len) { return OnReceiveRawData(pData,len);}
+
+  // To receive DTLS-SRTP messages and SRTP data for the peer connection setup
+  //  -- called from OnTurnPacket(). In network thread
+  int  OnReceiveRawData(u8 *pData, u32 len);
+  void DecryptRawData_n(u8 *pData, u32 len); // do decryption in network thread
+  void DecryptRawData_u(CWCBSwitchPacket *pPacket); // do decryption in userthread (non-multithread)
+  void OnReceiveData_n(CWCBSwitchPacket *pPacket); // pass data to process (non-multithread)
+
+
+
+* set rpt module
+
+.. code-block:: c
+
+      // check if completed. If yes, set up SRTP module.
+    if (m_dtlsHandle.IsDtlsCompleted()) {
+      WCB_INFO("CWCBPeerConnection::OnReceiveRawData," <<
+               " DTLS-SRTP Completed. Retrieve the master key");
+      string clientDtlsMasterKey,  serverDtlsMasterKey;
+      m_dtlsHandle.GetDtlsMasterKey(clientDtlsMasterKey,  serverDtlsMasterKey);
+      m_srtpHandle.Init(clientDtlsMasterKey, serverDtlsMasterKey, m_userId);
+    }
+
+* create SRTP receiver
+
+   - see `int CWCBSrtpHandle::CreateSRTPReceiver(string &masterKey)`
+
+* create
+
+   - see `int CWCBSrtpHandle::CreateSRTPSender(string &masterKey)`
+
+
+* decrypt SRTP data
+
+.. code-block:: c
+
+
+    // ----------------- Handle the RTP data ------------------
+    static const BYTE  	  FIRST_RTCP_CONFLICT_PAYLOAD_TYPE = 64;
+    static const BYTE  	  LAST_RTCP_CONFLICT_PAYLOAD_TYPE = 95;
+    int CWCBSrtpHandle::DecryptRtpData(u8 *pInRtp, int &inLen, bool &bRtcp)
+    {
+      WCB_ON_ERR(m_srtp_recv, "CWCBSrtpHandle::DecryptRtpData, SRTP engine not created", -1);
+      m_countRecvRtp++;
+
+      // check error and print
+      if (inLen <= 12 || pInRtp == NULL) {
+        if (m_countRecvRtpError < WCB::MAX_INIT_TRACE_SIZE || m_countRecvRtpError%100==0) {
+          WCB_ERR("CWCBSrtpHandle::DecryptRtpData," <<
+                  " Wrong RTP header, " <<
+                  " packet length = " << inLen <<
+                  " pData = " << pInRtp <<
+                  " m_countRecvRtpError = " << m_countRecvRtpError <<
+                  " m_countRecvRtpError turn-around = " << m_countRecvRtpErrorRound);
+        }
+        m_countRecvRtpError++;
+        return WCB_ERROR;
+      }
+      if (m_countRecvRtp%5000==0) {
+        m_countRecvRtpError = 0;
+        m_countRecvRtpErrorRound++;
+      }
+
+      // check if RTP or RTCP
+      bRtcp = false;
+      u8 payloadType = pInRtp[1];
+      if(payloadType & 0x80) {
+        u8 plt = (payloadType & 0x7F);
+        if(plt >= FIRST_RTCP_CONFLICT_PAYLOAD_TYPE &&
+           plt <= LAST_RTCP_CONFLICT_PAYLOAD_TYPE) { // RTCP
+          bRtcp = true;
+        }
+      }
+
+      // decrypt it in-place with the new length retured
+      srtp_err_status_t status;
+      if (bRtcp) {
+        status = srtp_unprotect_rtcp(m_srtp_recv, pInRtp, &inLen);
+      } else {
+        status = srtp_unprotect(m_srtp_recv, pInRtp, &inLen);
+      }
+
+      if (status && status != srtp_err_status_replay_fail) {
+        // NACK for duplicated retransmission may cause srtp_err_status_replay_fail failure
+        if (m_countRecvRtpError < WCB::MAX_INIT_TRACE_SIZE || m_countRecvRtpError%100==0) {
+          WCB_ERR("CWCBSrtpHandle::DecryptRtcp: srtp-rtp decryption m_countRecvRtpError = " << m_countRecvRtpError <<
+                  " failure with error code= : " << status);
+        }
+        m_countRecvRtpError++;
+      }
+
+      return status;
+    }

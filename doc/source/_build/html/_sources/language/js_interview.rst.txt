@@ -1,0 +1,105 @@
+#############
+JS Interview
+#############
+
+.. contents::
+   :local:
+
+
+Top 10 questions
+=========================
+
+何为 IIEF ，它有什么用？
+----------------------------------------
+
+An IIFE (Immediately Invoked Function Expression) is a JavaScript function that runs as soon as it is defined. The name IIFE is promoted by Ben Alman in his blog.
+
+.. code-block::
+
+    (function () {
+      statements
+    })();
+
+
+It is a design pattern which is also known as a Self-Executing Anonymous Function and contains two major parts:
+
+* The first is the anonymous function with lexical scope enclosed within the Grouping Operator ().
+
+This prevents accessing variables within the IIFE idiom as well as polluting the global scope.
+
+* The second part creates the immediately invoked function expression () through which the JavaScript engine will directly interpret the function
+
+
+Javascript Proxy 有什么用，怎么用？
+------------------------------------------
+
+.. code-block:: JavaScript
+
+    const user = {
+        firstName: 'John',
+        lastName: 'Doe'
+    }
+
+    const getFullName = function (user) {
+        return `${user.firstName} ${user.lastName}`;
+    }
+
+
+    const getFullNameProxy = new Proxy(getFullName, {
+        apply(target, thisArg, args) {
+            return target(...args).toUpperCase();
+        }
+    });
+
+    console.log(getFullNameProxy(user)); 
+
+
+
+Javascript 的作用域和闭包？
+---------------------------------------------
+
+
+Javascript 的异步调用机制有哪几种？
+---------------------------------------------
+
+
+
+Dom 事件和事件冒泡机制是什么样的？
+--------------------------------------------
+
+
+Javascript 如何实现模块
+--------------------------------------------
+
+1. 使用函数扩展模块，使用对象实现接口
+
+.. code-block::
+
+    const MouseCounterModule = function() {
+      let counter = 0;
+      const handleClick = () => {
+         alert(++counter);
+      };
+      return {
+         countClicks: () => {
+             document.addEventListener("click", handleClick);
+         }
+      }
+    }();
+
+2. 模块扩展
+
+.. code-block::
+
+   (function(module){
+      //add something
+      return module;
+   })(MouseCounterModule);
+
+这种方式的缺点是扩展的模块与原模块无法共享私有变量，也就是说扩展的模块无法共享原有模块的内部属性
+而且这种方法没有很好的管理模块之间的依赖关系和顺序， 所以 CommonJS 的方式更加流行。
+
+ES6 中提供了一个模块机制
+
+* 基于文件，一个文件就是一个模块
+* 支持异步模块加载

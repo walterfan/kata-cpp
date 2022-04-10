@@ -1,0 +1,64 @@
+#########################
+Thin Client Metrics
+#########################
+
+
+Kibana （Call Analyzer & Telemetry)
+==========================================
+
+访问 https://clpsj-telemetry.webex.com/，你可能会拿到其它URL xxx-telemetry.webex.com, 不用管它，现在所有的kibana都有其它DC的数据Mapping。
+左侧选择Discover功能，在Add Filter下有个向下的箭头，点开来，选择合适的DC。
+数据源名字clap-xxx: telemetry-* xxx就是DC，根据上面的加会信息，从Gateway IP结合Global Distributed服务器猜一下，相应的用户在哪个DC加了会。
+添加Filter: [event.identifiers.webexConferenceIdStr.keyword] [is] [你记下来的Confid]
+右上角时间范围从加会前一天到加会后一天。Telemetry数据是GMT时间，MATS里会显示带时区的用户时间。
+右上角Refresh，这时候页面里显示这个会的所有telemetry和Call analyzer，数据是不区分用户和Client的。
+如果只想保留thin的数据，通过添加Filter [origin.clientInfo.subClientType] [is] [WEB_APP]可以过滤出thin来。
+如果知道这个人的nodeid，也可以同样方法添加filter区分具体是哪个人的thin。
+Xiaole Tao 3:57 PM
+Hive (Telemetry RAW Data)
+Kibana数据是整合过的，如果你送的数据在extVal里送出来，需要从raw data里查找。
+原始数据只保留有限的时间，你的BEMS问题发生在一个月内可找回所有的raw data。
+尽量使用Firefox访问（chrome可能会异常） https://rpsj1rpd101.webex.com:8888/editor/?type=hive
+顶上数据库选择里，选hive数据库（重要），然后使用SQL检索出raw data，导出csv用excel慢慢看。
+event表结果可能会有10M+，导回巨大的csv用excel失开可能会崩。
+在浏览器里观察结果，用SQL条件排除一些不关心的event_name缩小结果集。
+附录：
+Hive查询SQL模板
+SELECT * FROM telemetry.表名 WHERE day='会议日期' and confid='ConfID' and apptype='Thin Client'
+and correlateid='correlationID' //Aggregation查询后面的correlationID带上会精确到单个人的数据
+and trackingid='trackingID' //Raw data查询带上trackingID会精确到单个人的数据
+Aggregation表名有这些：
+action_telemetry_hdfs_dap_json （界面点击信息）
+event_telemetry_hdfs_dap_json （mgr层事件信息）
+agentinfo_telemetry_hdfs_dap_json （浏览器操作系统信息）
+info_telemetry_hdfs_dap_json （会议信息，以及加会过程信息）
+exception_telemetry_hdfs_dap_json （异常信息）
+Raw Data表有这些：
+raw_telemetry_action（界面点击信息）
+raw_telemetry_agentinfo
+raw_telemetry_exception（异常信息）
+raw_telemetry_info
+raw_telemetry_event（mgr层事件信息）
+日期格式为： 2021-02-21 （如果没搜到结果的话，换算下时区日期）
+Xiaole Tao 3:58 PM
+telemetry有kibana和hive两种途径
+kibanna只有1个月，而且不是raw data
+You 3:58 PM
+yes, I also queried some data, what’s the keyword of JMF and JMT?
+Xiaole Tao 4:00 PM
+find Call analyzer data, "meeting.joined“
+event name "meeting.joined“
+You 4:01 PM
+Got, thanks, let me check
+Xiaole Tao 4:01 PM
+if a meeting has this, means JMS, otherwise the meeting was failed.
+Xiaole Tao 4:02 PM
+Or telemetry data, event: join_meeting_success
+You 4:02 PM
+good, 我想统计一下 browser 类型和版本的分布
+这个你觉得以哪条telemetry 统计为好
+Xiaole Tao 4:03 PM
+Matthew already made a report for this.
+find Matthew to get it
+You 4:04 PM
+sure, thank you

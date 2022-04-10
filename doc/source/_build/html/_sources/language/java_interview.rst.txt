@@ -1,0 +1,188 @@
+##################
+Java Interview
+##################
+
+.. include:: ../links.ref
+.. include:: ../tags.ref
+.. include:: ../abbrs.ref
+
+.. contents::
+    :local:
+
+一般问题
+=======================
+#. Java OOP 特性的实现： 继承，封装，多态(方法覆盖和重载)
+
+#. Java 对象的 hashcode and equals 有什么区别，要返回一致的结果吗
+
+#. Java 程序的 crash，内存溢出和内存泄漏的原因和对策
+
+#. JVM 有哪些内存区域，重要的初始参数和垃圾回收算法
+
+#. Java 线程池的监控与优化， 线程模型与多路复用
+
+#. Spring 的原理 - IoC and DI(方式), AoP（方式）
+   - BeanFactory, ApplicationContext, Spring Proxy
+
+#. Spring Boot 的 starter 和 autoconfiguration 是怎么做到的
+
+#. Spring MVC 的 dispatch servlet 的作用和请求处理流程 
+
+#. HTTP: 缓存与并发控制，连接管理
+
+#. Java 中的 HashMap, TreeMap, ConcurrentSkipListMap 等的区别
+
+#. 设计模式： Proxy, Observer, Strategy, etc.
+
+#. 微服务的分流，限流和断流
+
+#. Spring core /Spring MVC 流程
+
+#. HTTPS完整流程
+
+#. CAP 的理解和常见数据存储系统的选择
+   - https://www.jianshu.com/p/9c1bbb8879d2
+
+#. Java 内存和性能问题的诊断流程
+
+#. JVM tool set
+
+#. ThreadLocal
+
+#. 类加载器
+
+
+
+
+
+Top 10 questions
+=======================
+
+1. JVM 内存区域
+-----------------------
+* 线程私有区域
+  程序计数器
+  虚拟机栈
+  本地方法区
+
+* 线程共享区域 - heap
+  - 年轻代 Young Generation: 一般分为伊甸园 Eden 和幸存区 Survivor(通过分为两个区S0, S1)， 新创建的对象放在Eden 区
+  - 年老代 Old Generation
+  - 永久代(方法区，metaspace): 类信息，静态变量，常量池
+
+* 直接内存（堆外内存）    
+
+2.  Java GC 的分类和优化要点
+--------------------------------
+
+* GC分类:
+  - Minor GC: 也称 Scavenge GC, 收集新生代, 新对象在 Eden区申请空间失败时会触发
+  - Major GC: 也称 Full GC, 收集新生代，年老代和永久代, 年老代或永久代被写满时会触发
+
+* GC算法:
+
+  - 引用计数 Reference Counting
+  - 标记清除 Mark-Sweep
+  - 复制 Copying
+  - 标记-压缩 Mark-Compact
+
+JVM参数:
+
+.. code-block::
+
+    -Xmx=2048m 堆的最大值
+    -Xms=1024m 堆的初始值
+    -Xmn=128m 年轻代大小的值
+    -XX:newSize= 年轻代大小的初始值
+    -XX:maxNewSize= 年轻代大小的最大值
+    -XX:NewRatio= 年轻代与年老代的比例=年老代大小/年轻代大小
+    -XX:SurvivorRatio= 年轻代中的 Eden 区与 Survivor 区的比例=Eden区大小/(S1或S2区的大小)
+    -XX:MetaSpaceSize= 元空间（永久代）大小的初始值
+    -XX:MaxMetaSpaceSize= 元空间（永久代）大小的最大值
+    -Xss: 每个线程的堆栈大小
+    -XX:MaxDirectMemorySize= 直接内存大小的最大值
+    -XX:CompressedClassSpaceSize= 堆在小于32G时会将类信息放入 CompressedClassSpace, 即地址将64bit压缩成32bit
+    -XX:+AlwaysPreTouch 启动时预先初始化内存页，这样运行期就省去了初始化内存页这个步骤了
+
+
+3. Java 线程池及其优化要点
+---------------------------------------------
+参见 https://www.jianshu.com/p/6b71221792fb
+
+4. Java 锁有哪些，各有什么应用场合？
+---------------------------------------------
+
+* synchronized
+* Lock: ReentrantLock: ReentrantReadWriteLock.ReadLock, ReentrantReadWriteLock.WriteLock
+* StampedLock
+* Semaphore 
+* CountDownLatch
+* CyclicBarrier
+* Phaser
+* Exchanger
+* CompletableFuture
+
+
+乐观锁: 基于 CAS（Compare And Swap)
+
+* AtomicLong
+
+悲观锁: 基于 AQS (Abstract Queued Synchronized)
+
+* Synchronized, ReentrantLock, Semaphore, CountDownLatch
+
+
+偏向锁
+
+
+5. CAS 和 AQS 是什么？ ABA 问题如何解决？
+------------------------------------------
+
+
+6. java agent 的原理是什么？
+------------------------------------------
+
+
+7. Spring boot 的 starter 和 AutoConfiguration 对依赖的管理机制
+---------------------------------------------------------------------
+
+* starter pom 中定义了一组相关的依赖组件的包名和版本号
+
+.. code-block::
+
+  <dependencyManagement>
+  <depenndencies>
+  <dependenncy> ...package name, version ... </dependenncy>
+
+  </depenndencies>
+  </dependencyManagement>
+
+
+* EnableAutoConfiguration
+
+.. code-block::
+
+  -> @AutoConfigurationPackage -> AutoConfigurationPackages.Registrar.class
+  -> @AutoConfigurationImportSelector -> SpringFactoriesLoader
+
+在 spring-boot-autoconfigure-xxx.jar 包的 META-INF/spring.factories 中定义了一百多个依赖项
+通过  ConditionalOnXxx 来根据一些特定条件来引入
+
+
+
+
+
+
+
+
+其他问题
+===================
+* Spring 对于循环依赖问题的对策
+* 并发控制：锁
+* 数据结构，常见容器
+* Big O 算法复杂度
+
+
+* `分布式架构 <../architecture/distribution.html>`_
+* `设计模式 <../architecture/design_pattern.html>`_
+* `数据结构与算法 <../algorithm/data_structure.html>`_

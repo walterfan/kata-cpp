@@ -1,0 +1,392 @@
+#####################
+MMP Configuration
+#####################
+
+* webex-1.cfg
+
+.. code-block::
+
+    [General]
+    ServerType=MCS;
+    InstanceID=1;
+    EncodeDBAccount=false;
+    AWSCloud=false;
+
+    EnableMultiThread=TRUE
+
+    NetworkThreadNumber=2
+    WorkThreadNumber=3
+
+    ApplicationUID=5802;
+    ApplicationUserName=wrt-mmp;
+    ApplicationGID=601;
+    ApplicationGroupName=nobody;
+
+
+    DBServerName=opdb.webex.com;
+    DataBase=MMPDBConnect;
+    DBUserID=test;
+    DBUserPassword=pass;
+
+
+    MMPDCLocName=HFE01;
+    MMPDCLocID=1;
+
+    MMPZoneName=msz1;
+    MMPZoneId=20;
+    MMPLocationID=201610;
+
+    StreamServerMastKeyConfigRN=1234;
+    StreamServerMCTMastKeyConfigRN=5678;
+    StreamServerMastKeyConfigRN2=2@1234;
+    StreamServerMCTMastKeyConfigRN2=2@5678;
+
+    DCSSLGatewayIP=vsz1sslgw.qa.webex.com;
+    DCSSLGatewayPort=443;
+
+    MCCVIP=msz1mccsv01.qa.webex.com;
+    MCCVIPPORT=12342;
+
+    LoadSharedKeyMinutes=60;
+
+    HardCodedKeyCompatible=TRUE;
+    HardCodedRN=123456790fdfaWe436trtjncgzsasdaeqwrwryri4356345345gdfdfgdfgdfgdfyol[rweorts;dksafkpsosksdfk;sfk;
+    AESHardCodedIV=EjRWeJq83vA0VniavN7wEg==;
+
+    ForceToUseCBToken=FALSE;
+    enableTpBwControl=TRUE;
+
+
+
+    # WCB 的配置
+
+    EnableWCB=TRUE;
+    EnableWCBHFPS=TRUE;
+    EnableWCBBundle=TRUE;
+    WCBPlainRTP=TRUE;
+
+    [HTTP]
+
+    Origin_Allowed = webex.com ciscospark.com localhost chrome-extension;
+
+    [LOADS]
+    ABCallIn=9
+    FilterLoadBase=1
+    HybridCallIn=9
+    InitFilterLoad=10
+    InitTelephoneLoad=20
+    NormalConfTolerance=2000
+    WorkThreadLoadLightPercent=60
+    WorkThreadTolerance=500
+
+    MediaStreamingSessionLoad=1
+    NBRMediaStreaming=6
+    NBRVideo=5
+    NBRVoip=3
+    SVSTCPLoadBase=5
+
+    SVSTCPLoadFlatGene=0.8
+    SVSUDPLoadBase=5
+    SVSUDPLoadFlatGene=0.8
+
+    ThreadMaxLoad=10000
+
+    ServerMaxLoad=22000
+    TelephoneLoadBase=5
+
+    ThinClientVideoLoadBase=160
+    NewThinClientVideoLoadBase=1
+    ThinClientVideoRecvLoadBase=80
+    ThinClientVideoSendLoadBase=80
+    ThinClientVoipLoadBase=40
+    VideoSessionLoad=1
+    VideoTCPLoadBase=5
+    VideoTCPLoadFlatGene=0.8
+    VideoFecReceiveLoadBase=3
+    VideoFecSendLoadBase=4
+
+    VideoTelePresTrans=14
+    VideoUDPLoadBase=5
+    VideoUDPLoadFlatGene=0.8
+    VoIPSessionLoad=1
+    VoIPTCPLoadBase=5
+
+    VoIPTCPLoadFlatGene=0.8
+    VoIPUDPLoadBase=5
+    VoIPUDPLoadFlatGene=0.8
+    VoIPFecReceiveLoadBase=5
+    VoIPFecSendLoadBase=9
+
+    ASSessionLoad=1
+    ASUser=1
+    ASCallIn=19
+    WmeASTCPLoadBase=4
+    WmeASUDPLoadBase=4
+    WmeASTCPSRTPLoadBase=4
+    WmeASUDPSRTPLoadBase=4
+    ASTCPLoadFlatGene=0.8
+    ASUDPLoadFlatGene=0.8
+    WmeNSTCPLoadBase=6
+    WmeNSUDPLoadBase=6
+    WmeNSTCPSRTPLoadBase=6
+    WmeNSUDPSRTPLoadBase=6
+
+    VoIPRtxReceiveLoadBase=5
+    VoIPRtxSendLoadBase=3
+    VideoRtxReceiveLoadBase=5
+    VideoRtxSendLoadBase=3
+    ASRtxReceiveLoadBase=5
+    ASRtxSendLoadBase=3
+
+    WcbVoIPTCPLoadBase=2
+    WcbVoIPUDPLoadBase=2
+    WcbVideoTCPLoadBase=1
+    WcbVideoUDPLoadBae=1
+    WcbASUDPLoadBase=1
+    WcbASTCPLoadBase=1
+
+    TandbergSendLoadBase=2
+    TandbergReceiveLoadBase=2
+
+    WmeVoIPTCPLoadBase=4
+    WmeVoIPUDPLoadBase=4
+    WmeSVSTCPLoadBase=3
+    WmeSVSUDPLoadBase=3
+    WmeVideoUDPLoadBase=4
+    WmeVideoTCPLoadBase=4
+
+    SRTPLoadRatio=1.2
+
+    NSLowLoadClientNum=10
+    NSLowLoadRatio=70
+    NSMidLoadClientNum=20
+    NSMidLoadRatio=90
+    NSHighLoadClientNum=30
+    NSHighLoadRatio=100
+
+    [CI]
+
+    EnableValidation=TRUE;
+
+    CIInScopeOrgs=;
+    BearerTokenUrl=https://idbrokerbts.webex.com/idb/token/a93dde14-65b7-4a59-81dd-28962a8473e3/v2/actions/GetBearerToken/invoke;
+    UserName=MMPMachineAccount;
+    Password=DWY.wxio.89.DYJP.rfgi.48.RHIO.efio.26;
+    ClientId=C0162ffce71f25a2bb2caa09b7cee0a15386ee1ab798ac55283bb87c524f16f57;
+    ClientSecret=9c9f22d857617599108d6b7e0f0989691c5afed938db3653162f3c3ebe9f62e6;
+    ClientScope=Identity:OAuthKeyService WBXMMPService:mmp_services webexsquare:create_venue webex-squared:calliope_webhooks WBXCBService:meeting FLS:Entity_Read webex-squared:create_venue webex-squared:write_diagnostics Identity:Config Identity:SCIM GIVRService:query_usage GIVRService:update_usage;
+    ResourceId=R663d05f87c7e47b91342a8263862bb9c9e048d993b1a1f1224c5d26ccea59c37;
+    ResourceSecret=655d0b41152dc327f1a31e6a0ba1486838867112f0a3b21655d0aed938583991;
+    ResourceScope=WBXMMPService:mmp_services;
+    VerificationKeyUrl=https://idbrokerbts.webex.com/idb/oauth2/v1/keys/verification;
+    DecryptionKeyUrl=https://idbrokerbts.webex.com/idb/oauth2/v1/keys/decryption;
+
+    CIFlsEnable=true;
+    CIFlsUrl=https://ciflsbts.webex.com/federation/api/v1/Clusters;
+    FlsDefaultCI=https://idbroker.webex.com;
+
+    GroupId=msz1;
+
+    [MCS]
+    EnableReportUserJoinToCB=FALSE;
+    EnableCascadMariLite=FALSE;
+    SupportVAD=1;
+    AGCLevel=150;
+    MixInterval=20;
+    STC=6;
+    180Degrade=FALSE;
+    CCP180Bitrate=358400;
+    TimeWaitUser=360;
+    MaxActiveSpeakerNumber=3;
+    BalanceNormalSharingLoad=TRUE
+    SilentForward=TRUE;
+    MariAdjustmentPolicy=6;
+    EnableGridViewPriority=TRUE;
+    EnableCCPVideoSRTP=FALSE;
+    MulticastSourceCountToCCP=25;
+    EnableMsyncASReq=FALSE;
+    EnableMsyncVideoReq=FALSE;
+    ForwardWebexAvatar=TRUE;
+    EnableRawsocketUdp=TRUE;
+    EnableMCSCascadingKeyEncrypt=TRUE;
+    MaxLoadToLimitThinClient=100;
+
+    Language=0;
+
+    KafkaServiceEventEnabled=FALSE;
+    KafkaFeatureEnabled=FALSE;
+
+
+
+
+
+
+    MediaServerVIP=msz1mcs101.qa.webex.com;
+
+    MediaServerIP=10.224.82.98;
+
+    StreamServerRtspPort=8554;
+    StreamServerHttpPort=80;
+
+    # 端口配置
+    MediaTcpPort=80;
+    MediaUdpPort=9000;
+    MediaTcpPortEx=5004;
+
+    StreamServerStreamClientRealPort=7070;
+    StreamServerStreamClientWEBEXPort=7500;
+
+    AudioStreamUdpMaxPort=4000;
+    AudioStreamUdpMinPort=3800;
+
+    DelayFromMediaServerToMCS=10;
+    DelayFromPhoneToMediaServer=500;
+    SyncIntervalFromMCC=30;
+    VIPCheckingTimer=5;
+
+    DataCenterID=msz1mcccl01.qa.webex.com;
+    StreamServerSNMPTimer=300;
+    StreamServerReCallAppTimer=5;
+    StreamServerReCAllAppNum=3;
+    StreamServerMediaServerWaitTimer=60;
+    StreamServerLoadReportTimer=20;
+    SvrMgrReconnTimer=10;
+
+    StreamConfEqualLoad=200;
+    MixAllPacketsForSpeakerChannel=TRUE;
+    ContinuesSilentPackages=1;
+    MaxTimeInterval=20;
+    SilentValve=15;
+
+
+    NbrPrimaryIpAddress=10.224.17.250;
+    NbrPrimaryRemotePath=/nbrprimary;
+    NbrPrimaryLocate=/export/primary;
+
+    NbrBackupIpAddress=10.224.17.251;
+    NbrBackupRemotePath=/nbrsecond;
+    NbrBackupLocate=/export/second;
+
+
+    KeyManagerMCTMonitorPort=8081;
+    KeyManagerStatusCheckingTime=600;
+
+    [HYBRID]
+    SwitchTo20MS=true;
+    VoipToPSTN=100;
+    GcmLoadRatio=2.0;
+    EnableCNG=FALSE;
+    OpusMuxEnable=true;
+    mmpSupportNBRPrompt=true;
+
+    [Flow Control]
+    THRESHOLD_VIDEO_I_DROP=131072
+    THRESHOLD_VIDEO_P_DROP=65536
+    BURST_TORLERANCE=1
+    ADD_BURST_SIZE=128000
+
+    MIN_RATE=57344
+    MAX_RATE=1048576
+    INIT_RATE=524288
+    RATE_INC_FACTOR=0.02
+    RATE_DEC_FACTOR=0.125
+    MIN_LOSS_RATE=0.015
+    MAX_LOSS_RATE=0.05
+
+    EXP_FACTOR=0.3
+    CYCLE_SYN_NUMBER=500
+    MAX_CYCLE_COUNT=10
+
+    [SIP]
+    Min_RTP_Port=10000;
+    Max_RTP_Port=19999;
+    Min_AB_RTP_Port=30000;
+    Max_AB_RTP_Port=39999;
+    Local_AB_SIP_Port=5061;
+    LogFilename=ua.log;
+    LogLevel=LOG_DEBUG;
+
+    Sip_DTMF_WAIT = 3;
+    Sip_Attendee_ID_WAIT = 1;
+    Sip_Rtp_Jitter_Len = 100;
+    Local_SIP_Port = 5060;
+
+    SupportTLS=true;
+    Local_TLS_SIP_Port=5062;
+    TlsDomain=tats.webex.com;
+    TlsCertPath=/opt/webex/mmp/certs/;
+
+    [SVC]
+    KFInterval=2;
+
+    [TANDBERG]
+    CollectQoSInfoInterval=2;
+    SendAvataTime=1;
+    EnableExtraSubfor360=TRUE;
+    enableSVC=TRUE;
+    SrtpReorder=TRUE;
+
+    KeyframeInterval=10;
+
+    [Trace]
+    Enable=TRUE;
+    FlushPerLines=10;
+    wbxmcs-01=200000000;
+    MaxLogFileNumber=20;
+    MaxMetricsLogSize=400000000;
+
+    MaxMetricsFileNumber=2;
+
+
+* webex-json.cfg
+
+.. code-block:: json
+
+    {
+        "cmeConfig":{
+        "orpheusBaseUrlList":[
+            {"orpheusBaseUrl":"https://calliope-intb.ciscospark.com/calliope/api/registrar/v1","regionName":"NORTH_AMERICA"}
+        ],
+        "locationMap":[
+            {"locationId":"11111", "locationName":"HGH01", "cmeGroupId":"otter"},
+            {"locationId":"22222", "locationName":"LHR01", "cmeGroupId":"otter2"},
+            {"locationId":"333333", "locationName":"HFE01", "cmeGroupId":"otter"},
+            {"locationId":"444444", "locationName":"HKG01", "cmeGroupId":"otter2"},
+            {"locationId":"555555", "locationName":"HLN01", "cmeGroupId":"otter"},
+            {"locationId":"666666", "locationName":"HFE02", "cmeGroupId":"otter2"}
+        ],
+        "cmeGroupList":[
+            {"groupId":"otter", "orgList":["otter"]},
+            {"groupId":"otter2", "orgList":["otter2"]}
+        ],
+        "regionList":[
+            {"regionName":"NORTH_AMERICA", "cmeGroupList":["otter", "otter2"]},
+            {"regionName":"APAC", "cmeGroupList":["wsgp", "wnrt"]}
+        ]
+    },
+        "transcoder":{
+            "content":{
+                "hfps":{
+                    "thresholds":[
+                        {
+                            "threshold":1,
+                            "scr":{
+                                "bitrate":150000,
+                                "maxMbps":7200,
+                                "maxFs":900,
+                                "maxFps":3000
+                            }
+                        }
+                    ]
+                }
+            },
+            "tests":{
+                "enableTranscoderDebugLog":false,
+                "testSites":[
+
+                    {"siteName":"", "cmeGroupId":"", "cmeOrgId":""}
+
+                ]
+            }
+        }
+    }

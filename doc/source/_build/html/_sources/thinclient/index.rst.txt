@@ -1,0 +1,116 @@
+#################
+Thin Client
+#################
+
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Contents:
+
+   app_share
+   audio_mgr
+   audio_443
+
+   how_to
+   protocols
+   qos
+
+   cmsc
+   cmsc_asm
+   cmsc_flowrtp
+   cmsc_MediaEngInst
+   cmsc_connection_monitor
+
+   cscc
+   cscc_api
+   cscc_clientsession
+
+   metrics
+
+   wca
+
+   wcb
+   wcb_client
+   wcb_dtls
+   wcb_ice
+   wcb_message
+   wcb_mqe
+   wcb_sdp
+   wcb_rtp
+   wcb_source
+   wcb_flowrtp
+   wcb_media_stats
+
+   web_client_bridge
+   disciplines_on_code_development
+
+
+Overall
+========================
+
+The browser-based WebEx client and SDK development including servers and clients.
+
+.. image:: ../_static/wcb-overall-architecture.png
+  :width: 1024
+  :alt: wcb-overall-architecture
+
+
+
+Server side
+-------------------------
+* WebEx Client Agent (or WCA) and
+* WebEx Client Bridge (WCB)
+
+are developed specifically to interact with the browser-based clients.
+
+Client side
+-------------------------
+WebApp SDK, a SDK providing to third parties to develop a full feature of browser client,
+
+* Client Meeting Connection Component (CMCC),
+* Client Session Connection Component (CSCC)
+* Client Media Session Component (CMSC).
+
+These components provide the features of the multimedia setup, transport, media quality measurement and enhancement.
+
+CSCC and CMSC have been integrated with Thin Client and runs in browser environments using pure Javascript.
+
+
+.. image:: ../_static/cmsc.png
+  :width: 1024
+  :alt: Client Meeting Connection Component
+
+.. image:: ../_static/cscc.png
+  :width: 1024
+  :alt: Client Session Connection Component
+
+
+Feature
+==========================
+
+WEBEX-51641+Move+sharing+from+WCA+to+WCB
+----------------------------------------------
+* https://wiki.cisco.com/display/PAN/WEBEX-51641+Move+sharing+from+WCA+to+WCB
+
+.. image:: ../_static/high-frame-sharing-phase4.jpg
+  :width: 1024
+  :alt: wcb-overall-architecture
+
+
+
+Reference
+===========================
+
+* https://wiki.cisco.com/display/PAN/Thin+client+dev+guide
+* https://wiki.cisco.com/display/PAN/Cscc+and+Cmsc+work-flow
+* https://wiki.cisco.com/display/PAN/Thin+Client+MCS+Build+with+Docker
+
+protocols
+----------------------------
+* WebRTC standard <https://www.w3.org/TR/webrtc/#introduction>_
+* JSEP <https://tools.ietf.org/html/draft-ietf-rtcweb-jsep-26>_
+* SDP for the WebRTC draft-nandakumar-rtcweb-sdp-08 <https://tools.ietf.org/html/draft-nandakumar-rtcweb-sdp-08>_
+* RTP Stream Identifier Source Description (SDES) draft-ietf-avtext-rid-09 <https://tools.ietf.org/html/draft-ietf-avtext-rid-09>_
+* Connection-Oriented Media Transport over the Transport Layer Security (TLS) Protocol in the Session Description Protocol (SDP) <https://tools.ietf.org/html/rfc8122>_
+* Session Description Protocol (SDP) Offer/Answer Considerations for Datagram Transport Layer Security (DTLS) and Transport Layer Security (TLS) <https://tools.ietf.org/html/draft-ietf-mmusic-dtls-sdp-32>_
+* Framework for Establishing a Secure Real-time Transport Protocol (SRTP) Security Context Using Datagram Transport Layer Security (DTLS) <https://tools.ietf.org/html/rfc5763>_

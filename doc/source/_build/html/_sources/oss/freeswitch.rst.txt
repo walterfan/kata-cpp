@@ -1,0 +1,9 @@
+###################
+Freeswitch
+###################
+
+
+
+Installation
+---------------------
+refer to https://freeswitch.org/confluence/display/FREESWITCH/FreeSWITCH+First+Steps

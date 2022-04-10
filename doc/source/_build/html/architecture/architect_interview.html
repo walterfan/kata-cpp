@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Architect Interview &mdash; A Programmer Prepares 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Network Interview" href="network_interview.html" />
+    <link rel="prev" title="Service Mesh" href="service_mesh.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> A Programmer Prepares
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">论程序员的自我修养</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interview.html">程序员面试要点</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resume.html">Resume</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithm/index.html">Algorithm</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Architecture</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="consensus.html">一致性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ddd.html">DDD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="distribution.html">分布式系统</a></li>
+<li class="toctree-l2"><a class="reference internal" href="raft.html">Raft</a></li>
+<li class="toctree-l2"><a class="reference internal" href="zab.html">ZAB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="micro_service.html">概述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="micro_service.html#id2">亚马逊的架构规定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="web_conference.html">Web Conference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="instant_message.html">Instatnt Message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="design_principles.html">Design Principles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="design_patterns.html">Design Patterns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intercepting_filter.html">Intercepting Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reactor.html">Reactor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="observer.html">Observer Pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service_mesh.html">Service Mesh</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Architect Interview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#top-10-questions">Top 10 questions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">1. 多小的服务才是微服务</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">2. 如何划分微服务的边界？</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cap">3. CAP 三性中应该如何取舍?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">4. 谈谈共识算法和一致性协议</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">5. 微服务有什么优缺点，如何应对？</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">6. 软件工程有用吗？</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">7. 分布式锁怎么实现</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cassandra">8. Cassandra 如何做到高可用性和最终一致性</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">9. 提高吞吐量和性能的方法有哪些</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">10. 如何做服务发现和服务分流</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#other-general-questions">Other general questions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#questions-about-experience-and-background">Questions about experience and background</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#in-depth-questions">In-depth questions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="network_interview.html">Network Interview</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../language/index.html">Programming Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../library/index.html">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oss/index.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html">mathematics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#overview">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#least-squares-method">最小二乘法 least squares method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pattern/index.html">Pattern</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/index.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool/index.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mmp/index.html">MMP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../thinclient/index.html">Thin Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utiltp/index.html">UTILTP</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">A Programmer Prepares</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Architecture</a> &raquo;</li>
+      <li>Architect Interview</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/architecture/architect_interview.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="architect-interview">
+<h1>Architect Interview<a class="headerlink" href="#architect-interview" title="Permalink to this headline"></a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#top-10-questions" id="id10">Top 10 questions</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id1" id="id11">1. 多小的服务才是微服务</a></p></li>
+<li><p><a class="reference internal" href="#id2" id="id12">2. 如何划分微服务的边界？</a></p></li>
+<li><p><a class="reference internal" href="#cap" id="id13">3. CAP 三性中应该如何取舍?</a></p></li>
+<li><p><a class="reference internal" href="#id3" id="id14">4. 谈谈共识算法和一致性协议</a></p></li>
+<li><p><a class="reference internal" href="#id4" id="id15">5. 微服务有什么优缺点，如何应对？</a></p></li>
+<li><p><a class="reference internal" href="#id5" id="id16">6. 软件工程有用吗？</a></p></li>
+<li><p><a class="reference internal" href="#id6" id="id17">7. 分布式锁怎么实现</a></p></li>
+<li><p><a class="reference internal" href="#cassandra" id="id18">8. Cassandra 如何做到高可用性和最终一致性</a></p></li>
+<li><p><a class="reference internal" href="#id7" id="id19">9. 提高吞吐量和性能的方法有哪些</a></p></li>
+<li><p><a class="reference internal" href="#id8" id="id20">10. 如何做服务发现和服务分流</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#other-general-questions" id="id21">Other general questions</a></p></li>
+<li><p><a class="reference internal" href="#questions-about-experience-and-background" id="id22">Questions about experience and background</a></p></li>
+<li><p><a class="reference internal" href="#in-depth-questions" id="id23">In-depth questions</a></p></li>
+</ul>
+</div>
+<section id="top-10-questions">
+<h2><a class="toc-backref" href="#id10">Top 10 questions</a><a class="headerlink" href="#top-10-questions" title="Permalink to this headline"></a></h2>
+<section id="id1">
+<h3><a class="toc-backref" href="#id11">1. 多小的服务才是微服务</a><a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
+<p>微服务是比较小的服务，到底可以有多小，我们团队的前CTO - Jonathan Rosenberg就曾经提出一个“两周原则”，一个服务如果可以从无到有在两周内上线，那么我们就称它是一个微服务，这个要求有点高，需要三个前提：</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>一套完整的微服务框架。</p></li>
+<li><p>一套成熟的构建与部署流水线。</p></li>
+<li><p>一个稳定的 PaaS 云平台</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="id2">
+<h3><a class="toc-backref" href="#id12">2. 如何划分微服务的边界？</a><a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
+<p>一个服务本身应该相对独立，具有一定的自治性，
+实现一个相对完整的功能或者提供独特的数据，
+一个服务对于其他的服务尽量避免强依赖。</p>
+<p>“设计系统的架构受制于产生这些设计的组织的沟通结构”，如果把一个产品交由几个团队来做，那么应该把功能相对完整和独立的一个或一组服务交由一个团队来开发，团队之间定义好清晰的服务接口，然后各自进行开发和部署，只要服务的接口不改变，完全可以做到独立的实现、部署和升级</p>
+</section>
+<section id="cap">
+<h3><a class="toc-backref" href="#id13">3. CAP 三性中应该如何取舍?</a><a class="headerlink" href="#cap" title="Permalink to this headline"></a></h3>
+<p>这个要看情况，我们的应用中一般选择 AP 和最终一致性, 参见 <a class="reference external" href="distribution.html">distribution</a></p>
+<p>AP 这样的系统关心可用性和分区容忍性。因此，这样的系统不能达成一致性，需要给出数据冲突，给出数据冲突就需要维护数据版本。</p>
+<p>例如 <a class="reference external" href="https://cassandra.apache.org/doc/latest/architecture/dynamo.html">dynamo</a>, <a class="reference external" href="../middleware/cassandra.html">cassandra</a></p>
+</section>
+<section id="id3">
+<h3><a class="toc-backref" href="#id14">4. 谈谈共识算法和一致性协议</a><a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
+<p>参见  <a class="reference external" href="./consensus.html">consensus</a></p>
+<p>业界公认和在使用的协议主要有</p>
+<ul class="simple">
+<li><p>Paxos</p></li>
+<li><p>ZAB</p></li>
+<li><p>Raft</p></li>
+</ul>
+<p>大致来说就是讲究规则:</p>
+<p>1）采用民主集中制，如果没有老大，大家就先选一个老大，老大和小弟随时都有可能挂掉
+2) 少数服从多数
+3）先到先得
+4）最终决定之前先做一轮沟通</p>
+</section>
+<section id="id4">
+<h3><a class="toc-backref" href="#id15">5. 微服务有什么优缺点，如何应对？</a><a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>微服务的主要优点如下：</p>
+<ul>
+<li><p>微服务架构可以由一个相当小的团队开发，给开发者一定的自由来自主开发和部署。</p></li>
+<li><p>更好的故障隔离：如果一个微服务出现故障，另一个仍可以做到继续工作。</p></li>
+<li><p>不同服务的代码可以用不同的语言编写，没有长期的技术栈要求和限制，易于集成和自动部署。</p></li>
+</ul>
+</li>
+<li><p>微服务的局限也很明显：</p>
+<ul>
+<li><p>不断增长的微服务数量会导致信息屏障，可以没人能搞得清所有微服务是干什么的。</p></li>
+<li><p>必须应对分布式系统固有的各种常见故障，处理各种网络延迟、抖动、丢包、分流、重试、超时等一个也不能少，需要做很多措施（如容错、分流、限流）来保证高可用。</p></li>
+<li><p>问题的发现与诊断更加困难，需要多个微服务及对应团队共同协作解决。</p></li>
+</ul>
+</li>
+<li><p>应对措施</p>
+<ul>
+<li><p>化繁为简，把复杂性封装在简单的 API 下面</p></li>
+<li><p>快速迭代，小步快跑，持续交付</p></li>
+<li><p>自动化：集成，部署，测试和运维</p></li>
+<li><p>容错设计： 分流，限流和断流</p></li>
+<li><p>服务治理：服务注册与发现，伸缩与 Fallback, 版本管理和发布管理</p></li>
+<li><p>监控与度量： 见微知著，快速反应</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id5">
+<h3><a class="toc-backref" href="#id16">6. 软件工程有用吗？</a><a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
+<p>软件工程能力体现在</p>
+<ol class="arabic simple">
+<li><p>提高服务的 SLA</p></li>
+</ol>
+<ul class="simple">
+<li><p>高可用的系统</p></li>
+<li><p>自动化的运维</p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p>能力和资源的重用或复用</p></li>
+</ol>
+<ul class="simple">
+<li><p>软件模块的重用</p></li>
+<li><p>软件运行环境和资源的重用</p></li>
+</ul>
+<ol class="arabic simple" start="3">
+<li><p>过程的自动化</p></li>
+</ol>
+<ul class="simple">
+<li><p>软件生产流水线</p></li>
+<li><p>软件运维自动化</p></li>
+</ul>
+</section>
+<section id="id6">
+<h3><a class="toc-backref" href="#id17">7. 分布式锁怎么实现</a><a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
+<p>可以使用 Redis, ZooKeepr 及 etcd 这些中间件，后两者依赖共识算法</p>
+<p>Redis</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">//set resource_name random_value NX PX 30000</span>
+<span class="c1">//e.g.</span>
+<span class="c1">//set meeting:$meetingNumber telephonyPools NX PX</span>
+
+
+    <span class="kd">private</span> <span class="n">String</span> <span class="nf">setAndGetOldValueIfExisted</span><span class="p">(</span><span class="n">String</span> <span class="n">meetingKey</span><span class="p">,</span>  <span class="n">RedisCacheItem</span> <span class="n">redisCacheItem</span><span class="p">,</span>  <span class="n">String</span> <span class="n">value</span><span class="p">){</span>
+             <span class="n">String</span> <span class="n">cacheKey</span> <span class="o">=</span> <span class="n">String</span><span class="p">.</span><span class="na">format</span><span class="p">(</span><span class="n">redisCacheItem</span><span class="p">.</span><span class="na">getFormat</span><span class="p">(),</span> <span class="n">meetingKey</span><span class="p">);</span>
+        <span class="c1">// jedis.set(key, value, &quot;NX&quot;|&quot;XX&quot;, &quot;EX&quot;|&quot;PX&quot;)</span>
+        <span class="c1">// NX -- Only set the key if it does not already exist.</span>
+        <span class="c1">// XX -- Only set the key if it already exist.</span>
+        <span class="c1">// EX seconds -- Set the specified expire time, in seconds.</span>
+        <span class="c1">// PX milliseconds -- Set the specified expire time, in milliseconds.</span>
+         <span class="n">String</span> <span class="n">returnValue</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="n">cacheKey</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="s">&quot;NX&quot;</span><span class="p">,</span> <span class="s">&quot;EX&quot;</span><span class="p">,</span> <span class="n">redisCacheItem</span><span class="p">.</span><span class="na">getTtl</span><span class="p">());</span>
+         <span class="k">if</span> <span class="p">(</span><span class="n">JEDIS_RETURN_OK</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">returnValue</span><span class="p">))</span> <span class="p">{</span>  <span class="c1">//&#39;OK&#39; is success, null is fail</span>
+                <span class="n">LOGGER</span><span class="p">.</span><span class="na">info</span><span class="p">(</span><span class="s">&quot;the key &quot;</span> <span class="o">+</span> <span class="n">cacheKey</span> <span class="o">+</span>  <span class="s">&quot; set success&quot;</span> <span class="p">);</span>
+            <span class="k">return</span> <span class="n">value</span><span class="p">;</span>
+         <span class="p">}</span>
+
+     <span class="n">MetricThreadLocal</span><span class="p">.</span><span class="na">setCurrentFeatureMetric</span><span class="p">(</span><span class="n">MetricConstants</span><span class="p">.</span><span class="na">Values</span><span class="p">.</span><span class="na">Extends</span><span class="p">.</span><span class="na">CONCURRENT</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+
+         <span class="n">String</span> <span class="n">oldValue</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">cacheKey</span><span class="p">);</span>
+         <span class="n">LOGGER</span><span class="p">.</span><span class="na">info</span><span class="p">(</span><span class="s">&quot;the key &quot;</span> <span class="o">+</span> <span class="n">cacheKey</span> <span class="o">+</span>  <span class="s">&quot; had been set value before, value is: &quot;</span> <span class="o">+</span> <span class="n">oldValue</span><span class="p">);</span>
+
+             <span class="k">return</span> <span class="n">oldValue</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>we also consider the lock failure case</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">wbxinprogressteleconference</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<span class="n">accesscode</span><span class="w"> </span><span class="nb">text</span><span class="p">,</span><span class="w"></span>
+<span class="n">poolname</span><span class="w"> </span><span class="nb">text</span><span class="p">,</span><span class="w"></span>
+<span class="n">tasip</span><span class="w"> </span><span class="nb">text</span><span class="p">,</span><span class="w"></span>
+<span class="n">configitem</span><span class="w"> </span><span class="k">map</span><span class="o">&lt;</span><span class="nb">text</span><span class="p">,</span><span class="w"> </span><span class="nb">text</span><span class="o">&gt;</span><span class="p">,</span><span class="w"></span>
+<span class="n">siteid</span><span class="w"> </span><span class="nb">bigint</span><span class="p">,</span><span class="w"></span>
+<span class="n">tasuri</span><span class="w"> </span><span class="nb">text</span><span class="p">,</span><span class="w"></span>
+<span class="n">lastmodifiedtime</span><span class="w"> </span><span class="k">timestamp</span><span class="p">,</span><span class="w"></span>
+<span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">(</span><span class="n">accesscode</span><span class="p">,</span><span class="w"> </span><span class="n">poolname</span><span class="p">,</span><span class="w"> </span><span class="n">tasip</span><span class="p">));</span><span class="w"></span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>考虑</p>
+<ol class="arabic simple">
+<li><p>独占性</p></li>
+<li><p>可释放</p></li>
+<li><p>高可用</p></li>
+<li><p>可以不用阻塞</p></li>
+<li><p>可重入</p></li>
+</ol>
+</li>
+</ul>
+</section>
+<section id="cassandra">
+<h3><a class="toc-backref" href="#id18">8. Cassandra 如何做到高可用性和最终一致性</a><a class="headerlink" href="#cassandra" title="Permalink to this headline"></a></h3>
+<p>在Cassandra中，客户端可以是运行CQL命令的用户，也可以是使用不同语言Cassandra驱动连接到Cassandra的系统。
+Cassandra的无中心架构的主要优点之一是客户端可以连接到任意Cassandra节点。Cassandra驱动实现了负载均衡功能，可以跨节点分发客户端请求。</p>
+<p>客户端连接到的节点称为协调器。</p>
+<p>协调器负责与其他节点交互，收集结果，并将查询结果返回给客户端，如下图所示。为了确保即使节点发生故障或无法访问，
+Cassandra也可以跨多个节点存储冗余数据，具体取决于创建Keyspace时指定的复制因子</p>
+<p>参见：</p>
+<ul class="simple">
+<li><p>微服务实战之 Cassandra 之一</p></li>
+<li><p>微服务实战之 Cassandra 之二</p></li>
+<li><p>微服务实战之 Cassandra 之三</p></li>
+</ul>
+<p>一致性级别 QUORUM</p>
+</section>
+<section id="id7">
+<h3><a class="toc-backref" href="#id19">9. 提高吞吐量和性能的方法有哪些</a><a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>多进程</p></li>
+<li><p>多线程</p></li>
+<li><p>协程</p></li>
+</ul>
+<p>以 Global IVR 向 Webex IVR Service 的演化为例</p>
+<ul class="simple">
+<li><p>stateful –&gt; stateless</p></li>
+<li><p>single thread –&gt; multiple thread</p></li>
+<li><p>call flow control xml –&gt; directed graph from json</p></li>
+</ul>
+</section>
+<section id="id8">
+<h3><a class="toc-backref" href="#id20">10. 如何做服务发现和服务分流</a><a class="headerlink" href="#id8" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>filter</p></li>
+<li><p>comparator</p></li>
+<li><p>selector</p></li>
+</ul>
+</section>
+</section>
+<section id="other-general-questions">
+<h2><a class="toc-backref" href="#id21">Other general questions</a><a class="headerlink" href="#other-general-questions" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>Can you tell me a little bit about yourself?</p></li>
+<li><p>Why are you leaving your job?</p></li>
+<li><p>Why do you want to work here?</p></li>
+<li><p>What projects of ours did you like most?</p></li>
+<li><p>Why do you want to be an architect?</p></li>
+<li><p>How you describe your work style as an architect?</p></li>
+<li><p>What are some of your strengths that could help in this role as an architect?</p></li>
+<li><p>What are some of your weaknesses that could help in your role as an architect?</p></li>
+<li><p>Where do you see yourself in five years?</p></li>
+<li><p>Who do you admire for their architectural ability and why?</p></li>
+<li><p>Are you interviewing anywhere else?</p></li>
+</ul>
+</section>
+<section id="questions-about-experience-and-background">
+<h2><a class="toc-backref" href="#id22">Questions about experience and background</a><a class="headerlink" href="#questions-about-experience-and-background" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>What do you like most about architecture?</p></li>
+<li><p>What is your least favorite thing about architecture?</p></li>
+<li><p>What qualities make you a great architect?</p></li>
+<li><p>Describe your design style as an architect.</p></li>
+<li><p>What skill has served you best as an architect?</p></li>
+<li><p>Describe a time a problem arose and how you dealt with it.</p></li>
+<li><p>Describe your worst day as an architect and what you learned from it.</p></li>
+<li><p>What factors led to your biggest success as an architect?</p></li>
+<li><p>What is your least favorite project in your portfolio and why?</p></li>
+<li><p>How would you describe your role in your last project?</p></li>
+<li><p>What types of projects could you see yourself working on?</p></li>
+</ul>
+</section>
+<section id="in-depth-questions">
+<h2><a class="toc-backref" href="#id23">In-depth questions</a><a class="headerlink" href="#in-depth-questions" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>How do you handle multiple tasks at the same time?</p></li>
+<li><p>What did you do to ensure one of your previous projects was a success?</p></li>
+<li><p>How do you balance function with the aesthetic appeal of a building?</p></li>
+<li><p>What do you hope to learn from your supervisor?</p></li>
+<li><p>Give me an example of a time you thought outside of the box on a project. How did it prove useful?</p></li>
+<li><p>Provide an example of when you demonstrated excellent communication skills.</p></li>
+<li><p>Describe a time you dealt with a difficult person and how you handled the situation.</p></li>
+<li><p>Describe a time you oversaw the building process and how you effectively communicated any concerns to the team.</p></li>
+<li><p>How do you organize, plan and prioritize your work as an architect?</p></li>
+<li><p>In your opinion, what is the key to ensuring a building is compliant with all laws and regulations applicable?</p></li>
+<li><p>Why should we choose you for this position?</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="service_mesh.html" class="btn btn-neutral float-left" title="Service Mesh" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="network_interview.html" class="btn btn-neutral float-right" title="Network Interview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Walter Fan.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

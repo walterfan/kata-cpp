@@ -1,0 +1,34 @@
+##########
+CMSC
+##########
+
+.. include:: ../links.ref
+.. include:: ../tags.ref
+.. include:: ../abbrs.ref
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Contents:
+
+   cmsc_api
+   cmsc_connection_monitor
+   cmsc_roap
+   cmsc_session_mgr
+   cmsc_signal_mgr
+   cmsc_mediamgr
+
+
+Overview
+================================
+
+
+It setup WebSocket connection with MMP to negotiate the SDP
+
+* cmsc_api: |t_cmsc_api|
+* cmsc_connection_monitor: |t_cmsc_conn_monitor|
+* cmsc_roap: |t_roap|
+* cmsc_session_mgr: |t_sessionmgr|
+* cmsc_signal_mgr: |t_signalmgr|
+* cmsc_mediamgr: |t_mediamgr|
+* Device Manager
+

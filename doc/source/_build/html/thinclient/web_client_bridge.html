@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Web Client Bridge &mdash; A Programmer Prepares 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Disciplines on Code Development" href="disciplines_on_code_development.html" />
+    <link rel="prev" title="Media Statistics" href="wcb_media_stats.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> A Programmer Prepares
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">论程序员的自我修养</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interview.html">程序员面试要点</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resume.html">Resume</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithm/index.html">Algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../language/index.html">Programming Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../library/index.html">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oss/index.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html">mathematics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#overview">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#least-squares-method">最小二乘法 least squares method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pattern/index.html">Pattern</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/index.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool/index.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mmp/index.html">MMP</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Thin Client</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="app_share.html">Application Share</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audio_mgr.html">Audio Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audio_443.html">Audio over 443</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_to.html">How to</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocols.html">Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qos.html">QoS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc.html">CMSC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc_asm.html">CMSC ASM media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc_flowrtp.html">CMSC Flow RTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc_MediaEngInst.html">Media Engine Instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc_connection_monitor.html">CMSC Connection Monitor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cscc.html">CSCC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cscc_api.html">CSCC API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cscc_clientsession.html">ClientSession</a></li>
+<li class="toctree-l2"><a class="reference internal" href="metrics.html">Thin Client Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wca.html">Web Client Agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb.html">Web Client Bridge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_client.html">WCB Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_dtls.html">WCB DTLS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_ice.html">Thin Client ICE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_message.html">WCB message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_mqe.html">MQE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_sdp.html">WCB SDP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_rtp.html">WCB RTP module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_source.html">WCB source structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_flowrtp.html">WCB Flow RTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_media_stats.html">Media Statistics</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Web Client Bridge</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#main-activity">Main Activity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cwcbapi">CWCBApi</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#main-interface">main interface</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#source-files">source files</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="disciplines_on_code_development.html">Disciplines on Code Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#overall">Overall</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#feature">Feature</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#reference">Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../utiltp/index.html">UTILTP</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">A Programmer Prepares</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Thin Client</a> &raquo;</li>
+      <li>Web Client Bridge</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/thinclient/web_client_bridge.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="web-client-bridge">
+<h1>Web Client Bridge<a class="headerlink" href="#web-client-bridge" title="Permalink to this headline"></a></h1>
+<section id="main-activity">
+<h2>Main Activity<a class="headerlink" href="#main-activity" title="Permalink to this headline"></a></h2>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// hook the TURN server and WCB manager</span>
+<span class="n">CWCBApi</span><span class="o">::</span><span class="n">Instance</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">AddHook</span><span class="p">(</span><span class="k">this</span><span class="p">);</span><span class="w"></span>
+<span class="n">m_turnServerMgr</span><span class="p">.</span><span class="n">SetSink</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">CWCBApi</span><span class="o">::</span><span class="n">Instance</span><span class="p">());</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CMediaServer</span><span class="p">::</span><span class="n">Initialize</span>
+<span class="o">-&gt;</span> <span class="n">CMmServerSessionAPI</span><span class="p">::</span><span class="n">ListenContorlAndDataAddr</span>
+<span class="o">-&gt;</span> <span class="n">CMmSessionServerManager</span><span class="p">::</span><span class="n">ListenContorlAndDataAddr</span>
+<span class="o">-&gt;</span> <span class="n">CMmSessionServerAcceptor</span><span class="p">::</span><span class="n">CMmSessionServerAcceptor</span>
+</pre></div>
+</div>
+</section>
+<section id="cwcbapi">
+<h2>CWCBApi<a class="headerlink" href="#cwcbapi" title="Permalink to this headline"></a></h2>
+<section id="main-interface">
+<h3>main interface<a class="headerlink" href="#main-interface" title="Permalink to this headline"></a></h3>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="n">CWCBApi</span><span class="w"> </span><span class="o">*</span><span class="nf">Instance</span><span class="p">();</span><span class="w"> </span><span class="c1">// to create a singleton instace of WCB</span>
+
+<span class="c1">// setup hook to the acceptor</span>
+<span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">AddHook</span><span class="p">(</span><span class="n">ICmTransportSink</span><span class="w"> </span><span class="o">*</span><span class="n">pAcceptor</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">RemoveHook</span><span class="p">(</span><span class="n">ICmTransportSink</span><span class="w"> </span><span class="o">*</span><span class="n">pAcceptor</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">// these two functions are to connect to the TURN server</span>
+<span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">IsWCBIceUserName</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">userName</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">virtual</span><span class="w"> </span><span class="kt">int</span><span class="w">  </span><span class="nf">Connect2TurnPeer</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">username</span><span class="p">,</span><span class="w"></span>
+<span class="w">                              </span><span class="n">ICmTurnPeerDataLink</span><span class="w"> </span><span class="o">*</span><span class="n">pPeerLink</span><span class="p">,</span><span class="w"></span>
+<span class="w">                              </span><span class="kt">bool</span><span class="w"> </span><span class="n">bForced</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w">  </span><span class="nf">Connect2TurnPeerStatic</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">username</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                   </span><span class="n">ICmTurnPeerDataLink</span><span class="w"> </span><span class="o">*</span><span class="n">pPeerLink</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                   </span><span class="kt">bool</span><span class="w"> </span><span class="n">bForced</span><span class="p">);</span><span class="w"></span>
+
+<span class="c1">// create a new dangling client</span>
+<span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">IsForWCB</span><span class="p">(</span><span class="n">CCmMessageBlock</span><span class="w"> </span><span class="o">&amp;</span><span class="n">mbBlock</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">pduMsgId</span><span class="p">,</span><span class="w"></span>
+<span class="w">                      </span><span class="kt">bool</span><span class="w"> </span><span class="o">&amp;</span><span class="n">bRejected</span><span class="p">,</span><span class="w"> </span><span class="n">ICmTransport</span><span class="w"> </span><span class="o">*</span><span class="n">pTransport</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">virtual</span><span class="w"> </span><span class="n">CWCBClientApi</span><span class="w"> </span><span class="o">*</span><span class="nf">GetNewClient</span><span class="p">(</span><span class="n">ICmTransport</span><span class="w"> </span><span class="o">*</span><span class="n">pTransport</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                    </span><span class="n">CCmMessageBlock</span><span class="w"> </span><span class="o">&amp;</span><span class="n">data</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                    </span><span class="n">BYTE</span><span class="w"> </span><span class="n">pduMsgId</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">WCB_STATE_NONE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="n">WCB_STATE_INIT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="n">WCB_STATE_COMPLETE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="n">WCB_STATE_WAITING</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="n">WCB_STATE_DELETING</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="n">WCB_STATE_END</span><span class="w"></span>
+<span class="p">}</span><span class="w"> </span><span class="n">WCB_state_e</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="source-files">
+<h2>source files<a class="headerlink" href="#source-files" title="Permalink to this headline"></a></h2>
+<blockquote>
+<div><p>src/mcs/webClientBridge/WCBAudioClient.cpp
+src/mcs/webClientBridge/WCBAudioClient.h
+src/mcs/webClientBridge/WCBClient.cpp
+src/mcs/webClientBridge/WCBClient.h
+src/mcs/webClientBridge/WCBFlowRtp.cpp
+src/mcs/webClientBridge/WCBFlowRtp.h
+src/mcs/webClientBridge/WCBPeerConnection.cpp
+src/mcs/webClientBridge/WCBPeerConnection.h
+src/mcs/webClientBridge/WCBRoap.cpp
+src/mcs/webClientBridge/WCBSharingClient.cpp
+src/mcs/webClientBridge/WCBSrtpHandle.cpp</p>
+</div></blockquote>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="wcb_media_stats.html" class="btn btn-neutral float-left" title="Media Statistics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="disciplines_on_code_development.html" class="btn btn-neutral float-right" title="Disciplines on Code Development" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Walter Fan.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

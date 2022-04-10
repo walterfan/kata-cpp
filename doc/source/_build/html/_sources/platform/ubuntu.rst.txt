@@ -1,0 +1,19 @@
+Ubuntu
+##################
+
+
+FAQ
+===================
+
+
+How to use fast mirrors of unbuntu
+----------------------------------------------
+sudo vi /etc/apt/source.list
+
+.. code-block::
+
+ http://archive.ubuntu.com
+
+    sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
+    sudo sed -i 's|archive.ubuntu.com|jp.archive.ubuntu.com|g' /etc/apt/sources.list
+

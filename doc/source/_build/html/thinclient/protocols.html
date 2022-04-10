@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Protocol &mdash; A Programmer Prepares 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="QoS" href="qos.html" />
+    <link rel="prev" title="How to" href="how_to.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> A Programmer Prepares
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">论程序员的自我修养</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interview.html">程序员面试要点</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resume.html">Resume</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithm/index.html">Algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../language/index.html">Programming Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../library/index.html">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oss/index.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html">mathematics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#overview">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#least-squares-method">最小二乘法 least squares method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pattern/index.html">Pattern</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/index.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool/index.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mmp/index.html">MMP</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Thin Client</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="app_share.html">Application Share</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audio_mgr.html">Audio Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audio_443.html">Audio over 443</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_to.html">How to</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Protocol</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#rtcweb-offer-answer-protocol-roap">1. RTCWeb Offer/Answer Protocol (ROAP)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#javascript-session-establishment-protocol-jsep">2. Javascript Session Establishment Protocol (JSEP)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#session-traversal-utilities-for-nat-stun-rfc5389">3. Session Traversal Utilities for NAT (STUN), rfc5389</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#traversal-using-relays-around-nat-turn-rfc5766">4. Traversal Using Relays around NAT (TURN), rfc5766</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#interactive-connectivity-establishment-ice-rfc5245-updated-rfc6336">5. Interactive Connectivity Establishment (ICE), rfc5245 ;(updated rfc6336 )</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#tcp-ice">5.1. TCP-ICE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#trickling-ice">5.2. Trickling ICE</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#datagram-transport-layer-security-for-srtp-dtls-srtp-rfc5764">6. Datagram Transport Layer Security for SRTP (DTLS-SRTP) rfc5764</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#abstract">Abstract</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#srtp-rfc3711">7. SRTP rfc3711</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#connection-oriented-media-transport-over-the-transport-layer-security-tls-protocol-in-the-session-description-protocol-sdp-rfc4572">8.  Connection-Oriented Media Transport over the Transport Layer Security (TLS) Protocol in the Session Description Protocol (SDP) – rfc4572</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#add-sdp-attribute-setup">add SDP attribute setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-sdp-attribute-connection">add SDP attribute connection</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#tcp-based-media-transport-in-the-session-description-protocol-sdp-rfc4145">9.  TCP-Based Media Transport in the Session Description Protocol (SDP) – rfc4145</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#web-real-time-communication-webrtc-media-transport-and-use-of-rtp">10. Web Real-Time Communication (WebRTC): Media Transport and Use of RTP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fir">11. FIR</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#glossary">Glossary</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#pli-and-nack">12. PLI and NACK</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Glossary</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#remb">13. REMB</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tmmrb">14. TMMRB</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#congestion-control-in-chrome-and-firefox">15.  Congestion Control in Chrome and FireFox (??)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Abstract</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#tcp-framing-rfc4571">16.  tcp framing rfc4571</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">Abstract</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#ssrc-attributes-rfc-5576">17.  SSRC Attributes rfc 5576</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Abstract</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#t120-protocols-t120-t124-t21-etc">18. T120 protocols: T120, T124, T21, etc.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#audio-level-client-to-mixer">19. Audio Level: client to mixer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id5">Abstract</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#rtp-retransmission-payload-format">20. RTP Retransmission Payload Format</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id6">Abstract</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#negotiating-media-multiplexing-using-the-session-description-protocol-sdp">21. Negotiating Media Multiplexing Using the Session Description Protocol (SDP)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id7">Abstract</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#rtp-stream-identifier-source-description-sdes">22. RTP Stream Identifier Source Description (SDES)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id8">Abstract</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#codes">codes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#webrtc-mediastream-identification-in-the-session-description-protocol">23. WebRTC MediaStream Identification in the Session Description Protocol</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id9">Abstract</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#rtp-extensions-for-transport-wide-congestion-control">24. RTP Extensions for Transport-wide Congestion Control</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id10">Abstract</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#rtp-header-extension-for-the-rtcp-source-description-items">25. RTP Header Extension for the RTCP Source Description Items</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#a-framework-for-sdp-attributes-when-multiplexing">26. A Framework for SDP Attributes when Multiplexing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id11">Abstract</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#ulpfec">27. ULPFEC</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id12">Abstract</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#red">28. RED</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id13">Abstract</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#cisco-multi-stream-protocols">Cisco Multi-stream protocols</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#multi-source-simulcast-negotiation-specification">29. Multi-source Simulcast Negotiation Specification</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#multi-stream-signaling">30. multi-stream signaling</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ucif-h264-specification-v1-0">31. UCIF H264 Specification v1.0</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mari">32. MARI</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#book-and-documents">Book and Documents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#webrtc-1-0-realtime-communication-between-browsers">33. WebRTC 1.0: Realtime Communication Between Browsers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#professional-javascript-for-web-developers-3rd-edition-pdf">34. Professional JavaScript for Web Developers, 3rd Edition.pdf</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#real-time-communication-with-webrtc">35. Real-Time Communication with WebRTC</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="qos.html">QoS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc.html">CMSC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc_asm.html">CMSC ASM media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc_flowrtp.html">CMSC Flow RTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc_MediaEngInst.html">Media Engine Instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc_connection_monitor.html">CMSC Connection Monitor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cscc.html">CSCC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cscc_api.html">CSCC API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cscc_clientsession.html">ClientSession</a></li>
+<li class="toctree-l2"><a class="reference internal" href="metrics.html">Thin Client Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wca.html">Web Client Agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb.html">Web Client Bridge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_client.html">WCB Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_dtls.html">WCB DTLS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_ice.html">Thin Client ICE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_message.html">WCB message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_mqe.html">MQE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_sdp.html">WCB SDP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_rtp.html">WCB RTP module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_source.html">WCB source structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_flowrtp.html">WCB Flow RTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_media_stats.html">Media Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="web_client_bridge.html">Web Client Bridge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disciplines_on_code_development.html">Disciplines on Code Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#overall">Overall</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#feature">Feature</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#reference">Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../utiltp/index.html">UTILTP</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">A Programmer Prepares</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Thin Client</a> &raquo;</li>
+      <li>Protocol</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/thinclient/protocols.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="protocol">
+<h1>Protocol<a class="headerlink" href="#protocol" title="Permalink to this headline"></a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#rtcweb-offer-answer-protocol-roap" id="id14">1. RTCWeb Offer/Answer Protocol (ROAP)</a></p></li>
+<li><p><a class="reference internal" href="#javascript-session-establishment-protocol-jsep" id="id15">2. Javascript Session Establishment Protocol (JSEP)</a></p></li>
+<li><p><a class="reference internal" href="#session-traversal-utilities-for-nat-stun-rfc5389" id="id16">3. Session Traversal Utilities for NAT (STUN), rfc5389</a></p></li>
+<li><p><a class="reference internal" href="#traversal-using-relays-around-nat-turn-rfc5766" id="id17">4. Traversal Using Relays around NAT (TURN), rfc5766</a></p></li>
+<li><p><a class="reference internal" href="#interactive-connectivity-establishment-ice-rfc5245-updated-rfc6336" id="id18">5. Interactive Connectivity Establishment (ICE), rfc5245 ;(updated rfc6336 )</a></p>
+<ul>
+<li><p><a class="reference internal" href="#tcp-ice" id="id19">5.1. TCP-ICE</a></p></li>
+<li><p><a class="reference internal" href="#trickling-ice" id="id20">5.2. Trickling ICE</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#datagram-transport-layer-security-for-srtp-dtls-srtp-rfc5764" id="id21">6. Datagram Transport Layer Security for SRTP (DTLS-SRTP) rfc5764</a></p>
+<ul>
+<li><p><a class="reference internal" href="#abstract" id="id22">Abstract</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#srtp-rfc3711" id="id23">7. SRTP rfc3711</a></p></li>
+<li><p><a class="reference internal" href="#connection-oriented-media-transport-over-the-transport-layer-security-tls-protocol-in-the-session-description-protocol-sdp-rfc4572" id="id24">8.  Connection-Oriented Media Transport over the Transport Layer Security (TLS) Protocol in the Session Description Protocol (SDP) – rfc4572</a></p>
+<ul>
+<li><p><a class="reference internal" href="#add-sdp-attribute-setup" id="id25">add SDP attribute setup</a></p></li>
+<li><p><a class="reference internal" href="#add-sdp-attribute-connection" id="id26">add SDP attribute connection</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#tcp-based-media-transport-in-the-session-description-protocol-sdp-rfc4145" id="id27">9.  TCP-Based Media Transport in the Session Description Protocol (SDP) – rfc4145</a></p></li>
+<li><p><a class="reference internal" href="#web-real-time-communication-webrtc-media-transport-and-use-of-rtp" id="id28">10. Web Real-Time Communication (WebRTC): Media Transport and Use of RTP</a></p></li>
+<li><p><a class="reference internal" href="#fir" id="id29">11. FIR</a></p>
+<ul>
+<li><p><a class="reference internal" href="#glossary" id="id30">Glossary</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#pli-and-nack" id="id31">12. PLI and NACK</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id1" id="id32">Glossary</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#remb" id="id33">13. REMB</a></p></li>
+<li><p><a class="reference internal" href="#tmmrb" id="id34">14. TMMRB</a></p></li>
+<li><p><a class="reference internal" href="#congestion-control-in-chrome-and-firefox" id="id35">15.  Congestion Control in Chrome and FireFox (??)</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id2" id="id36">Abstract</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#tcp-framing-rfc4571" id="id37">16.  tcp framing rfc4571</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id3" id="id38">Abstract</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#ssrc-attributes-rfc-5576" id="id39">17.  SSRC Attributes rfc 5576</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id4" id="id40">Abstract</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#t120-protocols-t120-t124-t21-etc" id="id41">18. T120 protocols: T120, T124, T21, etc.</a></p></li>
+<li><p><a class="reference internal" href="#audio-level-client-to-mixer" id="id42">19. Audio Level: client to mixer</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id5" id="id43">Abstract</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#rtp-retransmission-payload-format" id="id44">20. RTP Retransmission Payload Format</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id6" id="id45">Abstract</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#negotiating-media-multiplexing-using-the-session-description-protocol-sdp" id="id46">21. Negotiating Media Multiplexing Using the Session Description Protocol (SDP)</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id7" id="id47">Abstract</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#rtp-stream-identifier-source-description-sdes" id="id48">22. RTP Stream Identifier Source Description (SDES)</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id8" id="id49">Abstract</a></p></li>
+<li><p><a class="reference internal" href="#codes" id="id50">codes</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#webrtc-mediastream-identification-in-the-session-description-protocol" id="id51">23. WebRTC MediaStream Identification in the Session Description Protocol</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id9" id="id52">Abstract</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#rtp-extensions-for-transport-wide-congestion-control" id="id53">24. RTP Extensions for Transport-wide Congestion Control</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id10" id="id54">Abstract</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#rtp-header-extension-for-the-rtcp-source-description-items" id="id55">25. RTP Header Extension for the RTCP Source Description Items</a></p></li>
+<li><p><a class="reference internal" href="#a-framework-for-sdp-attributes-when-multiplexing" id="id56">26. A Framework for SDP Attributes when Multiplexing</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id11" id="id57">Abstract</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#ulpfec" id="id58">27. ULPFEC</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id12" id="id59">Abstract</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#red" id="id60">28. RED</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id13" id="id61">Abstract</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#cisco-multi-stream-protocols" id="id62">Cisco Multi-stream protocols</a></p>
+<ul>
+<li><p><a class="reference internal" href="#multi-source-simulcast-negotiation-specification" id="id63">29. Multi-source Simulcast Negotiation Specification</a></p></li>
+<li><p><a class="reference internal" href="#multi-stream-signaling" id="id64">30. multi-stream signaling</a></p></li>
+<li><p><a class="reference internal" href="#ucif-h264-specification-v1-0" id="id65">31. UCIF H264 Specification v1.0</a></p></li>
+<li><p><a class="reference internal" href="#mari" id="id66">32. MARI</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#book-and-documents" id="id67">Book and Documents</a></p>
+<ul>
+<li><p><a class="reference internal" href="#webrtc-1-0-realtime-communication-between-browsers" id="id68">33. WebRTC 1.0: Realtime Communication Between Browsers</a></p></li>
+<li><p><a class="reference internal" href="#professional-javascript-for-web-developers-3rd-edition-pdf" id="id69">34. Professional JavaScript for Web Developers, 3rd Edition.pdf</a></p></li>
+<li><p><a class="reference internal" href="#real-time-communication-with-webrtc" id="id70">35. Real-Time Communication with WebRTC</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<section id="rtcweb-offer-answer-protocol-roap">
+<h2><a class="toc-backref" href="#id14">1. RTCWeb Offer/Answer Protocol (ROAP)</a><a class="headerlink" href="#rtcweb-offer-answer-protocol-roap" title="Permalink to this headline"></a></h2>
+<p><a class="reference external" href="https://tools.ietf.org/html/draft-jennings-rtcweb-signaling-01">https://tools.ietf.org/html/draft-jennings-rtcweb-signaling-01</a></p>
+<blockquote>
+<div><dl class="simple">
+<dt>RTCWeb Offer/Answer Protocol (ROAP)</dt><dd><p>draft-jennings-rtcweb-signaling-01</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="javascript-session-establishment-protocol-jsep">
+<h2><a class="toc-backref" href="#id15">2. Javascript Session Establishment Protocol (JSEP)</a><a class="headerlink" href="#javascript-session-establishment-protocol-jsep" title="Permalink to this headline"></a></h2>
+<p><a class="reference external" href="https://tools.ietf.org/html/draft-ietf-rtcweb-jsep-26">https://tools.ietf.org/html/draft-ietf-rtcweb-jsep-26</a></p>
+<blockquote>
+<div><p>JavaScript Session Establishment Protocol
+draft-ietf-rtcweb-jsep-26</p>
+</div></blockquote>
+</section>
+<section id="session-traversal-utilities-for-nat-stun-rfc5389">
+<h2><a class="toc-backref" href="#id16">3. Session Traversal Utilities for NAT (STUN), rfc5389</a><a class="headerlink" href="#session-traversal-utilities-for-nat-stun-rfc5389" title="Permalink to this headline"></a></h2>
+<p><a class="reference external" href="https://tools.ietf.org/html/rfc5389">https://tools.ietf.org/html/rfc5389</a></p>
+<p>Session Traversal Utilities for NAT (STUN)</p>
+</section>
+<section id="traversal-using-relays-around-nat-turn-rfc5766">
+<h2><a class="toc-backref" href="#id17">4. Traversal Using Relays around NAT (TURN), rfc5766</a><a class="headerlink" href="#traversal-using-relays-around-nat-turn-rfc5766" title="Permalink to this headline"></a></h2>
+<p><a class="reference external" href="https://tools.ietf.org/html/rfc5766">https://tools.ietf.org/html/rfc5766</a></p>
+<p>Traversal Using Relays around NAT (TURN):
+Relay Extensions to Session Traversal Utilities for NAT (STUN)</p>
+</section>
+<section id="interactive-connectivity-establishment-ice-rfc5245-updated-rfc6336">
+<h2><a class="toc-backref" href="#id18">5. Interactive Connectivity Establishment (ICE), rfc5245 ;(updated rfc6336 )</a><a class="headerlink" href="#interactive-connectivity-establishment-ice-rfc5245-updated-rfc6336" title="Permalink to this headline"></a></h2>
+<section id="tcp-ice">
+<h3><a class="toc-backref" href="#id19">5.1. TCP-ICE</a><a class="headerlink" href="#tcp-ice" title="Permalink to this headline"></a></h3>
+<p>TCP Candidates with Interactive Connectivity Establishment (ICE)</p>
+<p>see <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc6544.txt">https://www.rfc-editor.org/rfc/rfc6544.txt</a></p>
+</section>
+<section id="trickling-ice">
+<h3><a class="toc-backref" href="#id20">5.2. Trickling ICE</a><a class="headerlink" href="#trickling-ice" title="Permalink to this headline"></a></h3>
+<p>A Session Initiation Protocol (SIP) usage for Trickle ICE draft-ivov-mmusic-trickle-ice-sip-02</p>
+<p>see <a class="reference external" href="https://tools.ietf.org/html/draft-ivov-mmusic-trickle-ice-sip-02">https://tools.ietf.org/html/draft-ivov-mmusic-trickle-ice-sip-02</a></p>
+</section>
+</section>
+<section id="datagram-transport-layer-security-for-srtp-dtls-srtp-rfc5764">
+<h2><a class="toc-backref" href="#id21">6. Datagram Transport Layer Security for SRTP (DTLS-SRTP) rfc5764</a><a class="headerlink" href="#datagram-transport-layer-security-for-srtp-dtls-srtp-rfc5764" title="Permalink to this headline"></a></h2>
+<p><a class="reference external" href="https://www.rfcreader.com/#rfc5764">https://www.rfcreader.com/#rfc5764</a></p>
+<section id="abstract">
+<h3><a class="toc-backref" href="#id22">Abstract</a><a class="headerlink" href="#abstract" title="Permalink to this headline"></a></h3>
+<blockquote>
+<div><p>This document describes a Datagram Transport Layer Security (DTLS)
+extension to establish keys for Secure RTP (SRTP) and Secure RTP
+Control Protocol (SRTCP) flows.  DTLS keying happens on the media
+path, independent of any out-of-band signalling channel present.</p>
+<blockquote>
+<div><p>6.1.  Multiplexing Scheme Update to DTLS-SRTP
+6.2.  The Transport Layer Security (TLS) Protocol Version 1.2, rfc 5246
+6.3.  Guidelines to use DTLS-SRTP, rfc5763
+6.4.  Datagram Transport Layer Security Version 1.2 (DTLS), rfc6347</p>
+</div></blockquote>
+</div></blockquote>
+</section>
+</section>
+<section id="srtp-rfc3711">
+<h2><a class="toc-backref" href="#id23">7. SRTP rfc3711</a><a class="headerlink" href="#srtp-rfc3711" title="Permalink to this headline"></a></h2>
+</section>
+<section id="connection-oriented-media-transport-over-the-transport-layer-security-tls-protocol-in-the-session-description-protocol-sdp-rfc4572">
+<h2><a class="toc-backref" href="#id24">8.  Connection-Oriented Media Transport over the Transport Layer Security (TLS) Protocol in the Session Description Protocol (SDP) – rfc4572</a><a class="headerlink" href="#connection-oriented-media-transport-over-the-transport-layer-security-tls-protocol-in-the-session-description-protocol-sdp-rfc4572" title="Permalink to this headline"></a></h2>
+<p><a class="reference external" href="https://www.rfcreader.com/#rfc4572">https://www.rfcreader.com/#rfc4572</a></p>
+<p>在 SDP 中 通过 TLS  面向连接的媒体传输</p>
+<blockquote>
+<div><p>This document specifies how to establish secure connection-oriented
+media transport sessions over the Transport Layer Security (TLS)
+protocol using the Session Description Protocol (SDP).  It defines a
+new SDP protocol identifier, ‘TCP/TLS’.  It also defines the syntax
+and semantics for an SDP ‘fingerprint’ attribute that identifies the
+certificate that will be presented for the TLS session.  This
+mechanism allows media transport over TLS connections to be
+established securely, so long as the integrity of session
+descriptions is assured.</p>
+<p>This document extends and updates RFC 4145.</p>
+</div></blockquote>
+<section id="add-sdp-attribute-setup">
+<h3><a class="toc-backref" href="#id25">add SDP attribute setup</a><a class="headerlink" href="#add-sdp-attribute-setup" title="Permalink to this headline"></a></h3>
+<blockquote>
+<div><dl class="simple">
+<dt>setup-attr           =  “a=setup:” role</dt><dd><dl class="simple">
+<dt>role                 =  “active” / “passive” / “actpass”</dt><dd><p>/ “holdconn”</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>‘active’: The endpoint will initiate an outgoing connection.</p>
+<p>‘passive’: The endpoint will accept an incoming connection.</p>
+<p>‘actpass’: The endpoint is willing to accept an incoming
+connection or to initiate an outgoing connection.</p>
+<p>‘holdconn’: The endpoint does not want the connection to be
+established for the time being.</p>
+</div></blockquote>
+</section>
+<section id="add-sdp-attribute-connection">
+<h3><a class="toc-backref" href="#id26">add SDP attribute connection</a><a class="headerlink" href="#add-sdp-attribute-connection" title="Permalink to this headline"></a></h3>
+<blockquote>
+<div><p>connection-attr        = “a=connection:” conn-value
+conn-value             = “new” / “existing”</p>
+</div></blockquote>
+</section>
+</section>
+<section id="tcp-based-media-transport-in-the-session-description-protocol-sdp-rfc4145">
+<h2><a class="toc-backref" href="#id27">9.  TCP-Based Media Transport in the Session Description Protocol (SDP) – rfc4145</a><a class="headerlink" href="#tcp-based-media-transport-in-the-session-description-protocol-sdp-rfc4145" title="Permalink to this headline"></a></h2>
+<p><a class="reference external" href="https://www.rfcreader.com/#rfc4145">https://www.rfcreader.com/#rfc4145</a></p>
+<p>在 SDP 中指明基于 TCP 的媒体传输</p>
+</section>
+<section id="web-real-time-communication-webrtc-media-transport-and-use-of-rtp">
+<h2><a class="toc-backref" href="#id28">10. Web Real-Time Communication (WebRTC): Media Transport and Use of RTP</a><a class="headerlink" href="#web-real-time-communication-webrtc-media-transport-and-use-of-rtp" title="Permalink to this headline"></a></h2>
+<p><a class="reference external" href="https://tools.ietf.org/html/draft-ietf-rtcweb-rtp-usage-26">https://tools.ietf.org/html/draft-ietf-rtcweb-rtp-usage-26</a></p>
+<p>WebRTC: 媒体传输和 RTP 的使用</p>
+<blockquote>
+<div><p>The Web Real-Time Communication (WebRTC) framework provides support
+for direct interactive rich communication using audio, video, text,
+collaboration, games, etc. between two peers’ web-browsers.  This
+memo describes the media transport aspects of the WebRTC framework.
+It specifies how the Real-time Transport Protocol (RTP) is used in
+the WebRTC context, and gives requirements for which RTP features,
+profiles, and extensions need to be supported.</p>
+</div></blockquote>
+</section>
+<section id="fir">
+<h2><a class="toc-backref" href="#id29">11. FIR</a><a class="headerlink" href="#fir" title="Permalink to this headline"></a></h2>
+<p><a class="reference external" href="https://tools.ietf.org/html/rfc5104">https://tools.ietf.org/html/rfc5104</a></p>
+<blockquote>
+<div><p>Codec Control Messages in the RTP Audio-Visual Profile with Feedback (AVPF)</p>
+<blockquote>
+<div><p>This document specifies a few extensions to the messages defined in
+the Audio-Visual Profile with Feedback (AVPF).  They are helpful
+primarily in conversational multimedia scenarios where centralized
+multipoint functionalities are in use.  However, some are also usable
+in smaller multicast environments and point-to-point calls.</p>
+<p>The extensions discussed are messages related to the ITU-T Rec. H.271
+Video Back Channel, Full Intra Request, Temporary Maximum Media
+Stream Bit Rate, and Temporal-Spatial Trade-off.</p>
+</div></blockquote>
+</div></blockquote>
+<section id="glossary">
+<h3><a class="toc-backref" href="#id30">Glossary</a><a class="headerlink" href="#glossary" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>AIMD   - Additive Increase Multiplicative Decrease</p></li>
+<li><p>AVPF   - The extended RTP profile for RTCP-based feedback</p></li>
+<li><p>FCI    - Feedback Control Information [RFC4585]</p></li>
+<li><p>FEC    - Forward Error Correction</p></li>
+<li><p>FIR    - Full Intra Request</p></li>
+<li><p>MCU    - Multipoint Control Unit</p></li>
+<li><p>MPEG   - Moving Picture Experts Group</p></li>
+<li><p>PLI    - Picture Loss Indication</p></li>
+<li><p>PR     - Packet rate</p></li>
+<li><p>QP     - Quantizer Parameter</p></li>
+<li><p>RTT    - Round trip time</p></li>
+<li><p>SSRC   - Synchronization Source</p></li>
+<li><p>TMMBN  - Temporary Maximum Media Stream Bit Rate Notification</p></li>
+<li><p>TMMBR  - Temporary Maximum Media Stream Bit Rate Request</p></li>
+<li><p>TSTN   - Temporal-Spatial Trade-off Notification</p></li>
+<li><p>TSTR   - Temporal-Spatial Trade-off Request</p></li>
+<li><p>VBCM   - Video Back Channel Message</p></li>
+</ul>
+</section>
+</section>
+<section id="pli-and-nack">
+<h2><a class="toc-backref" href="#id31">12. PLI and NACK</a><a class="headerlink" href="#pli-and-nack" title="Permalink to this headline"></a></h2>
+<p><a class="reference external" href="https://tools.ietf.org/html/rfc4585">https://tools.ietf.org/html/rfc4585</a></p>
+<blockquote>
+<div><p>Extended RTP Profile for Real-time Transport Control Protocol (RTCP)-Based Feedback (RTP/AVPF)</p>
+<blockquote>
+<div><p>Real-time media streams that use RTP are, to some degree, resilient
+against packet losses.  Receivers may use the base mechanisms of the
+Real-time Transport Control Protocol (RTCP) to report packet
+reception statistics and thus allow a sender to adapt its
+transmission behavior in the mid-term.  This is the sole means for
+feedback and feedback-based error repair (besides a few codec-
+specific mechanisms).  This document defines an extension to the
+Audio-visual Profile (AVP) that enables receivers to provide,
+statistically, more immediate feedback to the senders and thus allows
+for short-term adaptation and efficient feedback-based repair
+mechanisms to be implemented.  This early feedback profile (AVPF)
+maintains the AVP bandwidth constraints for RTCP and preserves
+scalability to large groups.</p>
+</div></blockquote>
+</div></blockquote>
+<section id="id1">
+<h3><a class="toc-backref" href="#id32">Glossary</a><a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
+<ul>
+<li><p>Early RTCP mode:</p>
+<blockquote>
+<div><p>The mode of operation in that a receiver of a media stream is
+often (but not always) capable of reporting events of interest
+back to the sender close to their occurrence.  In Early RTCP mode,
+RTCP packets are transmitted according to the timing rules defined
+in this document.</p>
+</div></blockquote>
+</li>
+<li><p>Early RTCP packet:</p>
+<blockquote>
+<div><p>An Early RTCP packet is a packet which is transmitted earlier than
+would be allowed if following the scheduling algorithm of [1], the
+reason being an “event” observed by a receiver.  Early RTCP
+packets may be sent in Immediate Feedback and in Early RTCP mode.
+Sending an Early RTCP packet is also referred to as sending Early
+Feedback in this document.</p>
+</div></blockquote>
+</li>
+<li><dl class="simple">
+<dt>Event:</dt><dd><p>An observation made by the receiver of a media stream that is
+(potentially) of interest to the sender – such as a packet loss
+or packet reception, frame loss, etc. – and thus useful to be
+reported back to the sender by means of a feedback message.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Feedback (FB) message:</dt><dd><p>An RTCP message as defined in this document is used to convey
+information about events observed at a receiver – in addition to
+long-term receiver status information that is carried in RTCP
+receiver reports (RRs) – back to the sender of the media stream.
+For the sake of clarity, feedback message is referred to as FB
+message throughout this document.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Feedback (FB) threshold:</dt><dd><p>The FB threshold indicates the transition between Immediate
+Feedback and Early RTCP mode.  For a multiparty scenario, the FB
+threshold indicates the maximum group size at which, on average,
+each receiver is able to report each event back to the sender(s)
+immediately, i.e., by means of an Early RTCP packet without having
+to wait for its regularly scheduled RTCP interval.  This threshold
+is highly dependent on the type of feedback to be provided,
+network QoS (e.g., packet loss probability and distribution),
+codec and packetization scheme in use, the session bandwidth, and
+application requirements.  Note that the algorithms do not depend
+on all senders and receivers agreeing on the same value for this
+threshold.  It is merely intended to provide conceptual guidance
+to application designers and is not used in any calculations.  For
+the sake of clarity, the term feedback threshold is referred to as
+FB threshold throughout this document.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Immediate Feedback mode:</dt><dd><p>A mode of operation in which each receiver of a media stream is,
+statistically, capable of reporting each event of interest
+immediately back to the media stream sender.  In Immediate
+Feedback mode, RTCP FB messages are transmitted according to the
+timing rules defined in this document.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Media packet:</dt><dd><p>A media packet is an RTP packet.</p>
+</dd>
+</dl>
+</li>
+<li><p>Regular RTCP mode:</p>
+<blockquote>
+<div><p>Mode of operation in which no preferred transmission of FB
+messages is allowed.  Instead, RTCP messages are sent following
+the rules of [1].  Nevertheless, such RTCP messages may contain
+feedback information as defined in this document.</p>
+</div></blockquote>
+</li>
+<li><p>Regular RTCP packet:</p>
+<blockquote>
+<div><p>An RTCP packet that is not sent as an Early RTCP packet.</p>
+</div></blockquote>
+</li>
+<li><p>RTP sender:</p>
+<blockquote>
+<div><p>An RTP sender is an RTP entity that transmits media packets as
+well as RTCP packets and receives Regular as well as Early RTCP
+(i.e., feedback) packets.  Note that the RTP sender is a logical
+role and that the same RTP entity may at the same time act as an
+RTP receiver.</p>
+</div></blockquote>
+</li>
+<li><p>RTP receiver:</p>
+<blockquote>
+<div><p>An RTP receiver is an RTP entity that receives media packets as
+well as RTCP packets and transmits Regular as well as Early RTCP
+(i.e., feedback) packets.  Note that the RTP receiver is a logical
+role and that the same RTP entity may at the same time act as an
+RTP sender.</p>
+</div></blockquote>
+</li>
+</ul>
+</section>
+</section>
+<section id="remb">
+<h2><a class="toc-backref" href="#id33">13. REMB</a><a class="headerlink" href="#remb" title="Permalink to this headline"></a></h2>
+<p><a class="reference external" href="https://tools.ietf.org/html/draft-alvestrand-rmcat-remb-03">https://tools.ietf.org/html/draft-alvestrand-rmcat-remb-03</a></p>
+<blockquote>
+<div><dl>
+<dt>RTCP message for Receiver Estimated Maximum Bitrate</dt><dd><blockquote>
+<div><p>draft-alvestrand-rmcat-remb-03</p>
+</div></blockquote>
+<p>This document proposes an RTCP message for use in experimentally-
+deployed congestion control algorithms for RTP-based media flows.</p>
+<p>It also describes an absolute-value timestamp option for use in
+bandwidth estimatoin.</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="tmmrb">
+<h2><a class="toc-backref" href="#id34">14. TMMRB</a><a class="headerlink" href="#tmmrb" title="Permalink to this headline"></a></h2>
+<p><a class="reference external" href="https://tools.ietf.org/html/rfc5104">https://tools.ietf.org/html/rfc5104</a></p>
+<p>same rfc as FIR</p>
+</section>
+<section id="congestion-control-in-chrome-and-firefox">
+<h2><a class="toc-backref" href="#id35">15.  Congestion Control in Chrome and FireFox (??)</a><a class="headerlink" href="#congestion-control-in-chrome-and-firefox" title="Permalink to this headline"></a></h2>
+<p><a class="reference external" href="https://tools.ietf.org/html/draft-ietf-rmcat-gcc-02">https://tools.ietf.org/html/draft-ietf-rmcat-gcc-02</a></p>
+<blockquote>
+<div><dl class="simple">
+<dt>A Google Congestion Control Algorithm for Real-Time Communication</dt><dd><p>draft-ietf-rmcat-gcc-02</p>
+</dd>
+</dl>
+</div></blockquote>
+<section id="id2">
+<h3><a class="toc-backref" href="#id36">Abstract</a><a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
+<blockquote>
+<div><p>This document describes two methods of congestion control when using
+real-time communications on the World Wide Web (RTCWEB); one delay-
+based and one loss-based.</p>
+<p>It is published as an input document to the RMCAT working group on
+congestion control for media streams.  The mailing list of that
+working group is <a class="reference external" href="mailto:rmcat&#37;&#52;&#48;ietf&#46;org">rmcat<span>&#64;</span>ietf<span>&#46;</span>org</a>.</p>
+</div></blockquote>
+</section>
+</section>
+<section id="tcp-framing-rfc4571">
+<h2><a class="toc-backref" href="#id37">16.  tcp framing rfc4571</a><a class="headerlink" href="#tcp-framing-rfc4571" title="Permalink to this headline"></a></h2>
+<p><a class="reference external" href="https://tools.ietf.org/html/rfc4571">https://tools.ietf.org/html/rfc4571</a></p>
+<p>Framing Real-time Transport Protocol (RTP)
+and RTP Control Protocol (RTCP) Packets
+over Connection-Oriented Transport</p>
+<section id="id3">
+<h3><a class="toc-backref" href="#id38">Abstract</a><a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
+<blockquote>
+<div><p>This memo defines a method for framing Real-time Transport Protocol
+(RTP) and RTP Control Protocol (RTCP) packets onto connection-
+oriented transport (such as TCP).  The memo also defines how session
+descriptions may specify RTP streams that use the framing method.</p>
+</div></blockquote>
+</section>
+</section>
+<section id="ssrc-attributes-rfc-5576">
+<h2><a class="toc-backref" href="#id39">17.  SSRC Attributes rfc 5576</a><a class="headerlink" href="#ssrc-attributes-rfc-5576" title="Permalink to this headline"></a></h2>
+<p><a class="reference external" href="https://tools.ietf.org/html/rfc5576">https://tools.ietf.org/html/rfc5576</a></p>
+<p>Source-Specific Media Attributes in the
+Session Description Protocol (SDP)</p>
+<section id="id4">
+<h3><a class="toc-backref" href="#id40">Abstract</a><a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
+<blockquote>
+<div><p>The Session Description Protocol (SDP) provides mechanisms to
+describe attributes of multimedia sessions and of individual media
+streams (e.g., Real-time Transport Protocol (RTP) sessions) within a
+multimedia session, but does not provide any mechanism to describe
+individual media sources within a media stream.  This document
+defines a mechanism to describe RTP media sources, which are
+identified by their synchronization source (SSRC) identifiers, in
+SDP, to associate attributes with these sources, and to express
+relationships among sources.  It also defines several source-level
+attributes that can be used to describe properties of media sources.</p>
+</div></blockquote>
+</section>
+</section>
+<section id="t120-protocols-t120-t124-t21-etc">
+<h2><a class="toc-backref" href="#id41">18. T120 protocols: T120, T124, T21, etc.</a><a class="headerlink" href="#t120-protocols-t120-t124-t21-etc" title="Permalink to this headline"></a></h2>
+<p><a class="reference external" href="https://www.itu.int/rec/T-REC-T.120-200701-I/en">https://www.itu.int/rec/T-REC-T.120-200701-I/en</a></p>
+<ul class="simple">
+<li><p>[ITU-T T.121] [ITU-T T.122]</p></li>
+<li><p>[ITU-T T.123]</p></li>
+<li><p>[ITU-T T.124] [ITU-T T.125]</p></li>
+<li><p>[ITU-T T.126]</p></li>
+<li><p>[ITU-T T.127]</p></li>
+<li><p>ITU-T Recommendation T.121 (1996), Generic application template. ITU-T Recommendation T.122 (1998), Multipoint communication service –</p></li>
+<li><p>Service definition.</p></li>
+<li><p>ITU-T Recommendation T.123 (2007), Network-specific data protocol stacks for</p></li>
+<li><p>multimedia conferencing.</p></li>
+<li><p>ITU-T Recommendation T.124 (2007), Generic conference control.</p></li>
+<li><p>ITU-T Recommendation T.125 (1998), Multipoint communication service protocol specification.</p></li>
+<li><p>ITU-T Recommendation T.126 (1997), Multipoint still image and annotation protocol.</p></li>
+<li><p>ITU-T Recommendation T.127 (1995), Multipoint binary file transfer protocol.</p></li>
+</ul>
+</section>
+<section id="audio-level-client-to-mixer">
+<h2><a class="toc-backref" href="#id42">19. Audio Level: client to mixer</a><a class="headerlink" href="#audio-level-client-to-mixer" title="Permalink to this headline"></a></h2>
+<p><a class="reference external" href="https://tools.ietf.org/html/rfc6464">https://tools.ietf.org/html/rfc6464</a></p>
+<dl class="simple">
+<dt>A Real-time Transport Protocol (RTP) Header Extension for</dt><dd><p>Client-to-Mixer Audio Level Indication</p>
+</dd>
+</dl>
+<section id="id5">
+<h3><a class="toc-backref" href="#id43">Abstract</a><a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
+<blockquote>
+<div><p>This document defines a mechanism by which packets of Real-time
+Transport Protocol (RTP) audio streams can indicate, in an RTP header
+extension, the audio level of the audio sample carried in the RTP
+packet.  In large conferences, this can reduce the load on an audio
+mixer or other middlebox that wants to forward only a few of the
+loudest audio streams, without requiring it to decode and measure
+every stream that is received.</p>
+</div></blockquote>
+</section>
+</section>
+<section id="rtp-retransmission-payload-format">
+<h2><a class="toc-backref" href="#id44">20. RTP Retransmission Payload Format</a><a class="headerlink" href="#rtp-retransmission-payload-format" title="Permalink to this headline"></a></h2>
+<p><a class="reference external" href="https://tools.ietf.org/html/rfc4588">https://tools.ietf.org/html/rfc4588</a></p>
+<p>RTP Retransmission Payload Format</p>
+<section id="id6">
+<h3><a class="toc-backref" href="#id45">Abstract</a><a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
+<blockquote>
+<div><p>RTP retransmission is an effective packet loss recovery technique for
+real-time applications with relaxed delay bounds.  This document
+describes an RTP payload format for performing retransmissions.
+Retransmitted RTP packets are sent in a separate stream from the
+original RTP stream.  It is assumed that feedback from receivers to
+senders is available.  In particular, it is assumed that Real-time
+Transport Control Protocol (RTCP) feedback as defined in the extended
+RTP profile for RTCP-based feedback (denoted RTP/AVPF) is available
+in this memo.</p>
+</div></blockquote>
+</section>
+</section>
+<section id="negotiating-media-multiplexing-using-the-session-description-protocol-sdp">
+<h2><a class="toc-backref" href="#id46">21. Negotiating Media Multiplexing Using the Session Description Protocol (SDP)</a><a class="headerlink" href="#negotiating-media-multiplexing-using-the-session-description-protocol-sdp" title="Permalink to this headline"></a></h2>
+<p><a class="reference external" href="https://tools.ietf.org/html/draft-ietf-mmusic-sdp-bundle-negotiation-54">https://tools.ietf.org/html/draft-ietf-mmusic-sdp-bundle-negotiation-54</a></p>
+<p>Negotiating Media Multiplexing Using the Session Description Protocol (SDP)</p>
+<section id="id7">
+<h3><a class="toc-backref" href="#id47">Abstract</a><a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
+<blockquote>
+<div><p>This specification defines a new Session Description Protocol (SDP)
+Grouping Framework extension, ‘BUNDLE’.  The extension can be used
+with the SDP Offer/Answer mechanism to negotiate the usage of a
+single transport (5-tuple) for sending and receiving media described
+by multiple SDP media descriptions (“m=” sections).  Such transport
+is referred to as a BUNDLE transport, and the media is referred to as
+bundled media.  The “m=” sections that use the BUNDLE transport form
+a BUNDLE group.</p>
+<p>This specification updates RFC 3264, to also allow assigning a zero
+port value to a “m=” section in cases where the media described by
+the “m=” section is not disabled or rejected.</p>
+<p>This specification updates RFC 5888, to also allow an SDP ‘group’
+attribute to contain an identification-tag that identifies a “m=”
+section with the port set to zero.</p>
+<p>This specification defines a new RTP Control Protocol (RTCP) source
+description (SDES) item and a new RTP header extension that can be
+used to correlate bundled RTP/RTCP packets with their appropriate
+“m=” section.</p>
+<p>This specification updates RFC 7941, by adding an exception, for the
+MID RTP header extension, to the requirement regarding protection of
+an SDES RTP header extension carrying an SDES item for the MID RTP
+header extension.</p>
+</div></blockquote>
+</section>
+</section>
+<section id="rtp-stream-identifier-source-description-sdes">
+<h2><a class="toc-backref" href="#id48">22. RTP Stream Identifier Source Description (SDES)</a><a class="headerlink" href="#rtp-stream-identifier-source-description-sdes" title="Permalink to this headline"></a></h2>
+<p><a class="reference external" href="https://tools.ietf.org/html/draft-ietf-avtext-rid-09">https://tools.ietf.org/html/draft-ietf-avtext-rid-09</a></p>
+<p>RTP Stream Identifier Source Description (SDES)</p>
+<p>more <a class="reference external" href="protocol22_ietf_avtext_rid.rst">detail</a></p>
+<section id="id8">
+<h3><a class="toc-backref" href="#id49">Abstract</a><a class="headerlink" href="#id8" title="Permalink to this headline"></a></h3>
+<blockquote>
+<div><p>This document defines and registers two new RTCP Stream Identifier
+Source Description (SDES) items.  One, named RtpStreamId, is used for
+unique identification of RTP streams.  The other,
+RepairedRtpStreamId, can be used to identify which stream a
+redundancy RTP stream is to be used to repair.</p>
+</div></blockquote>
+</section>
+<section id="codes">
+<h3><a class="toc-backref" href="#id50">codes</a><a class="headerlink" href="#codes" title="Permalink to this headline"></a></h3>
+<blockquote>
+<div><p>void CWCBSdpHandle::HandleUserOfferReq(string&amp; strSDP, string&amp; strResponseSDP )</p>
+</div></blockquote>
+</section>
+</section>
+<section id="webrtc-mediastream-identification-in-the-session-description-protocol">
+<h2><a class="toc-backref" href="#id51">23. WebRTC MediaStream Identification in the Session Description Protocol</a><a class="headerlink" href="#webrtc-mediastream-identification-in-the-session-description-protocol" title="Permalink to this headline"></a></h2>
+<p><a class="reference external" href="https://tools.ietf.org/id/draft-ietf-mmusic-msid-05.html">https://tools.ietf.org/id/draft-ietf-mmusic-msid-05.html</a></p>
+<blockquote>
+<div><dl class="simple">
+<dt>WebRTC MediaStream Identification in the Session Description Protocol</dt><dd><p>draft-ietf-mmusic-msid-05</p>
+</dd>
+</dl>
+</div></blockquote>
+<section id="id9">
+<h3><a class="toc-backref" href="#id52">Abstract</a><a class="headerlink" href="#id9" title="Permalink to this headline"></a></h3>
+<p>This document specifies a grouping mechanism for RTP media streams that can be used to specify relations between media streams.</p>
+<p>This mechanism is used to signal the association between the SDP concept of “m-line” and the WebRTC concept of “MediaStream” / “MediaStreamTrack” using SDP signaling.</p>
+<p>This document is a work item of the MMUSIC WG, whose discussion list is <a class="reference external" href="mailto:mmusic&#37;&#52;&#48;ietf&#46;org">mmusic<span>&#64;</span>ietf<span>&#46;</span>org</a>.</p>
+<p>Section 1.2 gives the background on why a new mechanism is needed.</p>
+<p>Section 2 gives the definition of the new mechanism.</p>
+<p>Section 4 gives the application of the new mechanism for providing necessary semantic information for the association of MediaStreamTracks to MediaStreams in the WebRTC API .</p>
+</section>
+</section>
+<section id="rtp-extensions-for-transport-wide-congestion-control">
+<h2><a class="toc-backref" href="#id53">24. RTP Extensions for Transport-wide Congestion Control</a><a class="headerlink" href="#rtp-extensions-for-transport-wide-congestion-control" title="Permalink to this headline"></a></h2>
+<p>RTP Extensions for Transport-wide Congestion Control
+draft-holmer-rmcat-transport-wide-cc-extensions-01</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://tools.ietf.org/html/draft-holmer-rmcat-transport-wide-cc-extensions-01">https://tools.ietf.org/html/draft-holmer-rmcat-transport-wide-cc-extensions-01</a></p></li>
+</ul>
+<section id="id10">
+<h3><a class="toc-backref" href="#id54">Abstract</a><a class="headerlink" href="#id10" title="Permalink to this headline"></a></h3>
+<blockquote>
+<div><p>proposes an RTP header extension and an RTCP message
+for use in congestion control algorithms for RTP-based media flows.
+It adds transport-wide packet sequence numbers and corresponding
+feedback message so that congestion control can be performed on a
+transport level at the send-side, while keeping the receiver dumb.</p>
+</div></blockquote>
+<p>提出了一个 RTP 报头扩展，其中包含传输通道范围的数据包序列号和RTCP反馈消息，该消息反馈在一个连接上接收到的数据包的到达时间和序列号。</p>
+</section>
+</section>
+<section id="rtp-header-extension-for-the-rtcp-source-description-items">
+<h2><a class="toc-backref" href="#id55">25. RTP Header Extension for the RTCP Source Description Items</a><a class="headerlink" href="#rtp-header-extension-for-the-rtcp-source-description-items" title="Permalink to this headline"></a></h2>
+<p><a class="reference external" href="https://tools.ietf.org/html/draft-holmer-rmcat-transport-wide-cc-extensions-01">https://tools.ietf.org/html/draft-holmer-rmcat-transport-wide-cc-extensions-01</a></p>
+<blockquote>
+<div><dl class="simple">
+<dt>RTP Extensions for Transport-wide Congestion Control</dt><dd><p>draft-holmer-rmcat-transport-wide-cc-extensions-01</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="a-framework-for-sdp-attributes-when-multiplexing">
+<h2><a class="toc-backref" href="#id56">26. A Framework for SDP Attributes when Multiplexing</a><a class="headerlink" href="#a-framework-for-sdp-attributes-when-multiplexing" title="Permalink to this headline"></a></h2>
+<p><a class="reference external" href="https://tools.ietf.org/html/draft-ietf-mmusic-sdp-mux-attributes-19">https://tools.ietf.org/html/draft-ietf-mmusic-sdp-mux-attributes-19</a></p>
+<blockquote>
+<div><dl class="simple">
+<dt>A Framework for SDP Attributes when Multiplexing</dt><dd><p>draft-ietf-mmusic-sdp-mux-attributes-19</p>
+</dd>
+</dl>
+</div></blockquote>
+<section id="id11">
+<h3><a class="toc-backref" href="#id57">Abstract</a><a class="headerlink" href="#id11" title="Permalink to this headline"></a></h3>
+<blockquote>
+<div><p>The purpose of this specification is to provide a framework for
+analyzing the multiplexing characteristics of Session Description
+Protocol (SDP) attributes when SDP is used to negotiate the usage of
+single 5-tuple for sending and receiving media associated with
+multiple media descriptions.</p>
+<p>This specification also categorizes the existing SDP attributes based
+on the framework described herein.</p>
+</div></blockquote>
+</section>
+</section>
+<section id="ulpfec">
+<h2><a class="toc-backref" href="#id58">27. ULPFEC</a><a class="headerlink" href="#ulpfec" title="Permalink to this headline"></a></h2>
+<p><a class="reference external" href="https://tools.ietf.org/html/rfc5109">https://tools.ietf.org/html/rfc5109</a></p>
+<blockquote>
+<div><p>RTP Payload Format for Generic Forward Error Correction</p>
+</div></blockquote>
+<section id="id12">
+<h3><a class="toc-backref" href="#id59">Abstract</a><a class="headerlink" href="#id12" title="Permalink to this headline"></a></h3>
+<blockquote>
+<div><p>This document specifies a payload format for generic Forward Error
+Correction (FEC) for media data encapsulated in RTP.  It is based on
+the exclusive-or (parity) operation.  The payload format described in
+this document allows end systems to apply protection using various
+protection lengths and levels, in addition to using various
+protection group sizes to adapt to different media and channel
+characteristics.  It enables complete recovery of the protected
+packets or partial recovery of the critical parts of the payload
+depending on the packet loss situation.  This scheme is completely
+compatible with non-FEC-capable hosts, so the receivers in a
+multicast group that do not implement FEC can still work by simply
+ignoring the protection data.  This specification obsoletes RFC 2733
+and RFC 3009.  The FEC specified in this document is not backward
+compatible with RFC 2733 and RFC 3009.</p>
+</div></blockquote>
+</section>
+</section>
+<section id="red">
+<h2><a class="toc-backref" href="#id60">28. RED</a><a class="headerlink" href="#red" title="Permalink to this headline"></a></h2>
+<p><a class="reference external" href="https://tools.ietf.org/html/rfc2198">https://tools.ietf.org/html/rfc2198</a></p>
+<blockquote>
+<div><p>RTP Payload for Redundant Audio Data</p>
+</div></blockquote>
+<section id="id13">
+<h3><a class="toc-backref" href="#id61">Abstract</a><a class="headerlink" href="#id13" title="Permalink to this headline"></a></h3>
+<p>This document describes a payload format for use with the real-time
+transport protocol (RTP), version 2, for encoding redundant audio
+data.  The primary motivation for the scheme described herein is the
+development of audio conferencing tools for use with lossy packet
+networks such as the Internet Mbone, although this scheme is not
+limited to such applications.</p>
+<blockquote>
+<div><p>If multimedia conferencing is to become widely used by the Internet
+Mbone community, users must perceive the quality to be sufficiently
+good for most applications.  We have identified a number of problems
+which impair the quality of conferences, the most significant of
+which is packet loss.  This is a persistent problem, particularly
+given the increasing popularity, and therefore increasing load, of
+the Internet.  The disruption of speech intelligibility even at low
+loss rates which is currently experienced may convince a whole
+generation of users that multimedia conferencing over the Internet is
+not viable.  The addition of redundancy to the data stream is offered
+as a solution [1].  If a packet is lost then the missing information
+may be reconstructed at the receiver from the redundant data that
+arrives in the following packet(s), provided that the average number</p>
+<p>This document describes an RTP payload format for the transmission of
+audio data encoded in such a redundant fashion.  Section 2 presents
+the requirements and motivation leading to the definition of this
+payload format, and does not form part of the payload format
+definition.  Sections 3 onwards define the RTP payload format for
+redundant audio data.</p>
+</div></blockquote>
+</section>
+</section>
+<section id="cisco-multi-stream-protocols">
+<h2><a class="toc-backref" href="#id62">Cisco Multi-stream protocols</a><a class="headerlink" href="#cisco-multi-stream-protocols" title="Permalink to this headline"></a></h2>
+<section id="multi-source-simulcast-negotiation-specification">
+<h3><a class="toc-backref" href="#id63">29. Multi-source Simulcast Negotiation Specification</a><a class="headerlink" href="#multi-source-simulcast-negotiation-specification" title="Permalink to this headline"></a></h3>
+</section>
+<section id="multi-stream-signaling">
+<h3><a class="toc-backref" href="#id64">30. multi-stream signaling</a><a class="headerlink" href="#multi-stream-signaling" title="Permalink to this headline"></a></h3>
+<p>RFC6190</p>
+<p>Audio level indication is specified in RFC6464 and RFC6465.
+a=extmap:3/sendrecv <a class="reference external" href="urn:ietf:params:rtp-hdrext:ssrc-audio-level">urn:ietf:params:rtp-hdrext:ssrc-audio-level</a></p>
+<ul class="simple">
+<li><p>RTCP PLI should be used for picture loss indication (RFC4585).</p></li>
+<li><p>RTCP FIR should be used for key intra frame request (RFC5104)</p></li>
+<li><p>[RFC6184] - <a class="reference external" href="http://tools.ietf.org/html/rfc6184">http://tools.ietf.org/html/rfc6184</a></p></li>
+<li><p>[RFC6190] - <a class="reference external" href="http://tools.ietf.org/html/rfc6190">http://tools.ietf.org/html/rfc6190</a></p></li>
+<li><p>[IMTC-BANDWIDTH] - SIP Video Profile Best Practices, Date: 6 February 2013. <a class="reference external" href="http://portal.imtc.org/DesktopModules/Inventures_Document/FileDownload.aspx?ContentID=21434">http://portal.imtc.org/DesktopModules/Inventures_Document/FileDownload.aspx?ContentID=21434</a></p></li>
+<li><p>[multiplex] - <a class="reference external" href="http://tools.ietf.org/html/draft-ietf-avtcore-multiplex-guidelines-02">http://tools.ietf.org/html/draft-ietf-avtcore-multiplex-guidelines-02</a></p></li>
+<li><p>[UCIF] – Unified Communication Specification for H.264/MPEG‐4 Part 10 AVC and SVC Modes V1.0</p></li>
+<li><p>[H265] - <a class="reference external" href="http://tools.ietf.org/html/draft-ietf-payload-rtp-h265">http://tools.ietf.org/html/draft-ietf-payload-rtp-h265</a></p></li>
+</ul>
+</section>
+<section id="ucif-h264-specification-v1-0">
+<h3><a class="toc-backref" href="#id65">31. UCIF H264 Specification v1.0</a><a class="headerlink" href="#ucif-h264-specification-v1-0" title="Permalink to this headline"></a></h3>
+</section>
+<section id="mari">
+<h3><a class="toc-backref" href="#id66">32. MARI</a><a class="headerlink" href="#mari" title="Permalink to this headline"></a></h3>
+</section>
+</section>
+<section id="book-and-documents">
+<h2><a class="toc-backref" href="#id67">Book and Documents</a><a class="headerlink" href="#book-and-documents" title="Permalink to this headline"></a></h2>
+<section id="webrtc-1-0-realtime-communication-between-browsers">
+<h3><a class="toc-backref" href="#id68">33. WebRTC 1.0: Realtime Communication Between Browsers</a><a class="headerlink" href="#webrtc-1-0-realtime-communication-between-browsers" title="Permalink to this headline"></a></h3>
+</section>
+<section id="professional-javascript-for-web-developers-3rd-edition-pdf">
+<h3><a class="toc-backref" href="#id69">34. Professional JavaScript for Web Developers, 3rd Edition.pdf</a><a class="headerlink" href="#professional-javascript-for-web-developers-3rd-edition-pdf" title="Permalink to this headline"></a></h3>
+</section>
+<section id="real-time-communication-with-webrtc">
+<h3><a class="toc-backref" href="#id70">35. Real-Time Communication with WebRTC</a><a class="headerlink" href="#real-time-communication-with-webrtc" title="Permalink to this headline"></a></h3>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="how_to.html" class="btn btn-neutral float-left" title="How to" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="qos.html" class="btn btn-neutral float-right" title="QoS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Walter Fan.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

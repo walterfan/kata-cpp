@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Redis &mdash; A Programmer Prepares 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Freeswitch" href="freeswitch.html" />
+    <link rel="prev" title="Cassandra" href="cassandra.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> A Programmer Prepares
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">论程序员的自我修养</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interview.html">程序员面试要点</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resume.html">Resume</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithm/index.html">Algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../language/index.html">Programming Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../library/index.html">Libraries</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Middleware</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="kafka.html">Kafka</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cassandra.html">Cassandra</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Redis</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#basic">Basic</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#clusetr">Clusetr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#souce-codes">Souce codes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#how-it-works">How it works</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#resp">RESP</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="freeswitch.html">Freeswitch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#metrics">Metrics</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html">mathematics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#overview">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#least-squares-method">最小二乘法 least squares method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pattern/index.html">Pattern</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/index.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool/index.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mmp/index.html">MMP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../thinclient/index.html">Thin Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utiltp/index.html">UTILTP</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">A Programmer Prepares</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Middleware</a> &raquo;</li>
+      <li>Redis</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/oss/redis.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="redis">
+<h1>Redis<a class="headerlink" href="#redis" title="Permalink to this headline"></a></h1>
+<section id="basic">
+<h2>Basic<a class="headerlink" href="#basic" title="Permalink to this headline"></a></h2>
+<section id="clusetr">
+<h3>Clusetr<a class="headerlink" href="#clusetr" title="Permalink to this headline"></a></h3>
+</section>
+<section id="souce-codes">
+<h3>Souce codes<a class="headerlink" href="#souce-codes" title="Permalink to this headline"></a></h3>
+<p>SDS (Simple Dynamic String)</p>
+</section>
+</section>
+<section id="how-it-works">
+<h2>How it works<a class="headerlink" href="#how-it-works" title="Permalink to this headline"></a></h2>
+<p>Redis 是一个单线程程序
+* 非阻塞IO
+* 多路复用
+*</p>
+<section id="resp">
+<h3>RESP<a class="headerlink" href="#resp" title="Permalink to this headline"></a></h3>
+<p>Redis clients communicate with the Redis server using a protocol called RESP (REdis Serialization Protocol). While the protocol was designed specifically for Redis, it can be used for other client-server software projects.</p>
+<p>RESP is a compromise between the following things:</p>
+<ul class="simple">
+<li><p>Simple to implement.</p></li>
+<li><p>Fast to parse.</p></li>
+<li><p>Human readable.</p></li>
+</ul>
+<p>RESP can serialize different data types like integers, strings, arrays. There is also a specific type for errors. Requests are sent from the client to the Redis server as arrays of strings representing the arguments of the command to execute. Redis replies with a command-specific data type.</p>
+<p>RESP is binary-safe and does not require processing of bulk data transferred from one process to another, because it uses prefixed-length to transfer bulk data.</p>
+<p>Note: the protocol outlined here is only used for client-server communication. Redis Cluster uses a different binary protocol in order to exchange messages between nodes.</p>
+<p><a class="reference external" href="https://redis.io/topics/protocol">https://redis.io/topics/protocol</a></p>
+<p><a class="reference external" href="https://redis.io/topics/cluster-spec">https://redis.io/topics/cluster-spec</a></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="cassandra.html" class="btn btn-neutral float-left" title="Cassandra" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="freeswitch.html" class="btn btn-neutral float-right" title="Freeswitch" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Walter Fan.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,426 @@
+####################
+MMP TURN Server
+####################
+
+.. contents::
+    :local:
+
+Overview
+====================
+
+
+.. list-table:: CRC
+   :widths: 30 30 40
+   :header-rows: 1
+
+   * - Class
+     - Responsibility
+     - Collaborator
+   * - CMmServerTurnServer
+     - represents a TURN conference
+     - Parent: ICmTransportSink, ICmTurnPeerDataLink, CMmServerTurnParser. CCmTimerWrapperIDSink
+
+
+
+Main class
+==============================
+
+CMmSessionServerAcceptor
+------------------------
+
+1. create CMmSessionServerAcceptor
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+this class contains tcp and udp acceptor and turn server
+
+
+
+
+.. code-block:: c++
+
+    // hook the TURN server and WCB manager
+	CWCBApi::Instance()->AddHook(this);
+	m_turnServerMgr.SetSink(this, CWCBApi::Instance());
+
+
+
+2. it extends from  ICmAcceptorConnectorSink and ICmTransportSink
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: c++
+
+    // interface ICmAcceptorConnectorSink
+	virtual void OnConnectIndication(
+		CmResult aReason,
+		ICmTransport *aTrpt,
+		ICmAcceptorConnectorId *aRequestId);
+
+	// interface ICmTransportSink
+	virtual void OnReceive(
+		CCmMessageBlock &aData,
+		ICmTransport *aTrptId,
+		CCmTransportParameter *aPara = NULL);
+
+	virtual void OnSend(
+		ICmTransport *aTrptId,
+		CCmTransportParameter *aPara = NULL);
+
+	virtual void OnDisconnect(
+		CmResult aReason,
+		ICmTransport *aTrptId);
+
+	virtual void OnConnectionReady(ICmTransport *aTrptId);
+
+3. it has the following members
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: c++
+
+	CCmComAutoPtr<ICmAcceptor> m_pTcpAcceptor;
+	CCmComAutoPtr<ICmAcceptor> m_pTcpAcceptorEx;
+	CCmComAutoPtr<ICmAcceptor> m_pUdpAcceptor;
+	CCmComAutoPtr<ICmChannelServerAcceptor> m_pWebSocketAcceptor;
+
+
+
+4. create acceptor
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: c++
+
+    CCmConnectionManager::
+        CreateConnectionServer(CType aType,
+            ICmAcceptor *&aAcceptor,
+            CM_THREAD_ID aThreadId,
+            BOOL bEnableRawSocket);
+    rv = m_pTcpAcceptor->SetOption(CM_OPT_TRANSPORT_SND_BUF_LEN, &sendBuffLen);
+    rv = m_pTcpAcceptor->SetOption(CM_OPT_TRANSPORT_TCP_WINDOW_SCALE, &nEnableWinScale);
+    rv = m_pTcpAcceptor->StartListen(this, m_AddrTcp);
+
+
+    rv = CCmConnectionManager::Instance()->CreateConnectionServer(
+		CCmConnectionManager::CTYPE_UDP |
+    #ifdef MM_ENABLE_RELIABLE_CONNECTION
+            CCmConnectionManager::CTYPE_PDU_RELIABLE,
+    #else
+            CCmConnectionManager::CTYPE_PDU_PACKAGE |
+            CCmConnectionManager::CTYPE_PDU_KEEPALIVE,
+    #endif // MM_ENABLE_RELIABLE_CONNECTION
+            m_pUdpAcceptor.ParaOut(),
+            m_networkThreadId,
+            TRUE);
+
+    m_pUdpAcceptor->SetOption(CM_OPT_TRANSPORT_RCV_BUF_LEN, &rcvBuffLen);
+	m_pUdpAcceptor->SetOption(CM_OPT_TRANSPORT_TOS, &nTosValue);
+
+    //this implements ICmAcceptorConnectorSink that has OnConnectIndication
+	rv = m_pUdpAcceptor->StartListen(this, m_AddrUdp);
+
+    //add websocket accept
+	rv = CCmChannelManager::Instance()->CreateHttpAcceptor(m_pWebSocketAcceptor.ParaOut( ),
+			CCmChannelManager::CFLAG_SEND_NO_PARTIAL_DATA);
+    //this implements interface ICmChannelServerSink
+    rv = m_pWebSocketAcceptor->StartOnePortListen(this, m_AddrWebSocket,m_pTcpAcceptor.ParaIn());
+
+
+* CCmAcceptorTcp
+* CCmAcceptorUdp
+
+
+5. Server accept connection from Client, which means Client connect to server
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* Got connection indication , the transport is inserted into m_PendingTransports
+
+.. code-block:: c++
+
+    void CMmSessionServerAcceptor::
+    OnConnectIndication(CmResult aReason, ICmTransport *aTrpt,
+                        ICmAcceptorConnectorId *aRequestId)
+    {
+        CM_ASSERTE(CM_SUCCEEDED(aReason));
+        CM_ASSERTE(aTrpt);
+        CM_ASSERTE(aRequestId == m_pTcpAcceptor.Get() ||
+            aRequestId == m_pTcpAcceptorEx.Get() ||
+            aRequestId == m_pUdpAcceptor.Get());
+
+        CM_INFO_TRACE_THIS("CMmSessionServerAcceptor::OnConnectIndication" <<
+            Sep << TransportPtr(aTrpt) <<
+            Sep << Param(aRequestId));
+
+        //this implements interface ICmTransportSink that has OnReceive, OnSend, etc.
+        aTrpt->OpenWithSink(this);
+        aTrpt->AddReference();
+        m_PendingTransports.insert(aTrpt);
+        DWORD dwCreateTime = CCmTimeValue::GetTimeOfDay().GetSec();
+        aTrpt->SetOption(CM_OPT_TRANSPORT_DETECT_CREATE_TIME, &dwCreateTime);
+    }
+
+6. Server receives data from Client
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+it is to receive all the initila connections from the clients, such as join_session and the first stun message.
+the below method dispatch the message to different
+
+.. code-block:: c++
+
+    void CMmSessionServerAcceptor::OnReceive(CCmMessageBlock &aData,
+            ICmTransport *aTrptId,
+            CCmTransportParameter *aPara)
+
+
+* may m_turnServerMgr.OnFirstMsg(aData,aTrptId, aPara) if PDU is MM_SESSION_PDU_TYPE_STUN_RQST
+
+  then remove the transport from m_PendingTransports
+
+* may ProcessStunMessageRequest_n if it is MM_SESSION_PDU_TYPE_STUN_RQST
+
+  then remove the transport from m_PendingTransports
+
+* may ProcessJoinSessionRequest if the PDU is MM_SESSION_PDU_TYPE_JOIN_SESSION_RQST_xxx
+
+  then remove the transport from m_PendingTransports
+
+* may m_WorkThreadDispatcher.DispatchBindDataRequest to dispatch to related transport
+
+* may m_WorkThreadDispatcher.DispatchDummyUserJoinRequest or pEndPoint->ProcessDummyUserJoin_n if the PDU is MM_SESSION_PDU_TYPE_DUMMY_USER_JOIN_SESSION_RQST
+
+* may pEndPoint->ProcessDummyUserJoinExt_n(aData, tyPdu, ConfIDType)
+
+
+7. Dispatch STUN message to related transport, then remove the transport from m_PendingTransports
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: c++
+
+    if(tyPdu == MM_SESSION_PDU_TYPE_STUN_RQST){
+		if (CMultiThreadConfig::Instance().IsMultiWorkThreadEnabled())
+			rv = m_WorkThreadDispatcher.DispatchStunRequest(aData, aTrptId);
+		else
+			rv = ProcessStunMessageRequest_n(aData, tyPdu, aTrptId);
+		if (CM_FAILED(rv))
+			RemoveTransport_n(aTrptId);
+		else
+			RemoveTransport_n(aTrptId, FALSE);
+		return;
+	}
+
+
+8. Set Data transport and message to endpoint
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. code-block:: c++
+
+    CmResult CMmSessionServerStdEndPoint::SetDataTransport(ICmTransport *aTrpt,
+        CMmSID UserID, IStunMessage* pStunMsg, CCmMessageBlock &aData)
+    {
+    }
+
+class CMmServerTurnServerMgr
+-------------------------------
+
+this class is to manage the turn server for each individual TURN channel and  handle the TCP packets
+it contains transport and CMmServerTurnServer
+ICmTransport * --> CMmServerTurnServer
+
+the method OfFirstMessage to to handle STUN/TURN message
+
+
+
+.. code-block:: c++
+
+    class CMmServerTurnServerMgr
+    {
+     public:
+     CMmServerTurnServerMgr(ICmAcceptorConnectorSink *pAcceptorSink=NULL)
+       :m_pAcceptorSink(pAcceptorSink),
+        m_pWCBSink(NULL) {
+        //srand (time(NULL)); // may not put it here
+      };
+
+      virtual ~CMmServerTurnServerMgr();
+
+      void SetSink(ICmAcceptorConnectorSink *pAcceptorSink, CWCBApi *pWCB) {
+        m_pAcceptorSink =  pAcceptorSink;
+        m_pWCBSink = pWCB;
+      };
+
+      // first msg always come from acceptor
+      int OnFirstMsg(CCmMessageBlock &aData,
+                     ICmTransport *aTrptId,
+                     CCmTransportParameter *aPara = NULL);
+
+      // delete the TURN server object
+      void DeleteTurnServer(CMmServerTurnServer *pTurnServer);
+
+      // access acceptor (need to change the name)
+      ICmAcceptorConnectorSink *GetAcceptor() {return m_pAcceptorSink;}
+
+      // to access the WCB module
+      CWCBApi *GetWCBSink() {return m_pWCBSink;}
+
+
+     private:
+      ICmAcceptorConnectorSink  *m_pAcceptorSink;
+      typedef std::map<ICmTransport *, 	CMmServerTurnServer *> netTpt2TurnServer_t;
+      netTpt2TurnServer_t m_netTpt2TurnServerMap;
+      CWCBApi *m_pWCBSink;
+    };
+
+main methods
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* SetSink
+
+the class's sink is CMmSessionServerAcceptor
+
+.. code-block:: c++
+
+    void SetSink(ICmAcceptorConnectorSink *pAcceptorSink, CWCBApi *pWCB) {
+        m_pAcceptorSink =  pAcceptorSink;
+        m_pWCBSink = pWCB;
+    };
+
+* OnFirstMsg
+
+.. code-block:: c++
+
+    // this msg is from CMmSessionServerAcceptor() for the first msg received from TP
+    // It must be STUN/TURN message
+    int CMmServerTurnServerMgr::OnFirstMsg(CCmMessageBlock &aData,
+                                           ICmTransport *aTrptId,
+                                           CCmTransportParameter *aPara)
+
+class CMmServerTurnServer
+--------------------------------------
+
+* This class handles the TURN/STUN messages
+
+.. code-block:: c++
+
+    class CMmServerTurnServer:
+    public ICmTransportSink,
+      ICmTurnPeerDataLink,
+      CMmServerTurnParser,
+      CCmTimerWrapperIDSink
+    {
+     public:
+      enum TURN_ConnErrorCode_e {
+        TURN_ERROR_NORMAL_DISCONNECT  = 0,
+        TURN_ERROR_DUPLICATED_CONNECT = 1,
+        TURN_ERROR_ICE_AUTH_FAILED = 2,
+        TURN_ERROR_END
+      };
+
+    //...
+    }
+
+
+method OnReceive
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: c++
+
+    // This function is called from the TP for every packet or from TURNServer mgr for the first msg
+    // Note that due to the packet streaming in TCP, a completion of messages need to check first for TCP
+    // before any further action.
+    void CMmServerTurnServer::OnReceive(CCmMessageBlock &aData,
+                                        ICmTransport *aTrptId,
+                                        CCmTransportParameter *aPara)
+
+1. Extract packet if it is TCP
+
+2. ParseMsg
+
+    OnTurnData --> OnTurnPacket
+
+.. code-block:: c++
+
+    //---------------only for STUN for TURN -------------------------
+    int CMmServerTurnServer::OnTurnData()
+    {
+        enum pktType_e {
+            PKTTYPE_RTP,
+            PKTTYPE_DTLS,
+            PKTTYPE_STUN,
+            PKTTYPE_TURN,
+            PKTTYPE_END};
+        }
+
+    }
+
+    // RTP/TURN channel data
+    m_bHandShakingDone = true;
+    if (m_pPeerLink) {
+        m_pPeerLink->OnTurnPacket((u8 *)inMsg.c_str(), inMsg.length());
+    }
+
+3. HandleMsg
+
+MessageType:
+
+- STUN_MSGMETHOD_BINDING
+
+
+STUN Message
+======================
+
+refer to stunlib
+
+
+
+.. code-block:: c++
+
+    /**
+     * This structure describes STUN message header. A STUN message has the
+     * following format:
+     *
+     0                   1                   2                   3
+     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+     |0 0|     STUN Message Type     |         Message Length        |
+     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+     |                         Magic Cookie                          |
+     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+     |
+     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+     Transaction ID
+     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+     |
+     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    */
+    typedef struct StunMsgHeader
+    {
+        uint16_t    type;
+        uint16_t    length;
+        uint32_t    magicCookie;
+        uint8_t		transactionID[12];
+    } StunMsgHeader;
+
+    /**
+     * This structre describes STUN attribute header. Each attribute is
+     * TLV encoded, with a 16 bit type, 16 bit length, and variable value.
+     * Each STUN attribute ends on a 32 bit boundary:
+     *
+     0                   1                   2                   3
+     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+     |         Type                  |            Length             |
+     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    */
+    typedef struct StunAttrHeader
+    {
+        uint16_t	type;
+        uint16_t    length;
+
+        StunAttrHeader()
+        : type(0)
+        , length(0)
+        {
+        }
+
+        StunAttrHeader(const StunAttrHeader &other)
+        : type(other.type)
+        , length(other.length)
+        {
+        }
+    } StunAttrHeader;

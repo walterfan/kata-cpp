@@ -1,0 +1,465 @@
+######################
+Web Client Agent
+######################
+
+
+
+Component
+=======================
+
+* CWCAServer
+
+* CWCAMediaProvider
+
+* CWCATurnServerMgr
+
+* CWCAMediaConnection
+
+* CWCAUdpTransportService
+
+
+Client Logs
+======================
+
+.. code-block::
+
+    [886] [13:29:07.47] [CMSC][simpleapi.js?v=b2a0c942d3db8698a55b47c6e785ee43:19:2494] "conferenceiD=" "176865695411293543" "nMaxAudioTrack=" 4 "nMaxVideoTrack=" 0 "nExtraMaxVideoTrack=" 0 "camWidth=" 1280 "camHeight=" 720 "camFrameRate=" 30 "asWidth=" 1920 "asHeight=" 1080 "asFrameRate=" 5 "asBitrate=" 1536000 "default asVideoSource=" ["screen"] "bBundleEnabled=" true "bBundleAudioVideo=" false "bBundleAudioSharing=" true "audioCodec=" "Opus" "videoCodec=" "H.264" "SignalAVURL=" undefined "SignalASVideoURL=" undefined "avStunServer=" "" "avTurnServer=" "" "ASStunServer=" "" "ASTurnServer=" "" "ASRecvStunServer=" "" "ASRecvTurnServer=" "" "audioRTPIP=" "" ":" [9000,9001] "videoRTPIP=" "" ":" [9000,9001] "ASVideoRTPIP=" "" ":" [9000,9001] "mediaFallbackRTPPort=" "" ":" 80 "key=" ""
+
+    [97] [13:29:00.554] [(jsMeetingPing)]on_ping_return, mzmAddr: "ehf3cbmm10.qa.webex.com", RTT: 1010, rsp: "<HTML><Ping_Response><meeting_id>176865695411293543</meeting_id><result>0</result><cb_address>tcp://ehf3cb1102.qa.webex.com:1270</cb_address><join_and_announce>1</join_and_announce><gateway_address>http://ehf3cb1102.qa.webex.com:80</gateway_address><top_address>tcp://ehf3cb1102.qa.webex.com:1270</top_address><zone_load>5</zone_load><mtg_location>HFE01</mtg_location><webproxy_address>https://ehf3thin10.qa.webex.com:443</webproxy_address><svr_avail_cap>1983</svr_avail_cap><zone_info>56522:58917:201610</zone_info><MMP_location_id>201610</MMP_location_id><is_top_zone>1</is_top_zone><is_internal_top_CB>0</is_internal_top_CB><mtg_attendee_count>0</mtg_attendee_count><additional_priority>0</additional_priority><ReducePingWaitTime>1</ReducePingWaitTime><top_zone_info></top_zone_info><RTT_to_top_zones>58917:0;</RTT_to_top_zones><is_EMX>0</is_EMX><SelectLogic>3:125:80</SelectLogic><GDM_solution></GDM_solution><cross_dc_failover_enabled>true</cross_dc_failover_enabled><cross_dc_auto_failover_enabled>false</cross_dc_auto_failover_enabled><mtg_domain>false</mtg_domain><site_svr_comp_ver>29,1</site_svr_comp_ver></Ping_Response><Ping_Meeting><action>create_meeting</action><site_id>700321257</site_id><user_id>980617942</user_id><meeting_name>Walter Fan&#39;s Personal Room.176865695411293543</meeting_name><meeting_key>230260551</meeting_key><est_num>10</est_num></Ping_Meeting><client_ext_ip>10.140.202.206</client_ext_ip><enhance_GDM_ping>0</enhance_GDM_ping><zone_type>1</zone_type></HTML>"
+
+    [102] [13:29:00.566] [(jsARM)]JspWebConf.conf_join_request(), confName = "Walter Fan's Personal Room.176865695411293543", confKey = "230260551", confId = "176865695411293543", confPass = "", siteId = 700321257, userId = 980617942, user_name = "Walter Fan", enrollFlag = 6, localAddr = "tcp://127.0.0.1:0", destAddr = "tcp://ehf3cb1102.qa.webex.com:1270", gwAddr = "https://ehf3cb1102.qa.webex.com:80", topAddr = "tcp://ehf3cb1102.qa.webex.com:1270", resNum = 17, userDataLen = 0
+
+
+Server Logs
+=======================
+
+.. code-block::
+
+    [11/03/2020 04:16:28.519 pid=17843 tid=3459127424] Info:CAppSvrMgr::on_misc_msg_indication msg_type=3, msg_data=140722917650352
+    [11/03/2020 04:16:28.519 pid=17843 tid=3459127424] Info:CWCAServer::ServerRegisterReport, result=0 @WCAServer.cpp:322
+    [11/03/2020 04:16:28.519 pid=17843 tid=3459127424] Info:CWCAServer::StartMediaTransport @WCAServer.cpp:276
+    [11/03/2020 04:16:28.519 pid=17843 tid=3459127424] Info:CWCAMediaProvider::CWCAMediaProvider
+    [11/03/2020 04:16:28.520 pid=17843 tid=3459127424] Info:CWCAMediaProvider::initialize(), cg addr=http://ehf3cb1101.qa.webex.com:80, host=10.224.89.2
+    44, port=80
+    [11/03/2020 04:16:28.520 pid=17843 tid=3459127424] Info:CWCATurnServerMgr::set_back_sink: provider =0x18fbf20 mediaType = 0 @WCATurnServer.cpp:60
+    [11/03/2020 04:16:28.520 pid=17843 tid=3459127424] Info:TP_Provider_Impl::create_connection, src_address=gtcp://127.0.0.1:0 proto_type=3 *connection
+    =0x18f3980 host_name=
+    [11/03/2020 04:16:28.520 pid=17843 tid=3459127424] Info:CWCAMediaConnection::CWCAMediaConnection, this=0x193f2c0
+    [11/03/2020 04:16:28.520 pid=17843 tid=3459127424] Info:GTP_Conn_1:: request connection to GTCP://10.224.89.244:80 was submitted, change state to 1
+    [11/03/2020 04:16:28.520 pid=17843 tid=3459127424] Info:CWCAMediaConnection::provider_connect_request, dest_address=GTCP://10.224.89.244:80, ret=0,
+    this=0x193f2c0
+    [11/03/2020 04:16:28.520 pid=17843 tid=3459127424] Info:CWCAMediaProvider::add_connection(0x193f2c0), size=1
+    [11/03/2020 04:16:28.520 pid=17843 tid=3459127424] Info:CWCAServer::CreateMediaService @WCAServer.cpp:296
+    [11/03/2020 04:16:28.520 pid=17843 tid=3459127424] Info:CWCAUdpTransportService::CWCAUdpTransportService @WCAUdpTransportService.cpp:86
+    [11/03/2020 04:16:28.521 pid=17843 tid=3459127424] Info:CWCAUdpTransportService::GetLocalUDPIPPort:  Configured parameter = udp://ehf3cb1101.qa.webe
+    x.com:9000
+      ip version: IPv4 Local address = 10.224.89.244:9000 protocol_type = udp @WCAUdpTransportService.cpp:176
+    [11/03/2020 04:16:28.521 pid=17843 tid=3459127424] Info:CWCASocket::MakeUDPSock: bind to local: 10.224.89.244:9000 remote:0.0.0.0:0 @WCASocket.cpp:1
+    96
+    [11/03/2020 04:16:28.521 pid=17843 tid=3459127424] Info:CWCAUdpTransportService::StartMediaService started @WCAUdpTransportService.cpp:202
+    [11/03/2020 04:16:28.521 pid=17843 tid=3459127424] Info:CWCAUdpTransportService::AddSink  pSink=0x17ce850 m_pMediaHandleSink = 0x0 @WCAUdpTransportS
+    ervice.cpp:101
+    [11/03/2020 04:16:28.521 pid=17843 tid=3459127424] Info:CWCATurnServerMgr::set_back_sink: provider =0x18f87c0 mediaType = 1 @WCATurnServer.cpp:60
+    [11/03/2020 04:16:28.521 pid=17843 tid=3154114304] Info:CWCAUdpTransportService::ListenThread: running with socket Id fd = 13 @WCAUdpTransportServic
+    e.cpp:211
+
+
+Interface
+=======================
+
+
+IATApplicationServer
+------------------------------
+
+.. list-table:: Methods
+   :widths: 15 10 30
+   :header-rows: 1
+
+   * - name
+     - description
+     - comments
+   * - Initialize
+     -
+     -
+   * - Destroy
+     -
+     -
+   * - GetProtocolType
+     -
+     -
+   * - TerminateConference
+     -
+     -
+   * - ServerControl
+     -
+     -
+   * - CreateSession
+     -
+     -
+   * - CloseSession
+     -
+     -
+   * - ReloadConfig
+     -
+     -
+   * - CloseSession2
+     -
+     - for TSP keep alive
+   * - on_host_change_indication
+     -
+     -
+   * - on_presenter_change_indication
+     -
+     -
+   * - on_conference_roster_report_indication
+     -
+     -
+   * - ServerRegisterReport
+     -
+     -
+   * - on_host_change_indication(conference_id, host_node_id, host_change_info)
+     -
+     -
+   * - SetMeetingParams
+     -
+     -
+   * - OnJoinTelephonyUserConfirm
+     -
+     -
+   * - OnJoinTelephonyUserToLobbyConfirm
+     -
+     -
+   * - KickOffLobbyUser
+     -
+     -
+   * - TelephonyUserLobbyControl
+     -
+     -
+   * - NotifyPCNKeepAlive
+     -
+     -
+   * - AdmitUser
+     -
+     -
+   * - AdmitSomeUsers
+     -
+     -
+   * - NotifyTranscriptSessionStatus
+     -
+     -
+   * - SetHardMute
+     -
+     -
+   * - RequestMuteAll
+     -
+     -
+   * - RequestUnmuteAll
+     -
+     -
+   * - RequestUnmute
+     -
+     -
+   * - AudioPrivilegeChange
+     -
+     -
+   * - LowerHand
+     -
+     -
+   * - NotifyUserEnterLobby
+     -
+     -
+
+
+.. code-block:: c++
+
+    class IATApplicationServer
+    {
+    public:
+        virtual int Initialize(
+                        char*				commsvr_address,
+                        IATApplicationServerSink*	pSink) = 0;
+
+        virtual void Destroy(
+                        void) = 0;
+
+        virtual int GetProtocolType(
+                        void) = 0;
+
+        virtual int TerminateConference(
+                        ATSTRING			conf_name,
+                        ATConferenceID&		conf_id) =0;
+
+        virtual int ServerControl(
+                        ATConferenceID&		conf_id,
+                        DWORD				data_length,
+                        LPBYTE				data) =0;
+
+
+        virtual int CreateSession(
+                        ATSTRING			conf_name,
+                        ATConferenceID&		conf_id,
+                        ATConferenceHandle	conf_handle,
+                        ATSessionHandle		session_handle,
+                        DWORD				session_data,
+                        LPBYTE				session_info,
+                        DWORD				session_info_length)=0;
+
+        virtual int CloseSession(
+                        ATConferenceID&		conf_id,
+                        ATConferenceHandle	conf_handle,
+                        ATSessionHandle		session_handle) =0;
+
+        virtual	void ReloadConfig(){};
+
+        //oliver, 20071203, for task TSP keep alive
+        virtual int CloseSession2(
+                        ATConferenceID&		conf_id,
+                        ATConferenceHandle	conf_handle,
+                        ATSessionHandle		session_handle,
+                        short 			reason,
+                        short			refnum1,
+                        short			refnum2,
+                        short			refnum3) { return 0; }
+
+            //Murphy, 20131030, for task TSP notify data based on no/host.
+        virtual int on_host_change_indication(
+                        ATConferenceID&	conference_id,
+                        DWORD	host_node_id) { return 0; }
+
+        // Ricky, 20170919, support Thin Client AS sharing feature
+        virtual int on_presentor_change_indication(
+                        ATConferenceID&	conference_id,
+                        uint32  presenter_node_id) { return 0; }
+
+
+        //Added by Kevin Ma to support CMR 4.0 on 2015/09/11
+        virtual	int on_conference_roster_report_indication(
+          ATConferenceID&                      conference_id,
+          uint16                      number_of_total_nodes,
+          uint16                      number_of_node_instances,
+          uint16                      number_of_added_nodes,
+          uint16                      number_of_removed_nodes,
+          GCC_Node_Record**           node_list) {return 0;}
+
+        //Ricky, 20170802, this API notifies appsvr register to CB result
+        virtual	int ServerRegisterReport(int result) { return 0; }
+
+        virtual int on_host_change_indication(
+                        ATConferenceID&	conference_id,
+                        DWORD	host_node_id,
+                        const std::string& host_change_info) { return -998; }
+
+        virtual int SetMeetingParams(
+                        ATConferenceID&	conference_id,
+                        const std::string& meeting_params ) { return -998; }
+
+        /**webex74143
+         * OnJoinTelephonyUserConfirm to notify TA phone joined lobby result
+         *
+         * @param conf_id
+         * @param user_name
+         * @param attendee_id
+         * @param result, 0 success, <0 fail
+         * @param node_id, node_id of the joined telephony user
+         *
+         * @return 0 success
+         */
+        virtual int OnJoinTelephonyUserConfirm(
+                        const ATConferenceID& conf_id,
+                        const char* user_name,
+                        uint32 attendee_id,
+                        int32 result,
+                        uint32 node_id) { return 0; }
+
+        //{f9792
+        /**
+         * OnJoinTelephonyUserToLobbyConfirm to notify TA phone joined lobby result
+         *
+         * @param conf_id
+         * @param user_name
+         * @param attendee_id
+         * @param result, 0 success, <0 fail
+         * @param node_id, node_id of the joined telephony user
+         *
+         * @return 0 success
+         */
+        virtual int OnJoinTelephonyUserToLobbyConfirm(
+                        const ATConferenceID& conf_id,
+                        const char* user_name,
+                        uint32 attendee_id,
+                        int32 result,
+                        uint32 node_id) { return 0; }
+
+        /**
+         * KickOffLobbyUser cb notify apta attendee kick off indication
+         *
+         * @param reason,	0 phone user in lobby is ejected by host
+         * 					1 when an webex user leave, apta need to leave phone in lobby which is bound to webex user
+         */
+        virtual int KickOffLobbyUser(
+                        const ATConferenceID& conf_id,
+                        uint32 attendee_id,
+                        uint32 reason) { return 0; }
+
+        /**
+         * TelephonyUserLobbyControl
+         *
+         * in some case, cb need to tell telephony how to control phone users in lobby
+         *
+         * @control_cmd,	1 move all lobby users into meeting
+         * 					0 kill off all lobby users, THIS IS NOT IMPLEMENTED
+         */
+        virtual int TelephonyUserLobbyControl(
+                        ATConferenceID&		conf_id,
+                        uint32				control_cmd
+                        ) { return 0; }
+
+
+        /**
+         * NotifyPCNKeepAlive
+         *
+         * in some case, cb need to tell telephony if need PCNKeepAlive
+         *
+         * @pcn_keepalive,	1 PCNKeepAlive
+         * 					0 non PCNKeepAlive
+         */
+        virtual int NotifyPCNKeepAlive(
+                        ATConferenceID&		conf_id,
+                        uint32				pcn_keepalive
+                        ) { return 0; }
+
+        /**
+         * AdmitUser to notify phone is admitted or phone is moved to lobby
+         *
+         * @param conf_id
+         * @param node_id, if is_admit is false, node_id is 0 because there is no node_id for
+         * telephony user, TA should use attendee_id instead
+         * @param attendee_id
+         * @param is_admit, true: phone is admitted to meeing, false: phone is admitted to lobby
+         *
+         * @return 0 success
+         */
+        virtual int AdmitUser(
+                        const ATConferenceID& conf_id,
+                        uint32 node_id,
+                        uint32 attendee_id,
+                        bool is_admit
+                        ) { return 0; }
+        //}f9792
+
+    /**
+        * AdmitSomeUsersto notify phone is admitted or phone is moved to lobby
+        *
+        * @param conf_id
+        * @param admit_users_map map of <attendeeid,nodeid>
+        * @param is_admit, true: phone is admitted to meeing, false: phone is admitted to lobby
+        *
+        * @return 0 success
+        */
+        virtual int AdmitSomeUsers(
+                    const ATConferenceID& conf_id,
+                    std::map<uint32,uint32> admit_users_map,
+                    bool is_admit
+                    ) { return 0; }
+        //}webex93635
+
+        //webex45088
+            /**
+         * NotifyTranscriptSessionStatus cb transcript status
+         *
+         * @param is_start: 	true start transcription
+         * 						false stop transcription
+         *
+         * @param language_code: language_code got from SecurityParams, example: "en_US"
+         */
+        virtual int NotifyTranscriptSessionStatus(
+                        const ATConferenceID& conf_id,
+                        bool is_start,
+                        string language_code) { return 0; }
+        //webex45088 end
+
+        //webex90018
+        /**
+         * SetHardMute cb notify apta hard mute
+         *
+         * @param is_hard_mute,	true hard mue, disallow unmute
+         * 						false allow unmute
+         */
+        virtual int SetHardMute(
+                        const ATConferenceID& conf_id,
+                        bool is_hard_mute,
+                        string reason)  { return 0; }
+
+        /**
+         * RequestMuteAll cb notify apta mute all
+         *
+         * @param white_attendee_list, host and presenter
+         */
+        virtual int RequestMuteAll(
+                        const ATConferenceID& conf_id,
+                        uint32 sender_attandee_id) { return 0; }
+
+        /**
+         * RequestUnmuteAll cb notify apta unmute all
+         *
+         * @param sender_attendee_id
+         */
+        virtual int RequestUnmuteAll(
+                        const ATConferenceID& conf_id,
+                        uint32 sender_attandee_id) { return 0; }
+
+        /**
+         * RequestUnmute cb notify apta unmute some
+         *
+         * @param unmute_attendee_list, unmute list(attendee id)
+         */
+        virtual int RequestUnmute( const ATConferenceID& conf_id,
+                    std::vector<uint32> unmute_attendee_list ) { return 0; }
+
+        /**
+         * cb notify apta white list:   host/cohost/presenter, which cannot be muted
+         */
+        virtual int AudioPrivilegeChange(
+                   const ATConferenceID& conf_id,
+                   std::vector<uint32> muteall_white_attendee_list,
+                   std::vector<uint32> allowAttendeeUnmuteSelf_white_attendee_list) {return 0;}
+        //webex90018 end
+        /* host cohost lower phone user's hand */
+        virtual int LowerHand(
+                    const ATConferenceID& conf_id,
+                    uint32 op_id,
+                    std::set<uint32> lower_hand_set) {return 0;}
+
+        virtual GCC_Error NotifyUserEnterLobby(const ATConferenceID& conf_id, uint32 node_id, uint32 user_id, bool is_sign_in) { return 0; }
+    }
+
+
+T120_Timer_Object
+------------------------------
+
+.. code-block:: c++
+
+
+    //////////////////////////////////////////////////////////////////////////////
+    // T120_Timer_Object
+    //
+    class LIBUTIL_EXPORT T120_Timer_Object : public T120_Object
+    {
+        friend class T120_Timer_Manager;
+
+    public :
+        T120_Timer_Object();
+        virtual ~T120_Timer_Object();
+
+        virtual void on_timer() {}
+        virtual boolean schedule(uint32 time_elapse);
+        virtual void schedule_cancel();
+
+        bool    is_long_elapse();
+    protected :
+        T120_Timer_Manager* timer_mgr;
+        uint32 time_elapse;
+        uint32 time_start;
+        int32  schedule_index;
+        bool   long_elapse;
+    };

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WCB DTLS &mdash; A Programmer Prepares 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Thin Client ICE" href="wcb_ice.html" />
+    <link rel="prev" title="WCB Client" href="wcb_client.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> A Programmer Prepares
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">论程序员的自我修养</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interview.html">程序员面试要点</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resume.html">Resume</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithm/index.html">Algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../language/index.html">Programming Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../library/index.html">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oss/index.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html">mathematics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#overview">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#least-squares-method">最小二乘法 least squares method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pattern/index.html">Pattern</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/index.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool/index.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mmp/index.html">MMP</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Thin Client</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="app_share.html">Application Share</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audio_mgr.html">Audio Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audio_443.html">Audio over 443</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_to.html">How to</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocols.html">Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qos.html">QoS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc.html">CMSC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc_asm.html">CMSC ASM media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc_flowrtp.html">CMSC Flow RTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc_MediaEngInst.html">Media Engine Instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc_connection_monitor.html">CMSC Connection Monitor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cscc.html">CSCC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cscc_api.html">CSCC API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cscc_clientsession.html">ClientSession</a></li>
+<li class="toctree-l2"><a class="reference internal" href="metrics.html">Thin Client Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wca.html">Web Client Agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb.html">Web Client Bridge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_client.html">WCB Client</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">WCB DTLS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_ice.html">Thin Client ICE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_message.html">WCB message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_mqe.html">MQE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_sdp.html">WCB SDP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_rtp.html">WCB RTP module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_source.html">WCB source structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_flowrtp.html">WCB Flow RTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_media_stats.html">Media Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="web_client_bridge.html">Web Client Bridge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disciplines_on_code_development.html">Disciplines on Code Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#overall">Overall</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#feature">Feature</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#reference">Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../utiltp/index.html">UTILTP</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">A Programmer Prepares</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Thin Client</a> &raquo;</li>
+      <li>WCB DTLS</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/thinclient/wcb_dtls.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="wcb-dtls">
+<h1>WCB DTLS<a class="headerlink" href="#wcb-dtls" title="Permalink to this headline"></a></h1>
+<p>receive turn server data, check the first data byte</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>RTP or RTCP</p></li>
+<li><p>DTLS</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p>CWCBPeerConnection</p></li>
+</ul>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// The peerConnect data from the Turn Server through OnTurnPacket()</span>
+<span class="c1">//   which is originally from the Thin Client.</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">CWCBPeerConnection</span><span class="o">::</span><span class="n">OnReceiveRawData</span><span class="p">(</span><span class="n">u8</span><span class="w"> </span><span class="o">*</span><span class="n">pData</span><span class="p">,</span><span class="w"> </span><span class="n">u32</span><span class="w"> </span><span class="n">len</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// call from the Turn Server to pass the media/messging data</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">OnTurnPacket</span><span class="p">(</span><span class="n">u8</span><span class="w"> </span><span class="o">*</span><span class="n">pData</span><span class="p">,</span><span class="kt">int</span><span class="w"> </span><span class="n">len</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">OnReceiveRawData</span><span class="p">(</span><span class="n">pData</span><span class="p">,</span><span class="n">len</span><span class="p">);}</span><span class="w"></span>
+
+<span class="c1">// To receive DTLS-SRTP messages and SRTP data for the peer connection setup</span>
+<span class="c1">//  -- called from OnTurnPacket(). In network thread</span>
+<span class="kt">int</span><span class="w">  </span><span class="nf">OnReceiveRawData</span><span class="p">(</span><span class="n">u8</span><span class="w"> </span><span class="o">*</span><span class="n">pData</span><span class="p">,</span><span class="w"> </span><span class="n">u32</span><span class="w"> </span><span class="n">len</span><span class="p">);</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">DecryptRawData_n</span><span class="p">(</span><span class="n">u8</span><span class="w"> </span><span class="o">*</span><span class="n">pData</span><span class="p">,</span><span class="w"> </span><span class="n">u32</span><span class="w"> </span><span class="n">len</span><span class="p">);</span><span class="w"> </span><span class="c1">// do decryption in network thread</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">DecryptRawData_u</span><span class="p">(</span><span class="n">CWCBSwitchPacket</span><span class="w"> </span><span class="o">*</span><span class="n">pPacket</span><span class="p">);</span><span class="w"> </span><span class="c1">// do decryption in userthread (non-multithread)</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">OnReceiveData_n</span><span class="p">(</span><span class="n">CWCBSwitchPacket</span><span class="w"> </span><span class="o">*</span><span class="n">pPacket</span><span class="p">);</span><span class="w"> </span><span class="c1">// pass data to process (non-multithread)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>set rpt module</p></li>
+</ul>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="c1">// check if completed. If yes, set up SRTP module.</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">m_dtlsHandle</span><span class="p">.</span><span class="n">IsDtlsCompleted</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">WCB_INFO</span><span class="p">(</span><span class="s">&quot;CWCBPeerConnection::OnReceiveRawData,&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"></span>
+<span class="w">           </span><span class="s">&quot; DTLS-SRTP Completed. Retrieve the master key&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">string</span><span class="w"> </span><span class="n">clientDtlsMasterKey</span><span class="p">,</span><span class="w">  </span><span class="n">serverDtlsMasterKey</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">m_dtlsHandle</span><span class="p">.</span><span class="n">GetDtlsMasterKey</span><span class="p">(</span><span class="n">clientDtlsMasterKey</span><span class="p">,</span><span class="w">  </span><span class="n">serverDtlsMasterKey</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">m_srtpHandle</span><span class="p">.</span><span class="n">Init</span><span class="p">(</span><span class="n">clientDtlsMasterKey</span><span class="p">,</span><span class="w"> </span><span class="n">serverDtlsMasterKey</span><span class="p">,</span><span class="w"> </span><span class="n">m_userId</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<ul>
+<li><p>create SRTP receiver</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>see <cite>int CWCBSrtpHandle::CreateSRTPReceiver(string &amp;masterKey)</cite></p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>create</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>see <cite>int CWCBSrtpHandle::CreateSRTPSender(string &amp;masterKey)</cite></p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>decrypt SRTP data</p></li>
+</ul>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// ----------------- Handle the RTP data ------------------</span>
+<span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">BYTE</span><span class="w">     </span><span class="n">FIRST_RTCP_CONFLICT_PAYLOAD_TYPE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">64</span><span class="p">;</span><span class="w"></span>
+<span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">BYTE</span><span class="w">     </span><span class="n">LAST_RTCP_CONFLICT_PAYLOAD_TYPE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">95</span><span class="p">;</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">CWCBSrtpHandle::DecryptRtpData</span><span class="p">(</span><span class="n">u8</span><span class="w"> </span><span class="o">*</span><span class="n">pInRtp</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">&amp;</span><span class="n">inLen</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="o">&amp;</span><span class="n">bRtcp</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">WCB_ON_ERR</span><span class="p">(</span><span class="n">m_srtp_recv</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;CWCBSrtpHandle::DecryptRtpData, SRTP engine not created&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">-1</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">m_countRecvRtp</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// check error and print</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">inLen</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">12</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">pInRtp</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">m_countRecvRtpError</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">WCB</span><span class="o">::</span><span class="n">MAX_INIT_TRACE_SIZE</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">m_countRecvRtpError</span><span class="o">%</span><span class="mi">100</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">WCB_ERR</span><span class="p">(</span><span class="s">&quot;CWCBSrtpHandle::DecryptRtpData,&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"></span>
+<span class="w">              </span><span class="s">&quot; Wrong RTP header, &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"></span>
+<span class="w">              </span><span class="s">&quot; packet length = &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">inLen</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"></span>
+<span class="w">              </span><span class="s">&quot; pData = &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">pInRtp</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"></span>
+<span class="w">              </span><span class="s">&quot; m_countRecvRtpError = &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">m_countRecvRtpError</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"></span>
+<span class="w">              </span><span class="s">&quot; m_countRecvRtpError turn-around = &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">m_countRecvRtpErrorRound</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">m_countRecvRtpError</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">WCB_ERROR</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">m_countRecvRtp</span><span class="o">%</span><span class="mi">5000</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">m_countRecvRtpError</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">m_countRecvRtpErrorRound</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// check if RTP or RTCP</span>
+<span class="w">  </span><span class="n">bRtcp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">u8</span><span class="w"> </span><span class="n">payloadType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pInRtp</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">payloadType</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0x80</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">u8</span><span class="w"> </span><span class="n">plt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">payloadType</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0x7F</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">plt</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">FIRST_RTCP_CONFLICT_PAYLOAD_TYPE</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"></span>
+<span class="w">       </span><span class="n">plt</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">LAST_RTCP_CONFLICT_PAYLOAD_TYPE</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// RTCP</span>
+<span class="w">      </span><span class="n">bRtcp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// decrypt it in-place with the new length retured</span>
+<span class="w">  </span><span class="n">srtp_err_status_t</span><span class="w"> </span><span class="n">status</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bRtcp</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">srtp_unprotect_rtcp</span><span class="p">(</span><span class="n">m_srtp_recv</span><span class="p">,</span><span class="w"> </span><span class="n">pInRtp</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">inLen</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">srtp_unprotect</span><span class="p">(</span><span class="n">m_srtp_recv</span><span class="p">,</span><span class="w"> </span><span class="n">pInRtp</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">inLen</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">status</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">status</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">srtp_err_status_replay_fail</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// NACK for duplicated retransmission may cause srtp_err_status_replay_fail failure</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">m_countRecvRtpError</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">WCB</span><span class="o">::</span><span class="n">MAX_INIT_TRACE_SIZE</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">m_countRecvRtpError</span><span class="o">%</span><span class="mi">100</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">WCB_ERR</span><span class="p">(</span><span class="s">&quot;CWCBSrtpHandle::DecryptRtcp: srtp-rtp decryption m_countRecvRtpError = &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">m_countRecvRtpError</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"></span>
+<span class="w">              </span><span class="s">&quot; failure with error code= : &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">status</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">m_countRecvRtpError</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">status</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="wcb_client.html" class="btn btn-neutral float-left" title="WCB Client" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="wcb_ice.html" class="btn btn-neutral float-right" title="Thin Client ICE" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Walter Fan.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

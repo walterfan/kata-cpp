@@ -1,0 +1,198 @@
+###################
+ClientSession
+###################
+
+
+Overview
+=====================
+
+
+
+Main Flow
+=====================
+
+start session
+---------------------
+
+1) aplImpl.manageSessionImpl
+
+2) aplImpl._handleStartSession
+
+3) mediaCC.startVOIP
+mediaCC.startVideo
+mediaCC.startMyVideo
+mediaCC.startSharing
+
+
+.. code-block::
+
+
+
+    me.session = new ClientSession(PduDefines.MM_SESSION_TYPE.MM_SESSION_TYPE_VIDEO, this, dcParam);
+
+    sendTeletry('start_video_session')
+
+
+4) clientSession.JoinSession
+
+* joinMCC
+
+
+.. code-block::
+
+    this.m_MCCConnection.Open(..., OnReceive, OnError)
+
+    self.sendTelemetry('join_mcc_media_session_success', ...)
+
+
+* joinMCS
+
+.. code-block::
+
+      self.SetSequence(seqid);
+
+      self.JoinMCSSession(strMCSAddr, port, PduDefines.MM_SESSION_TRANSPORT_TYPE.MM_SESSION_TRANSPORT_TYPE_MCS_COMMAND);
+
+
+
+5) clientSession.JoinMCSSession
+
+.. code-block::
+
+    tMCSConnection.Open({ ... }, OnReceive, OnError, OnClose,
+
+    OnOpen: function (aResult, aTransportType) {
+                self.m_logger.info("MCS OnOpen, aResult:", aResult, "aTransportType:", aTransportType, "sessionType:", self.m_cSessionType);
+                if (aTransportType === PduDefines.MM_SESSION_TRANSPORT_TYPE.MM_SESSION_TRANSPORT_TYPE_MCS_COMMAND) {
+                    self.sendJoinRequest();
+                }
+            }
+    );
+
+
+5) clientSession.sendJoinRequest
+
+
+6) clientSession.OnMCSSessionJoin
+
+
+7) clientSession.OnSessionJoin
+
+8) mediacc..OnSessionJoin
+
+    call OnSessionJoinEx if mediaType is sharing
+
+
+9) mediacc._handleSessionJoinSuccess
+
+* setup the turn server
+
+.. code-block::
+
+    me.mediaCmsc.updateSessionConfig("iceServer", ...);
+    me.mediaCmsc.updateSessionConfig("useUfragChar", ...);
+    me.mediaCmsc.updateSessionConfig("bundle", ...);
+
+    me.mediaCmsc.setupSession({video: isVideo, disableCapture: disableCapture},.. me._onCmscSetupSessionCallback
+
+
+10) mediacc.startConnection
+
+.. code-block::
+
+    var ret = me.mediaCmsc.manageSession("start", mediaParam, function (success, result) {
+        me._onCmscManageSessionCallback(success, result);
+
+    });
+
+
+11) mediacc._onCmscManageSessionCallback
+
+    reconnect if not success
+
+
+refer to cmsc_api
+
+Main Methods
+=====================
+
+* _init = function (cType, pSink, dcParam)
+* JoinSession = function (strMCCAddress, wPort, cEncryptType, // 0: no encrypt, 1: webex encrypt, 2: ssl.
+* findViewOnlyMcc = function (joinMCC, normalMcc)
+* LeaveSession = function (SessionID, dwReason)
+* resetSessionConnection = function ()
+* clearSessionInfo = function ()
+* _isRealMultiStreamSupported = function ()
+* JoinMCSSession = function (strMCSAddress, aPort, aTransportType)
+* SendChannelJoinRequestEx = function (ChannelID, bIsSrc)
+* sendJoinRequest = function ()
+* SendLeaveSessionRequest = function (SessionID, dwReason)
+* SendSubscribeVideoSize = function (dwSessionID, dwSubscriberID, dwSourceID, dwChannelID, dwVideoSize, peerId, CSI)
+* SendVideoBroadCastStatus = function (on)
+* sendAsAudioCSIPairPdu = function (dwSlideAudioCSI, dwTelephoneAudioCSI)
+* sendAsBroadcastStatus = function (infoArray)
+* sendShareType = function (info)
+* SendRtcpPacket = function (rtcp_data)
+* SendTPActiveVideoUser = function (SenderID, ActiveUserID, ForwardByServer, DummyUserID)
+* SendTPNonVideoActiveVideoPdu = function (nonVideoActiveUseID, bForwardByServer, dwReserved)
+* SendTPActiveVideoLockedStatusPdu = function (ActiveUseID, bLocked, bForwardByServer, dwReserved)
+* SendAsTahoeInfo = function (dwSenderId, wCodecType, strTahoeMacc, strTahoeConfId, strTahoeSubConfId, strMcsVoipId)
+* SendTahoeInfo = function (SenderID, szTahoeIP, szConfID, szSubConfID, ulReserved)
+* SendChannelJoinRequest = function (SessionID, ChannelID, UserID, confid, bIsSrc)
+* SendChannelLeaveRequest = function (SessionID, ChannelID, UserID, confid, dwReason)
+* SendVideoCapabilityPDU = function (dwUserID, dwMaxWidth, dwMaxHeight, dwMaxFPS, dwReserved, bForwardByServer)
+* SendCommand = function (ID, cSendType, dwLength, lpData, wNeedRecord)
+* ChangeRole = function (dwRole)
+* SetUserInfo = function (UserInfo)
+* SetTicket = function (strTicket)
+* SetSequence = function (wSequence)
+* GetClientVersion = function ()
+* GetSessionType = function ()
+* OnMCSSessionJoin = function (sjResponse)
+* OnMCSSessionJoinV2 = function (sjResponse)
+* OnMCSSessionLeaveResp = function (slResponse)
+* OnMCSChannelJoin = function (sjResponse)
+* OnMCSChannelLeave = function (sjResponse)
+* OnMCSChannelChange = function (sjResponse)
+* OnMCSRosterChange = function (rcResponse)
+* OnMCSKeepaliveReceive = function (type)
+* onServerCmscMsg = function (cmscMsgPdu)
+* onServerCmscMedia = function (rtpDataPdu)
+* OnMCSEncryptInfoEx = function (pduSessionServerEncryptInfoEx)
+* OnMCSRejectUserReceived = function (aData)
+* OnMCSCommandReceive = function (cmResponse)
+* OnSessionJoin = function (aResult, aError, sessionID, userID, serverVersion, isWCBEnabled)
+* OnSessionLeave = function (aReason, aError, sessionID)
+* CreateXMLHttpRequest = function ()
+* CreateHTTPRequest = function ()
+* CreateWSRequest = function (transportType)
+* CreateURLRequest = function (strType, transportType)
+* sendKeepAliveRequest = function (nCode)
+* IsMCSSessionJoined = function ()
+* sendServerCmscMsg = function (cmscMsg)
+* sendServerCmscMedia = function (cmscMedia, isAudio, peerId)
+* SendMuteMicInfo = function (muteInfoList, cUserCount, dwSenderId)
+* sendNBRStatus = function (NBRStatus)
+* sendStartNBRCommand = function (senderId, info)
+* sendStopNBRCommand = function (senderId, info)
+* sendVideoRecordSize = function (senderId, videoSize)
+* sendVideoBillingStatus = function (senderId, billingTrueFalse)
+* sendTelemetry = function (eventType, report)
+* updateTelephoneCSI = function (teleCSI, userId, sessionId, dwRole)
+
+
+
+ArmClientSession
+======================================
+
+main methods
+--------------------------------------
+
+* _init = function (cType, pSink)
+* JoinSession = function (sessionParam)
+* OnReceive = function (data, status)
+* SendData = function(data)
+* sendServerCmscMsg = function (cmscMsg)
+* LeaveSession = function ()
+* sendKeepAliveRequest = function (nCode)
+* sendNBRStatus = function (NBRStatus, setNBRStatusObj)

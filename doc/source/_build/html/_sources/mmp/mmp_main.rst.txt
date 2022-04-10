@@ -1,0 +1,151 @@
+#####################
+MMP Main Flow
+#####################
+
+.. contents::
+    :local:
+
+
+Overview
+=====================
+
+
+.. code-block::
+
+    //1. Read configuration webex.cfg
+    nodeType: AWS | Cloud
+
+    //2. AudioNoticeFileMgr.Initialize
+
+    //3. Initialize CI Provider
+
+    //4. Initialize Thread Pool
+
+    //5. Wqos::BandwidthControl_Init
+
+    //6. initialize rtsp serve
+    CRtspComponent as m_pRtspServer, sink is MediaServer
+    m_pRtspServer->Initialize(…)
+
+    //7. Initialize m_pStreamingSession
+        m_pStreamingSession = new CAudioStreamingSession(m_pRtspServer.ParaIn());
+
+    //8. create timer to detect MCS CPU info and crate timer to detect conf which stop
+
+    //9. rv = CAudioStreamingAcceptorManager::Instance().Initialize(m_strStreamIP.c_str(), m_wStreamingRtpPort, m_wStreamingRealRtpPort);
+
+    //10. listen tcp and udp ports
+          [wws  Fc]                                                    aUdpAddr,
+                                                    aTcpAddrEx,
+                                                    this,
+                                                    this);
+
+    //11. initialize srtp library
+
+    //12. Listen port for MCT monitor of KM
+    //CHttpService::Instance()->InitLog(this);
+
+
+main classes
+=====================
+
+
+CMmServerSessionAPI
+---------------------------------
+
+listen TCP and UDP addree
+
+methods
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* CMediaServer::Initiatilize
+
+* CMmServerSessionAPI::ListenContorlAndDataAddr
+
+   CMmServerSessionAPI::ListenContorlAndDataAddr,
+   aTcpAddr.ip=10.224.82.98 aTcpAddr.port=80
+   aUdpAddr.ip=10.224.82.98 aU dpAddr.port=9000
+   aTcpAddrEx.ip=10.224.82.98 aTcpAddrEx.port=5004
+   aJoinSink=0x2509d60 MmServerSessionApi.cpp:38
+
+
+CMmSessioinServerAcceptor
+---------------------------------
+
+.. code-block:: c++
+
+    class CMmSessionServerAcceptor
+        : public ICmEvent
+        , public ICmAcceptorConnectorSink
+        , public ICmChannelServerSink
+        , public ICmTransportSink
+        , public IHttpConnectAndReceiveSink
+        , public CCmTimerWrapperIDSink
+    {
+        public:
+            CMmSessionServerAcceptor(
+                const CCmInetAddr &aTcpAddr,
+                const CCmInetAddr &aUdpAddr,
+                const CCmInetAddr &aTcpAddrEx,
+                ACmThread *aThreadNetwork,
+                ACmThread *aThreadUser);
+
+        private:
+            CCmComAutoPtr<ICmAcceptor> m_pTcpAcceptor;
+            CCmComAutoPtr<ICmAcceptor> m_pTcpAcceptorEx;
+            CCmComAutoPtr<ICmAcceptor> m_pUdpAcceptor;
+            CCmComAutoPtr<ICmChannelServerAcceptor> m_pWebSocketAcceptor;
+
+            CCmInetAddr m_AddrTcp;
+            CCmInetAddr m_AddrTcpEx;
+            CCmInetAddr m_AddrUdp;
+            CCmInetAddr m_AddrWebSocket;
+            ACmThread *m_pThreadNetwork;
+            ACmThread *m_pThreadUser;
+
+            typedef std::set<ICmTransport*> PendingTransportsType;
+            PendingTransportsType m_PendingTransports;
+            CDataTransferHelper m_aHelper;
+
+            CM_THREAD_ID m_networkThreadId;
+
+            // for MCS support Restful API
+            CCmComAutoPtr<IMmAgent>                     m_pAgent;
+
+            // ----- Functions for Thin Client ----------
+         public:
+            CmResult DispatchTurnServerBindRequest(CMmServerTurnServer* pTurnServer, std::string &strUserName,
+                bool bForced, bool bTurn);
+
+            static CmResult HandleUserJoinSession(CCmMessageBlock &aData,
+                                                  BYTE aPduType,
+                                                  ICmTransport *aTrptId,
+                                                  CMmSessionServerEndPoint *aEndPoint,
+                                                  CAuthTicketFormat* pFormat = NULL,
+                                                  CAuthTicketAttributes* pAttrib = NULL);
+
+         private: // for WebRtc TURN servers
+            // the manager will create, delete and manage the TURN/STUN servers.
+            // The actual TURN/STUN messages are hanled in TURN/STUN server.
+            CMmServerTurnServerMgr m_turnServerMgr;
+            CMmWorkThreadDispatcher m_WorkThreadDispatcher;
+
+            ReJoinSessionReqList m_ReJoinSessionReqs;
+
+            friend class CHttpConnectAndReceiveRspEvent;
+            friend class CDispatchUserJoinEvent;
+
+            CCmTimerWrapperID					m_WaitTimer;
+            DWORD m_RecvPDUNum;
+            DWORD m_TimeoutNum;
+            DWORD m_OtherReasonNum;
+    };
+
+
+CWCBAvatar
+---------------------
+
+CWCBControl
+----------------------
+
+CWCBTimerService
+----------------------

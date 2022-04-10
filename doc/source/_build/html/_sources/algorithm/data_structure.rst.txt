@@ -1,0 +1,114 @@
+######################
+Data Structure
+######################
+
+.. contents::
+   :local:
+
+
+
+Overview
+==============
+
+* 算法复杂性： Big O
+* 排序算法的比较，稳定性
+* 哈希表的实现
+
+
+容器
+======================================
+* array
+* list
+* stack
+* queue
+* set
+  - HashSet
+  - TreeSet
+* map
+  - HashMap
+  - TreeMap
+
+
+线程安全容器
+======================================
+* Concurrent container
+
+
+
+
+FAQ
+======================================
+
+Fibonacci  递归与非递归方式的不同算法复杂度
+-----------------------------------------------
+* While Loop
+  
+  - Time complexity: O(N)
+  - Space complexity: Constant
+  - Time needed: 0.000001ms
+
+* Recursion
+  
+  - Time complexity: O(2^N)
+  - Space complexity: O(n)
+  - Time needed: 176.742ms
+
+
+.. code-block:: c++
+
+   using namespace std;
+ 
+   int fib(int n)
+   {
+      if (n <= 1)
+         return n;
+      return fib(n-1) + fib(n-2);
+   }
+   
+   int fib2(int n)
+   {
+      int number1 = 0;
+      int number2 = 1;
+      int next = 1;
+   
+      for (int i = 0 ; i < n-1 ; ++i)
+      {
+         next = number1 + number2;
+         number1 = number2;
+         number2 = next;
+      }
+      return next;
+   }
+
+   int main ()
+   {
+      int n = 9;
+      cout << fib(n);
+      getchar();
+      return 0;
+   }
+
+如何利用 stack 来解析算法表达式？
+--------------------------------------
+
+
+红黑树有什么特点，为什么能快速检索？
+--------------------------------------
+
+它是一种自平衡的二叉树，根节点是黑色的，叶子节点是黑色的
+
+
+B-Tree有什么特点，，为什么能快速检索和个性？
+---------------------------------------------------------------------------------
+
+
+Graph 的存储方式和遍历，应用在哪里？
+--------------------------------------
+* 邻接表，邻接矩阵
+* 遍历
+* 最短路径
+
+
+哈夫曼算法为什么能用来压缩，如何构造哈夫曼树？
+----------------------------------------------------
+

@@ -1,0 +1,33 @@
+#################
+Audio Manager
+#################
+
+* Initialize()  由serviceMgr 调用。初始化模块
+* _onAudioUserSpeaker（）由hybridData 消息触发，模拟active video 消息
+* onMeetingLock（） 由serviceMgr 消息触发，处理video 在会议lock/unlock条件下的标志位。
+* onOndemandServiceReady（）由serviceMgr 消息触发，conf join 成功或user 被admit的情况下触发。订阅video模块的各种消息。
+* onVideoChannelChange（）由CMSC 模块触发，处理接收video data的状态，参数格式为{peerid：status}，根据UI的需求，转化格式{nodeid：status}。Status=0，收不到数据，status=1，数据正常。
+* onSessionFailover（）由videocc 模块触发，failover 开始。
+* on_session_create（）由CB 触发，说明video session 已被创建。
+* enrollSession（）join video session。
+* on_session_close（）由CB 触发，说明video session 已被关闭。
+* onVideoSessionJoinSuccess（）由videocc 模块触发，join video session成功。
+* _videoItemInfo = {peerid：videoElem} // videoElem – video标签
+* _peerIdStatusMap  = {peerid: status} // status – 0 未使用，1 已使用
+* _nodeIdMap = {nodeid：peerid}
+* onVideoSessionJoinFail（）由videocc 模块触发，failover 失败。
+* onVideoSessionLeave（）由videocc 模块触发，离开video session。
+* onVideoActiveNotify（）由CB 触发，通知UI，who is active video user。
+* Locked = 0,没有lock；locked = 1，lock active video；locked = 2，TP lock
+* onVideoSourceStatusUpdate（）由MCS触发，通知某个user 处于send video 状态。
+* onVideoUserJoin（）由MCS触发，通知哪些user join video session里面。
+* onVideoUserLeave（）由MCS触发，通知哪些user leave video session。
+* subscribeActiveVideo（）如果订阅active video user 不是server 通知的那个，需要转向调用subscribeVideo 接口
+* getSelectVideoItem（）根据参数，返回 UI需要的video tag和peerid。
+* subscribeOthersVideo（）订阅非active video user。
+* unsubscribeActiveVideo（）取消订阅active video user
+* unsubscribeOthersVideo（）取消订阅非active video user
+* _selectActiveNodeId（）选择active video user，如果video lock，选择被lock的user；如果只有两个user，互相对看；如果自己是active user，则选择上一个active user。其余情况，选择CB 通知的active user。
+
+UI <–> videoMgr <-> video <-> videocc <-> clientSession
+							<-> Cmsc 

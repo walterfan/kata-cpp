@@ -1,0 +1,130 @@
+############################
+CMSC Connection Monitor
+############################
+
+
+.. contents::
+    :local:
+
+Overview
+============================
+
+Three Timers
+
+1. ClientMediaStats	5s
+
+.. code-block::
+
+    triggered by gotIceConnectionChange
+
+    → cmsc.sessionMgr.onMediaMgrMessage
+
+    → cmsc.mediamgr.startCheckStatsFromPC
+
+    → cmsc.mediamgr.getStatsFromPC
+
+    → connectionMonitor.reportStats, selectStats, fillRtp, fillRemoteRtp
+
+    → connectionMonitor.updateStatsHistory
+
+       → updateCommonData → updateNCopy
+    → updateRtpData → updateNCopy
+
+    refer to:
+
+    cmsc.mediaMgr.startCheckStatsFromPC
+
+    setInterval for getStatsFromPC every 5s
+
+    note: function updateNCopy process the curData and prevData, minus and copy...
+
+2.	reportMetricsTimerId	5s
+
+.. code-block::
+
+    tiggered by onMediaMgrMessage(...EVENT_MSG_SESSION_STARTED) by gotIceConnectionChange
+
+    startReportMetrics
+
+    → reportMetrics
+
+    firstly, sumComm for MQE and mediaStats
+
+    for every peerConnection, then
+
+    updateTransport
+    updateData(false, peerId, showForced, showStats, stats, svrStats);
+    updateData(true, peerId, mqeForced, mqe, stats, svrStats);
+    then
+
+    metricsForced && metricsComplete(); // record every 10s
+    mqeForced && mqeComplete(); // record every 60s
+
+
+Question
+====================================
+定时器之间的协调
+
+.. code-block::
+
+        // delay 1/2 of stats report timer period to get the whole peerConnections stats
+        // (to refine it to use a half of STATS_REPORT_INTERVAL_ms periodic to use ready flag in getStats...)
+        this.getStatsHalfTimeTimerId = setTimeout(function () {
+            connMonitor.getStatsHalfTimeTimerId = 0;
+            connMonitor.reportMetricsTimerId = setInterval(function () {
+                connMonitor.reportMetrics(server);
+            }, connMonitor.STATS_REPORT_INTERVAL_ms/2);
+        }, connMonitor.STATS_REPORT_INTERVAL_ms/2 );
+
+
+
+
+reportStats
+============================
+
+It is Called from mediaMgr with stats from each peerConnections.
+This function parses the statistics data retrieved from the peerConnection and process the data accordingly.
+The data got here are in the common formats When a specific data are not available, it is set to "underfined"
+
+
+
+* reportStats -> selectStats ->
+* ConnectionMonitor.selectStats -- 从 WebRTC 的 PeerConnection 中取出 Statistics
+* ConnectionMonitor.fillRtp
+
+
+data structure
+==========================
+
+* statsCached
+* statsReported
+
+session type
+===========================
+
+* main audio
+
+* sharing audio
+
+* main video: Camera-Source Video
+
+* sharing video: Screen-Source Video
+
+
+
+
+Main methods
+===============================
+
+
+selectStats
+-------------------------------
+
+
+getTransport
+--------------------------------
+
+
+Main Structure
+================================
+

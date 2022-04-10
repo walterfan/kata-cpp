@@ -1,0 +1,49 @@
+#################
+Signal Manager
+#################
+
+
+SignalManager
+=================
+
+.. code-block::
+
+   SessionManaer -> SignalManager: onLocalMsg
+   SignalManager -> SignalManager: createSignalSession
+   SignalManager -> Roap: new
+
+setup ROAP when _onRemoteMsg or _onLocalMsg
+
+.. code-block:: javascript
+
+    function createSignalSession(serverDest, peerId) {
+
+        if (this.cmsc._sessionConfig.signalProtocol === "roap") {
+            var roap = new Cmsc.Roap(this,
+                onRemoveRoap.bind(this, peerId),
+                onSendLocalMsg.bind(this, serverDest, peerId),
+                onSendRemoteMsg.bind(this, serverDest));
+
+            var config = this.cmsc._sessionConfig;
+            var token = config.siteId+ ":" +config.nodeId + ":" +
+                        config.conferenceId + ":" + config.sessionId;
+            roap.setSessionToken(token);
+            this._trace.log("signalMgr.createSignalSession: serverDest:", serverDest,
+                " success with peerId:", peerId, ", roap instance id:", roap.instanceId);
+
+            return roap;
+        }
+    //...
+    }
+
+    /**
+     * Roap constructor
+     * @param ctx - signalMgr
+     * @param removeMeCb - roap instance need be removed in this callback
+     * @param sendLocalCb - roap will call this callback to send local updates
+     * @param sendRemoteCb - roap will call this callback to send message to remote side
+     * @private
+     */
+    Roap.prototype._init = function(ctx, removeMeCb, sendLocalCb, sendRemoteCb) {
+    //...
+    }

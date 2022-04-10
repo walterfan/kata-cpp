@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CMSC API &mdash; A Programmer Prepares 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="CMSC Connection Monitor" href="cmsc_connection_monitor.html" />
+    <link rel="prev" title="CMSC" href="cmsc.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> A Programmer Prepares
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">论程序员的自我修养</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interview.html">程序员面试要点</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resume.html">Resume</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithm/index.html">Algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../language/index.html">Programming Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../library/index.html">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oss/index.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html">mathematics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#overview">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#least-squares-method">最小二乘法 least squares method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pattern/index.html">Pattern</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/index.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool/index.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mmp/index.html">MMP</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Thin Client</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="app_share.html">Application Share</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audio_mgr.html">Audio Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audio_443.html">Audio over 443</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_to.html">How to</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocols.html">Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qos.html">QoS</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="cmsc.html">CMSC</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">CMSC API</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#components">Components</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#congestion-control">Congestion Control</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#contansts">Contansts</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cmsc_connection_monitor.html">CMSC Connection Monitor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cmsc_roap.html">Thin Client ROAP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cmsc_session_mgr.html">CMSC Session Manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cmsc_signal_mgr.html">Signal Manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cmsc_mediamgr.html">CMSC MediaMgr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cmsc.html#overview">Overview</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc_asm.html">CMSC ASM media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc_flowrtp.html">CMSC Flow RTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc_MediaEngInst.html">Media Engine Instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc_connection_monitor.html">CMSC Connection Monitor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cscc.html">CSCC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cscc_api.html">CSCC API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cscc_clientsession.html">ClientSession</a></li>
+<li class="toctree-l2"><a class="reference internal" href="metrics.html">Thin Client Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wca.html">Web Client Agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb.html">Web Client Bridge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_client.html">WCB Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_dtls.html">WCB DTLS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_ice.html">Thin Client ICE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_message.html">WCB message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_mqe.html">MQE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_sdp.html">WCB SDP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_rtp.html">WCB RTP module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_source.html">WCB source structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_flowrtp.html">WCB Flow RTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_media_stats.html">Media Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="web_client_bridge.html">Web Client Bridge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disciplines_on_code_development.html">Disciplines on Code Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#overall">Overall</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#feature">Feature</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#reference">Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../utiltp/index.html">UTILTP</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">A Programmer Prepares</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Thin Client</a> &raquo;</li>
+          <li><a href="cmsc.html">CMSC</a> &raquo;</li>
+      <li>CMSC API</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/thinclient/cmsc_api.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="cmsc-api">
+<h1>CMSC API<a class="headerlink" href="#cmsc-api" title="Permalink to this headline"></a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline"></a></h2>
+<p>refer to <a class="reference external" href="https://confluence-eng-gpk2.cisco.com/conf/display/~yafan/2020/11/26/CSCC+and+CMSC">https://confluence-eng-gpk2.cisco.com/conf/display/~yafan/2020/11/26/CSCC+and+CMSC</a></p>
+<section id="major-apis">
+<h3>4 Major APIs<a class="headerlink" href="#major-apis" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>setupSession()  – for Media Setup and callback event</p></li>
+<li><p>ManageSession() – for PeerConnection setup</p></li>
+<li><p>ControlMedia()  – for mute/unmute, preview, etc.</p></li>
+<li><p>closeSession()</p></li>
+</ul>
+</section>
+<section id="interface">
+<h3>Interface<a class="headerlink" href="#interface" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>Asynchronous callback for service request/ management</p></li>
+<li><p>Event notification for progress status update</p></li>
+<li><p>implement “Promise” as needed</p></li>
+</ul>
+</section>
+</section>
+<section id="components">
+<h2>Components<a class="headerlink" href="#components" title="Permalink to this headline"></a></h2>
+<section id="sessionmgr">
+<h3>sessionMgr<a class="headerlink" href="#sessionmgr" title="Permalink to this headline"></a></h3>
+</section>
+</section>
+<section id="congestion-control">
+<h2>Congestion Control<a class="headerlink" href="#congestion-control" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>NACK/FB</p></li>
+<li><p>REMB</p></li>
+<li><p>RTCP SR/RR</p></li>
+</ul>
+<section id="algorithms">
+<h3>Algorithms<a class="headerlink" href="#algorithms" title="Permalink to this headline"></a></h3>
+<section id="client-as-sender">
+<h4>Client as sender<a class="headerlink" href="#client-as-sender" title="Permalink to this headline"></a></h4>
+<p>According to UDP PDR(Packet Drop Rate), UP or down a level</p>
+<ol class="arabic simple">
+<li><p>90p:  64 kpbs</p></li>
+<li><p>180p: 256 kpbs</p></li>
+<li><p>320p: 768 kpbs</p></li>
+<li><p>720p: 1920 kpbs</p></li>
+</ol>
+</section>
+</section>
+</section>
+<section id="contansts">
+<h2>Contansts<a class="headerlink" href="#contansts" title="Permalink to this headline"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Cmsc</span><span class="o">.</span><span class="n">prototype</span><span class="o">.</span><span class="n">constantDef</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="o">//</span> <span class="n">audio</span> <span class="n">track</span>
+    <span class="n">MIN_AUDIO_TRACK</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">MAX_AUDIO_TRACK</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="n">DEFAULT_AUDIO_TRACK</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+
+
+    <span class="o">//</span> <span class="n">audio</span> <span class="n">codec</span>
+    <span class="n">AUDIO_CODEC_NONE</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">AUDIO_CODEC_OPUS</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">AUDIO_CODEC_G711</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">AUDIO_CODEC_G722</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+
+    <span class="o">//</span> <span class="n">video</span> <span class="n">track</span>
+    <span class="n">MIN_VIDEO_TRACK</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">MAX_VIDEO_TRACK</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
+    <span class="n">DEFAULT_VIDEO_TRACK</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
+    <span class="n">MAX_VIDEO_RECEIVE_BITRATE</span><span class="p">:</span> <span class="mi">1536000</span><span class="p">,</span>
+
+    <span class="o">//</span> <span class="n">send</span> <span class="n">video</span> <span class="n">track</span>
+    <span class="n">MIN_EXTRA_VIDEO_TRACK</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">MAX_EXTRA_VIDEO_TRACK</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="n">EXTRA_DEFAULT_VIDEO_TRACK</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span>
+    <span class="n">EXTRA_DEFAULT_VIDEO_TRACK_BITRATES</span><span class="p">:[[</span><span class="mi">768000</span><span class="p">],[</span><span class="mi">64000</span><span class="p">,</span> <span class="mi">768000</span><span class="p">],[</span><span class="mi">64000</span><span class="p">,</span> <span class="mi">196000</span><span class="p">,</span> <span class="mi">768000</span><span class="p">],[</span><span class="mi">64000</span><span class="p">,</span> <span class="mi">196000</span><span class="p">,</span> <span class="mi">576000</span><span class="p">,</span> <span class="mi">1536000</span><span class="p">]],</span>
+
+    <span class="n">DEFAULT_CAM_WIDTH</span><span class="p">:</span> <span class="mi">1280</span><span class="p">,</span>
+    <span class="n">DEFAULT_CAM_HEIGHT</span><span class="p">:</span> <span class="mi">720</span><span class="p">,</span>
+    <span class="n">DEFAULT_CAM_FRAMERATE</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+    <span class="n">DEFAULT_CAM_KEEPALIVE_FRAMERATE</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+
+    <span class="o">//</span> <span class="n">Receive</span> <span class="n">AS</span> <span class="n">video</span> <span class="n">track</span>
+    <span class="n">MIN_ASVIDEO_TRACK</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">MAX_ASVIDEO_TRACK</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">DEFAULT_ASVIDEO_TRACK</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">DEFAULT_ASVIDEO_TRACK_BITRATES</span><span class="p">:</span><span class="mi">1536000</span><span class="p">,</span>
+    <span class="n">MCSTYPE_HFRS_SHARING</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">MCSTYPE_HFRS_STATIC_SHARING</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+
+    <span class="o">//</span> <span class="n">sending</span> <span class="n">AS</span> <span class="n">video</span> <span class="n">Track</span>
+    <span class="n">MIN_EXTRA_ASVIDEO_TRACK</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">MAX_EXTRA_ASVIDEO_TRACK</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">EXTRA_DEFAULT_ASVIDEO_TRACK</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">EXTRA_DEFAULT_ASVIDEO_TRACK_BITRATES</span><span class="p">:</span><span class="mi">1536000</span><span class="p">,</span> <span class="o">//</span><span class="mi">1024000</span>
+    <span class="n">EXTRA_DEFAULT_ASVIDEO_TRACK_BITRATES_A</span><span class="p">:[[</span><span class="mi">1536000</span><span class="p">],[</span><span class="mi">768000</span><span class="p">,</span> <span class="mi">1536000</span><span class="p">]],</span> <span class="o">//</span><span class="p">[</span><span class="mi">720</span><span class="n">p</span><span class="p">],</span> <span class="p">[</span><span class="mi">360</span><span class="n">p</span><span class="p">,</span> <span class="mi">720</span><span class="n">p</span><span class="p">]]</span> <span class="n">array</span>
+    <span class="n">DEFAULT_ASVIDEO_SOURCE</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;screen&quot;</span><span class="p">],</span>
+    <span class="n">DEFAULT_ASVIDEO_WIDTH</span><span class="p">:</span> <span class="mi">1920</span><span class="p">,</span>
+    <span class="n">DEFAULT_ASVIDEO_HEIGHT</span><span class="p">:</span> <span class="mi">1080</span><span class="p">,</span>
+    <span class="n">DEFAULT_ASVIDEO_FRAMERATE</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+<span class="o">//...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="cmsc.html" class="btn btn-neutral float-left" title="CMSC" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cmsc_connection_monitor.html" class="btn btn-neutral float-right" title="CMSC Connection Monitor" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Walter Fan.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

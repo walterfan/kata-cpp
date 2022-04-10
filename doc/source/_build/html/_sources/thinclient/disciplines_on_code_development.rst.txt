@@ -1,0 +1,37 @@
+######################################
+Disciplines on Code Development
+######################################
+
+refer to https://wiki.cisco.com/display/PAN/Disciplines+on+Code+Development
+
+Disciplines
+==========================
+* Understandable
+
+Someone else can pick up the code and fi gure out its purpose and general approach without a walk-through by the original developer.
+
+* Intuitive
+
+Things in the code just seem to make sense, no matter how complex the operation.
+
+* Adaptable
+
+The code is written in such a way that variances in data don’t require a complete rewrite
+
+* Extendable
+
+Care has been given in the code architecture to allow extension of the core functionality in the future
+
+* Debuggable
+
+When something goes wrong, the code gives you enough information to identify the issue as directly as possible.
+
+
+
+
+Reference
+=============================
+
+* JS code style <https://google.github.io/styleguide/javascriptguide.xml>_
+
+* C++ code style <https://google.github.io/styleguide/cppguide.html>_

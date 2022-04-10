@@ -1,0 +1,18 @@
+OpenJDK
+====================
+
+Download
+--------------------
+
+http://hg.openjdk.java.net/jdk-updates/jdk11u
+
+select browse -> gz, then dowload and uncompress
+
+.. code-block::
+
+    configure --with-target-bits=64 --enable-ccache \
+    --with-jvm-variants=server  \
+    --with-boot-jdk=OpenJDK \
+    --with-boot-jdk-jvmargs="-Xlint:deprecation -Xlint:unchecked" \
+    --disable-warnings-as-errors \
+    --with-debug-level=slowdebug 2>&1 | tee configure_mac_x64.log

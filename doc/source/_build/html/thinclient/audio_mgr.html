@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Audio Manager &mdash; A Programmer Prepares 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Audio over 443" href="audio_443.html" />
+    <link rel="prev" title="Application Share" href="app_share.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> A Programmer Prepares
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">论程序员的自我修养</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interview.html">程序员面试要点</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resume.html">Resume</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithm/index.html">Algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../language/index.html">Programming Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../library/index.html">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oss/index.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html">mathematics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#overview">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#least-squares-method">最小二乘法 least squares method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pattern/index.html">Pattern</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/index.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool/index.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mmp/index.html">MMP</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Thin Client</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="app_share.html">Application Share</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Audio Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audio_443.html">Audio over 443</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_to.html">How to</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocols.html">Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qos.html">QoS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc.html">CMSC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc_asm.html">CMSC ASM media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc_flowrtp.html">CMSC Flow RTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc_MediaEngInst.html">Media Engine Instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc_connection_monitor.html">CMSC Connection Monitor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cscc.html">CSCC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cscc_api.html">CSCC API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cscc_clientsession.html">ClientSession</a></li>
+<li class="toctree-l2"><a class="reference internal" href="metrics.html">Thin Client Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wca.html">Web Client Agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb.html">Web Client Bridge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_client.html">WCB Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_dtls.html">WCB DTLS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_ice.html">Thin Client ICE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_message.html">WCB message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_mqe.html">MQE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_sdp.html">WCB SDP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_rtp.html">WCB RTP module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_source.html">WCB source structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_flowrtp.html">WCB Flow RTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_media_stats.html">Media Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="web_client_bridge.html">Web Client Bridge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disciplines_on_code_development.html">Disciplines on Code Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#overall">Overall</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#feature">Feature</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#reference">Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../utiltp/index.html">UTILTP</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">A Programmer Prepares</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Thin Client</a> &raquo;</li>
+      <li>Audio Manager</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/thinclient/audio_mgr.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="audio-manager">
+<h1>Audio Manager<a class="headerlink" href="#audio-manager" title="Permalink to this headline"></a></h1>
+<ul class="simple">
+<li><p>Initialize()  由serviceMgr 调用。初始化模块</p></li>
+<li><p>_onAudioUserSpeaker（）由hybridData 消息触发，模拟active video 消息</p></li>
+<li><p>onMeetingLock（） 由serviceMgr 消息触发，处理video 在会议lock/unlock条件下的标志位。</p></li>
+<li><p>onOndemandServiceReady（）由serviceMgr 消息触发，conf join 成功或user 被admit的情况下触发。订阅video模块的各种消息。</p></li>
+<li><p>onVideoChannelChange（）由CMSC 模块触发，处理接收video data的状态，参数格式为{peerid：status}，根据UI的需求，转化格式{nodeid：status}。Status=0，收不到数据，status=1，数据正常。</p></li>
+<li><p>onSessionFailover（）由videocc 模块触发，failover 开始。</p></li>
+<li><p>on_session_create（）由CB 触发，说明video session 已被创建。</p></li>
+<li><p>enrollSession（）join video session。</p></li>
+<li><p>on_session_close（）由CB 触发，说明video session 已被关闭。</p></li>
+<li><p>onVideoSessionJoinSuccess（）由videocc 模块触发，join video session成功。</p></li>
+<li><p>_videoItemInfo = {peerid：videoElem} // videoElem – video标签</p></li>
+<li><p>_peerIdStatusMap  = {peerid: status} // status – 0 未使用，1 已使用</p></li>
+<li><p>_nodeIdMap = {nodeid：peerid}</p></li>
+<li><p>onVideoSessionJoinFail（）由videocc 模块触发，failover 失败。</p></li>
+<li><p>onVideoSessionLeave（）由videocc 模块触发，离开video session。</p></li>
+<li><p>onVideoActiveNotify（）由CB 触发，通知UI，who is active video user。</p></li>
+<li><p>Locked = 0,没有lock；locked = 1，lock active video；locked = 2，TP lock</p></li>
+<li><p>onVideoSourceStatusUpdate（）由MCS触发，通知某个user 处于send video 状态。</p></li>
+<li><p>onVideoUserJoin（）由MCS触发，通知哪些user join video session里面。</p></li>
+<li><p>onVideoUserLeave（）由MCS触发，通知哪些user leave video session。</p></li>
+<li><p>subscribeActiveVideo（）如果订阅active video user 不是server 通知的那个，需要转向调用subscribeVideo 接口</p></li>
+<li><p>getSelectVideoItem（）根据参数，返回 UI需要的video tag和peerid。</p></li>
+<li><p>subscribeOthersVideo（）订阅非active video user。</p></li>
+<li><p>unsubscribeActiveVideo（）取消订阅active video user</p></li>
+<li><p>unsubscribeOthersVideo（）取消订阅非active video user</p></li>
+<li><p>_selectActiveNodeId（）选择active video user，如果video lock，选择被lock的user；如果只有两个user，互相对看；如果自己是active user，则选择上一个active user。其余情况，选择CB 通知的active user。</p></li>
+</ul>
+<dl class="simple">
+<dt>UI &lt;–&gt; videoMgr &lt;-&gt; video &lt;-&gt; videocc &lt;-&gt; clientSession</dt><dd><p>&lt;-&gt; Cmsc</p>
+</dd>
+</dl>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="app_share.html" class="btn btn-neutral float-left" title="Application Share" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="audio_443.html" class="btn btn-neutral float-right" title="Audio over 443" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Walter Fan.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

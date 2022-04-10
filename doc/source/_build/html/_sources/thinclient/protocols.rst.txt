@@ -1,0 +1,702 @@
+###################
+Protocol
+###################
+
+.. contents::
+    :local:
+
+1. RTCWeb Offer/Answer Protocol (ROAP)
+========================================================
+
+https://tools.ietf.org/html/draft-jennings-rtcweb-signaling-01
+
+      RTCWeb Offer/Answer Protocol (ROAP)
+       draft-jennings-rtcweb-signaling-01
+
+2. Javascript Session Establishment Protocol (JSEP)
+========================================================
+
+https://tools.ietf.org/html/draft-ietf-rtcweb-jsep-26
+
+    JavaScript Session Establishment Protocol
+    draft-ietf-rtcweb-jsep-26
+
+
+3. Session Traversal Utilities for NAT (STUN), rfc5389
+========================================================
+
+https://tools.ietf.org/html/rfc5389
+
+Session Traversal Utilities for NAT (STUN)
+
+
+4. Traversal Using Relays around NAT (TURN), rfc5766
+========================================================
+
+https://tools.ietf.org/html/rfc5766
+
+Traversal Using Relays around NAT (TURN):
+Relay Extensions to Session Traversal Utilities for NAT (STUN)
+
+
+5. Interactive Connectivity Establishment (ICE), rfc5245 ;(updated rfc6336 )
+================================================================================================================
+
+
+
+5.1. TCP-ICE
+------------------------------    
+TCP Candidates with Interactive Connectivity Establishment (ICE)
+
+see https://www.rfc-editor.org/rfc/rfc6544.txt 
+
+
+5.2. Trickling ICE
+------------------------------
+A Session Initiation Protocol (SIP) usage for Trickle ICE draft-ivov-mmusic-trickle-ice-sip-02
+
+see https://tools.ietf.org/html/draft-ivov-mmusic-trickle-ice-sip-02 
+
+
+6. Datagram Transport Layer Security for SRTP (DTLS-SRTP) rfc5764
+================================================================================================================
+
+https://www.rfcreader.com/#rfc5764
+
+Abstract
+------------------
+
+   This document describes a Datagram Transport Layer Security (DTLS)
+   extension to establish keys for Secure RTP (SRTP) and Secure RTP
+   Control Protocol (SRTCP) flows.  DTLS keying happens on the media
+   path, independent of any out-of-band signalling channel present.
+
+
+    6.1.  Multiplexing Scheme Update to DTLS-SRTP
+    6.2.  The Transport Layer Security (TLS) Protocol Version 1.2, rfc 5246 
+    6.3.  Guidelines to use DTLS-SRTP, rfc5763  
+    6.4.  Datagram Transport Layer Security Version 1.2 (DTLS), rfc6347
+
+7. SRTP rfc3711
+========================================================
+
+
+
+8.  Connection-Oriented Media Transport over the Transport Layer Security (TLS) Protocol in the Session Description Protocol (SDP) – rfc4572
+========================================================================================================================================================================
+
+https://www.rfcreader.com/#rfc4572
+
+在 SDP 中 通过 TLS  面向连接的媒体传输
+
+   This document specifies how to establish secure connection-oriented
+   media transport sessions over the Transport Layer Security (TLS)
+   protocol using the Session Description Protocol (SDP).  It defines a
+   new SDP protocol identifier, 'TCP/TLS'.  It also defines the syntax
+   and semantics for an SDP 'fingerprint' attribute that identifies the
+   certificate that will be presented for the TLS session.  This
+   mechanism allows media transport over TLS connections to be
+   established securely, so long as the integrity of session
+   descriptions is assured.
+
+   This document extends and updates RFC 4145.
+
+add SDP attribute setup
+--------------------------------------------
+
+      setup-attr           =  "a=setup:" role
+         role                 =  "active" / "passive" / "actpass"
+                                 / "holdconn"
+
+      'active': The endpoint will initiate an outgoing connection.
+
+      'passive': The endpoint will accept an incoming connection.
+
+      'actpass': The endpoint is willing to accept an incoming
+      connection or to initiate an outgoing connection.
+
+      'holdconn': The endpoint does not want the connection to be
+      established for the time being.
+
+add SDP attribute connection
+---------------------------------------------
+
+         connection-attr        = "a=connection:" conn-value
+         conn-value             = "new" / "existing"
+
+
+
+9.  TCP-Based Media Transport in the Session Description Protocol (SDP) – rfc4145
+================================================================================================================
+
+https://www.rfcreader.com/#rfc4145
+
+在 SDP 中指明基于 TCP 的媒体传输
+
+
+10. Web Real-Time Communication (WebRTC): Media Transport and Use of RTP
+================================================================================================================
+
+https://tools.ietf.org/html/draft-ietf-rtcweb-rtp-usage-26
+
+WebRTC: 媒体传输和 RTP 的使用
+
+   The Web Real-Time Communication (WebRTC) framework provides support
+   for direct interactive rich communication using audio, video, text,
+   collaboration, games, etc. between two peers' web-browsers.  This
+   memo describes the media transport aspects of the WebRTC framework.
+   It specifies how the Real-time Transport Protocol (RTP) is used in
+   the WebRTC context, and gives requirements for which RTP features,
+   profiles, and extensions need to be supported.
+
+
+11. FIR
+========================================================
+
+https://tools.ietf.org/html/rfc5104
+
+ Codec Control Messages in the RTP Audio-Visual Profile with Feedback (AVPF)
+
+   This document specifies a few extensions to the messages defined in
+   the Audio-Visual Profile with Feedback (AVPF).  They are helpful
+   primarily in conversational multimedia scenarios where centralized
+   multipoint functionalities are in use.  However, some are also usable
+   in smaller multicast environments and point-to-point calls.
+
+   The extensions discussed are messages related to the ITU-T Rec. H.271
+   Video Back Channel, Full Intra Request, Temporary Maximum Media
+   Stream Bit Rate, and Temporal-Spatial Trade-off.
+
+Glossary
+------------------------------------------------------------------------
+*   AIMD   - Additive Increase Multiplicative Decrease
+*   AVPF   - The extended RTP profile for RTCP-based feedback
+*   FCI    - Feedback Control Information [RFC4585]
+*   FEC    - Forward Error Correction
+*   FIR    - Full Intra Request
+*   MCU    - Multipoint Control Unit
+*   MPEG   - Moving Picture Experts Group
+*   PLI    - Picture Loss Indication
+*   PR     - Packet rate
+*   QP     - Quantizer Parameter
+*   RTT    - Round trip time
+*   SSRC   - Synchronization Source
+*   TMMBN  - Temporary Maximum Media Stream Bit Rate Notification
+*   TMMBR  - Temporary Maximum Media Stream Bit Rate Request
+*   TSTN   - Temporal-Spatial Trade-off Notification
+*   TSTR   - Temporal-Spatial Trade-off Request
+*   VBCM   - Video Back Channel Message
+
+
+12. PLI and NACK
+========================================================
+
+https://tools.ietf.org/html/rfc4585
+
+ Extended RTP Profile for Real-time Transport Control Protocol (RTCP)-Based Feedback (RTP/AVPF)
+
+   Real-time media streams that use RTP are, to some degree, resilient
+   against packet losses.  Receivers may use the base mechanisms of the
+   Real-time Transport Control Protocol (RTCP) to report packet
+   reception statistics and thus allow a sender to adapt its
+   transmission behavior in the mid-term.  This is the sole means for
+   feedback and feedback-based error repair (besides a few codec-
+   specific mechanisms).  This document defines an extension to the
+   Audio-visual Profile (AVP) that enables receivers to provide,
+   statistically, more immediate feedback to the senders and thus allows
+   for short-term adaptation and efficient feedback-based repair
+   mechanisms to be implemented.  This early feedback profile (AVPF)
+   maintains the AVP bandwidth constraints for RTCP and preserves
+   scalability to large groups.
+
+
+Glossary
+------------------------------------------------------------------------
+* Early RTCP mode:
+
+      The mode of operation in that a receiver of a media stream is
+      often (but not always) capable of reporting events of interest
+      back to the sender close to their occurrence.  In Early RTCP mode,
+      RTCP packets are transmitted according to the timing rules defined
+      in this document.
+
+* Early RTCP packet:
+
+      An Early RTCP packet is a packet which is transmitted earlier than
+      would be allowed if following the scheduling algorithm of [1], the
+      reason being an "event" observed by a receiver.  Early RTCP
+      packets may be sent in Immediate Feedback and in Early RTCP mode.
+      Sending an Early RTCP packet is also referred to as sending Early
+      Feedback in this document.
+
+* Event:
+      An observation made by the receiver of a media stream that is
+      (potentially) of interest to the sender -- such as a packet loss
+      or packet reception, frame loss, etc. -- and thus useful to be
+      reported back to the sender by means of a feedback message.
+
+* Feedback (FB) message:
+      An RTCP message as defined in this document is used to convey
+      information about events observed at a receiver -- in addition to
+      long-term receiver status information that is carried in RTCP
+      receiver reports (RRs) -- back to the sender of the media stream.
+      For the sake of clarity, feedback message is referred to as FB
+      message throughout this document.
+
+* Feedback (FB) threshold:
+      The FB threshold indicates the transition between Immediate
+      Feedback and Early RTCP mode.  For a multiparty scenario, the FB
+      threshold indicates the maximum group size at which, on average,
+      each receiver is able to report each event back to the sender(s)
+      immediately, i.e., by means of an Early RTCP packet without having
+      to wait for its regularly scheduled RTCP interval.  This threshold
+      is highly dependent on the type of feedback to be provided,
+      network QoS (e.g., packet loss probability and distribution),
+      codec and packetization scheme in use, the session bandwidth, and
+      application requirements.  Note that the algorithms do not depend
+      on all senders and receivers agreeing on the same value for this
+      threshold.  It is merely intended to provide conceptual guidance
+      to application designers and is not used in any calculations.  For
+      the sake of clarity, the term feedback threshold is referred to as
+      FB threshold throughout this document.
+
+* Immediate Feedback mode:
+      A mode of operation in which each receiver of a media stream is,
+      statistically, capable of reporting each event of interest
+      immediately back to the media stream sender.  In Immediate
+      Feedback mode, RTCP FB messages are transmitted according to the
+      timing rules defined in this document.
+
+* Media packet:
+      A media packet is an RTP packet.
+
+* Regular RTCP mode:
+
+      Mode of operation in which no preferred transmission of FB
+      messages is allowed.  Instead, RTCP messages are sent following
+      the rules of [1].  Nevertheless, such RTCP messages may contain
+      feedback information as defined in this document.
+
+* Regular RTCP packet:
+
+      An RTCP packet that is not sent as an Early RTCP packet.
+
+* RTP sender:
+
+      An RTP sender is an RTP entity that transmits media packets as
+      well as RTCP packets and receives Regular as well as Early RTCP
+      (i.e., feedback) packets.  Note that the RTP sender is a logical
+      role and that the same RTP entity may at the same time act as an
+      RTP receiver.
+
+* RTP receiver:
+
+      An RTP receiver is an RTP entity that receives media packets as
+      well as RTCP packets and transmits Regular as well as Early RTCP
+      (i.e., feedback) packets.  Note that the RTP receiver is a logical
+      role and that the same RTP entity may at the same time act as an
+      RTP sender.
+
+
+13. REMB
+========================================================
+
+https://tools.ietf.org/html/draft-alvestrand-rmcat-remb-03
+
+ RTCP message for Receiver Estimated Maximum Bitrate
+                     draft-alvestrand-rmcat-remb-03
+
+   This document proposes an RTCP message for use in experimentally-
+   deployed congestion control algorithms for RTP-based media flows.
+
+   It also describes an absolute-value timestamp option for use in
+   bandwidth estimatoin.
+
+
+14. TMMRB
+========================================================
+
+https://tools.ietf.org/html/rfc5104
+
+same rfc as FIR
+
+15.  Congestion Control in Chrome and FireFox (??)
+========================================================
+
+https://tools.ietf.org/html/draft-ietf-rmcat-gcc-02
+
+   A Google Congestion Control Algorithm for Real-Time Communication
+                        draft-ietf-rmcat-gcc-02
+
+Abstract
+----------------
+
+   This document describes two methods of congestion control when using
+   real-time communications on the World Wide Web (RTCWEB); one delay-
+   based and one loss-based.
+
+   It is published as an input document to the RMCAT working group on
+   congestion control for media streams.  The mailing list of that
+   working group is rmcat@ietf.org.
+
+
+16.  tcp framing rfc4571
+========================================================
+
+https://tools.ietf.org/html/rfc4571
+
+
+Framing Real-time Transport Protocol (RTP)
+and RTP Control Protocol (RTCP) Packets
+over Connection-Oriented Transport
+
+
+Abstract
+-----------------
+
+   This memo defines a method for framing Real-time Transport Protocol
+   (RTP) and RTP Control Protocol (RTCP) packets onto connection-
+   oriented transport (such as TCP).  The memo also defines how session
+   descriptions may specify RTP streams that use the framing method.
+
+
+17.  SSRC Attributes rfc 5576
+========================================================
+
+https://tools.ietf.org/html/rfc5576
+
+Source-Specific Media Attributes in the
+Session Description Protocol (SDP)
+
+
+Abstract
+---------------------------
+
+   The Session Description Protocol (SDP) provides mechanisms to
+   describe attributes of multimedia sessions and of individual media
+   streams (e.g., Real-time Transport Protocol (RTP) sessions) within a
+   multimedia session, but does not provide any mechanism to describe
+   individual media sources within a media stream.  This document
+   defines a mechanism to describe RTP media sources, which are
+   identified by their synchronization source (SSRC) identifiers, in
+   SDP, to associate attributes with these sources, and to express
+   relationships among sources.  It also defines several source-level
+   attributes that can be used to describe properties of media sources.
+
+
+18. T120 protocols: T120, T124, T21, etc.
+========================================================
+
+https://www.itu.int/rec/T-REC-T.120-200701-I/en
+
+* [ITU-T T.121] [ITU-T T.122]
+* [ITU-T T.123]
+* [ITU-T T.124] [ITU-T T.125]
+* [ITU-T T.126]
+* [ITU-T T.127]
+* ITU-T Recommendation T.121 (1996), Generic application template. ITU-T Recommendation T.122 (1998), Multipoint communication service –
+* Service definition.
+* ITU-T Recommendation T.123 (2007), Network-specific data protocol stacks for
+* multimedia conferencing.
+* ITU-T Recommendation T.124 (2007), Generic conference control.
+* ITU-T Recommendation T.125 (1998), Multipoint communication service protocol specification.
+* ITU-T Recommendation T.126 (1997), Multipoint still image and annotation protocol.
+* ITU-T Recommendation T.127 (1995), Multipoint binary file transfer protocol.
+
+
+19. Audio Level: client to mixer
+========================================================
+https://tools.ietf.org/html/rfc6464
+
+
+A Real-time Transport Protocol (RTP) Header Extension for
+                 Client-to-Mixer Audio Level Indication
+
+Abstract
+---------------------------------------------------------
+
+   This document defines a mechanism by which packets of Real-time
+   Transport Protocol (RTP) audio streams can indicate, in an RTP header
+   extension, the audio level of the audio sample carried in the RTP
+   packet.  In large conferences, this can reduce the load on an audio
+   mixer or other middlebox that wants to forward only a few of the
+   loudest audio streams, without requiring it to decode and measure
+   every stream that is received.
+
+
+20. RTP Retransmission Payload Format
+========================================================
+
+https://tools.ietf.org/html/rfc4588
+
+RTP Retransmission Payload Format
+
+
+
+Abstract
+----------------------
+
+   RTP retransmission is an effective packet loss recovery technique for
+   real-time applications with relaxed delay bounds.  This document
+   describes an RTP payload format for performing retransmissions.
+   Retransmitted RTP packets are sent in a separate stream from the
+   original RTP stream.  It is assumed that feedback from receivers to
+   senders is available.  In particular, it is assumed that Real-time
+   Transport Control Protocol (RTCP) feedback as defined in the extended
+   RTP profile for RTCP-based feedback (denoted RTP/AVPF) is available
+   in this memo.
+
+
+21. Negotiating Media Multiplexing Using the Session Description Protocol (SDP)
+================================================================================================================
+
+https://tools.ietf.org/html/draft-ietf-mmusic-sdp-bundle-negotiation-54
+
+
+Negotiating Media Multiplexing Using the Session Description Protocol (SDP)
+
+
+Abstract
+-------------------------
+
+   This specification defines a new Session Description Protocol (SDP)
+   Grouping Framework extension, 'BUNDLE'.  The extension can be used
+   with the SDP Offer/Answer mechanism to negotiate the usage of a
+   single transport (5-tuple) for sending and receiving media described
+   by multiple SDP media descriptions ("m=" sections).  Such transport
+   is referred to as a BUNDLE transport, and the media is referred to as
+   bundled media.  The "m=" sections that use the BUNDLE transport form
+   a BUNDLE group.
+
+   This specification updates RFC 3264, to also allow assigning a zero
+   port value to a "m=" section in cases where the media described by
+   the "m=" section is not disabled or rejected.
+
+   This specification updates RFC 5888, to also allow an SDP 'group'
+   attribute to contain an identification-tag that identifies a "m="
+   section with the port set to zero.
+
+   This specification defines a new RTP Control Protocol (RTCP) source
+   description (SDES) item and a new RTP header extension that can be
+   used to correlate bundled RTP/RTCP packets with their appropriate
+   "m=" section.
+
+   This specification updates RFC 7941, by adding an exception, for the
+   MID RTP header extension, to the requirement regarding protection of
+   an SDES RTP header extension carrying an SDES item for the MID RTP
+   header extension.
+
+
+
+
+22. RTP Stream Identifier Source Description (SDES)
+================================================================================================================
+
+https://tools.ietf.org/html/draft-ietf-avtext-rid-09
+
+RTP Stream Identifier Source Description (SDES)
+
+more `detail <protocol22_ietf_avtext_rid.rst>`_
+
+Abstract
+-----------------------
+
+   This document defines and registers two new RTCP Stream Identifier
+   Source Description (SDES) items.  One, named RtpStreamId, is used for
+   unique identification of RTP streams.  The other,
+   RepairedRtpStreamId, can be used to identify which stream a
+   redundancy RTP stream is to be used to repair.
+
+
+codes
+-------------------------
+
+  void CWCBSdpHandle::HandleUserOfferReq(string& strSDP, string& strResponseSDP )
+
+
+
+23. WebRTC MediaStream Identification in the Session Description Protocol
+================================================================================================================
+
+https://tools.ietf.org/id/draft-ietf-mmusic-msid-05.html
+
+  WebRTC MediaStream Identification in the Session Description Protocol
+         draft-ietf-mmusic-msid-05
+
+Abstract
+--------------------------------
+
+This document specifies a grouping mechanism for RTP media streams that can be used to specify relations between media streams.
+
+This mechanism is used to signal the association between the SDP concept of "m-line" and the WebRTC concept of "MediaStream" / "MediaStreamTrack" using SDP signaling.
+
+This document is a work item of the MMUSIC WG, whose discussion list is mmusic@ietf.org.
+
+
+Section 1.2 gives the background on why a new mechanism is needed.
+
+Section 2 gives the definition of the new mechanism.
+
+Section 4 gives the application of the new mechanism for providing necessary semantic information for the association of MediaStreamTracks to MediaStreams in the WebRTC API .
+
+
+24. RTP Extensions for Transport-wide Congestion Control
+================================================================================================================
+
+RTP Extensions for Transport-wide Congestion Control
+draft-holmer-rmcat-transport-wide-cc-extensions-01
+
+* https://tools.ietf.org/html/draft-holmer-rmcat-transport-wide-cc-extensions-01
+
+Abstract
+------------------
+
+   proposes an RTP header extension and an RTCP message
+   for use in congestion control algorithms for RTP-based media flows.
+   It adds transport-wide packet sequence numbers and corresponding
+   feedback message so that congestion control can be performed on a
+   transport level at the send-side, while keeping the receiver dumb.
+
+提出了一个 RTP 报头扩展，其中包含传输通道范围的数据包序列号和RTCP反馈消息，该消息反馈在一个连接上接收到的数据包的到达时间和序列号。
+
+25. RTP Header Extension for the RTCP Source Description Items
+================================================================================================================
+
+https://tools.ietf.org/html/draft-holmer-rmcat-transport-wide-cc-extensions-01
+
+  RTP Extensions for Transport-wide Congestion Control
+   draft-holmer-rmcat-transport-wide-cc-extensions-01
+
+
+26. A Framework for SDP Attributes when Multiplexing
+================================================================================================================
+
+https://tools.ietf.org/html/draft-ietf-mmusic-sdp-mux-attributes-19
+
+  A Framework for SDP Attributes when Multiplexing
+      draft-ietf-mmusic-sdp-mux-attributes-19
+
+Abstract
+-------------------
+
+   The purpose of this specification is to provide a framework for
+   analyzing the multiplexing characteristics of Session Description
+   Protocol (SDP) attributes when SDP is used to negotiate the usage of
+   single 5-tuple for sending and receiving media associated with
+   multiple media descriptions.
+
+   This specification also categorizes the existing SDP attributes based
+   on the framework described herein.
+
+
+
+27. ULPFEC
+========================================================
+
+https://tools.ietf.org/html/rfc5109
+
+  RTP Payload Format for Generic Forward Error Correction
+
+Abstract
+-------------------
+
+   This document specifies a payload format for generic Forward Error
+   Correction (FEC) for media data encapsulated in RTP.  It is based on
+   the exclusive-or (parity) operation.  The payload format described in
+   this document allows end systems to apply protection using various
+   protection lengths and levels, in addition to using various
+   protection group sizes to adapt to different media and channel
+   characteristics.  It enables complete recovery of the protected
+   packets or partial recovery of the critical parts of the payload
+   depending on the packet loss situation.  This scheme is completely
+   compatible with non-FEC-capable hosts, so the receivers in a
+   multicast group that do not implement FEC can still work by simply
+   ignoring the protection data.  This specification obsoletes RFC 2733
+   and RFC 3009.  The FEC specified in this document is not backward
+   compatible with RFC 2733 and RFC 3009.
+
+28. RED
+========================================================
+
+https://tools.ietf.org/html/rfc2198
+
+  RTP Payload for Redundant Audio Data
+
+Abstract
+-------------------
+
+This document describes a payload format for use with the real-time
+transport protocol (RTP), version 2, for encoding redundant audio
+data.  The primary motivation for the scheme described herein is the
+development of audio conferencing tools for use with lossy packet
+networks such as the Internet Mbone, although this scheme is not
+limited to such applications.
+
+
+   If multimedia conferencing is to become widely used by the Internet
+   Mbone community, users must perceive the quality to be sufficiently
+   good for most applications.  We have identified a number of problems
+   which impair the quality of conferences, the most significant of
+   which is packet loss.  This is a persistent problem, particularly
+   given the increasing popularity, and therefore increasing load, of
+   the Internet.  The disruption of speech intelligibility even at low
+   loss rates which is currently experienced may convince a whole
+   generation of users that multimedia conferencing over the Internet is
+   not viable.  The addition of redundancy to the data stream is offered
+   as a solution [1].  If a packet is lost then the missing information
+   may be reconstructed at the receiver from the redundant data that
+   arrives in the following packet(s), provided that the average number
+
+
+   This document describes an RTP payload format for the transmission of
+   audio data encoded in such a redundant fashion.  Section 2 presents
+   the requirements and motivation leading to the definition of this
+   payload format, and does not form part of the payload format
+   definition.  Sections 3 onwards define the RTP payload format for
+   redundant audio data.
+
+Cisco Multi-stream protocols
+==========================================================
+
+29. Multi-source Simulcast Negotiation Specification
+----------------------------------------------------------
+
+30. multi-stream signaling
+----------------------------------------------------------
+
+RFC6190
+
+Audio level indication is specified in RFC6464 and RFC6465.
+a=extmap:3/sendrecv urn:ietf:params:rtp-hdrext:ssrc-audio-level
+
+
+* RTCP PLI should be used for picture loss indication (RFC4585).
+* RTCP FIR should be used for key intra frame request (RFC5104)
+
+* [RFC6184] - http://tools.ietf.org/html/rfc6184
+* [RFC6190] - http://tools.ietf.org/html/rfc6190
+* [IMTC-BANDWIDTH] - SIP Video Profile Best Practices, Date: 6 February 2013. http://portal.imtc.org/DesktopModules/Inventures_Document/FileDownload.aspx?ContentID=21434
+* [multiplex] - http://tools.ietf.org/html/draft-ietf-avtcore-multiplex-guidelines-02
+* [UCIF] – Unified Communication Specification for H.264/MPEG‐4 Part 10 AVC and SVC Modes V1.0
+* [H265] - http://tools.ietf.org/html/draft-ietf-payload-rtp-h265
+
+
+
+31. UCIF H264 Specification v1.0
+----------------------------------------------------------
+
+32. MARI
+----------------------------------------------------------
+
+
+Book and Documents
+===========================================================
+
+33. WebRTC 1.0: Realtime Communication Between Browsers
+------------------------------------------------------------------
+
+34. Professional JavaScript for Web Developers, 3rd Edition.pdf
+------------------------------------------------------------------
+
+35. Real-Time Communication with WebRTC
+------------------------------------------------------------------

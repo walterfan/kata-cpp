@@ -1,0 +1,24 @@
+.. _cmsc: ./thinclient/cmsc.html
+.. |t_cmsc| replace:: cmsc_
+
+.. _`CMSC API`: cmsc_api.html
+.. |t_cmsc_api| replace:: `CMSC API`_
+
+
+.. _`CMSC Connection Monitor`: cmsc_connection_monitor.html
+.. |t_cmsc_conn_monitor| replace:: `CMSC Connection Monitor`_
+
+.. _`Media Manager`: cmsc_mediamgr.html
+.. |t_mediamgr| replace:: `Media Manager`_
+
+.. _`ROAP Protocol`: cmsc_roap.html
+.. |t_roap| replace:: `ROAP Protocol`_
+
+.. _`Session Manager`: cmsc_session_mgr.html
+.. |t_sessionmgr| replace:: `Session Manager`_
+
+.. _`Signal Manager`: cmsc_signal_mgr.html
+.. |t_signalmgr| replace:: `Signal Manager`_
+
+.. _`Thin Client`: ./thinclient/index.html
+.. |t_thinclient| replace:: `Thin Client`_

@@ -1,0 +1,170 @@
+##########################
+Media Engine Instance
+##########################
+
+opus module
+=========================
+
+* opus encoder and decoder
+
+.. code-block::
+
+        // create opus encoder
+        if (type.match(/opusEncoder/i)) {
+            this.inputAudioSourceNode = null;
+            this.inputAudioScriptNode = null;
+            this.inputAudioBufferOffset = 0;
+            this.inputAudioBuffer = new Float32Array(this.audioBufferSize * 2);
+            instantiateOpusModule().then(function(module) {
+                this.module = module;
+                module._initialize_encoder();
+                this.encoderInitialized = true;
+            }.bind(this));
+        }
+
+        // create opus decoder
+        else if (type.match(/opusDecoder/i)) {
+            this.outputAudioBufferOffset = 0;
+            this.outputAudioBuffer = this.audioCtx.createBuffer(this.numAudioChannels, this.audioFrameSize, this.audioSampleRate);
+            this.outputAudioDestination = null;
+            this.outputAudioPlaybackRate = 1.0; // TODO: make adaptive
+            instantiateOpusModule().then(function(module) {
+                this.module = module;
+                module._initialize_decoder();
+                this.decoderInitialized = true;
+            }.bind(this));
+        }
+
+
+
+
+
+
+.. code-block::
+
+    #include "opus.h"
+    #include <emscripten.h>
+
+    #define CHANNELS 1
+    #define FRAME_SIZE 1920
+    #define SAMPLE_RATE 48000
+    #define BITRATE 64000
+    #define MAX_PACKET_SIZE 1276
+    #define MAX_FRAME_SIZE 1920
+
+    OpusEncoder *encoder;
+    OpusDecoder *decoder;
+
+    extern "C"
+    EMSCRIPTEN_KEEPALIVE
+    int initialize_encoder() {
+      int err;
+      encoder = opus_encoder_create(SAMPLE_RATE, CHANNELS, OPUS_APPLICATION_VOIP, &err);
+      opus_encoder_ctl(encoder, OPUS_SET_COMPLEXITY(4));
+      opus_encoder_ctl(encoder, OPUS_SET_BITRATE(BITRATE));
+      opus_encoder_ctl(encoder, OPUS_SET_MAX_BANDWIDTH(OPUS_BANDWIDTH_WIDEBAND));
+      opus_encoder_ctl(encoder, OPUS_SET_INBAND_FEC(1));
+      opus_encoder_ctl(encoder, OPUS_SET_PACKET_LOSS_PERC(100));
+      opus_encoder_ctl(encoder, OPUS_SET_DTX(1));
+      return err;
+    }
+
+    int encoder_result[2];
+    extern "C"
+    EMSCRIPTEN_KEEPALIVE
+    void encode_audio(float* pcm) {
+      unsigned char data_out[MAX_PACKET_SIZE];
+      int size;
+
+      size = opus_encode_float(encoder, pcm, FRAME_SIZE, data_out, MAX_PACKET_SIZE);
+
+      encoder_result[0] = (int)data_out;
+      encoder_result[1] = size;
+    }
+
+    extern "C"
+    EMSCRIPTEN_KEEPALIVE
+    int get_encoder_result_pointer() {
+      return encoder_result[0];
+    }
+
+    extern "C"
+    EMSCRIPTEN_KEEPALIVE
+    int get_encoder_result_size() {
+      return encoder_result[1];
+    }
+
+    extern "C"
+    EMSCRIPTEN_KEEPALIVE
+    void destroy_encoder() {
+      opus_encoder_destroy(encoder);
+    }
+
+    extern "C"
+    EMSCRIPTEN_KEEPALIVE
+    int initialize_decoder() {
+      int err;
+      decoder = opus_decoder_create(SAMPLE_RATE, CHANNELS, &err);
+      return err;
+    }
+
+    int decoder_result[2];
+    extern "C"
+    EMSCRIPTEN_KEEPALIVE
+    void decode_audio(unsigned char* data, int length) {
+      float pcm_out[MAX_FRAME_SIZE * CHANNELS];
+      int size;
+
+      size = opus_decode_float(decoder, data, length, pcm_out, MAX_FRAME_SIZE, 0);
+
+      decoder_result[0] = (int)pcm_out;
+      decoder_result[1] = size;
+    }
+
+    extern "C"
+    EMSCRIPTEN_KEEPALIVE
+    int get_decoder_result_pointer() {
+      return decoder_result[0];
+    }
+
+    extern "C"
+    EMSCRIPTEN_KEEPALIVE
+    int get_decoder_result_size() {
+      return decoder_result[1];
+    }
+
+    extern "C"
+    EMSCRIPTEN_KEEPALIVE
+    void destroy_decoder() {
+      opus_decoder_destroy(decoder);
+    }
+
+
+opus module
+==========================
+
+H.264 encoder and decoder
+---------------------------
+
+
+.. code-block::
+
+        // create h264 encoder
+        else if (type.match(/h264Encoder/i)) {
+            this.inputVideo = window.document.createElement('video');
+            this.inputCanvas = window.document.createElement('canvas');
+            this.inputContext = this.inputCanvas.getContext('2d');
+            this.prevProcessTimestamp = 0;
+            this.processSharingFrameInterval = 0;
+            this.forceNextFrameIDR = false;
+            this.worker = this.createH264Worker();
+        }
+
+        // create h264 decoder
+        else if (type.match(/h264Decoder/i)) {
+            this.outputCanvas = ctx.cmsc.createYuvCanvas();
+            this.outputStream = null;
+            this.partialBitstreamPieces = [];
+            this.partialBitstreamLength = 0;
+            this.worker = this.createH264Worker();
+        }

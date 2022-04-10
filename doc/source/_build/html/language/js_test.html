@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JS Test &mdash; A Programmer Prepares 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="JavaScript Visualization" href="js_visualize.html" />
+    <link rel="prev" title="Promise" href="js_promise.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> A Programmer Prepares
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">论程序员的自我修养</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interview.html">程序员面试要点</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resume.html">Resume</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithm/index.html">Algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">Architecture</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Programming Language</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cpp.html">C++</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_interview.html">C++ Interview Questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_evolution.html">C++ Evolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_lambda.html">C++ Lambda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_memory.html">Resource management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_stl.html">C++ STL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_thread.html">C++ Thread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_rvalue.html">右值引用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_object_model.html">C++ Object Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_server.html">C++ Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="java.html">Java</a></li>
+<li class="toctree-l2"><a class="reference internal" href="java_concurrency.html">Java Concurrency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="java_interview.html">Java Interview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="java_bytecode.html">Java 字节码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="java_classloader.html">Java 类加载器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="java_collection.html">Java collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python.html">Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="javascript.html">JavaScript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="js_promise.html">Promise</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">JS Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="js_visualize.html">JavaScript Visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="js_interview.html">JS Interview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="js_async.html">javascript asynchronous programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodejs.html">NodeJS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="go.html">Go lanaguage</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../library/index.html">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oss/index.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html">mathematics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#overview">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#least-squares-method">最小二乘法 least squares method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pattern/index.html">Pattern</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/index.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool/index.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mmp/index.html">MMP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../thinclient/index.html">Thin Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utiltp/index.html">UTILTP</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">A Programmer Prepares</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Programming Language</a> &raquo;</li>
+      <li>JS Test</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/language/js_test.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="js-test">
+<h1>JS Test<a class="headerlink" href="#js-test" title="Permalink to this headline"></a></h1>
+<blockquote>
+<div><p><a class="reference external" href="https://bower.io/">https://bower.io/</a></p>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bower</span> <span class="n">install</span>
+<span class="c1"># registered package</span>
+<span class="n">bower</span> <span class="n">install</span> <span class="n">jquery</span>
+<span class="c1"># GitHub shorthand</span>
+<span class="n">bower</span> <span class="n">install</span> <span class="n">desandro</span><span class="o">/</span><span class="n">masonry</span>
+<span class="c1"># Git endpoint</span>
+<span class="n">bower</span> <span class="n">install</span> <span class="n">git</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">package</span><span class="o">.</span><span class="n">git</span>
+<span class="c1"># URL</span>
+<span class="n">bower</span> <span class="n">install</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">script</span><span class="o">.</span><span class="n">js</span>
+
+
+<span class="o">&lt;</span><span class="n">script</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;bower_components/jquery/dist/jquery.min.js&quot;</span><span class="o">&gt;&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>npm install -g phantomjs</p>
+<p><a class="reference external" href="https://www.ianlewis.org/en/phantom-qunit-test-runner">https://www.ianlewis.org/en/phantom-qunit-test-runner</a></p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="js_promise.html" class="btn btn-neutral float-left" title="Promise" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="js_visualize.html" class="btn btn-neutral float-right" title="JavaScript Visualization" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Walter Fan.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

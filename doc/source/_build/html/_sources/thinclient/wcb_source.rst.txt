@@ -1,0 +1,168 @@
+############################
+WCB source structure
+############################
+
+
+
+.. code-block::
+
+    USER_SRCS = \
+        WCBUtility.cpp \
+        WCBControl.cpp \
+        WCBClient.cpp \
+        WCBAudioClient.cpp \
+        WCBVideoClient.cpp \
+        WCBSharingClient.cpp \
+        WCBClientProxy.cpp \
+        WCBAudioClientProxy.cpp \
+        WCBVideoClientProxy.cpp \
+        WCBSharingClientProxy.cpp \
+        WCBSession.cpp \
+        WCBConference.cpp \
+        WCBTransportProxyCheck.cpp \
+        WCBDtlsHandle.cpp \
+        WCBFlowCtl.cpp \
+        WCBFlowRtp.cpp \
+        WCBPacket.cpp \
+        WCBPeerConnection.cpp \
+        WCBRoap.cpp \
+        WCBSdpHandle.cpp \
+        WCBSrtpHandle.cpp \
+        WCBTimer.cpp \
+        WCBTimerService.cpp \
+        WCBWmeFlowRtp.cpp \
+        WCBWmeFlowCtl.cpp \
+        WCBMediaNetStub.cpp \
+        WCBVideoSubscribe.cpp \
+        WCBSSVCProtocol.cpp \
+        WCBNBRProxy.cpp \
+        WCBH264Stream.cpp \
+        WCBVideoSession.cpp \
+        WCBAvatar.cpp \
+        WCBSdpParser.cpp \
+        WCBMediaChanProxy.cpp \
+        WCBMediaPacket.cpp \
+        WCBMediaStatsHandler.cpp
+
+
+
+CRC
+=========================
+Class, Responsibility, Collaborator
+
+
+CMmSessionServerAcceptor
+
+CMmServerTurnServer
+
+ICmTransportSink
+
+CWCBClientApi
+
+ICmTurnPeerDataLink
+
+CWCBClientApi
+
+CWCBApi
+
+CWCBClient
+
+CWCBAudioClient
+
+CWCBAudioClientProxy: CWCBClientProxy, IWCBMediaChanProxy
+
+CWCBMediaChanProxy
+
+CWCBAvatar
+
+CWCBClient
+
+CWCBClientProxy
+
+CWCBConference
+- CWCBAudioSession
+- CWCBVideoSession
+- CWCBSharingSession
+
+CWCBControl
+
+CWCBDtlsHandle
+
+CWCBCongestCtl
+
+CWCBFlowCtl
+
+CWCBMediaPacket
+
+CWCBFlowRtp : public CWCBH264Stream
+
+CWCBH264Stream
+
+IWCBMediaChanProxy
+
+CWCBMediaChanProxy: public IWCBMediaNetStubSink, public WCB::myThread
+
+IWCBMediaNetStubSink
+
+CWCBMediaNetStub : public ICmTransport, public WCB::myThread
+
+CWCBMediaPacket
+
+CWCBMediaStatsHandler
+
+IWCBNBRProxyClientSink
+
+CWCBNBRProxy: public IWCBTimer
+
+CWCBSwitchPacket : public CCmReferenceControlMutilThread
+
+CWCBPeerConnectionStat
+
+class CWCBPeerConnection: public WCB::myThread, 
+  public ICmTurnPeerDataLink, 
+  public IWCBTimer
+
+CWCBRoap
+
+CWCBSdpHandle
+
+CWCBSdpParser
+
+CWCBAudioSession : public CWCBSession
+
+CWCBSharingSession : public CWCBSession
+
+CWCBSharingClient : public CWCBClient
+
+CWCBSharingClientProxy : public CWCBClientProxy, IWCBMediaChanProxy
+
+CWCBSrtpHandle
+
+CWCBSSVCProtocol
+
+IWCBTimer
+
+CWCBTimerService
+
+class CMmSessionServerStdEndPoint;
+
+class CWCBTransportProxyCheck : public ICmTransport, ICmTransportSink
+
+
+CWCBPostEvent : public ICmEvent
+
+CWCBVideoStreamCtl
+
+CWCBVideoClient : public CWCBClient
+
+CWCBVideoClientProxy : public CWCBClientProxy, IWCBMediaChanProxy
+
+CWCBVideoSession : public CWCBSession
+
+CWCBVideoSubscribe
+
+CWCBWmeFlowCtl: public CWCBFlowCtl
+
+CWCBWmeFlowRtp: public CWCBFlowRtp
+
+

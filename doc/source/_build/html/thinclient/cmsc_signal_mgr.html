@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Signal Manager &mdash; A Programmer Prepares 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="CMSC MediaMgr" href="cmsc_mediamgr.html" />
+    <link rel="prev" title="CMSC Session Manager" href="cmsc_session_mgr.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> A Programmer Prepares
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">论程序员的自我修养</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interview.html">程序员面试要点</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resume.html">Resume</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithm/index.html">Algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../language/index.html">Programming Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../library/index.html">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oss/index.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html">mathematics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#overview">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#least-squares-method">最小二乘法 least squares method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pattern/index.html">Pattern</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/index.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool/index.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mmp/index.html">MMP</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Thin Client</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="app_share.html">Application Share</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audio_mgr.html">Audio Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audio_443.html">Audio over 443</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_to.html">How to</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocols.html">Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qos.html">QoS</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="cmsc.html">CMSC</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="cmsc_api.html">CMSC API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cmsc_connection_monitor.html">CMSC Connection Monitor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cmsc_roap.html">Thin Client ROAP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cmsc_session_mgr.html">CMSC Session Manager</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Signal Manager</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#signalmanager">SignalManager</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cmsc_mediamgr.html">CMSC MediaMgr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cmsc.html#overview">Overview</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc_asm.html">CMSC ASM media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc_flowrtp.html">CMSC Flow RTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc_MediaEngInst.html">Media Engine Instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc_connection_monitor.html">CMSC Connection Monitor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cscc.html">CSCC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cscc_api.html">CSCC API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cscc_clientsession.html">ClientSession</a></li>
+<li class="toctree-l2"><a class="reference internal" href="metrics.html">Thin Client Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wca.html">Web Client Agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb.html">Web Client Bridge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_client.html">WCB Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_dtls.html">WCB DTLS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_ice.html">Thin Client ICE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_message.html">WCB message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_mqe.html">MQE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_sdp.html">WCB SDP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_rtp.html">WCB RTP module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_source.html">WCB source structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_flowrtp.html">WCB Flow RTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_media_stats.html">Media Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="web_client_bridge.html">Web Client Bridge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disciplines_on_code_development.html">Disciplines on Code Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#overall">Overall</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#feature">Feature</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#reference">Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../utiltp/index.html">UTILTP</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">A Programmer Prepares</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Thin Client</a> &raquo;</li>
+          <li><a href="cmsc.html">CMSC</a> &raquo;</li>
+      <li>Signal Manager</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/thinclient/cmsc_signal_mgr.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="signal-manager">
+<h1>Signal Manager<a class="headerlink" href="#signal-manager" title="Permalink to this headline"></a></h1>
+<section id="signalmanager">
+<h2>SignalManager<a class="headerlink" href="#signalmanager" title="Permalink to this headline"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SessionManaer</span> <span class="o">-&gt;</span> <span class="n">SignalManager</span><span class="p">:</span> <span class="n">onLocalMsg</span>
+<span class="n">SignalManager</span> <span class="o">-&gt;</span> <span class="n">SignalManager</span><span class="p">:</span> <span class="n">createSignalSession</span>
+<span class="n">SignalManager</span> <span class="o">-&gt;</span> <span class="n">Roap</span><span class="p">:</span> <span class="n">new</span>
+</pre></div>
+</div>
+<p>setup ROAP when _onRemoteMsg or _onLocalMsg</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">createSignalSession</span><span class="p">(</span><span class="nx">serverDest</span><span class="p">,</span> <span class="nx">peerId</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">cmsc</span><span class="p">.</span><span class="nx">_sessionConfig</span><span class="p">.</span><span class="nx">signalProtocol</span> <span class="o">===</span> <span class="s2">&quot;roap&quot;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">roap</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">Cmsc</span><span class="p">.</span><span class="nx">Roap</span><span class="p">(</span><span class="k">this</span><span class="p">,</span>
+            <span class="nx">onRemoveRoap</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">peerId</span><span class="p">),</span>
+            <span class="nx">onSendLocalMsg</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">serverDest</span><span class="p">,</span> <span class="nx">peerId</span><span class="p">),</span>
+            <span class="nx">onSendRemoteMsg</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">serverDest</span><span class="p">));</span>
+
+        <span class="kd">var</span> <span class="nx">config</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">cmsc</span><span class="p">.</span><span class="nx">_sessionConfig</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">token</span> <span class="o">=</span> <span class="nx">config</span><span class="p">.</span><span class="nx">siteId</span><span class="o">+</span> <span class="s2">&quot;:&quot;</span> <span class="o">+</span><span class="nx">config</span><span class="p">.</span><span class="nx">nodeId</span> <span class="o">+</span> <span class="s2">&quot;:&quot;</span> <span class="o">+</span>
+                    <span class="nx">config</span><span class="p">.</span><span class="nx">conferenceId</span> <span class="o">+</span> <span class="s2">&quot;:&quot;</span> <span class="o">+</span> <span class="nx">config</span><span class="p">.</span><span class="nx">sessionId</span><span class="p">;</span>
+        <span class="nx">roap</span><span class="p">.</span><span class="nx">setSessionToken</span><span class="p">(</span><span class="nx">token</span><span class="p">);</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">_trace</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;signalMgr.createSignalSession: serverDest:&quot;</span><span class="p">,</span> <span class="nx">serverDest</span><span class="p">,</span>
+            <span class="s2">&quot; success with peerId:&quot;</span><span class="p">,</span> <span class="nx">peerId</span><span class="p">,</span> <span class="s2">&quot;, roap instance id:&quot;</span><span class="p">,</span> <span class="nx">roap</span><span class="p">.</span><span class="nx">instanceId</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="nx">roap</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="c1">//...</span>
+<span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Roap constructor</span>
+<span class="cm"> * @param ctx - signalMgr</span>
+<span class="cm"> * @param removeMeCb - roap instance need be removed in this callback</span>
+<span class="cm"> * @param sendLocalCb - roap will call this callback to send local updates</span>
+<span class="cm"> * @param sendRemoteCb - roap will call this callback to send message to remote side</span>
+<span class="cm"> * @private</span>
+<span class="cm"> */</span>
+<span class="nx">Roap</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">_init</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="nx">removeMeCb</span><span class="p">,</span> <span class="nx">sendLocalCb</span><span class="p">,</span> <span class="nx">sendRemoteCb</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">//...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="cmsc_session_mgr.html" class="btn btn-neutral float-left" title="CMSC Session Manager" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cmsc_mediamgr.html" class="btn btn-neutral float-right" title="CMSC MediaMgr" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Walter Fan.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

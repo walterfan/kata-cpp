@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thin Client &mdash; A Programmer Prepares 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Application Share" href="app_share.html" />
+    <link rel="prev" title="MMP RTP" href="../mmp/mmp_rtp.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> A Programmer Prepares
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">论程序员的自我修养</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interview.html">程序员面试要点</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resume.html">Resume</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithm/index.html">Algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../language/index.html">Programming Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../library/index.html">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oss/index.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html">mathematics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#overview">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#least-squares-method">最小二乘法 least squares method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pattern/index.html">Pattern</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/index.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool/index.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mmp/index.html">MMP</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Thin Client</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="app_share.html">Application Share</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audio_mgr.html">Audio Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audio_443.html">Audio over 443</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_to.html">How to</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocols.html">Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qos.html">QoS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc.html">CMSC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc_asm.html">CMSC ASM media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc_flowrtp.html">CMSC Flow RTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc_MediaEngInst.html">Media Engine Instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc_connection_monitor.html">CMSC Connection Monitor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cscc.html">CSCC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cscc_api.html">CSCC API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cscc_clientsession.html">ClientSession</a></li>
+<li class="toctree-l2"><a class="reference internal" href="metrics.html">Thin Client Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wca.html">Web Client Agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb.html">Web Client Bridge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_client.html">WCB Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_dtls.html">WCB DTLS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_ice.html">Thin Client ICE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_message.html">WCB message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_mqe.html">MQE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_sdp.html">WCB SDP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_rtp.html">WCB RTP module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_source.html">WCB source structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_flowrtp.html">WCB Flow RTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_media_stats.html">Media Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="web_client_bridge.html">Web Client Bridge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disciplines_on_code_development.html">Disciplines on Code Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#overall">Overall</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#server-side">Server side</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#client-side">Client side</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#feature">Feature</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#webex-51641-move-sharing-from-wca-to-wcb">WEBEX-51641+Move+sharing+from+WCA+to+WCB</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#reference">Reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#protocols">protocols</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../utiltp/index.html">UTILTP</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">A Programmer Prepares</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Thin Client</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/thinclient/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="thin-client">
+<h1>Thin Client<a class="headerlink" href="#thin-client" title="Permalink to this headline"></a></h1>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="app_share.html">Application Share</a></li>
+<li class="toctree-l1"><a class="reference internal" href="audio_mgr.html">Audio Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="audio_443.html">Audio over 443</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how_to.html">How to</a></li>
+<li class="toctree-l1"><a class="reference internal" href="protocols.html">Protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qos.html">QoS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmsc.html">CMSC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmsc_asm.html">CMSC ASM media</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmsc_flowrtp.html">CMSC Flow RTP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmsc_MediaEngInst.html">Media Engine Instance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmsc_connection_monitor.html">CMSC Connection Monitor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cscc.html">CSCC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cscc_api.html">CSCC API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cscc_clientsession.html">ClientSession</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metrics.html">Thin Client Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wca.html">Web Client Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wcb.html">Web Client Bridge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wcb_client.html">WCB Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wcb_dtls.html">WCB DTLS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wcb_ice.html">Thin Client ICE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wcb_message.html">WCB message</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wcb_mqe.html">MQE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wcb_sdp.html">WCB SDP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wcb_rtp.html">WCB RTP module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wcb_source.html">WCB source structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wcb_flowrtp.html">WCB Flow RTP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wcb_media_stats.html">Media Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="web_client_bridge.html">Web Client Bridge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="disciplines_on_code_development.html">Disciplines on Code Development</a></li>
+</ul>
+</div>
+<section id="overall">
+<h2>Overall<a class="headerlink" href="#overall" title="Permalink to this headline"></a></h2>
+<p>The browser-based WebEx client and SDK development including servers and clients.</p>
+<a class="reference internal image-reference" href="../_images/wcb-overall-architecture.png"><img alt="wcb-overall-architecture" src="../_images/wcb-overall-architecture.png" style="width: 1024px;" /></a>
+<section id="server-side">
+<h3>Server side<a class="headerlink" href="#server-side" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>WebEx Client Agent (or WCA) and</p></li>
+<li><p>WebEx Client Bridge (WCB)</p></li>
+</ul>
+<p>are developed specifically to interact with the browser-based clients.</p>
+</section>
+<section id="client-side">
+<h3>Client side<a class="headerlink" href="#client-side" title="Permalink to this headline"></a></h3>
+<p>WebApp SDK, a SDK providing to third parties to develop a full feature of browser client,</p>
+<ul class="simple">
+<li><p>Client Meeting Connection Component (CMCC),</p></li>
+<li><p>Client Session Connection Component (CSCC)</p></li>
+<li><p>Client Media Session Component (CMSC).</p></li>
+</ul>
+<p>These components provide the features of the multimedia setup, transport, media quality measurement and enhancement.</p>
+<p>CSCC and CMSC have been integrated with Thin Client and runs in browser environments using pure Javascript.</p>
+<a class="reference internal image-reference" href="../_images/cmsc.png"><img alt="Client Meeting Connection Component" src="../_images/cmsc.png" style="width: 1024px;" /></a>
+<a class="reference internal image-reference" href="../_images/cscc.png"><img alt="Client Session Connection Component" src="../_images/cscc.png" style="width: 1024px;" /></a>
+</section>
+</section>
+<section id="feature">
+<h2>Feature<a class="headerlink" href="#feature" title="Permalink to this headline"></a></h2>
+<section id="webex-51641-move-sharing-from-wca-to-wcb">
+<h3>WEBEX-51641+Move+sharing+from+WCA+to+WCB<a class="headerlink" href="#webex-51641-move-sharing-from-wca-to-wcb" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://wiki.cisco.com/display/PAN/WEBEX-51641+Move+sharing+from+WCA+to+WCB">https://wiki.cisco.com/display/PAN/WEBEX-51641+Move+sharing+from+WCA+to+WCB</a></p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/high-frame-sharing-phase4.jpg"><img alt="wcb-overall-architecture" src="../_images/high-frame-sharing-phase4.jpg" style="width: 1024px;" /></a>
+</section>
+</section>
+<section id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://wiki.cisco.com/display/PAN/Thin+client+dev+guide">https://wiki.cisco.com/display/PAN/Thin+client+dev+guide</a></p></li>
+<li><p><a class="reference external" href="https://wiki.cisco.com/display/PAN/Cscc+and+Cmsc+work-flow">https://wiki.cisco.com/display/PAN/Cscc+and+Cmsc+work-flow</a></p></li>
+<li><p><a class="reference external" href="https://wiki.cisco.com/display/PAN/Thin+Client+MCS+Build+with+Docker">https://wiki.cisco.com/display/PAN/Thin+Client+MCS+Build+with+Docker</a></p></li>
+</ul>
+<section id="protocols">
+<h3>protocols<a class="headerlink" href="#protocols" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>WebRTC standard &lt;<a class="reference external" href="https://www.w3.org/TR/webrtc/#introduction">https://www.w3.org/TR/webrtc/#introduction</a>&gt;_</p></li>
+<li><p>JSEP &lt;<a class="reference external" href="https://tools.ietf.org/html/draft-ietf-rtcweb-jsep-26">https://tools.ietf.org/html/draft-ietf-rtcweb-jsep-26</a>&gt;_</p></li>
+<li><p>SDP for the WebRTC draft-nandakumar-rtcweb-sdp-08 &lt;<a class="reference external" href="https://tools.ietf.org/html/draft-nandakumar-rtcweb-sdp-08">https://tools.ietf.org/html/draft-nandakumar-rtcweb-sdp-08</a>&gt;_</p></li>
+<li><p>RTP Stream Identifier Source Description (SDES) draft-ietf-avtext-rid-09 &lt;<a class="reference external" href="https://tools.ietf.org/html/draft-ietf-avtext-rid-09">https://tools.ietf.org/html/draft-ietf-avtext-rid-09</a>&gt;_</p></li>
+<li><p>Connection-Oriented Media Transport over the Transport Layer Security (TLS) Protocol in the Session Description Protocol (SDP) &lt;<a class="reference external" href="https://tools.ietf.org/html/rfc8122">https://tools.ietf.org/html/rfc8122</a>&gt;_</p></li>
+<li><p>Session Description Protocol (SDP) Offer/Answer Considerations for Datagram Transport Layer Security (DTLS) and Transport Layer Security (TLS) &lt;<a class="reference external" href="https://tools.ietf.org/html/draft-ietf-mmusic-dtls-sdp-32">https://tools.ietf.org/html/draft-ietf-mmusic-dtls-sdp-32</a>&gt;_</p></li>
+<li><p>Framework for Establishing a Secure Real-time Transport Protocol (SRTP) Security Context Using Datagram Transport Layer Security (DTLS) &lt;<a class="reference external" href="https://tools.ietf.org/html/rfc5763">https://tools.ietf.org/html/rfc5763</a>&gt;_</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../mmp/mmp_rtp.html" class="btn btn-neutral float-left" title="MMP RTP" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="app_share.html" class="btn btn-neutral float-right" title="Application Share" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Walter Fan.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+Resume
+#######################
+
+
+.. contents::
+   :local:
+
+Overview
+=====================
+
+* Engineering Technical Leader at Cisco who work on conference backend service and WebRTC SDK.
+
+* Bachelor of Computer Information Management of USTC (University of Science and Technology of China).
+
+Previously majored in computer control at Hefei University.
+
+* Joined WebEx in July 2002, and joined Cisco in 2007 when WebEx is acquired by Cisco.
+
+* Work as a tech leader, solution architect and service owner at Cisco Systems Inc.,
+
+also worked as senior software engineer,  product owner and scrum master before.
+
+* Worked as an engineer and secretary at a state-owned firm before joining WebEx,
+
+Alo as a part-time teacher to teach computer techniques during that time.
+
+* Original dream was to become a writer, later he discovered he much prefers writing code than writing novel.
+
+Likes writing some articles in English andChinese, and some tools by Python in spare time.
+
+* Have rich experience on web and server development by Java/C++/Python/JS, know well of telephony, database, network, WebRTC and collaboration platform, also a little android.
+
+* Love reading books and watching movie; also like to ride bicycle and play basketball in leisure time.
+
+* Had wrote a technical book "Micro Service by Metrics Driven Development"
+
+(微服务之道：度量驱动开发 https://item.jd.com/69315415321.html)
+
+* Personal site: https://www.fanyamin.com
+
+* Github site: https://www.github.com/walterfan
+
+Project Experiences
+=====================
+
+* Whitney
+  - scalable libsrtp, work with Hank
+  - lua based call flow engine
+  - telephony bridge controller
+
+* Telephony & Global IVR Platform
+  - Worked on Tahoe server as developer, scrum master and Product Owner
+  - Design and implement the core policy and algorithm of global IVR, improve telehony capacity for increasing load without adding new servers
+  - Build a series of analysis and alert scripts based on metrics by Python
+
+* Rhesos, Poros and IVR Service
+
+  - Redesign the Rhesos core script engine as service owner and architect
+  - Build the new IVR Service from zero as service owner and architect
+  - Write a book "Metrics Driven Development"
+
+* Thin Client SDK and WCB
+
+  - Improve MQE and build the real time audio/video stats
+  - Fix some critial bugs
+  - Build safari sharing feature
+  - Work on congestion control improvement now
+
+Technique Domain
+======================
+
+Media Resilience
+----------------------
+* Congestion Control
+* FEC
+* RTX
+
+

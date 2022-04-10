@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CMSC Connection Monitor &mdash; A Programmer Prepares 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Thin Client ROAP" href="cmsc_roap.html" />
+    <link rel="prev" title="CMSC API" href="cmsc_api.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> A Programmer Prepares
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">论程序员的自我修养</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interview.html">程序员面试要点</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resume.html">Resume</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithm/index.html">Algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../language/index.html">Programming Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../library/index.html">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oss/index.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html">mathematics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#overview">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#least-squares-method">最小二乘法 least squares method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pattern/index.html">Pattern</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/index.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool/index.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mmp/index.html">MMP</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Thin Client</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="app_share.html">Application Share</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audio_mgr.html">Audio Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audio_443.html">Audio over 443</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_to.html">How to</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocols.html">Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qos.html">QoS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc.html">CMSC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc_asm.html">CMSC ASM media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc_flowrtp.html">CMSC Flow RTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc_MediaEngInst.html">Media Engine Instance</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">CMSC Connection Monitor</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#question">Question</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reportstats">reportStats</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-structure">data structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#session-type">session type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#main-methods">Main methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#selectstats">selectStats</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gettransport">getTransport</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#main-structure">Main Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cscc.html">CSCC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cscc_api.html">CSCC API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cscc_clientsession.html">ClientSession</a></li>
+<li class="toctree-l2"><a class="reference internal" href="metrics.html">Thin Client Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wca.html">Web Client Agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb.html">Web Client Bridge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_client.html">WCB Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_dtls.html">WCB DTLS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_ice.html">Thin Client ICE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_message.html">WCB message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_mqe.html">MQE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_sdp.html">WCB SDP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_rtp.html">WCB RTP module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_source.html">WCB source structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_flowrtp.html">WCB Flow RTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_media_stats.html">Media Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="web_client_bridge.html">Web Client Bridge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disciplines_on_code_development.html">Disciplines on Code Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#overall">Overall</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#feature">Feature</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#reference">Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../utiltp/index.html">UTILTP</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">A Programmer Prepares</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Thin Client</a> &raquo;</li>
+          <li><a href="cmsc.html">CMSC</a> &raquo;</li>
+      <li>CMSC Connection Monitor</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/thinclient/cmsc_connection_monitor.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="cmsc-connection-monitor">
+<h1>CMSC Connection Monitor<a class="headerlink" href="#cmsc-connection-monitor" title="Permalink to this headline"></a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#overview" id="id1">Overview</a></p></li>
+<li><p><a class="reference internal" href="#question" id="id2">Question</a></p></li>
+<li><p><a class="reference internal" href="#reportstats" id="id3">reportStats</a></p></li>
+<li><p><a class="reference internal" href="#data-structure" id="id4">data structure</a></p></li>
+<li><p><a class="reference internal" href="#session-type" id="id5">session type</a></p></li>
+<li><p><a class="reference internal" href="#main-methods" id="id6">Main methods</a></p>
+<ul>
+<li><p><a class="reference internal" href="#selectstats" id="id7">selectStats</a></p></li>
+<li><p><a class="reference internal" href="#gettransport" id="id8">getTransport</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#main-structure" id="id9">Main Structure</a></p></li>
+</ul>
+</div>
+<section id="overview">
+<h2><a class="toc-backref" href="#id1">Overview</a><a class="headerlink" href="#overview" title="Permalink to this headline"></a></h2>
+<p>Three Timers</p>
+<ol class="arabic simple">
+<li><p>ClientMediaStats     5s</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>triggered by gotIceConnectionChange
+
+→ cmsc.sessionMgr.onMediaMgrMessage
+
+→ cmsc.mediamgr.startCheckStatsFromPC
+
+→ cmsc.mediamgr.getStatsFromPC
+
+→ connectionMonitor.reportStats, selectStats, fillRtp, fillRemoteRtp
+
+→ connectionMonitor.updateStatsHistory
+
+   → updateCommonData → updateNCopy
+→ updateRtpData → updateNCopy
+
+refer to:
+
+cmsc.mediaMgr.startCheckStatsFromPC
+
+setInterval for getStatsFromPC every 5s
+
+note: function updateNCopy process the curData and prevData, minus and copy...
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>reportMetricsTimerId    5s</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>tiggered by onMediaMgrMessage(...EVENT_MSG_SESSION_STARTED) by gotIceConnectionChange
+
+startReportMetrics
+
+→ reportMetrics
+
+firstly, sumComm for MQE and mediaStats
+
+for every peerConnection, then
+
+updateTransport
+updateData(false, peerId, showForced, showStats, stats, svrStats);
+updateData(true, peerId, mqeForced, mqe, stats, svrStats);
+then
+
+metricsForced &amp;&amp; metricsComplete(); // record every 10s
+mqeForced &amp;&amp; mqeComplete(); // record every 60s
+</pre></div>
+</div>
+</section>
+<section id="question">
+<h2><a class="toc-backref" href="#id2">Question</a><a class="headerlink" href="#question" title="Permalink to this headline"></a></h2>
+<p>定时器之间的协调</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">delay</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span> <span class="n">of</span> <span class="n">stats</span> <span class="n">report</span> <span class="n">timer</span> <span class="n">period</span> <span class="n">to</span> <span class="n">get</span> <span class="n">the</span> <span class="n">whole</span> <span class="n">peerConnections</span> <span class="n">stats</span>
+<span class="o">//</span> <span class="p">(</span><span class="n">to</span> <span class="n">refine</span> <span class="n">it</span> <span class="n">to</span> <span class="n">use</span> <span class="n">a</span> <span class="n">half</span> <span class="n">of</span> <span class="n">STATS_REPORT_INTERVAL_ms</span> <span class="n">periodic</span> <span class="n">to</span> <span class="n">use</span> <span class="n">ready</span> <span class="n">flag</span> <span class="ow">in</span> <span class="n">getStats</span><span class="o">...</span><span class="p">)</span>
+<span class="n">this</span><span class="o">.</span><span class="n">getStatsHalfTimeTimerId</span> <span class="o">=</span> <span class="n">setTimeout</span><span class="p">(</span><span class="n">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="n">connMonitor</span><span class="o">.</span><span class="n">getStatsHalfTimeTimerId</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">connMonitor</span><span class="o">.</span><span class="n">reportMetricsTimerId</span> <span class="o">=</span> <span class="n">setInterval</span><span class="p">(</span><span class="n">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="n">connMonitor</span><span class="o">.</span><span class="n">reportMetrics</span><span class="p">(</span><span class="n">server</span><span class="p">);</span>
+    <span class="p">},</span> <span class="n">connMonitor</span><span class="o">.</span><span class="n">STATS_REPORT_INTERVAL_ms</span><span class="o">/</span><span class="mi">2</span><span class="p">);</span>
+<span class="p">},</span> <span class="n">connMonitor</span><span class="o">.</span><span class="n">STATS_REPORT_INTERVAL_ms</span><span class="o">/</span><span class="mi">2</span> <span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="reportstats">
+<h2><a class="toc-backref" href="#id3">reportStats</a><a class="headerlink" href="#reportstats" title="Permalink to this headline"></a></h2>
+<p>It is Called from mediaMgr with stats from each peerConnections.
+This function parses the statistics data retrieved from the peerConnection and process the data accordingly.
+The data got here are in the common formats When a specific data are not available, it is set to “underfined”</p>
+<ul class="simple">
+<li><p>reportStats -&gt; selectStats -&gt;</p></li>
+<li><p>ConnectionMonitor.selectStats – 从 WebRTC 的 PeerConnection 中取出 Statistics</p></li>
+<li><p>ConnectionMonitor.fillRtp</p></li>
+</ul>
+</section>
+<section id="data-structure">
+<h2><a class="toc-backref" href="#id4">data structure</a><a class="headerlink" href="#data-structure" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>statsCached</p></li>
+<li><p>statsReported</p></li>
+</ul>
+</section>
+<section id="session-type">
+<h2><a class="toc-backref" href="#id5">session type</a><a class="headerlink" href="#session-type" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>main audio</p></li>
+<li><p>sharing audio</p></li>
+<li><p>main video: Camera-Source Video</p></li>
+<li><p>sharing video: Screen-Source Video</p></li>
+</ul>
+</section>
+<section id="main-methods">
+<h2><a class="toc-backref" href="#id6">Main methods</a><a class="headerlink" href="#main-methods" title="Permalink to this headline"></a></h2>
+<section id="selectstats">
+<h3><a class="toc-backref" href="#id7">selectStats</a><a class="headerlink" href="#selectstats" title="Permalink to this headline"></a></h3>
+</section>
+<section id="gettransport">
+<h3><a class="toc-backref" href="#id8">getTransport</a><a class="headerlink" href="#gettransport" title="Permalink to this headline"></a></h3>
+</section>
+</section>
+<section id="main-structure">
+<h2><a class="toc-backref" href="#id9">Main Structure</a><a class="headerlink" href="#main-structure" title="Permalink to this headline"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="cmsc_api.html" class="btn btn-neutral float-left" title="CMSC API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cmsc_roap.html" class="btn btn-neutral float-right" title="Thin Client ROAP" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Walter Fan.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

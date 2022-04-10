@@ -1,0 +1,100 @@
+#############
+Promise
+#############
+
+.. contents::
+  :local:
+
+  
+
+Overview
+====================
+
+JS 的函数回调往往会搞成下面这个样子，一层一层回调下去，超过三层就让人头大了, 例如：
+
+.. code-block:: JavaScript
+
+    doSomething(function(result) {
+      doSomethingElse(result, function(newResult) {
+        doThirdThing(newResult, function(finalResult) {
+          console.log('Got the final result: ' + finalResult);
+        }, failureCallback);
+      }, failureCallback);
+    }, failureCallback);
+
+
+
+好在 ES6 有了 promise ， 情况会好很多
+![](https://upload-images.jianshu.io/upload_images/1598924-1f2f49779fb48d47.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+我们可以在支持 ES6 的浏览器中改写为
+
+.. code-block:: JavaScript
+
+    doSomething()
+    .then(function(result) {
+      return doSomethingElse(result);
+    })
+    .then(function(newResult) {
+      return doThirdThing(newResult);
+    })
+    .then(function(finalResult) {
+      console.log('Got the final result: ' + finalResult);
+    })
+    .catch(failureCallback);
+
+
+改成 lambda 表达式样的箭头函数看起来就更加清晰了
+
+.. code-block:: JavaScript
+
+    doSomething()
+    .then(result => doSomethingElse(result))
+    .then(newResult => doThirdThing(newResult))
+    .then(finalResult => {
+      console.log(`Got the final result: ${finalResult}`);
+    })
+    .catch(failureCallback);
+
+
+参见 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises
+
+JS 通过在本次时间循环中的所有代码都执行完毕后调用 then 回调函数来处理 promise
+
+.. code-block:: JavaScript
+
+    let start = new Date().getTime();
+    let log = (msg) => console.log(msg + " - duration: " + (new Date().getTime() - start));
+
+    log("order 1");
+    let p = new Promise((res, rej)=> {
+            log("order 2");
+            res("order 5");
+            log("order 3");
+        })
+
+    p.then((value)=>log(value));
+    log("order 4");
+
+
+执行顺序是 1, 2, 3, 4, 5
+
+
+More info
+==================
+
+为避免JavaScript 的 "Callback hell" 回调地狱，ES6 制定了 Promise/A+ 规范
+
+Promise 本质上是一个状态机，每个 Promise 只能是3种状态， Promise 的执行是不可控的，你并不能断定在网络上传输的数据包何时到来
+
+Promise 对象是对我们现在尚未得到但将来会得到值的点位符
+
+创建一个 Promise 要传入一个具有两个参数的函数 function(resolve, reject)
+
+The Promise object represents the eventual completion (or failure) of an asynchronous operation and its resulting value
+
+Unlike old-fashioned passed-in callbacks, a promise comes with some guarantees:
+	•	Callbacks will never be called before the completion of the current run of the JavaScript event loop.
+	•	Callbacks added with then(), as above, will be called even after the success or failure of the asynchronous operation.
+	•	Multiple callbacks may be added by calling then() several times. Each callback is executed one after another, in the order in which they were inserted.
+

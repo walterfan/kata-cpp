@@ -1,0 +1,90 @@
+########################
+Web Client Bridge
+########################
+
+
+Main Activity
+========================
+
+.. code-block:: c++
+
+   // hook the TURN server and WCB manager
+   CWCBApi::Instance()->AddHook(this);
+   m_turnServerMgr.SetSink(this, CWCBApi::Instance());
+
+
+.. code-block::
+
+   CMediaServer::Initialize 
+   -> CMmServerSessionAPI::ListenContorlAndDataAddr 
+   -> CMmSessionServerManager::ListenContorlAndDataAddr 
+   -> CMmSessionServerAcceptor::CMmSessionServerAcceptor
+
+
+CWCBApi
+========================
+
+main interface
+----------------------------
+
+.. code-block:: c++
+
+  static CWCBApi *Instance(); // to create a singleton instace of WCB
+
+  // setup hook to the acceptor
+  virtual void AddHook(ICmTransportSink *pAcceptor) = 0;
+
+  virtual void RemoveHook(ICmTransportSink *pAcceptor) = 0;
+
+  // these two functions are to connect to the TURN server
+  virtual bool IsWCBIceUserName(std::string &userName) = 0;
+
+  virtual int  Connect2TurnPeer(std::string &username,
+                                ICmTurnPeerDataLink *pPeerLink,
+                                bool bForced) = 0;
+
+  static int  Connect2TurnPeerStatic(std::string &username,
+                                     ICmTurnPeerDataLink *pPeerLink,
+                                     bool bForced);
+
+  // create a new dangling client
+  virtual bool IsForWCB(CCmMessageBlock &mbBlock, int pduMsgId,
+                        bool &bRejected, ICmTransport *pTransport) = 0;
+
+  virtual CWCBClientApi *GetNewClient(ICmTransport *pTransport,
+                                      CCmMessageBlock &data,
+                                      BYTE pduMsgId) = 0;
+
+
+
+
+
+
+
+.. code-block:: c++
+
+    typedef enum {
+      WCB_STATE_NONE = 0,
+      WCB_STATE_INIT = 1,
+      WCB_STATE_COMPLETE = 2,
+      WCB_STATE_WAITING  = 4,
+      WCB_STATE_DELETING  = 8,
+      WCB_STATE_END
+    } WCB_state_e;
+
+
+
+source files
+=========================
+
+ src/mcs/webClientBridge/WCBAudioClient.cpp                                
+ src/mcs/webClientBridge/WCBAudioClient.h                                  
+ src/mcs/webClientBridge/WCBClient.cpp                                     
+ src/mcs/webClientBridge/WCBClient.h                                       
+ src/mcs/webClientBridge/WCBFlowRtp.cpp                                    
+ src/mcs/webClientBridge/WCBFlowRtp.h                                      
+ src/mcs/webClientBridge/WCBPeerConnection.cpp                             
+ src/mcs/webClientBridge/WCBPeerConnection.h                               
+ src/mcs/webClientBridge/WCBRoap.cpp                                       
+ src/mcs/webClientBridge/WCBSharingClient.cpp                              
+ src/mcs/webClientBridge/WCBSrtpHandle.cpp   

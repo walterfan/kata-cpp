@@ -1,0 +1,21 @@
+#############
+CSCC API
+#############
+
+Overivew
+==================
+
+CSCC main features include
+
+* Multiple Media server connections and call setup
+* Connection Failover
+* Audio/Video/Content-sharing BW balancing
+* Resolution/Bitrate switch/adjustment
+
+
+Main flow
+====================
+
+hybrid->cscc: create
+hybridMgr->hybrid: joinWithVoIP
+note

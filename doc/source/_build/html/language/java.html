@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Java &mdash; A Programmer Prepares 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Java Concurrency" href="java_concurrency.html" />
+    <link rel="prev" title="C++ Server" href="cpp_server.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> A Programmer Prepares
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">论程序员的自我修养</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interview.html">程序员面试要点</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resume.html">Resume</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithm/index.html">Algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">Architecture</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Programming Language</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cpp.html">C++</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_interview.html">C++ Interview Questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_evolution.html">C++ Evolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_lambda.html">C++ Lambda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_memory.html">Resource management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_stl.html">C++ STL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_thread.html">C++ Thread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_rvalue.html">右值引用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_object_model.html">C++ Object Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_server.html">C++ Server</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Java</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Java 十大面试题</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#bean-lifecycle-in-spring-contrainer">Bean lifecycle in Spring Contrainer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-to-implement-aop">How to implement AOP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-to-reduce-the-gc-time">How to reduce the GC time</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#java-class-structure">Java Class Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#java-11">Java 11</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#module">module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#try-with-resource">try-with-resource</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#zgc">ZGC</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#other-features">Other features</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#snippets">Snippets</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="java_concurrency.html">Java Concurrency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="java_interview.html">Java Interview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="java_bytecode.html">Java 字节码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="java_classloader.html">Java 类加载器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="java_collection.html">Java collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python.html">Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="javascript.html">JavaScript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="js_promise.html">Promise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="js_test.html">JS Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="js_visualize.html">JavaScript Visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="js_interview.html">JS Interview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="js_async.html">javascript asynchronous programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodejs.html">NodeJS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="go.html">Go lanaguage</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../library/index.html">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oss/index.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html">mathematics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#overview">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#least-squares-method">最小二乘法 least squares method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pattern/index.html">Pattern</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/index.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool/index.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mmp/index.html">MMP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../thinclient/index.html">Thin Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utiltp/index.html">UTILTP</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">A Programmer Prepares</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Programming Language</a> &raquo;</li>
+      <li>Java</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/language/java.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="java">
+<h1>Java<a class="headerlink" href="#java" title="Permalink to this headline"></a></h1>
+<section id="id1">
+<h2>Java 十大面试题<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<section id="bean-lifecycle-in-spring-contrainer">
+<h3>Bean lifecycle in Spring Contrainer<a class="headerlink" href="#bean-lifecycle-in-spring-contrainer" title="Permalink to this headline"></a></h3>
+</section>
+<section id="how-to-implement-aop">
+<h3>How to implement AOP<a class="headerlink" href="#how-to-implement-aop" title="Permalink to this headline"></a></h3>
+<p>How to sum a list elements by stream API</p>
+<div class="highlight-Java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kt">long</span> <span class="nf">getTotalMcsCount</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="na">pools</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">map</span><span class="p">(</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">x</span><span class="p">.</span><span class="na">getMcsCount</span><span class="p">()).</span><span class="na">reduce</span><span class="p">(</span><span class="mi">0</span><span class="n">L</span><span class="p">,</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="how-to-reduce-the-gc-time">
+<h3>How to reduce the GC time<a class="headerlink" href="#how-to-reduce-the-gc-time" title="Permalink to this headline"></a></h3>
+</section>
+</section>
+<section id="java-class-structure">
+<h2>Java Class Structure<a class="headerlink" href="#java-class-structure" title="Permalink to this headline"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ClassFile</span> <span class="p">{</span>
+    <span class="n">u4</span>             <span class="n">magic</span><span class="p">;</span>
+    <span class="n">u2</span>             <span class="n">minor_version</span><span class="p">;</span>
+    <span class="n">u2</span>             <span class="n">major_version</span><span class="p">;</span>
+    <span class="n">u2</span>             <span class="n">constant_pool_count</span><span class="p">;</span>
+    <span class="n">cp_info</span>        <span class="n">constant_pool</span><span class="p">[</span><span class="n">constant_pool_count</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span>
+    <span class="n">u2</span>             <span class="n">access_flags</span><span class="p">;</span>
+    <span class="n">u2</span>             <span class="n">this_class</span><span class="p">;</span>
+    <span class="n">u2</span>             <span class="n">super_class</span><span class="p">;</span>
+    <span class="n">u2</span>             <span class="n">interfaces_count</span><span class="p">;</span>
+    <span class="n">u2</span>             <span class="n">interfaces</span><span class="p">[</span><span class="n">interfaces_count</span><span class="p">];</span>
+    <span class="n">u2</span>             <span class="n">fields_count</span><span class="p">;</span>
+    <span class="n">field_info</span>     <span class="n">fields</span><span class="p">[</span><span class="n">fields_count</span><span class="p">];</span>
+    <span class="n">u2</span>             <span class="n">methods_count</span><span class="p">;</span>
+    <span class="n">method_info</span>    <span class="n">methods</span><span class="p">[</span><span class="n">methods_count</span><span class="p">];</span>
+    <span class="n">u2</span>             <span class="n">attributes_count</span><span class="p">;</span>
+    <span class="n">attribute_info</span> <span class="n">attributes</span><span class="p">[</span><span class="n">attributes_count</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="java-11">
+<h2>Java 11<a class="headerlink" href="#java-11" title="Permalink to this headline"></a></h2>
+<section id="module">
+<h3>module<a class="headerlink" href="#module" title="Permalink to this headline"></a></h3>
+<p>When we create a module, we include a descriptor file that defines several aspects of our new module:</p>
+<ul class="simple">
+<li><p>Name – the name of our module</p></li>
+<li><p>Dependencies – a list of other modules that this module depends on</p></li>
+<li><p>Public Packages – a list of all packages we want accessible from outside the module</p></li>
+<li><p>Services Offered – we can provide service implementations that can be consumed by other modules</p></li>
+<li><p>Services Consumed – allows the current module to be a consumer of a service</p></li>
+<li><p>Reflection Permissions – explicitly allows other classes to use reflection to access the private members of a package</p></li>
+</ul>
+<p>The module naming rules are similar to how we name packages (dots are allowed, dashes are not). It’s very common to do either project-style (my.module) or Reverse-DNS (com.baeldung.mymodule) style names. We’ll use project-style in this guide.</p>
+<p>We need to list all packages we want to be public because by default all packages are module private.</p>
+<ul class="simple">
+<li><p>module-info.java</p></li>
+</ul>
+</section>
+<section id="try-with-resource">
+<h3>try-with-resource<a class="headerlink" href="#try-with-resource" title="Permalink to this headline"></a></h3>
+</section>
+<section id="zgc">
+<h3>ZGC<a class="headerlink" href="#zgc" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>major gc less than 10ms</p></li>
+<li><p>thoughout affection less than 15%</p></li>
+</ul>
+</section>
+<section id="other-features">
+<h3>Other features<a class="headerlink" href="#other-features" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>Reactive stream</p></li>
+<li><p>Embed Http Client support WebSocket and HTTP2</p></li>
+<li><p>Embed lightweight Json API</p></li>
+<li><p>Immutable collection API</p></li>
+<li><p>Stream interface: dropWhile, takeWhile 满足条件马上停止</p></li>
+<li><p>support TLS1.3</p></li>
+<li><p>jshell like python shell</p></li>
+<li><p>String from char array to byte array</p></li>
+<li><p>“_” became a key word</p></li>
+<li><p>javadoc support html5 and search</p></li>
+</ul>
+</section>
+</section>
+<section id="snippets">
+<h2>Snippets<a class="headerlink" href="#snippets" title="Permalink to this headline"></a></h2>
+<div class="highlight-Java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">CombinedComparator</span> <span class="kd">extends</span> <span class="n">MmpZoneComparator</span> <span class="p">{</span>
+
+    <span class="kd">private</span> <span class="n">Comparator</span><span class="o">&lt;</span><span class="n">MmpZoneUsageInfo</span><span class="o">&gt;</span> <span class="n">comparator</span><span class="p">;</span>
+
+    <span class="kd">public</span> <span class="nf">CombinedComparator</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">MmpZoneComparator</span><span class="o">&gt;</span> <span class="n">comparators</span><span class="p">){</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">comparator</span> <span class="o">=</span> <span class="n">ComparatorUtils</span><span class="p">.</span><span class="na">chainedComparator</span><span class="p">(</span><span class="n">comparators</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">int</span> <span class="nf">_compare</span><span class="p">(</span><span class="n">MmpZoneUsageInfo</span> <span class="n">o1</span><span class="p">,</span> <span class="n">MmpZoneUsageInfo</span> <span class="n">o2</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">comparator</span><span class="p">.</span><span class="na">compare</span><span class="p">(</span><span class="n">o1</span><span class="p">,</span><span class="n">o2</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="cpp_server.html" class="btn btn-neutral float-left" title="C++ Server" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="java_concurrency.html" class="btn btn-neutral float-right" title="Java Concurrency" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Walter Fan.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

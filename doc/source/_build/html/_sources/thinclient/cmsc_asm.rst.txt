@@ -1,0 +1,12 @@
+###############
+CMSC ASM media
+###############
+
+
+Overview
+==================
+
+
+In WebRTC, the Thin Client sends out 4 resolutions (720p/360p/180p/90p)
+and can receive up to 6 video streams simultaneously depending on the video layout
+(one 720p stream and up to six 90p streams in stack/side-by-side view, and up to six 360p streams in grid view).

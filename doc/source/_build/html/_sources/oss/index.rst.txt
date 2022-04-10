@@ -1,0 +1,32 @@
+Middleware
+=====================
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Middleware
+
+   kafka
+   cassandra
+   redis
+   freeswitch
+
+
+Overview
+----------------------
+
+4L Principals:
+
+ - Lots of people use it
+ - Lots of learning materials
+ - Lots of successful case
+ - License is free
+
+Metrics
+-----------------------
+
+* 响应时间(response time)
+* 吞吐量(throughout)。
+* 并发数(Concurrent count)
+* 错误率（Error ratio）
+
+  - Success ratio in different load

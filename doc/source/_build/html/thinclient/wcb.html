@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Web Client Bridge &mdash; A Programmer Prepares 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="WCB Client" href="wcb_client.html" />
+    <link rel="prev" title="Web Client Agent" href="wca.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> A Programmer Prepares
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">论程序员的自我修养</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interview.html">程序员面试要点</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resume.html">Resume</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithm/index.html">Algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../language/index.html">Programming Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../library/index.html">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oss/index.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html">mathematics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#overview">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#least-squares-method">最小二乘法 least squares method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pattern/index.html">Pattern</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/index.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool/index.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mmp/index.html">MMP</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Thin Client</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="app_share.html">Application Share</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audio_mgr.html">Audio Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audio_443.html">Audio over 443</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_to.html">How to</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocols.html">Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qos.html">QoS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc.html">CMSC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc_asm.html">CMSC ASM media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc_flowrtp.html">CMSC Flow RTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc_MediaEngInst.html">Media Engine Instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc_connection_monitor.html">CMSC Connection Monitor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cscc.html">CSCC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cscc_api.html">CSCC API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cscc_clientsession.html">ClientSession</a></li>
+<li class="toctree-l2"><a class="reference internal" href="metrics.html">Thin Client Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wca.html">Web Client Agent</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Web Client Bridge</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#main-flow">Main Flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#main-classes">Main classes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#crc-of-wcb">CRC of WCB</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#important-class">Important class</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_client.html">WCB Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_dtls.html">WCB DTLS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_ice.html">Thin Client ICE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_message.html">WCB message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_mqe.html">MQE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_sdp.html">WCB SDP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_rtp.html">WCB RTP module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_source.html">WCB source structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_flowrtp.html">WCB Flow RTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_media_stats.html">Media Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="web_client_bridge.html">Web Client Bridge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disciplines_on_code_development.html">Disciplines on Code Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#overall">Overall</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#feature">Feature</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#reference">Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../utiltp/index.html">UTILTP</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">A Programmer Prepares</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Thin Client</a> &raquo;</li>
+      <li>Web Client Bridge</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/thinclient/wcb.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="web-client-bridge">
+<h1>Web Client Bridge<a class="headerlink" href="#web-client-bridge" title="Permalink to this headline"></a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#main-flow" id="id4">Main Flow</a></p></li>
+<li><p><a class="reference internal" href="#main-classes" id="id5">Main classes</a></p>
+<ul>
+<li><p><a class="reference internal" href="#crc-of-wcb" id="id6">CRC of WCB</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#important-class" id="id7">Important class</a></p></li>
+</ul>
+</div>
+<section id="main-flow">
+<h2><a class="toc-backref" href="#id4">Main Flow</a><a class="headerlink" href="#main-flow" title="Permalink to this headline"></a></h2>
+<img alt="../_images/wcb-thin-client-bind-data.png" src="../_images/wcb-thin-client-bind-data.png" />
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt>Web App Client Join Session Request PDU (PDU 205)</dt><dd><p>Msg goes through CMmSessionServerAcceptor()
+WCB client created</p>
+</dd>
+</dl>
+</li>
+<li><p>WCB send MCS standard Join Session Request (PDU 206, Response PDU 195)</p></li>
+<li><p>MCS send WCB/Client roster and channel change messages (PDU 25, 23, 38)</p></li>
+<li><p>MCS send WCB/Client video mode/active video user messages (PDU 76, cmdId 17, 25, 38)</p></li>
+<li><p>Web App Client Join Channel Rqst (PDU 15)</p></li>
+<li><dl class="simple">
+<dt>Media negotiation (PDU 251)</dt><dd><p>WCB Client Create Peer Connection
+Handle ROAP messages
+WCB send media negotiation to MCS (PDU 252, Response PDU 253)</p>
+</dd>
+</dl>
+</li>
+<li><p>Establish TURN/STUN media connections</p></li>
+<li><dl class="simple">
+<dt>Subscription messages (PDU 76, cmdId 44, 45)</dt><dd><p>SCR/SCA messages between WCB and MCS (RTCP packets)</p>
+</dd>
+</dl>
+</li>
+<li><p>Media Starts to Flow</p></li>
+<li><p>WCB media switch (SRTP encryption/dec)</p></li>
+</ol>
+</section>
+<section id="main-classes">
+<h2><a class="toc-backref" href="#id5">Main classes</a><a class="headerlink" href="#main-classes" title="Permalink to this headline"></a></h2>
+<p>Conference – Session – Client – PeerConnection</p>
+<p>CWCBClientProxy</p>
+<ul class="simple">
+<li><p>CWCBClientProxy::RetrieveJSRParamsV2</p></li>
+<li><p>CWCBConference::CWCBConference</p></li>
+<li><p>CWCBSession::Init</p></li>
+<li><p>CWCBControl::AddClient</p></li>
+<li><p>CWCBClientProxy::CreateEncryptor,</p></li>
+<li><p>CWCBPeerConnection::Init</p></li>
+<li><p>CWCBPeerConnection::HandleClientMsg</p></li>
+<li><p>CWCBClient::HandleRoapMsg</p></li>
+<li><p>CWCBPeerConnection::Init</p></li>
+<li><p>CWCBMediaChanProxy::SetAckIceUfragPassw,</p></li>
+<li><p>CWCBPeerConnection::ParseIceUsername</p></li>
+<li><p>CWCBControl::Connect2TurnPee</p></li>
+<li><p>CWCBPeerConnection::OnReceiveRawData</p></li>
+<li><p>CWCBClient::HandleStatisticsData</p></li>
+<li><p>CWCBControl::CheckConferenceStatus</p></li>
+</ul>
+<section id="crc-of-wcb">
+<h3><a class="toc-backref" href="#id6">CRC of WCB</a><a class="headerlink" href="#crc-of-wcb" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default" id="id1">
+<caption><span class="caption-text">CRC</span><a class="headerlink" href="#id1" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 30%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Class</p></th>
+<th class="head"><p>Responsibility</p></th>
+<th class="head"><p>Collaborator</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>CWCBConference</p></td>
+<td><p>represents a web conference</p></td>
+<td><p>members: CWCBAudioSession, CWCBVideoSession, CWCBSharingSession, CWCBControl(pointer)</p></td>
+</tr>
+<tr class="row-odd"><td><p>CWCBSession</p></td>
+<td><p>represents a parent class of audio, video and sharing session</p></td>
+<td><p>contains WCBClient, children: CWCBAudioSession, CWCBVideoSession, CWCBSharingSession</p></td>
+</tr>
+<tr class="row-even"><td><p>CWCBClient</p></td>
+<td><p>represents a client connection/transport, accept connection, send and receive message from browser</p></td>
+<td><p>contains WCBClient, parent: CWCBClientApi， IWCBNBRProxyClientSink， IWCBTimer; friends: CWCBMediaChanProxy; CWCBClientProxy; CWCBAudioClientProxy; class CWCBVideoClientProxy;</p></td>
+</tr>
+<tr class="row-odd"><td><p>VideoUserInfo</p></td>
+<td><p>represends a video user</p></td>
+<td><p>it contains userName, nodeId, role, isPresent, sessionInfo</p></td>
+</tr>
+<tr class="row-even"><td><p>CMmRosterInfo</p></td>
+<td><p>roster info sent to client</p></td>
+<td><p>contains nodeId, attendeeId, userId and guestId, username, role, language,</p></td>
+</tr>
+<tr class="row-odd"><td><p>MediaSessionInfo</p></td>
+<td><p>media session info</p></td>
+<td><p>CmmRosterMedia</p></td>
+</tr>
+<tr class="row-even"><td><p>CWCBClientProxy</p></td>
+<td><p>it is a proxy of CWCBClient</p></td>
+<td><p>parent: ICmTransport, IWCBTimer, WCB: myThread; children: CWCBAudioClientProxy, CWCBVideoClientProxy, CWCBSharingClientProxy</p></td>
+</tr>
+<tr class="row-odd"><td><p>CWCBVideoClient</p></td>
+<td><p>represents video client from browser, it can parse SDP, handle channel request</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="important-class">
+<h2><a class="toc-backref" href="#id7">Important class</a><a class="headerlink" href="#important-class" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>CWCBClient: CWCBAudioClient, CWCBVideoClient, CWCBSharingClient
+- CWCBClient contains a CWCBClientProxy to do somethings</p></li>
+<li><p>CWCBClientProxy: CWCBAudioClientProxy, CWCBVideoClientProxy, CWCBSharingClientProxy</p></li>
+</ul>
+<table class="colwidths-given docutils align-default" id="id2">
+<caption><span class="caption-text">member methods</span><a class="headerlink" href="#id2" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 30%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>name</p></th>
+<th class="head"><p>description</p></th>
+<th class="head"><p>comments</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>name</p></td>
+<td><p>description</p></td>
+<td><p>comments</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id3">
+<caption><span class="caption-text">member variables</span><a class="headerlink" href="#id3" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 30%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>name</p></th>
+<th class="head"><p>description</p></th>
+<th class="head"><p>comments</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>name</p></td>
+<td><p>description</p></td>
+<td><p>comments</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="wca.html" class="btn btn-neutral float-left" title="Web Client Agent" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="wcb_client.html" class="btn btn-neutral float-right" title="WCB Client" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Walter Fan.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

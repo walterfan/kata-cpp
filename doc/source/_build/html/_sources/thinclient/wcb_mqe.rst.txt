@@ -1,0 +1,77 @@
+#############
+MQE
+#############
+
+
+
+
+MMP WCB codes
+=====================
+
+* 定时发送统计数据
+
+.. code-block:: c++
+
+    // triggered periodically that gathers media stats within the period of time
+    // send stats to client through roap
+    // the stats contain audio and/or video info, in both rx and tx directions (from client's perspective)
+    void CWCBClient::HandleMStats()
+    {
+      //return;
+      string strMStats = m_mStatsHandler.HandleMStats(m_mStatsRoap);
+      if (strMStats.empty()) { return; }
+      CMmPduSessionThinClientMediaNegotiate MediaNegotiateResp(strMStats);
+      CCmMessageBlock msg(MediaNegotiateResp.GetLength());
+      int rv = MediaNegotiateResp.Encode(msg);
+      WCB_ON_ERR(!rv, "CWCBClient::HandleMStats: failed in media msg encoding with" << " rv = " << rv, );
+      SendMsgToThinClient_n(&msg);
+    }
+
+* related PDU
+
+.. code-block:: c++
+
+
+    // new Thin Client Media Negotiation class
+    class CMmPduSessionThinClientMediaNegotiate : public CMmSessionPDUBase
+    {
+    //...
+
+        CMmPduSessionThinClientMediaNegotiate(const CCmString& strContent) : m_strContent(strContent)
+        {
+            m_cType = MM_SESSION_PDU_TYPE_THINCLIENT_MEDIA_NEGOTIATE;
+        }
+
+    }
+
+    //added for thin client user media negotiate
+    const BYTE MM_SESSION_PDU_TYPE_THINCLIENT_MEDIA_NEGOTIATE= 251;
+    const BYTE MM_SESSION_PDU_TYPE_MEDIA_NEGOTIATE_RQST= 252;
+    const BYTE MM_SESSION_PDU_TYPE_MEDIA_NEGOTIATE_RSPN = 253;
+    //add for thin client user keepalive
+    const BYTE MM_SESSPDU_WEBSOCKET_KEEP_ALIVE			= 254;
+
+    const BYTE MM_SESSION_PDU_VOIP_DOWNLINK_REPT_NETSTATUE       = 255;
+
+
+    /*
+     *	How to use Session PDUs
+     *
+     *	Example I : Client send data to server
+     *	CMmApplicationDataPDU* pDataPDU = new CMmApplicationDataPDU(
+     *		pID,		// Which ID you wanna send to
+     *		SendType,	// Type of data you wanna send
+     *		Priority,	// Priority of data you wanna send
+     *		pmbData		// Data you wanna send
+     *		);
+     *
+     *	CCmMessageBlock mbData( 65535 );
+     *	pDataPDU->Encode( mbData );
+     *	pTransport->SendData( mbData );
+     *
+     *	Example II : Server receive application PDU client sent
+     *	CMmApplicationDataPDU* pDataPDU = new CMmApplicationDataPDU();
+     *	CMmServerSessionAPI::MM_SESSION_SEND_TYPE SendType = 0;
+     *	pDataPDU->GetType( SendType );
+     *	.....	//	Get whatever you want
+     */

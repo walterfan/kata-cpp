@@ -1,0 +1,271 @@
+###################
+CMSC MediaMgr
+###################
+
+
+
+.. contents::
+    :local:
+
+
+Overview
+========================
+
+
+
+Structure
+=============================
+
+
+
+* sessionMgr
+* mediaMgr
+* connectionMonitor
+
+
+Overview
+=============================
+
+
+
+
+Main flow
+==============================
+
+    setupMediaMgr -> setupMedia
+
+    for bundle case, 只创建 master PCEx， 其他的 peerId 是
+
+
+
+Message
+===============================
+
+* EVENT_MSG_CONN_CONNECT
+
+
+Main method
+===============================
+
+* _init = function(ctx, sendSessionMessage)
+* onSessionMsg = function(peerId, webRtcMsg)
+* close = function()
+* setupMedia = function(nConnections, config, nExtraConnections)
+* updateIceServer = function(avServer, avIceServer)
+* updateServerDst = function(asServer, serverDst)
+* deleteRTCPeerConnection = function(stPeerId, nConn)
+* stop = function(startConn, nConn)
+* addStream = function(peerId, stream)
+* addStreamSharing = function(sendArray, resultCb)
+* addStreamVideo = function(sendArray, resultCb) {             // jshint ignore:line
+* isLocalVideoAddedForBundle = function (pcEx)
+* muteVideo = function (peerId, bMute, mediaStream, scaleDownBy, nExtraMaxVideoTrack)
+* removeStream = function(peerId, stream)
+* removeStreamSharing = function(peerId, stream)
+* resetRecordEx = function (recordEx, state)
+* removeStreamVideo = function()
+* getAnswer = function(peerId)
+* getOffer = function(startConn, nConn)
+* createMediaIdMapping = function(peerId, trackMap)
+* storeSdpInfo = function(peerId, sdp, property, regex)
+* getSdpInfo = function(peerId)
+* replaceMediaTrack = function(peerId, mediaType, newTrack)
+* resetMediaTrack = function(peerId, mediaType)
+* gotLocalIceCandidate = function(peerId, event)
+* gotRemoteTrack = function(peerId, event)
+* gotRemoteStream = function(peerId, event)
+* recvFromRemoteIceCandidate = function(peerId, candidate)
+* recvFromRemoteDesc = function(peerId, description)
+* recvInfoFromRemote = function(peerId, msg)
+* startCheckStatsFromPC = function (peerId, reportStats, connMonitor)
+* stopCheckStatsFromPC = function(peerId, reportStats, connMonitor)
+* openMedia = function(mediaType, successCb, failureCb)
+* manageMedia = function(mediaType, action, successCb, failureCb)
+
+
+setupMedia
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+最重要的方法，用来建立媒体连接
+
+  parameters: nConnections, config,  nExtraConnections
+
+  refer to Cmsc.prototype.constantDef
+
+renewRTCPeerConnection
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+is it to create peer connection
+
+.. code-block::
+
+    function renewRTCPeerConnection(pcEx) {
+
+        this.sessionMgr._onStatReport({eventType: 'peerConnection_created', value: {peerId: peerId}});
+        pcEx.state = "idle"; //"idle"|"starting"|"error"|"started"|"stopping"
+
+        pc.onicecandidate = this.gotLocalIceCandidate.bind(this, peerId);
+        pc.ontrack = this.gotRemoteTrack.bind(this, peerId);
+        pc.onaddstream = this.gotRemoteStream.bind(this, peerId);
+        pc.onremovestream = lostRemoteStream.bind(this, peerId);
+        pc.onnegotiationneeded = restartNegotiation.bind(this, peerId);
+        pc.onsignalingstatechange = gotSignalingStateChange.bind(this, peerId);
+        pc.oniceconnectionstatechange = gotIceConnectionChange.bind(this, peerId);
+        pc.onicegatheringstatechange = gotIceGatherStateChange.bind(this, peerId);
+
+        //...
+    }
+
+gotIceConnectionChange
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+当 ICE connection state 有变化有回调
+
+.. code-block::
+
+    //Check statistics
+    this.sendSessionMessage({eventId:evtDef.EVENT_MSG_CONN_CONNECT, server:pcEx.hookId, peerId:peerId});
+
+
+对于 bundle peer connection , 它是一个双向的 Transceivers
+
+Key event
+-------------------------------
+Key snippets
+
+
+
+
+
+.. code-block:: C++
+
+    string CWCBMediaStatsHandler::GetCodecProfileStr(int profileIdc, int constraint)
+    {
+        if (profileIdc == 66) { return constraint ? "CBP" : "BP"; }
+        if (profileIdc == 100) { return constraint ? "CHP" : "HP"; }
+        return "unknown";
+    }
+
+
+H.264有四种画质级别，分别是BP、EP、MP、HP：
+
+* 1. BP-Baseline Profile：基本画质。支持I/P 帧，只支持无交错（Progressive）和CAVLC；
+* 2. EP-Extended profile：进阶画质。支持I/P/B/SP/SI 帧，只支持无交错（Progressive）和CAVLC；
+* 3. MP-Main profile：主流画质。提供I/P/B 帧，支持无交错（Progressive）和交错（Interlaced），也支持CAVLC 和CABAC 的支持；
+* 4. HP-High profile：高级画质。在main Profile 的基础上增加了8x8内部预测、自定义量化、无损视频编码和更多的YUV 格式；
+
+
+
+sequence diagram
+============================
+
+.. code-block::
+
+    sessionMgr: _init
+    sessionMgr-> MediaMgr: new
+    sessionMgr->sessonMgr: setupMediaMgr
+    sessionMgr->mediaMgr: setupMedia
+    Note left of mediaMgr: status = "idle"|"opened"|"started"|"partiallyStarted"|"stopping"|"closing"
+    mediaMgr->mediaMgr: renewRTCPeerConnection
+    mediaMgr->mediaMgr: createPeerConnectionAdapter
+    mediaMgr->sessionMgr:_onStatReport
+    Note left of mediaMgr:set callback of PC
+    mediaMgr->mediaMgr: gotIceConnectionChange
+    mediaMgr-> mediaMgr:sendSessionMessage
+    mediaMgr-> sessionMgr: onMediaMgrMessage
+    Alt msgDesc.eventId == EVENT_MSG_CONN_CONNECT:
+        sessionMgr->mediaMgr: startCheckStatsFromPC
+    end
+    Alt EVENT_MSG_SESSION_STARTED
+       sessionMgr->connectionMonitor: startReportMetrics
+
+
+
+
+    apiImpl->sessionMgr: manageSession
+    sessionMgr->mediaMgr: manageMedia
+    mediaMgr->mediaMgr: addStream
+    mediaMgr->mediaMgr: getOffer
+    mediaMgr->pc: createOffer
+    Pc->mediaMgr: getLocalDescriptionCb
+    mediaMgr->pc: setLocalDescription
+    Pc->mediaMgr: sendToRemoteDesc
+    mediaMgr->sessionMgr:onMediaMgrMessage
+    sessionMgr->signalMgr: onLocalMsg
+
+
+class diagram
+============================
+
+.. code-block::
+
+    class MediaMgr {
+        this.sessionMgr = ctx;
+        this.cmsc = ctx.cmsc;
+        this._trace = this.cmsc._trace;
+        this.peerConnEx = [];
+        this.peerId = 0;
+        this.sendSessionMessage = sendSessionMessage;
+
+        _init = function(ctx, sendSessionMessage);
+
+        //=== session message handling ====
+
+        MediaMgr.prototype.onSessionMsg = function(peerId, webRtcMsg) ;
+
+        //=== module service ===
+
+        MediaMgr.prototype.close = function()();
+        //import
+        MediaMgr.prototype.setupMedia = function(nConnections, config, nExtraConnections);
+        MediaMgr.prototype.updateIceServer = function(avServer, avIceServer)
+        MediaMgr.prototype.updateServerDst = function(asServer, serverDst)
+
+        function renewRTCPeerConnection(pcEx);
+
+        MediaMgr.prototype.deleteRTCPeerConnection = function(stPeerId, nConn)
+        MediaMgr.prototype.stop = function(startConn, nConn)
+        MediaMgr.prototype.addStream = function(peerId, stream)
+        MediaMgr.prototype.addStreamSharing = function(resultCb)
+
+        MediaMgr.prototype.addStreamVideo = function(sendArray, resultCb) ;
+
+        MediaMgr.prototype.isLocalVideoAddedForBundle = function (pcEx)
+        MediaMgr.prototype.muteVideo = function (peerId, bMute, mediaStream, scaleDownBy, nExtraMaxVideoTrack)
+        MediaMgr.prototype.removeStream = function(peerId, stream)
+        MediaMgr.prototype.removeStreamSharing = function()
+        MediaMgr.prototype.resetRecordEx = function (recordEx, state)
+        MediaMgr.prototype.removeStreamVideo = function()
+        MediaMgr.prototype.getAnswer = function(peerId)
+        MediaMgr.prototype.getOffer = function(startConn, nConn)
+        MediaMgr.prototype.createMediaIdMapping = function(peerId, trackMap)
+        MediaMgr.prototype.storeSdpInfo = function(peerId, sdp, property, regex)
+        MediaMgr.prototype.getSdpInfo = function(peerId)
+
+        //=== event call backs ===
+
+        MediaMgr.prototype.gotLocalIceCandidate = function(peerId, event)
+        MediaMgr.prototype.gotRemoteTrack = function(peerId, event)
+        MediaMgr.prototype.gotRemoteStream = function(peerId, event)
+
+        // ==================== callback handling ==========================
+        function onMediaError(peerId, funName, errorMsg)
+        function onSuccess(peerId, funName)
+        function mediaHandleCb(record, funName, errorMsg)
+
+        //===================== messages from remote sites ==================
+
+        MediaMgr.prototype.recvInfoFromRemote = function(peerId, msg);
+        MediaMgr.prototype.recvFromRemoteDesc = function(peerId, description)
+        MediaMgr.prototype.recvInfoFromRemote = function(peerId, msg)
+
+
+        MediaMgr.prototype.startCheckStatsFromPC = function (peerId, reportStats, connMonitor)
+        MediaMgr.prototype.stopCheckStatsFromPC = function(peerId, reportStats, connMonitor)
+
+        // === session services ===
+
+        MediaMgr.prototype.openMedia = function(mediaType, successCb, failureCb)
+        MediaMgr.prototype.manageMedia = function(mediaType, action, successCb, failureCb)
+
+
+
+    }

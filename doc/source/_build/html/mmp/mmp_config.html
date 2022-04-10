@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MMP Configuration &mdash; A Programmer Prepares 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Session Endpoint" href="mmp_endpoint.html" />
+    <link rel="prev" title="MMP Basic" href="mmp_basic.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> A Programmer Prepares
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">论程序员的自我修养</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interview.html">程序员面试要点</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resume.html">Resume</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithm/index.html">Algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../language/index.html">Programming Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../library/index.html">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oss/index.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html">mathematics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#overview">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#least-squares-method">最小二乘法 least squares method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pattern/index.html">Pattern</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/index.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool/index.html">Tools</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">MMP</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="mmp_basic.html">MMP Basic</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">MMP Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mmp_endpoint.html">Session Endpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mmp_main.html">MMP Main Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mmp_pdu.html">MCS PDU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mmp_turn.html">MMP TURN Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mmp_rtp.html">MMP RTP</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../thinclient/index.html">Thin Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utiltp/index.html">UTILTP</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">A Programmer Prepares</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">MMP</a> &raquo;</li>
+      <li>MMP Configuration</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/mmp/mmp_config.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="mmp-configuration">
+<h1>MMP Configuration<a class="headerlink" href="#mmp-configuration" title="Permalink to this headline"></a></h1>
+<ul class="simple">
+<li><p>webex-1.cfg</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">General</span><span class="p">]</span>
+<span class="n">ServerType</span><span class="o">=</span><span class="n">MCS</span><span class="p">;</span>
+<span class="n">InstanceID</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+<span class="n">EncodeDBAccount</span><span class="o">=</span><span class="n">false</span><span class="p">;</span>
+<span class="n">AWSCloud</span><span class="o">=</span><span class="n">false</span><span class="p">;</span>
+
+<span class="n">EnableMultiThread</span><span class="o">=</span><span class="n">TRUE</span>
+
+<span class="n">NetworkThreadNumber</span><span class="o">=</span><span class="mi">2</span>
+<span class="n">WorkThreadNumber</span><span class="o">=</span><span class="mi">3</span>
+
+<span class="n">ApplicationUID</span><span class="o">=</span><span class="mi">5802</span><span class="p">;</span>
+<span class="n">ApplicationUserName</span><span class="o">=</span><span class="n">wrt</span><span class="o">-</span><span class="n">mmp</span><span class="p">;</span>
+<span class="n">ApplicationGID</span><span class="o">=</span><span class="mi">601</span><span class="p">;</span>
+<span class="n">ApplicationGroupName</span><span class="o">=</span><span class="n">nobody</span><span class="p">;</span>
+
+
+<span class="n">DBServerName</span><span class="o">=</span><span class="n">opdb</span><span class="o">.</span><span class="n">webex</span><span class="o">.</span><span class="n">com</span><span class="p">;</span>
+<span class="n">DataBase</span><span class="o">=</span><span class="n">MMPDBConnect</span><span class="p">;</span>
+<span class="n">DBUserID</span><span class="o">=</span><span class="n">test</span><span class="p">;</span>
+<span class="n">DBUserPassword</span><span class="o">=</span><span class="k">pass</span><span class="p">;</span>
+
+
+<span class="n">MMPDCLocName</span><span class="o">=</span><span class="n">HFE01</span><span class="p">;</span>
+<span class="n">MMPDCLocID</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+
+<span class="n">MMPZoneName</span><span class="o">=</span><span class="n">msz1</span><span class="p">;</span>
+<span class="n">MMPZoneId</span><span class="o">=</span><span class="mi">20</span><span class="p">;</span>
+<span class="n">MMPLocationID</span><span class="o">=</span><span class="mi">201610</span><span class="p">;</span>
+
+<span class="n">StreamServerMastKeyConfigRN</span><span class="o">=</span><span class="mi">1234</span><span class="p">;</span>
+<span class="n">StreamServerMCTMastKeyConfigRN</span><span class="o">=</span><span class="mi">5678</span><span class="p">;</span>
+<span class="n">StreamServerMastKeyConfigRN2</span><span class="o">=</span><span class="mi">2</span><span class="o">@</span><span class="mi">1234</span><span class="p">;</span>
+<span class="n">StreamServerMCTMastKeyConfigRN2</span><span class="o">=</span><span class="mi">2</span><span class="o">@</span><span class="mi">5678</span><span class="p">;</span>
+
+<span class="n">DCSSLGatewayIP</span><span class="o">=</span><span class="n">vsz1sslgw</span><span class="o">.</span><span class="n">qa</span><span class="o">.</span><span class="n">webex</span><span class="o">.</span><span class="n">com</span><span class="p">;</span>
+<span class="n">DCSSLGatewayPort</span><span class="o">=</span><span class="mi">443</span><span class="p">;</span>
+
+<span class="n">MCCVIP</span><span class="o">=</span><span class="n">msz1mccsv01</span><span class="o">.</span><span class="n">qa</span><span class="o">.</span><span class="n">webex</span><span class="o">.</span><span class="n">com</span><span class="p">;</span>
+<span class="n">MCCVIPPORT</span><span class="o">=</span><span class="mi">12342</span><span class="p">;</span>
+
+<span class="n">LoadSharedKeyMinutes</span><span class="o">=</span><span class="mi">60</span><span class="p">;</span>
+
+<span class="n">HardCodedKeyCompatible</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">HardCodedRN</span><span class="o">=</span><span class="mi">123456790</span><span class="n">fdfaWe436trtjncgzsasdaeqwrwryri4356345345gdfdfgdfgdfgdfyol</span><span class="p">[</span><span class="n">rweorts</span><span class="p">;</span><span class="n">dksafkpsosksdfk</span><span class="p">;</span><span class="n">sfk</span><span class="p">;</span>
+<span class="n">AESHardCodedIV</span><span class="o">=</span><span class="n">EjRWeJq83vA0VniavN7wEg</span><span class="o">==</span><span class="p">;</span>
+
+<span class="n">ForceToUseCBToken</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span>
+<span class="n">enableTpBwControl</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+
+
+
+<span class="c1"># WCB 的配置</span>
+
+<span class="n">EnableWCB</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">EnableWCBHFPS</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">EnableWCBBundle</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">WCBPlainRTP</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+
+<span class="p">[</span><span class="n">HTTP</span><span class="p">]</span>
+
+<span class="n">Origin_Allowed</span> <span class="o">=</span> <span class="n">webex</span><span class="o">.</span><span class="n">com</span> <span class="n">ciscospark</span><span class="o">.</span><span class="n">com</span> <span class="n">localhost</span> <span class="n">chrome</span><span class="o">-</span><span class="n">extension</span><span class="p">;</span>
+
+<span class="p">[</span><span class="n">LOADS</span><span class="p">]</span>
+<span class="n">ABCallIn</span><span class="o">=</span><span class="mi">9</span>
+<span class="n">FilterLoadBase</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">HybridCallIn</span><span class="o">=</span><span class="mi">9</span>
+<span class="n">InitFilterLoad</span><span class="o">=</span><span class="mi">10</span>
+<span class="n">InitTelephoneLoad</span><span class="o">=</span><span class="mi">20</span>
+<span class="n">NormalConfTolerance</span><span class="o">=</span><span class="mi">2000</span>
+<span class="n">WorkThreadLoadLightPercent</span><span class="o">=</span><span class="mi">60</span>
+<span class="n">WorkThreadTolerance</span><span class="o">=</span><span class="mi">500</span>
+
+<span class="n">MediaStreamingSessionLoad</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">NBRMediaStreaming</span><span class="o">=</span><span class="mi">6</span>
+<span class="n">NBRVideo</span><span class="o">=</span><span class="mi">5</span>
+<span class="n">NBRVoip</span><span class="o">=</span><span class="mi">3</span>
+<span class="n">SVSTCPLoadBase</span><span class="o">=</span><span class="mi">5</span>
+
+<span class="n">SVSTCPLoadFlatGene</span><span class="o">=</span><span class="mf">0.8</span>
+<span class="n">SVSUDPLoadBase</span><span class="o">=</span><span class="mi">5</span>
+<span class="n">SVSUDPLoadFlatGene</span><span class="o">=</span><span class="mf">0.8</span>
+
+<span class="n">ThreadMaxLoad</span><span class="o">=</span><span class="mi">10000</span>
+
+<span class="n">ServerMaxLoad</span><span class="o">=</span><span class="mi">22000</span>
+<span class="n">TelephoneLoadBase</span><span class="o">=</span><span class="mi">5</span>
+
+<span class="n">ThinClientVideoLoadBase</span><span class="o">=</span><span class="mi">160</span>
+<span class="n">NewThinClientVideoLoadBase</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">ThinClientVideoRecvLoadBase</span><span class="o">=</span><span class="mi">80</span>
+<span class="n">ThinClientVideoSendLoadBase</span><span class="o">=</span><span class="mi">80</span>
+<span class="n">ThinClientVoipLoadBase</span><span class="o">=</span><span class="mi">40</span>
+<span class="n">VideoSessionLoad</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">VideoTCPLoadBase</span><span class="o">=</span><span class="mi">5</span>
+<span class="n">VideoTCPLoadFlatGene</span><span class="o">=</span><span class="mf">0.8</span>
+<span class="n">VideoFecReceiveLoadBase</span><span class="o">=</span><span class="mi">3</span>
+<span class="n">VideoFecSendLoadBase</span><span class="o">=</span><span class="mi">4</span>
+
+<span class="n">VideoTelePresTrans</span><span class="o">=</span><span class="mi">14</span>
+<span class="n">VideoUDPLoadBase</span><span class="o">=</span><span class="mi">5</span>
+<span class="n">VideoUDPLoadFlatGene</span><span class="o">=</span><span class="mf">0.8</span>
+<span class="n">VoIPSessionLoad</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">VoIPTCPLoadBase</span><span class="o">=</span><span class="mi">5</span>
+
+<span class="n">VoIPTCPLoadFlatGene</span><span class="o">=</span><span class="mf">0.8</span>
+<span class="n">VoIPUDPLoadBase</span><span class="o">=</span><span class="mi">5</span>
+<span class="n">VoIPUDPLoadFlatGene</span><span class="o">=</span><span class="mf">0.8</span>
+<span class="n">VoIPFecReceiveLoadBase</span><span class="o">=</span><span class="mi">5</span>
+<span class="n">VoIPFecSendLoadBase</span><span class="o">=</span><span class="mi">9</span>
+
+<span class="n">ASSessionLoad</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">ASUser</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">ASCallIn</span><span class="o">=</span><span class="mi">19</span>
+<span class="n">WmeASTCPLoadBase</span><span class="o">=</span><span class="mi">4</span>
+<span class="n">WmeASUDPLoadBase</span><span class="o">=</span><span class="mi">4</span>
+<span class="n">WmeASTCPSRTPLoadBase</span><span class="o">=</span><span class="mi">4</span>
+<span class="n">WmeASUDPSRTPLoadBase</span><span class="o">=</span><span class="mi">4</span>
+<span class="n">ASTCPLoadFlatGene</span><span class="o">=</span><span class="mf">0.8</span>
+<span class="n">ASUDPLoadFlatGene</span><span class="o">=</span><span class="mf">0.8</span>
+<span class="n">WmeNSTCPLoadBase</span><span class="o">=</span><span class="mi">6</span>
+<span class="n">WmeNSUDPLoadBase</span><span class="o">=</span><span class="mi">6</span>
+<span class="n">WmeNSTCPSRTPLoadBase</span><span class="o">=</span><span class="mi">6</span>
+<span class="n">WmeNSUDPSRTPLoadBase</span><span class="o">=</span><span class="mi">6</span>
+
+<span class="n">VoIPRtxReceiveLoadBase</span><span class="o">=</span><span class="mi">5</span>
+<span class="n">VoIPRtxSendLoadBase</span><span class="o">=</span><span class="mi">3</span>
+<span class="n">VideoRtxReceiveLoadBase</span><span class="o">=</span><span class="mi">5</span>
+<span class="n">VideoRtxSendLoadBase</span><span class="o">=</span><span class="mi">3</span>
+<span class="n">ASRtxReceiveLoadBase</span><span class="o">=</span><span class="mi">5</span>
+<span class="n">ASRtxSendLoadBase</span><span class="o">=</span><span class="mi">3</span>
+
+<span class="n">WcbVoIPTCPLoadBase</span><span class="o">=</span><span class="mi">2</span>
+<span class="n">WcbVoIPUDPLoadBase</span><span class="o">=</span><span class="mi">2</span>
+<span class="n">WcbVideoTCPLoadBase</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">WcbVideoUDPLoadBae</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">WcbASUDPLoadBase</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">WcbASTCPLoadBase</span><span class="o">=</span><span class="mi">1</span>
+
+<span class="n">TandbergSendLoadBase</span><span class="o">=</span><span class="mi">2</span>
+<span class="n">TandbergReceiveLoadBase</span><span class="o">=</span><span class="mi">2</span>
+
+<span class="n">WmeVoIPTCPLoadBase</span><span class="o">=</span><span class="mi">4</span>
+<span class="n">WmeVoIPUDPLoadBase</span><span class="o">=</span><span class="mi">4</span>
+<span class="n">WmeSVSTCPLoadBase</span><span class="o">=</span><span class="mi">3</span>
+<span class="n">WmeSVSUDPLoadBase</span><span class="o">=</span><span class="mi">3</span>
+<span class="n">WmeVideoUDPLoadBase</span><span class="o">=</span><span class="mi">4</span>
+<span class="n">WmeVideoTCPLoadBase</span><span class="o">=</span><span class="mi">4</span>
+
+<span class="n">SRTPLoadRatio</span><span class="o">=</span><span class="mf">1.2</span>
+
+<span class="n">NSLowLoadClientNum</span><span class="o">=</span><span class="mi">10</span>
+<span class="n">NSLowLoadRatio</span><span class="o">=</span><span class="mi">70</span>
+<span class="n">NSMidLoadClientNum</span><span class="o">=</span><span class="mi">20</span>
+<span class="n">NSMidLoadRatio</span><span class="o">=</span><span class="mi">90</span>
+<span class="n">NSHighLoadClientNum</span><span class="o">=</span><span class="mi">30</span>
+<span class="n">NSHighLoadRatio</span><span class="o">=</span><span class="mi">100</span>
+
+<span class="p">[</span><span class="n">CI</span><span class="p">]</span>
+
+<span class="n">EnableValidation</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+
+<span class="n">CIInScopeOrgs</span><span class="o">=</span><span class="p">;</span>
+<span class="n">BearerTokenUrl</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">idbrokerbts</span><span class="o">.</span><span class="n">webex</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">idb</span><span class="o">/</span><span class="n">token</span><span class="o">/</span><span class="n">a93dde14</span><span class="o">-</span><span class="mi">65</span><span class="n">b7</span><span class="o">-</span><span class="mi">4</span><span class="n">a59</span><span class="o">-</span><span class="mi">81</span><span class="n">dd</span><span class="o">-</span><span class="mi">28962</span><span class="n">a8473e3</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">actions</span><span class="o">/</span><span class="n">GetBearerToken</span><span class="o">/</span><span class="n">invoke</span><span class="p">;</span>
+<span class="n">UserName</span><span class="o">=</span><span class="n">MMPMachineAccount</span><span class="p">;</span>
+<span class="n">Password</span><span class="o">=</span><span class="n">DWY</span><span class="o">.</span><span class="n">wxio</span><span class="mf">.89</span><span class="o">.</span><span class="n">DYJP</span><span class="o">.</span><span class="n">rfgi</span><span class="mf">.48</span><span class="o">.</span><span class="n">RHIO</span><span class="o">.</span><span class="n">efio</span><span class="mf">.26</span><span class="p">;</span>
+<span class="n">ClientId</span><span class="o">=</span><span class="n">C0162ffce71f25a2bb2caa09b7cee0a15386ee1ab798ac55283bb87c524f16f57</span><span class="p">;</span>
+<span class="n">ClientSecret</span><span class="o">=</span><span class="mi">9</span><span class="n">c9f22d857617599108d6b7e0f0989691c5afed938db3653162f3c3ebe9f62e6</span><span class="p">;</span>
+<span class="n">ClientScope</span><span class="o">=</span><span class="n">Identity</span><span class="p">:</span><span class="n">OAuthKeyService</span> <span class="n">WBXMMPService</span><span class="p">:</span><span class="n">mmp_services</span> <span class="n">webexsquare</span><span class="p">:</span><span class="n">create_venue</span> <span class="n">webex</span><span class="o">-</span><span class="n">squared</span><span class="p">:</span><span class="n">calliope_webhooks</span> <span class="n">WBXCBService</span><span class="p">:</span><span class="n">meeting</span> <span class="n">FLS</span><span class="p">:</span><span class="n">Entity_Read</span> <span class="n">webex</span><span class="o">-</span><span class="n">squared</span><span class="p">:</span><span class="n">create_venue</span> <span class="n">webex</span><span class="o">-</span><span class="n">squared</span><span class="p">:</span><span class="n">write_diagnostics</span> <span class="n">Identity</span><span class="p">:</span><span class="n">Config</span> <span class="n">Identity</span><span class="p">:</span><span class="n">SCIM</span> <span class="n">GIVRService</span><span class="p">:</span><span class="n">query_usage</span> <span class="n">GIVRService</span><span class="p">:</span><span class="n">update_usage</span><span class="p">;</span>
+<span class="n">ResourceId</span><span class="o">=</span><span class="n">R663d05f87c7e47b91342a8263862bb9c9e048d993b1a1f1224c5d26ccea59c37</span><span class="p">;</span>
+<span class="n">ResourceSecret</span><span class="o">=</span><span class="mi">655</span><span class="n">d0b41152dc327f1a31e6a0ba1486838867112f0a3b21655d0aed938583991</span><span class="p">;</span>
+<span class="n">ResourceScope</span><span class="o">=</span><span class="n">WBXMMPService</span><span class="p">:</span><span class="n">mmp_services</span><span class="p">;</span>
+<span class="n">VerificationKeyUrl</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">idbrokerbts</span><span class="o">.</span><span class="n">webex</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">idb</span><span class="o">/</span><span class="n">oauth2</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">keys</span><span class="o">/</span><span class="n">verification</span><span class="p">;</span>
+<span class="n">DecryptionKeyUrl</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">idbrokerbts</span><span class="o">.</span><span class="n">webex</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">idb</span><span class="o">/</span><span class="n">oauth2</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">keys</span><span class="o">/</span><span class="n">decryption</span><span class="p">;</span>
+
+<span class="n">CIFlsEnable</span><span class="o">=</span><span class="n">true</span><span class="p">;</span>
+<span class="n">CIFlsUrl</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">ciflsbts</span><span class="o">.</span><span class="n">webex</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">federation</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">Clusters</span><span class="p">;</span>
+<span class="n">FlsDefaultCI</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">idbroker</span><span class="o">.</span><span class="n">webex</span><span class="o">.</span><span class="n">com</span><span class="p">;</span>
+
+<span class="n">GroupId</span><span class="o">=</span><span class="n">msz1</span><span class="p">;</span>
+
+<span class="p">[</span><span class="n">MCS</span><span class="p">]</span>
+<span class="n">EnableReportUserJoinToCB</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span>
+<span class="n">EnableCascadMariLite</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span>
+<span class="n">SupportVAD</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+<span class="n">AGCLevel</span><span class="o">=</span><span class="mi">150</span><span class="p">;</span>
+<span class="n">MixInterval</span><span class="o">=</span><span class="mi">20</span><span class="p">;</span>
+<span class="n">STC</span><span class="o">=</span><span class="mi">6</span><span class="p">;</span>
+<span class="mi">180</span><span class="n">Degrade</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span>
+<span class="n">CCP180Bitrate</span><span class="o">=</span><span class="mi">358400</span><span class="p">;</span>
+<span class="n">TimeWaitUser</span><span class="o">=</span><span class="mi">360</span><span class="p">;</span>
+<span class="n">MaxActiveSpeakerNumber</span><span class="o">=</span><span class="mi">3</span><span class="p">;</span>
+<span class="n">BalanceNormalSharingLoad</span><span class="o">=</span><span class="n">TRUE</span>
+<span class="n">SilentForward</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">MariAdjustmentPolicy</span><span class="o">=</span><span class="mi">6</span><span class="p">;</span>
+<span class="n">EnableGridViewPriority</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">EnableCCPVideoSRTP</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span>
+<span class="n">MulticastSourceCountToCCP</span><span class="o">=</span><span class="mi">25</span><span class="p">;</span>
+<span class="n">EnableMsyncASReq</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span>
+<span class="n">EnableMsyncVideoReq</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span>
+<span class="n">ForwardWebexAvatar</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">EnableRawsocketUdp</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">EnableMCSCascadingKeyEncrypt</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">MaxLoadToLimitThinClient</span><span class="o">=</span><span class="mi">100</span><span class="p">;</span>
+
+<span class="n">Language</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+
+<span class="n">KafkaServiceEventEnabled</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span>
+<span class="n">KafkaFeatureEnabled</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span>
+
+
+
+
+
+
+<span class="n">MediaServerVIP</span><span class="o">=</span><span class="n">msz1mcs101</span><span class="o">.</span><span class="n">qa</span><span class="o">.</span><span class="n">webex</span><span class="o">.</span><span class="n">com</span><span class="p">;</span>
+
+<span class="n">MediaServerIP</span><span class="o">=</span><span class="mf">10.224.82.98</span><span class="p">;</span>
+
+<span class="n">StreamServerRtspPort</span><span class="o">=</span><span class="mi">8554</span><span class="p">;</span>
+<span class="n">StreamServerHttpPort</span><span class="o">=</span><span class="mi">80</span><span class="p">;</span>
+
+<span class="c1"># 端口配置</span>
+<span class="n">MediaTcpPort</span><span class="o">=</span><span class="mi">80</span><span class="p">;</span>
+<span class="n">MediaUdpPort</span><span class="o">=</span><span class="mi">9000</span><span class="p">;</span>
+<span class="n">MediaTcpPortEx</span><span class="o">=</span><span class="mi">5004</span><span class="p">;</span>
+
+<span class="n">StreamServerStreamClientRealPort</span><span class="o">=</span><span class="mi">7070</span><span class="p">;</span>
+<span class="n">StreamServerStreamClientWEBEXPort</span><span class="o">=</span><span class="mi">7500</span><span class="p">;</span>
+
+<span class="n">AudioStreamUdpMaxPort</span><span class="o">=</span><span class="mi">4000</span><span class="p">;</span>
+<span class="n">AudioStreamUdpMinPort</span><span class="o">=</span><span class="mi">3800</span><span class="p">;</span>
+
+<span class="n">DelayFromMediaServerToMCS</span><span class="o">=</span><span class="mi">10</span><span class="p">;</span>
+<span class="n">DelayFromPhoneToMediaServer</span><span class="o">=</span><span class="mi">500</span><span class="p">;</span>
+<span class="n">SyncIntervalFromMCC</span><span class="o">=</span><span class="mi">30</span><span class="p">;</span>
+<span class="n">VIPCheckingTimer</span><span class="o">=</span><span class="mi">5</span><span class="p">;</span>
+
+<span class="n">DataCenterID</span><span class="o">=</span><span class="n">msz1mcccl01</span><span class="o">.</span><span class="n">qa</span><span class="o">.</span><span class="n">webex</span><span class="o">.</span><span class="n">com</span><span class="p">;</span>
+<span class="n">StreamServerSNMPTimer</span><span class="o">=</span><span class="mi">300</span><span class="p">;</span>
+<span class="n">StreamServerReCallAppTimer</span><span class="o">=</span><span class="mi">5</span><span class="p">;</span>
+<span class="n">StreamServerReCAllAppNum</span><span class="o">=</span><span class="mi">3</span><span class="p">;</span>
+<span class="n">StreamServerMediaServerWaitTimer</span><span class="o">=</span><span class="mi">60</span><span class="p">;</span>
+<span class="n">StreamServerLoadReportTimer</span><span class="o">=</span><span class="mi">20</span><span class="p">;</span>
+<span class="n">SvrMgrReconnTimer</span><span class="o">=</span><span class="mi">10</span><span class="p">;</span>
+
+<span class="n">StreamConfEqualLoad</span><span class="o">=</span><span class="mi">200</span><span class="p">;</span>
+<span class="n">MixAllPacketsForSpeakerChannel</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">ContinuesSilentPackages</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+<span class="n">MaxTimeInterval</span><span class="o">=</span><span class="mi">20</span><span class="p">;</span>
+<span class="n">SilentValve</span><span class="o">=</span><span class="mi">15</span><span class="p">;</span>
+
+
+<span class="n">NbrPrimaryIpAddress</span><span class="o">=</span><span class="mf">10.224.17.250</span><span class="p">;</span>
+<span class="n">NbrPrimaryRemotePath</span><span class="o">=/</span><span class="n">nbrprimary</span><span class="p">;</span>
+<span class="n">NbrPrimaryLocate</span><span class="o">=/</span><span class="n">export</span><span class="o">/</span><span class="n">primary</span><span class="p">;</span>
+
+<span class="n">NbrBackupIpAddress</span><span class="o">=</span><span class="mf">10.224.17.251</span><span class="p">;</span>
+<span class="n">NbrBackupRemotePath</span><span class="o">=/</span><span class="n">nbrsecond</span><span class="p">;</span>
+<span class="n">NbrBackupLocate</span><span class="o">=/</span><span class="n">export</span><span class="o">/</span><span class="n">second</span><span class="p">;</span>
+
+
+<span class="n">KeyManagerMCTMonitorPort</span><span class="o">=</span><span class="mi">8081</span><span class="p">;</span>
+<span class="n">KeyManagerStatusCheckingTime</span><span class="o">=</span><span class="mi">600</span><span class="p">;</span>
+
+<span class="p">[</span><span class="n">HYBRID</span><span class="p">]</span>
+<span class="n">SwitchTo20MS</span><span class="o">=</span><span class="n">true</span><span class="p">;</span>
+<span class="n">VoipToPSTN</span><span class="o">=</span><span class="mi">100</span><span class="p">;</span>
+<span class="n">GcmLoadRatio</span><span class="o">=</span><span class="mf">2.0</span><span class="p">;</span>
+<span class="n">EnableCNG</span><span class="o">=</span><span class="n">FALSE</span><span class="p">;</span>
+<span class="n">OpusMuxEnable</span><span class="o">=</span><span class="n">true</span><span class="p">;</span>
+<span class="n">mmpSupportNBRPrompt</span><span class="o">=</span><span class="n">true</span><span class="p">;</span>
+
+<span class="p">[</span><span class="n">Flow</span> <span class="n">Control</span><span class="p">]</span>
+<span class="n">THRESHOLD_VIDEO_I_DROP</span><span class="o">=</span><span class="mi">131072</span>
+<span class="n">THRESHOLD_VIDEO_P_DROP</span><span class="o">=</span><span class="mi">65536</span>
+<span class="n">BURST_TORLERANCE</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">ADD_BURST_SIZE</span><span class="o">=</span><span class="mi">128000</span>
+
+<span class="n">MIN_RATE</span><span class="o">=</span><span class="mi">57344</span>
+<span class="n">MAX_RATE</span><span class="o">=</span><span class="mi">1048576</span>
+<span class="n">INIT_RATE</span><span class="o">=</span><span class="mi">524288</span>
+<span class="n">RATE_INC_FACTOR</span><span class="o">=</span><span class="mf">0.02</span>
+<span class="n">RATE_DEC_FACTOR</span><span class="o">=</span><span class="mf">0.125</span>
+<span class="n">MIN_LOSS_RATE</span><span class="o">=</span><span class="mf">0.015</span>
+<span class="n">MAX_LOSS_RATE</span><span class="o">=</span><span class="mf">0.05</span>
+
+<span class="n">EXP_FACTOR</span><span class="o">=</span><span class="mf">0.3</span>
+<span class="n">CYCLE_SYN_NUMBER</span><span class="o">=</span><span class="mi">500</span>
+<span class="n">MAX_CYCLE_COUNT</span><span class="o">=</span><span class="mi">10</span>
+
+<span class="p">[</span><span class="n">SIP</span><span class="p">]</span>
+<span class="n">Min_RTP_Port</span><span class="o">=</span><span class="mi">10000</span><span class="p">;</span>
+<span class="n">Max_RTP_Port</span><span class="o">=</span><span class="mi">19999</span><span class="p">;</span>
+<span class="n">Min_AB_RTP_Port</span><span class="o">=</span><span class="mi">30000</span><span class="p">;</span>
+<span class="n">Max_AB_RTP_Port</span><span class="o">=</span><span class="mi">39999</span><span class="p">;</span>
+<span class="n">Local_AB_SIP_Port</span><span class="o">=</span><span class="mi">5061</span><span class="p">;</span>
+<span class="n">LogFilename</span><span class="o">=</span><span class="n">ua</span><span class="o">.</span><span class="n">log</span><span class="p">;</span>
+<span class="n">LogLevel</span><span class="o">=</span><span class="n">LOG_DEBUG</span><span class="p">;</span>
+
+<span class="n">Sip_DTMF_WAIT</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+<span class="n">Sip_Attendee_ID_WAIT</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="n">Sip_Rtp_Jitter_Len</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+<span class="n">Local_SIP_Port</span> <span class="o">=</span> <span class="mi">5060</span><span class="p">;</span>
+
+<span class="n">SupportTLS</span><span class="o">=</span><span class="n">true</span><span class="p">;</span>
+<span class="n">Local_TLS_SIP_Port</span><span class="o">=</span><span class="mi">5062</span><span class="p">;</span>
+<span class="n">TlsDomain</span><span class="o">=</span><span class="n">tats</span><span class="o">.</span><span class="n">webex</span><span class="o">.</span><span class="n">com</span><span class="p">;</span>
+<span class="n">TlsCertPath</span><span class="o">=/</span><span class="n">opt</span><span class="o">/</span><span class="n">webex</span><span class="o">/</span><span class="n">mmp</span><span class="o">/</span><span class="n">certs</span><span class="o">/</span><span class="p">;</span>
+
+<span class="p">[</span><span class="n">SVC</span><span class="p">]</span>
+<span class="n">KFInterval</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span>
+
+<span class="p">[</span><span class="n">TANDBERG</span><span class="p">]</span>
+<span class="n">CollectQoSInfoInterval</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span>
+<span class="n">SendAvataTime</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+<span class="n">EnableExtraSubfor360</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">enableSVC</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">SrtpReorder</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+
+<span class="n">KeyframeInterval</span><span class="o">=</span><span class="mi">10</span><span class="p">;</span>
+
+<span class="p">[</span><span class="n">Trace</span><span class="p">]</span>
+<span class="n">Enable</span><span class="o">=</span><span class="n">TRUE</span><span class="p">;</span>
+<span class="n">FlushPerLines</span><span class="o">=</span><span class="mi">10</span><span class="p">;</span>
+<span class="n">wbxmcs</span><span class="o">-</span><span class="mi">01</span><span class="o">=</span><span class="mi">200000000</span><span class="p">;</span>
+<span class="n">MaxLogFileNumber</span><span class="o">=</span><span class="mi">20</span><span class="p">;</span>
+<span class="n">MaxMetricsLogSize</span><span class="o">=</span><span class="mi">400000000</span><span class="p">;</span>
+
+<span class="n">MaxMetricsFileNumber</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>webex-json.cfg</p></li>
+</ul>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;cmeConfig&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;orpheusBaseUrlList&quot;</span><span class="p">:[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="nt">&quot;orpheusBaseUrl&quot;</span><span class="p">:</span><span class="s2">&quot;https://calliope-intb.ciscospark.com/calliope/api/registrar/v1&quot;</span><span class="p">,</span><span class="nt">&quot;regionName&quot;</span><span class="p">:</span><span class="s2">&quot;NORTH_AMERICA&quot;</span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;locationMap&quot;</span><span class="p">:[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="nt">&quot;locationId&quot;</span><span class="p">:</span><span class="s2">&quot;11111&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;locationName&quot;</span><span class="p">:</span><span class="s2">&quot;HGH01&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;cmeGroupId&quot;</span><span class="p">:</span><span class="s2">&quot;otter&quot;</span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="nt">&quot;locationId&quot;</span><span class="p">:</span><span class="s2">&quot;22222&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;locationName&quot;</span><span class="p">:</span><span class="s2">&quot;LHR01&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;cmeGroupId&quot;</span><span class="p">:</span><span class="s2">&quot;otter2&quot;</span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="nt">&quot;locationId&quot;</span><span class="p">:</span><span class="s2">&quot;333333&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;locationName&quot;</span><span class="p">:</span><span class="s2">&quot;HFE01&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;cmeGroupId&quot;</span><span class="p">:</span><span class="s2">&quot;otter&quot;</span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="nt">&quot;locationId&quot;</span><span class="p">:</span><span class="s2">&quot;444444&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;locationName&quot;</span><span class="p">:</span><span class="s2">&quot;HKG01&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;cmeGroupId&quot;</span><span class="p">:</span><span class="s2">&quot;otter2&quot;</span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="nt">&quot;locationId&quot;</span><span class="p">:</span><span class="s2">&quot;555555&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;locationName&quot;</span><span class="p">:</span><span class="s2">&quot;HLN01&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;cmeGroupId&quot;</span><span class="p">:</span><span class="s2">&quot;otter&quot;</span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="nt">&quot;locationId&quot;</span><span class="p">:</span><span class="s2">&quot;666666&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;locationName&quot;</span><span class="p">:</span><span class="s2">&quot;HFE02&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;cmeGroupId&quot;</span><span class="p">:</span><span class="s2">&quot;otter2&quot;</span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;cmeGroupList&quot;</span><span class="p">:[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="nt">&quot;groupId&quot;</span><span class="p">:</span><span class="s2">&quot;otter&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;orgList&quot;</span><span class="p">:[</span><span class="s2">&quot;otter&quot;</span><span class="p">]},</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="nt">&quot;groupId&quot;</span><span class="p">:</span><span class="s2">&quot;otter2&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;orgList&quot;</span><span class="p">:[</span><span class="s2">&quot;otter2&quot;</span><span class="p">]}</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;regionList&quot;</span><span class="p">:[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="nt">&quot;regionName&quot;</span><span class="p">:</span><span class="s2">&quot;NORTH_AMERICA&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;cmeGroupList&quot;</span><span class="p">:[</span><span class="s2">&quot;otter&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;otter2&quot;</span><span class="p">]},</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="nt">&quot;regionName&quot;</span><span class="p">:</span><span class="s2">&quot;APAC&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;cmeGroupList&quot;</span><span class="p">:[</span><span class="s2">&quot;wsgp&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;wnrt&quot;</span><span class="p">]}</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;transcoder&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;content&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;hfps&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;thresholds&quot;</span><span class="p">:[</span><span class="w"></span>
+<span class="w">                    </span><span class="p">{</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;threshold&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;scr&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">                            </span><span class="nt">&quot;bitrate&quot;</span><span class="p">:</span><span class="mi">150000</span><span class="p">,</span><span class="w"></span>
+<span class="w">                            </span><span class="nt">&quot;maxMbps&quot;</span><span class="p">:</span><span class="mi">7200</span><span class="p">,</span><span class="w"></span>
+<span class="w">                            </span><span class="nt">&quot;maxFs&quot;</span><span class="p">:</span><span class="mi">900</span><span class="p">,</span><span class="w"></span>
+<span class="w">                            </span><span class="nt">&quot;maxFps&quot;</span><span class="p">:</span><span class="mi">3000</span><span class="w"></span>
+<span class="w">                        </span><span class="p">}</span><span class="w"></span>
+<span class="w">                    </span><span class="p">}</span><span class="w"></span>
+<span class="w">                </span><span class="p">]</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;tests&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;enableTranscoderDebugLog&quot;</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;testSites&quot;</span><span class="p">:[</span><span class="w"></span>
+
+<span class="w">                </span><span class="p">{</span><span class="nt">&quot;siteName&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;cmeGroupId&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;cmeOrgId&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">}</span><span class="w"></span>
+
+<span class="w">            </span><span class="p">]</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="mmp_basic.html" class="btn btn-neutral float-left" title="MMP Basic" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="mmp_endpoint.html" class="btn btn-neutral float-right" title="Session Endpoint" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Walter Fan.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

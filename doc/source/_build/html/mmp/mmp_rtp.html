@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MMP RTP &mdash; A Programmer Prepares 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Thin Client" href="../thinclient/index.html" />
+    <link rel="prev" title="MMP TURN Server" href="mmp_turn.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> A Programmer Prepares
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">论程序员的自我修养</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interview.html">程序员面试要点</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resume.html">Resume</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithm/index.html">Algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../language/index.html">Programming Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../library/index.html">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oss/index.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html">mathematics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#overview">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#least-squares-method">最小二乘法 least squares method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pattern/index.html">Pattern</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/index.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool/index.html">Tools</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">MMP</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="mmp_basic.html">MMP Basic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mmp_config.html">MMP Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mmp_endpoint.html">Session Endpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mmp_main.html">MMP Main Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mmp_pdu.html">MCS PDU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mmp_turn.html">MMP TURN Server</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">MMP RTP</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#main-class">main class</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../thinclient/index.html">Thin Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utiltp/index.html">UTILTP</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">A Programmer Prepares</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">MMP</a> &raquo;</li>
+      <li>MMP RTP</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/mmp/mmp_rtp.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="mmp-rtp">
+<h1>MMP RTP<a class="headerlink" href="#mmp-rtp" title="Permalink to this headline"></a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#main-class" id="id2">main class</a></p></li>
+</ul>
+</div>
+<section id="main-class">
+<h2><a class="toc-backref" href="#id2">main class</a><a class="headerlink" href="#main-class" title="Permalink to this headline"></a></h2>
+<table class="colwidths-given docutils align-default" id="id1">
+<caption><span class="caption-text">IMMRTPSessionSink</span><a class="headerlink" href="#id1" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 18%" />
+<col style="width: 55%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>name</p></th>
+<th class="head"><p>description</p></th>
+<th class="head"><p>comments</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>OnRtcpSendIndicate</p></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>IMMRTPSession</p>
+<ul>
+<li><p>SetReady</p></li>
+<li><p>AddRtpHeaderForSend</p></li>
+<li><p>InputReceivedRtpData</p></li>
+<li><p>InputReceivedRtcpData</p></li>
+<li><p>ModifyReceivedSRNtpTime</p></li>
+<li><p>RemoveRtpSource</p></li>
+</ul>
+</li>
+<li><p>IMmRtpSessionPlc</p>
+<ul>
+<li><p>PackData</p></li>
+<li><p>GenerateAppRtcpAndSend</p></li>
+<li><p>GetFrameInfo</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">IMMRTPSession</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="cm">/* call SetReady to start run internal rtp session process.</span>
+<span class="cm">*/</span><span class="w"></span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">SetReady</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="cm">/*  for sending data : input sending raw buffer, then this function add RTP header in it</span>
+<span class="cm">      the rtp packet will return through sink function OnRTPFrameSendIndicate</span>
+<span class="cm">        BYTE * data :  payload buffer</span>
+<span class="cm">        UINT dwLength: payload length</span>
+<span class="cm">        DWORD userId:  get from session layer defined CMmSID m_UserId ;  used as RTP ssrc</span>
+<span class="cm">        BYTE pt:   codec payload type.</span>
+<span class="cm">        BYTE * ExtensionData  : extension data used for rtpheader extension field</span>
+<span class="cm">        UINT ExtensionLength: extension length</span>
+<span class="cm">    */</span><span class="w"></span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">CmResult</span><span class="w"> </span><span class="nf">AddRtpHeaderForSend</span><span class="p">(</span><span class="n">BYTE</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">UINT</span><span class="w"> </span><span class="n">dwLength</span><span class="p">,</span><span class="w"> </span><span class="n">DWORD</span><span class="w"> </span><span class="n">userId</span><span class="w"> </span><span class="cm">/* used as RTP ssrc*/</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="n">BYTE</span><span class="w"> </span><span class="n">pt</span><span class="p">,</span><span class="w"> </span><span class="n">BYTE</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">ExtensionData</span><span class="p">,</span><span class="w"> </span><span class="n">UINT</span><span class="w"> </span><span class="n">ExtensionLength</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+
+<span class="cm">/* For received rtp data: input raw rtp data ,  RTPlib put it into the jitter buffer and return back to the upper layer through OnRTPFrameDataIndicate() function.</span>
+<span class="cm">*/</span><span class="w"></span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">CmResult</span><span class="w"> </span><span class="nf">InputReceivedRtpData</span><span class="p">(</span><span class="n">BYTE</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">UINT</span><span class="w"> </span><span class="n">dwLength</span><span class="p">,</span><span class="w"> </span><span class="n">UINT</span><span class="w"> </span><span class="n">dwSourceUid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="cm">/* For received RTCP data: input raw rctp data (including SR/RR).</span>
+<span class="cm">*/</span><span class="w"></span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">CmResult</span><span class="w"> </span><span class="nf">InputReceivedRtcpData</span><span class="p">(</span><span class="n">BYTE</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">UINT</span><span class="w"> </span><span class="n">dwLength</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">// for MCS session layer use</span>
+<span class="cm">/*</span>
+<span class="cm">  When MCS forward RTP packet to the video clients attaching it, it need call this</span>
+<span class="cm">  function to modify the RTP SR time to the MCS machine local time.</span>
+<span class="cm">  */</span><span class="w"></span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">CmResult</span><span class="w"> </span><span class="nf">ModifyReceivedSRNtpTime</span><span class="p">(</span><span class="n">BYTE</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">UINT</span><span class="w"> </span><span class="n">dwLength</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="cm">/*</span>
+<span class="cm">    *       Remove the sourceid when an atendee leave the session.</span>
+<span class="cm">    */</span><span class="w"></span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">RemoveRtpSource</span><span class="p">(</span><span class="n">UINT</span><span class="w"> </span><span class="n">srcid</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+
+
+<span class="c1">//  virtual void SetDefaultVideoRate(DWORD vidoRate) = 0;</span>
+<span class="c1">// now this function is not used in MCS</span>
+<span class="c1">//  virtual CmResult SetRTCPSendingInterval(UINT PacktIntvl) = 0;</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="o">~</span><span class="n">IMMRTPSession</span><span class="p">(</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{};</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">IMmRtpSessionPlc</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">IMMRTPSession</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">     </span><span class="cm">/* the usage is the same with the AddRtpHeaderForSend in IMMRTPSession except it add some parameters*/</span><span class="w"></span>
+<span class="w">     </span><span class="k">virtual</span><span class="w"> </span><span class="n">CmResult</span><span class="w"> </span><span class="n">PackData</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">SliceInfo</span><span class="w"> </span><span class="o">&amp;</span><span class="n">slice</span><span class="p">,</span><span class="w"> </span><span class="n">DWORD</span><span class="w"> </span><span class="n">uid</span><span class="p">,</span><span class="w"> </span><span class="n">BYTE</span><span class="w"> </span><span class="n">payloadType</span><span class="p">,</span><span class="w"> </span><span class="n">BYTE</span><span class="w"> </span><span class="o">*</span><span class="n">rtpExtension</span><span class="p">,</span><span class="w"> </span><span class="n">DWORD</span><span class="w"> </span><span class="n">extsionLen</span><span class="p">,</span><span class="w"> </span><span class="n">DWORD</span><span class="w"> </span><span class="n">dwTimeStamp</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">//add by Steven for send app rtcp, 2007-06-28</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="nf">GenerateAppRtcpAndSend</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">iStartFrameIndex</span><span class="p">,</span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">iLostFrameNum</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">//Mar 21 08</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">GetFrameInfo</span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">timestamp</span><span class="p">,</span><span class="w"> </span><span class="n">BYTE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">frameType</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">&amp;</span><span class="n">frameIndex</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="o">&amp;</span><span class="n">integrated</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>IMMRTPSessionSink</p>
+<ul>
+<li><p>OnRtcpSendIndicate</p></li>
+<li><p>OnRTPFrameSendIndicate</p></li>
+<li><p>OnRTPFrameRecvIndicate</p></li>
+<li><p>OnAppRTCPRecvIndicate</p></li>
+<li><p>OnNetStatusIndicate</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">IMMRTPSessionSink</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="cm">/*  When it is time for sending RTCP packet, rtplib will collect the rtcp data and construct</span>
+<span class="cm">the packet then call back through this function. call layer  should send this data to receiver.</span>
+<span class="cm">_rtcp_type_t reportType  :</span>
+<span class="cm">    RTCP_SR   =     200,</span>
+<span class="cm">    RTCP_RR   =     201,</span>
+<span class="cm">    RTCP_SDES =     202,</span>
+<span class="cm">    RTCP_BYE  =     203,</span>
+<span class="cm">    RTCP_APP  =     204</span>
+<span class="cm">UINT userId  :  sender user Id or local user id</span>
+<span class="cm">    */</span><span class="w"></span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">OnRtcpSendIndicate</span><span class="p">(</span><span class="n">BYTE</span><span class="w"> </span><span class="o">*</span><span class="n">buffer</span><span class="p">,</span><span class="w"></span>
+<span class="w">   </span><span class="n">INT</span><span class="w"> </span><span class="n">offset</span><span class="p">,</span><span class="n">_rtcp_type_t</span><span class="w"> </span><span class="n">reportType</span><span class="p">,</span><span class="n">UINT</span><span class="w"> </span><span class="n">userId</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="cm">/* After video  frame put into the rtplib, when frame size is exceed 1k, rtplib will</span>
+<span class="cm">    divide into 1k for every packet and add rtp header then  call back through this function</span>
+<span class="cm">    */</span><span class="w"></span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">OnRTPFrameSendIndicate</span><span class="p">(</span><span class="n">CRTPPacket</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">rtpPacket</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="cm">/* When call layer  receive rtp package from socket , it call InputReceivedRtpData to put</span>
+<span class="cm">    data into rtplib and rtplib will put parse rtp header and put into jitter buffer, then</span>
+<span class="cm">    another thread will get packet from jitter buffer and call back through this function.</span>
+<span class="cm">    the parameter type is define as :</span>
+<span class="cm">    typedef enum{</span>
+<span class="cm">       RTP_AUDIO,</span>
+<span class="cm">       RTP_VIDEO</span>
+<span class="cm">    }RTPMediaType;</span>
+<span class="cm">    */</span><span class="w"></span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">OnRTPFrameRecvIndicate</span><span class="p">(</span><span class="n">CRTPPacket</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">rtpPacket</span><span class="p">,</span><span class="n">INT</span><span class="w"> </span><span class="n">type</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">//add by Frank Qiao for app rtcp received 2007-5-29</span>
+<span class="w">    </span><span class="c1">//virtual void OnAppRTCPRecvIndicate(const unsigned int iStartFrameIndex, const unsigned int iLostFrameNum) = 0;</span>
+
+<span class="cm">/*  Net status include recent calculated packet  loss rate  and round trip delay</span>
+<span class="cm">   this indicate is call back after one RR received and call back the parse result.</span>
+<span class="cm">*/</span><span class="w"></span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">OnNetStatusIndicate</span><span class="p">(</span><span class="w"> </span><span class="n">NetStatusInfo</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">netinfo</span><span class="p">,</span><span class="w"> </span><span class="n">DWORD</span><span class="w"> </span><span class="n">userid</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">IMmRtpSessionSinkPlc</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">IMMRTPSessionSink</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* the call back function similar with the homonymous function OnRTPFrameSendIndicate in the IMMRTPSessionSink except it provide an extra parameter packet_priority used in plc. */</span><span class="w"></span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">OnRTPFrameSendIndicate</span><span class="p">(</span><span class="n">CRTPPacket</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">rtpPacket</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">BYTE</span><span class="w"> </span><span class="n">packet_priority</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="mmp_turn.html" class="btn btn-neutral float-left" title="MMP TURN Server" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../thinclient/index.html" class="btn btn-neutral float-right" title="Thin Client" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Walter Fan.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

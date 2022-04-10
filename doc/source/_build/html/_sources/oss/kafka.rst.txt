@@ -1,0 +1,110 @@
+##############
+Kafka
+##############
+
+
+.. contents::
+    :local:
+
+
+Overview
+========================
+
+* 以时间复杂度为O(1)的方式提供消息持久化能力，即使对TB级以上数据也能保证常数时间复杂度的访问性能
+* 高吞吐率。即使在非常廉价的商用机器上也能做到单机支持 每秒100K条以上消息的传输
+* 支持 Kafka Broker间的消息分区，及分布式消费，同时保证每个Partition内的消息顺序传输
+* 同时支持离线数据处理和实时数据处理
+* 水平扩展:支持在线水平扩展
+
+
+.. image:: ../_static/kafka-overview.jpg
+   :scale: 100 %
+   :alt: alternate text
+   :align: center
+
+..code-block::
+
+            ZooKeeper
+                ^
+                |
+    Producer --> Broker --> Consumer
+
+
+Concepts
+============================
+* Topic
+* Partition: ~ 文件夹
+* Segment： ~ 文件
+
+  - 数据文件
+  - offset 索引文件
+  - 时间索引文件
+
+* Meta data
+
+ - Broker
+ - Topic
+ - Partition
+
+* Retention
+
+* Compaction
+
+ - log.cleanup.policy=delete/Compact
+
+
+* Topic 的分区
+  例如根据 key_hash % 分区数量
+
+Topic
+----------------------------
+* 逻辑概念
+* 发布-订阅均基于 Topic
+
+Partition
+----------------------------
+*  一个Topic包含一个或多个Partition, 每个Paratitio 物理上对应一个文件夹
+* Partition可认为是一个无限长度数组
+
+Segment
+---------------------------
+* 一个Partition包含若干个Segment
+* 物理上每个Segment对应一个数据文件，一个offset索引文件，一个时间索引文件
+
+
+
+
+Terminology
+============================
+
+* Records are published into Kafka topics, or logical categories of records, similar to queues in RabbitMQ, indices in ES, etc.
+
+* Producers write to a topic in Kafka, and consumers read from a topic.
+
+* Each topic is broken into multiple “partitions” that can be distributed across multiple nodes and replicated for data redundancy.
+
+* For each partition, one Kafka broker acts as the “leader”, meaning it handles all read and write requests for that partition. If there are multiple copies of this partition, all other servers that hold these replica partitions act as “followers” that passively replicate the leader; if a leader fails, one of the eligible followers automatically becomes the new leader (see next bullet).
+
+* “ISR” (“in-sync” replicas) refers to the set of replica partitions that are caught-up to the leader. Only these caught-up replicas are eligible to become the new leader in case of leader failure.
+
+* Each partition is an ordered, immutable sequence of records; each record is sequentially assigned a unique id number known as its offset value.
+
+* Each consumer uses the “offset” value of its most recently read record to track its position on the partition it is “consuming”.
+
+* Consumer “lag” is the difference between the highest partition offset (i.e. most recently written record) and the consumer’s current offset, and thus represents the number of unread records.
+
+* Mirrormaker is a cross-cluster replication tool provided by the Apache Kafka platform. It consumes messags from a source Kafka cluster and produces those messages into a sink Kafka cluster.
+
+
+
+Mirror Maker
+===============================
+
+We leverage Kafka’s MirrorMakers to support cross-site replication (aka “mirroring”) for relevant topics.
+
+MirrorMakers are essentially Kafka consumers and producers that read data from a source Kafka cluster and produce that data into a sink Kafka clusters.
+
+These source and sink Kafka clusters are completely separate entities, and consumer offsets in the source and sink clusters will be different
+  
+
+.. _kafka wiki_: https://www.fanyamin.com/wiki/Kafka

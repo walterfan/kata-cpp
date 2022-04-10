@@ -1,0 +1,52 @@
+################
+Java 字节码
+################
+
+
+Overview
+=================
+
+源文件 java 编译成字节码文件  class
+
+
+JVM 指令由操作码和若干个操作数组成
+
+* opCode： 一个比特的数字，大约有200多个
+* operand
+
+JVM 的指令集是基于栈，而不是寄存器， 字节码指令控制的是 JVM 操作数栈
+
+
+
+Tool
+===================
+
+ASM 是生成，转换，分析 class 文件的工具包， 众多开源项目使用它，比如 Jacoco, Mockito
+
+Core API
+
+* ClassReader
+* ClassWriter
+
+* Visitor
+
+
+应用
+====================
+
+* Hibernate 使用 Byte-buddy 和 javaassist
+* Mybatis 使用 javaassist 和 cglib
+* Tomcat 使用 cglib（cglib 使用了 ASM）
+* AspectJ 使用 BCEL
+
+
+
+字节码增强
+==============
+
+java.lang.instrument
+
+运行前代理 premain
+运行时代理 agentmain
+
+它可以用来修改方法体和常量池

@@ -1,0 +1,219 @@
+#######################
+Netty
+#######################
+
+Overview
+=======================
+
+
+* BIO -> NIO -> Netty
+
+
+  selector是Java非阻塞I/0实现的关键。
+
+  使用事件通知机制告之一组非阻塞套接字中哪些已经就绪能够进行读写。 
+
+
+* Netty的主要构件：
+   * channel：它代表一个可读写的开放连接。
+   * callback：由事件触发的回调方法。 
+   * Future：一个异步操作的结果的占位符，它在未来某个时刻完成，并提供对其结果的访问。
+   * Event 和 ChannelHandler：入站事件有连接激活和失活，数据读取，用户事件，错误事件，出站事件有打开或关闭远程连接，将数据写到或刷新flush到套接字。
+
+* Netty为每个channel 分配一个Eventloop，用于处理所有事件，包括： 
+   1. 注册感兴趣的事件 
+   1. 将事件派发给 channelHandler 
+   1. 安排进一步的动作
+
+Template codes
+======================
+
+server
+----------------------
+
+.. code-block:: java
+
+   @Slf4j
+   @Setter
+   @Getter
+   public abstract class AbstractServer implements IServer {
+
+      private static final int READ_TIMEOUT_IN_SECONDS = 30;
+      private static final int WRITE_TIMEOUT_IN_SECONDS = 30;
+      private static final int WRITE_BUFFER_HIGH_WATER_MARK = 32 * 1024;
+      private static final int WRITE_BUFFER_LOW_WATER_MARK = 4 * 1024;
+
+      private SortedMap<String, ChannelHandler> handlers = new ConcurrentSkipListMap<>();
+
+      private String host;
+      private int port;
+
+      private volatile boolean isStarted = false;
+
+      private EventLoopGroup bossGroup = new NioEventLoopGroup();
+      private EventLoopGroup workerGroup = new NioEventLoopGroup();
+
+      public AbstractServer() {
+
+      }
+
+      public AbstractServer(String host, int port) {
+         this.host = host;
+         this.port = port;
+      }
+
+
+      public void addChannelHandler(String name, ChannelHandler handler) {
+         this.handlers.put(name, handler);
+      }
+
+      @Override
+      public void start(){
+         log.info("start {}", this.getClass().getSimpleName());
+         try {
+               ServerBootstrap bootstrap = new ServerBootstrap();
+               bootstrap.childOption(ChannelOption.ALLOCATOR, PooledByteBufAllocator.DEFAULT);
+               bootstrap.childOption(ChannelOption.SO_KEEPALIVE, true);
+               bootstrap.childOption(ChannelOption.TCP_NODELAY, true);
+               bootstrap.childOption(ChannelOption.SO_LINGER, 0);
+
+
+               bootstrap.group(bossGroup, workerGroup);
+               bootstrap.channel(NioServerSocketChannel.class);
+
+               bootstrap.childHandler(new ChannelInitializer<Channel>() {
+                  @Override
+                  protected void initChannel(Channel channel) throws Exception {
+                     handlers.entrySet().stream().forEach( entry -> {
+                           log.info("add handler: {}", entry.getKey());
+                           channel.pipeline().addLast(entry.getKey(), entry.getValue());
+                     });
+                  }
+
+               });
+
+               ChannelFuture channelFuture = bootstrap.bind(host, port).sync();
+
+               log.info("started on {}" , channelFuture.channel().localAddress());
+
+               ChannelFuture closeFuture = channelFuture.channel().closeFuture();
+               closeFuture.sync();
+
+         } catch(Exception e){
+               log.error("start failed" + port,e);
+               throw new RuntimeException("tcp server", e);
+         }
+      }
+
+      @Override
+      public void stop() {
+         try{
+               log.info("[tcp][server]close");
+               workerGroup.shutdownGracefully();
+               bossGroup.shutdownGracefully();
+         }catch(Exception e){
+               log.warn("stop  failed ",e);
+         }
+
+      }
+
+      @Override
+      public boolean isStarted() {
+         return this.isStarted;
+      }
+   }
+
+   @Slf4j
+   class DiscardHandler extends ChannelInboundHandlerAdapter {
+      @Override
+      public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+         ByteBuf in = (ByteBuf)msg;
+         log.info("Got message and discard");
+         try {
+               while (in.isReadable()) {
+                  log.info("{}", (char) in.readByte());
+               }
+         } finally {
+               ReferenceCountUtil.release(msg);
+         }
+      }
+   }
+
+   @Slf4j
+   public class DiscardServer extends AbstractServer implements CommandLineRunner {
+
+      public DiscardServer(String host, int port) {
+         super(host, port);
+      }
+
+      public DiscardServer() {
+         super();
+      }
+
+      @Override
+      public void init() {
+         log.info("init {}", this.getClass().getSimpleName());
+         addChannelHandler("discardServer", new DiscardHandler());
+      }
+
+      @Override
+      public void run(String... args) throws Exception {
+         log.info("run {}", this.getClass().getSimpleName());
+         if(args.length > 1) {
+               setHost(args[0]);
+               setPort(Integer.parseInt(args[1]));
+         }
+         init();
+         start();
+      }
+   }
+
+
+client
+----------------------
+
+Prepender
+=======================
+
+
+
+半包或粘包的解决方法就是在包头加上一个包的长度，或者为包指定分界符
+
+* LengthFieldPrepender
+
+An encoder that prepends the length of the message. The length value is prepended as a binary form.
+For example, LengthFieldPrepender(2) will encode the following 12-bytes string:
+
+ +----------------+
+ | "HELLO, WORLD" |
+ +----------------+
+ 
+into the following:
+ +--------+----------------+
+ + 0x000C | "HELLO, WORLD" |
+ +--------+----------------+
+ 
+If you turned on the lengthIncludesLengthFieldLength flag in the constructor, the encoded data would look like the following (12 (original data) + 2 (prepended data) = 14 (0xE)):
+ +--------+----------------+
+ + 0x000E | "HELLO, WORLD" |
+ +--------+----------------+
+
+
+Decoder and encoder
+-------------------------------
+* MessageToByteEncoder
+
+ByteToMessageDecoder将入栈处理器中的字节流解析为其他类型的消息类型，称为解码器；继承自ChannelInboundHandlerAdapter，该类是所有解码类的顶级抽象类，定义解码的操作流程，具体解码的实现用户可以自己实现抽象的方法decode,比如FixedLengthFrameDecoder，LengthFieldBasedFrameDecoder，DelimiterBasedFrameDecoder，LineBasedFrameDecoder
+
+* ByteToMessageDecoder
+
+* MessageToMessageEncoder
+
+* LineBasedFrameDecoder
+* DelimiterBasedFrameDecoder
+* Head-Content
+
+
+Reference
+===============
+* https://dzone.com/articles/thousands-of-socket-connections-in-java-practical

@@ -1,0 +1,41 @@
+##################
+WCB RTP module
+##################
+
+
+.. code-block:: c++
+
+    class CWCBFlowRtp : public CWCBH264Stream {
+    friend class CWCBWmeFlowRtp;
+    friend class CWCBH264Stream;
+    {
+    //...  
+
+    // rtcp report id
+    enum RTCP_PLT_ID {
+        RTCP_NONE = 0,
+        // FMT id
+        RTCP_FMT_PLI = 1,
+        RTCP_FMT_GNACK = 1,
+        RTCP_FMT_REMB = 15,
+        RTCP_FMT_MSTR = 15,
+        RTCP_FMT_MARI = 15,
+
+        // payload type
+        RTCP_SR    = 200,
+        RTCP_RR    = 201,
+        RTCP_SDES  = 202,
+        RTCP_BYE   = 203,
+        RTCP_APP   = 204,
+        RTCP_RTPFB = 205, // Transport layer FB message (GNACK/TMMBR/TMMBN...)
+        RTCP_PSFB  = 206, // Payload-specific FB message (PLI/REMB/..)
+
+        RTCP_UNKNOW = 1000
+    };
+    
+
+    //...
+
+    };
+
+

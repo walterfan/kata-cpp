@@ -1,0 +1,14 @@
+##################
+Session Endpoint
+##################
+
+
+.. code-block:: c++
+
+    class CMmSessionEndPointBase
+        : public IMmSessionServerSend
+        , public ICmTransportSink
+        , public ICmEvent
+        , public ISelectChangeListener
+    {
+    }

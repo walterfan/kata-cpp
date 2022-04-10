@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSCC &mdash; A Programmer Prepares 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="CSCC API" href="cscc_api.html" />
+    <link rel="prev" title="Media Engine Instance" href="cmsc_MediaEngInst.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> A Programmer Prepares
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">论程序员的自我修养</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interview.html">程序员面试要点</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resume.html">Resume</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithm/index.html">Algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../language/index.html">Programming Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../library/index.html">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oss/index.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html">mathematics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#overview">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#least-squares-method">最小二乘法 least squares method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pattern/index.html">Pattern</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/index.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool/index.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mmp/index.html">MMP</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Thin Client</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="app_share.html">Application Share</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audio_mgr.html">Audio Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audio_443.html">Audio over 443</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_to.html">How to</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocols.html">Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qos.html">QoS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc.html">CMSC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc_asm.html">CMSC ASM media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc_flowrtp.html">CMSC Flow RTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc_MediaEngInst.html">Media Engine Instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc_connection_monitor.html">CMSC Connection Monitor</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">CSCC</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#interface">Interface</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sessionconfig">SessionConfig</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#components">components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#main-flow">main flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#basic-flow">basic flow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#start-share">start share</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cscc_api.html">CSCC API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cscc_clientsession.html">ClientSession</a></li>
+<li class="toctree-l2"><a class="reference internal" href="metrics.html">Thin Client Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wca.html">Web Client Agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb.html">Web Client Bridge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_client.html">WCB Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_dtls.html">WCB DTLS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_ice.html">Thin Client ICE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_message.html">WCB message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_mqe.html">MQE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_sdp.html">WCB SDP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_rtp.html">WCB RTP module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_source.html">WCB source structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_flowrtp.html">WCB Flow RTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_media_stats.html">Media Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="web_client_bridge.html">Web Client Bridge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disciplines_on_code_development.html">Disciplines on Code Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#overall">Overall</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#feature">Feature</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#reference">Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../utiltp/index.html">UTILTP</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">A Programmer Prepares</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Thin Client</a> &raquo;</li>
+      <li>CSCC</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/thinclient/cscc.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="cscc">
+<h1>CSCC<a class="headerlink" href="#cscc" title="Permalink to this headline"></a></h1>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 78%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Abstract</strong></p></td>
+<td><p>Client Session Connection Component (CSCC)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Authors</strong></p></td>
+<td><p>Walter Fan</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Status</strong></p></td>
+<td><p>WIP</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Updated</strong></p></td>
+<td><p>2022-04-10</p></td>
+</tr>
+</tbody>
+</table>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#overview" id="id2">Overview</a></p></li>
+<li><p><a class="reference internal" href="#interface" id="id3">Interface</a></p>
+<ul>
+<li><p><a class="reference internal" href="#sessionconfig" id="id4">SessionConfig</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#components" id="id5">components</a></p></li>
+<li><p><a class="reference internal" href="#main-flow" id="id6">main flow</a></p></li>
+<li><p><a class="reference internal" href="#basic-flow" id="id7">basic flow</a></p>
+<ul>
+<li><p><a class="reference internal" href="#start-share" id="id8">start share</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<section id="overview">
+<h2><a class="toc-backref" href="#id2">Overview</a><a class="headerlink" href="#overview" title="Permalink to this headline"></a></h2>
+<p>It is Client Session Connection Component
+It is for session management.</p>
+<p>The purpose of the Client Session Control Component (CSCC) is to handle the signalling business logic between the client and the CB/MMP servers.
+Examples of mechanisms handled by this module include:</p>
+<ul class="simple">
+<li><p>Session management including creation, updating, and ending of either audio, video, or screen sharing sessions</p></li>
+<li><p>Create and maintain data channels between client and servers using “keep alive” techniques</p></li>
+<li><p>Receive notifications of media related events from the Multimedia Platform (MMP) and routes those messages if necessary to the Client Media Session Component (CMSC) object</p></li>
+<li><p>Receive changes in media objects through the messages sent by the CMSC through callback functions</p></li>
+<li><p>Uses media statistic messages to determine if connections are still alive</p></li>
+</ul>
+<p>Note, typically there are separate CSCC instances for each type of media:  Audio, Video, and Screen Sharing.  The type of CSCC instance that is created is configured by the the session configuration parameters passed during the initialize() method</p>
+</section>
+<section id="interface">
+<h2><a class="toc-backref" href="#id3">Interface</a><a class="headerlink" href="#interface" title="Permalink to this headline"></a></h2>
+<table class="colwidths-given docutils align-default" id="id1">
+<caption><span class="caption-text">class Cscc</span><a class="headerlink" href="#id1" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 30%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Properties</p></th>
+<th class="head"><p>Responsibility</p></th>
+<th class="head"><p>Comments</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>_trace</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>_appTraceCb</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>_csccCount</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>_bInitDone</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>_eventCb</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>_deviceMgrCb</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>_sessionConfig</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>conferenceId</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>MCSSessionParameter</p></td>
+<td></td>
+<td><p>for CB or MCS: confID, nodeID, mediaType, sendMsgrServerFunc</p></td>
+</tr>
+<tr class="row-odd"><td><p>MCSUserInfo</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>nMaxAudioTrack</p></td>
+<td></td>
+<td><p>default: 4</p></td>
+</tr>
+<tr class="row-odd"><td><p>nMaxVideoTrack</p></td>
+<td></td>
+<td><p>default: 7</p></td>
+</tr>
+<tr class="row-even"><td><p>nMaxSendVideoTrack</p></td>
+<td></td>
+<td><p>default: 4</p></td>
+</tr>
+<tr class="row-odd"><td><p>nMaxASReciverTrack</p></td>
+<td></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>nMaxASSenderTrack</p></td>
+<td></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+<section id="sessionconfig">
+<h3><a class="toc-backref" href="#id4">SessionConfig</a><a class="headerlink" href="#sessionconfig" title="Permalink to this headline"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> Cscc.prototype.SessionConfig = function() {
+    // conference
+    this.conferenceId = 0;
+
+    // for MCS and CB specifically {confID, nodeID, mediaType, sendMsgToServerFunc}
+    this.MCSSessionParameter = {};
+    this.MCSUserInfo = {};
+
+    // Break Out session info define {wSessionType, strTahoeSubConfID, dwMeetingSubConfID, dwReserver1, dwReserver2}
+    this.BOSessionInfo = {};
+
+    // Media type
+    this.mediaType = &#39;&#39;;    // &#39;audio&#39;, &#39;video&#39; or &#39;sharing&#39;
+
+    // default number of media tracks
+    this.nMaxAudioTrack = 4;
+    this.nMaxVideoTrack = 7; //for video receiving
+    this.nMaxSendVideoTrack = 4;
+
+    // default number of AS media tracks
+    this.nMaxASReceiveTrack = 1;
+    this.nMaxASSendTrack = 1;
+
+    // media stream bundling, not yet used
+    this.bBundleAudio = false;
+    this.bBundleVideo = false;
+
+    // media codec preferences
+    this.audioCodec = &quot;OPUS&quot;; // &quot;G711&quot;, &quot;G722&quot;
+    this.videoCodec = &quot;H264&quot;;
+
+    // default sending video resolution
+    this.camWidth = 1280;
+    this.camHeight = 720;
+    this.camFrameRate = 30;
+
+    // signaling server and protocol
+    this.signalAVURL = &quot;&quot;;
+    this.avServerName = &quot;mcs&quot;; // &quot;ccp&quot;
+    this.signalASVideoURL = &quot;&quot;;
+    this.asServerName = &quot;cb&quot;;
+    this.signalProtocol = &quot;ROAP&quot;; // &quot;SIP&quot;, &quot;XMPP&quot;, &quot;REST&quot;
+    this.signalConnectionType = &quot;WebSocket&quot;; // &quot;XMLHttpRequest&quot;, &quot;HTTP&quot;
+    this.signalServerUrl = &quot;wss://1.2.3.4:8443&quot;;
+    this.authToken = &quot;the auth token string&quot;;
+
+    // TURN and STUN severs
+    this.avStunServer = {url:&quot;&quot;}; //stun:stun.l.google.com:19302
+    this.avTurnServer = {url:&quot;&quot;, username:&quot;&quot;, credential:&quot;&quot;}; //sample url: turn:192.158.29.39:3478?transport=udp
+    this.ASStunServer = {url:&quot;&quot;}; //stun:stun.l.google.com:19302
+    this.ASTurnServer = {url:&quot;&quot;, username:&quot;&quot;, credential:&quot;&quot;}; //sample url: turn:192.158.29.39:3478?transport=udp
+
+    // maintain
+    this.setupSessionTimeout = 3000; // 3 seconds
+    this.manageSessionTimeout = 30000; // 30 sesonds
+
+    // debug helper or cache the local AS video stream for grabbing
+    this.enableDumpSharingStream = true;
+
+    this.audioRecvOnly = false;
+
+    // deafult to muted the audio while receive the sharing-audio on HFRS
+    this.ASAudioMuted = true;
+
+    // as normal and hfrs control
+    this.asWidth = 1920;
+    this.asHeight = 1080;
+    this.asEnableAudioCapture = false;
+    this.asFrameRate = 5;
+};
+</pre></div>
+</div>
+</section>
+</section>
+<section id="components">
+<h2><a class="toc-backref" href="#id5">components</a><a class="headerlink" href="#components" title="Permalink to this headline"></a></h2>
+<ul>
+<li><p>cscc.api.js</p>
+<p>- High level API functions that are exposed to allow a user to easily do things such as initialize a CSCC object, manage a session, send messages to remote servers, or manage the state of media controls.</p>
+</li>
+<li><p>cscc.apiImpl.js</p>
+<p>- Actual implementation of the API above.</p>
+</li>
+<li><p>cscc.clientSession.js - One of the two main pieces of the CSCC module.  ClientSession is used to manage the data channel between the MCC/MCS servers and use the other lower level utilities, pdu and wbxcommon, to encode/decode the messages sent between them.</p></li>
+<li><p>cscc.constants.js - A file that contains all event definitions and their corresponding constant value.</p></li>
+<li><p>cscc.mediacc.js - The other main component of the CSCC object, a combination of previously used Hybridcc and Videocc files.  Mediacc contains the actual business and routing logic for the messages that are received through either the registered event handlers or through the clientSession object.</p></li>
+<li><p>cscc.pdu.js - Low level file that creates the PDU, or format, for the exchange of messages between the client and server.</p></li>
+<li><p>cscc.pduDefines.js - Low level file that defines how the PDU is created</p></li>
+<li><p>cscc.trace.js - Tracer utility that is passed during the initialization of the CSCC object.  This utility offers four levels of trace functions including onErrorTrace(), onWarningTrace(), onInfoTrace(), and onLogTrace()</p></li>
+<li><p>cscc.utility.js - Utility file for testing things such as if an object is a function or a number.</p></li>
+<li><p>cscc.wbxcommon.io.js - Common Webex utilities for IO operations</p></li>
+<li><p>cscc.wbxcommon.js - Attaches the wbxcommon.io and wbxcommon.util files to the CSCC object.</p></li>
+<li><p>cscc.wbxcommon.util.js - Another file of common Webex utilities for functions such as checking if an email is valid and creating a hashtable.</p></li>
+</ul>
+</section>
+<section id="main-flow">
+<h2><a class="toc-backref" href="#id6">main flow</a><a class="headerlink" href="#main-flow" title="Permalink to this headline"></a></h2>
+<ol class="arabic simple">
+<li><p>The UI, client application, uses the cscc.api to create and initialize an instance of a CSCC</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p>video.js:</p></li>
+<li><p>hybrid.js</p></li>
+<li><p>share.js</p></li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p>After initialized, the cscc.api creates a mediaCC object used for handling the signalling between the client and the CB/MMP servers</p></li>
+<li><p>To communicate with the CB/MMP servers, mediaCC creates a clientSession object to handle the actual communication channels</p></li>
+<li><p>The clientSessions utilizes the lower level pdu and wbxcommon files to marshal the sent and received packets between CSCC and the CB/MMP servers</p></li>
+<li><p>The clientSession packages and encodes the client’s events and sends the requests either though HTTPS or WebSockets, depending on the type of request, to the CB/MMP servers</p></li>
+<li><p>The assigned MCS server sends encrypted responses back to CSCC through the clientSession, where they are decoded</p></li>
+<li><p>To handle media related events, the CSCC object also registers event handlers (callback functions) with the CMSC object</p></li>
+<li><p>CMSC uses these callback functions to signal to CSCC when media related events occur on the MCS server.</p></li>
+<li><p>Finally, the UI is notified by CSCC of state changes from the server</p></li>
+</ol>
+</section>
+<section id="basic-flow">
+<h2><a class="toc-backref" href="#id7">basic flow</a><a class="headerlink" href="#basic-flow" title="Permalink to this headline"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">videoSizeIndex</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">VIDEO_SIZE_90p</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">VIDEO_SIZE_180p</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">VIDEO_SIZE_360p</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">VIDEO_SIZE_720p</span><span class="p">:</span> <span class="mi">3</span>
+<span class="p">};</span>
+
+<span class="n">me</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;_onVideoSubscriptReport, channelId:&quot;</span><span class="p">,</span> <span class="n">channelId</span><span class="p">,</span> <span class="s2">&quot;report:&quot;</span><span class="p">,</span> <span class="n">subModeArray</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="start-share">
+<h3><a class="toc-backref" href="#id8">start share</a><a class="headerlink" href="#start-share" title="Permalink to this headline"></a></h3>
+<p>option 1: Use CB Servr</p>
+<p>option 2: use MCS server</p>
+<p>cscc.media.cc -   - mediaCc.startSharing</p>
+<ol class="arabic simple">
+<li><p>session = new ClientSession</p></li>
+<li><p>session.JoinSession(…)</p></li>
+<li><p>OnSessionJoinEx</p></li>
+<li><p>notifiy defs.EVENTS.EVENT_ON_MMP_SESSION_JOIN</p></li>
+<li><p>check _isRealMultiStreamSupported()</p></li>
+<li><p>mediaCmsc.manageSession(“start”, …)</p>
+<ul class="simple">
+<li><p>cmsc.sessionMgr.manageSession(“start”, …)</p></li>
+<li><p>_mediaMgr.manageMedia(“sharing”, …)</p></li>
+</ul>
+</li>
+<li><p>startMyShare()</p></li>
+<li><p>_handleSendShare()</p></li>
+<li><p>cmsc.controlMedia(“enableASSend”, {action: “Send”, req:me._shareUpdateReq}, …)</p></li>
+<li><p>_sessionMgr._mediaMgr.openMedia(“shareing”, …);</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p>cmsc.getUserMediaEx</p></li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="11">
+<li><p>cmsc.deviceMgr._resultSharingCB</p></li>
+<li><p>_sessionMgr._mediaMgr.addStreamSharing(req, resultCB)</p></li>
+</ol>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="cmsc_MediaEngInst.html" class="btn btn-neutral float-left" title="Media Engine Instance" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cscc_api.html" class="btn btn-neutral float-right" title="CSCC API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Walter Fan.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

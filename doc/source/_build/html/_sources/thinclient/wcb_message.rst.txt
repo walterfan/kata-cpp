@@ -1,0 +1,55 @@
+##############################
+WCB message
+##############################
+
+
+
+PDU
+==================================
+
+
+How to use Session PDUs
+----------------------------------
+
+* Example I : Client send data to server
+
+.. code-block:: c++
+
+    CMmApplicationDataPDU* pDataPDU = new CMmApplicationDataPDU(
+    		pID,		// Which ID you wanna send to
+    		SendType,	// Type of data you wanna send
+    		Priority,	// Priority of data you wanna send
+    		pmbData		// Data you wanna send
+    		);
+    
+    	CCmMessageBlock mbData( 65535 );
+    	pDataPDU->Encode( mbData );
+    	pTransport->SendData( mbData );
+    
+
+* Example II : Server receive application PDU client sent
+
+
+.. code-block:: c++
+
+    CMmApplicationDataPDU* pDataPDU = new CMmApplicationDataPDU();
+    CMmServerSessionAPI::MM_SESSION_SEND_TYPE SendType = 0;
+    pDataPDU->GetType( SendType );
+    .....	//	Get whatever you want
+
+
+request
+===================================
+
+
+.. code-block:: c++
+
+    typedef std::auto_ptr<CMmCommPduJoinSessRequest>    WCBJoinSessReq_autoPtr;
+    typedef std::auto_ptr<CMmSessionJoinPDUResponse>    CMJoinSessRes_autoPtr;
+    typedef std::auto_ptr<CMmSessionJoinPDUResponseV2>  CMJoinSessResV2_autoPtr;
+    typedef std::auto_ptr<CMmCommPduStdJoinSessRequest> CMStdJoinSessReq_autoPtr;
+    typedef std::auto_ptr<CMmPduSessionThinClientMediaNegotiate> WCBMediaSignal_aPtr;
+    typedef std::auto_ptr<CMmChannelJoinPDURequest>              WCBJoinChnReq_aPtr;
+    typedef std::auto_ptr<CMmSessionPDURtpData>      CMSessionPduRtpData_aPtr;
+
+

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ClientSession &mdash; A Programmer Prepares 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Thin Client Metrics" href="metrics.html" />
+    <link rel="prev" title="CSCC API" href="cscc_api.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> A Programmer Prepares
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">论程序员的自我修养</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interview.html">程序员面试要点</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resume.html">Resume</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithm/index.html">Algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../language/index.html">Programming Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../library/index.html">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oss/index.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html">mathematics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#overview">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#least-squares-method">最小二乘法 least squares method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pattern/index.html">Pattern</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/index.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool/index.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mmp/index.html">MMP</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Thin Client</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="app_share.html">Application Share</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audio_mgr.html">Audio Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audio_443.html">Audio over 443</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_to.html">How to</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocols.html">Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qos.html">QoS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc.html">CMSC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc_asm.html">CMSC ASM media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc_flowrtp.html">CMSC Flow RTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc_MediaEngInst.html">Media Engine Instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc_connection_monitor.html">CMSC Connection Monitor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cscc.html">CSCC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cscc_api.html">CSCC API</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ClientSession</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#main-flow">Main Flow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#start-session">start session</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#main-methods">Main Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#armclientsession">ArmClientSession</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">main methods</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="metrics.html">Thin Client Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wca.html">Web Client Agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb.html">Web Client Bridge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_client.html">WCB Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_dtls.html">WCB DTLS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_ice.html">Thin Client ICE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_message.html">WCB message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_mqe.html">MQE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_sdp.html">WCB SDP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_rtp.html">WCB RTP module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_source.html">WCB source structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_flowrtp.html">WCB Flow RTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_media_stats.html">Media Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="web_client_bridge.html">Web Client Bridge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disciplines_on_code_development.html">Disciplines on Code Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#overall">Overall</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#feature">Feature</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#reference">Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../utiltp/index.html">UTILTP</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">A Programmer Prepares</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Thin Client</a> &raquo;</li>
+      <li>ClientSession</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/thinclient/cscc_clientsession.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="clientsession">
+<h1>ClientSession<a class="headerlink" href="#clientsession" title="Permalink to this headline"></a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline"></a></h2>
+</section>
+<section id="main-flow">
+<h2>Main Flow<a class="headerlink" href="#main-flow" title="Permalink to this headline"></a></h2>
+<section id="start-session">
+<h3>start session<a class="headerlink" href="#start-session" title="Permalink to this headline"></a></h3>
+<ol class="arabic simple">
+<li><p>aplImpl.manageSessionImpl</p></li>
+<li><p>aplImpl._handleStartSession</p></li>
+</ol>
+<p>3) mediaCC.startVOIP
+mediaCC.startVideo
+mediaCC.startMyVideo
+mediaCC.startSharing</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">me</span><span class="o">.</span><span class="n">session</span> <span class="o">=</span> <span class="n">new</span> <span class="n">ClientSession</span><span class="p">(</span><span class="n">PduDefines</span><span class="o">.</span><span class="n">MM_SESSION_TYPE</span><span class="o">.</span><span class="n">MM_SESSION_TYPE_VIDEO</span><span class="p">,</span> <span class="n">this</span><span class="p">,</span> <span class="n">dcParam</span><span class="p">);</span>
+
+<span class="n">sendTeletry</span><span class="p">(</span><span class="s1">&#39;start_video_session&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>clientSession.JoinSession</p></li>
+</ol>
+<ul class="simple">
+<li><p>joinMCC</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">this</span><span class="o">.</span><span class="n">m_MCCConnection</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">OnReceive</span><span class="p">,</span> <span class="n">OnError</span><span class="p">)</span>
+
+<span class="bp">self</span><span class="o">.</span><span class="n">sendTelemetry</span><span class="p">(</span><span class="s1">&#39;join_mcc_media_session_success&#39;</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>joinMCS</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">SetSequence</span><span class="p">(</span><span class="n">seqid</span><span class="p">);</span>
+
+<span class="bp">self</span><span class="o">.</span><span class="n">JoinMCSSession</span><span class="p">(</span><span class="n">strMCSAddr</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">PduDefines</span><span class="o">.</span><span class="n">MM_SESSION_TRANSPORT_TYPE</span><span class="o">.</span><span class="n">MM_SESSION_TRANSPORT_TYPE_MCS_COMMAND</span><span class="p">);</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>clientSession.JoinMCSSession</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tMCSConnection</span><span class="o">.</span><span class="n">Open</span><span class="p">({</span> <span class="o">...</span> <span class="p">},</span> <span class="n">OnReceive</span><span class="p">,</span> <span class="n">OnError</span><span class="p">,</span> <span class="n">OnClose</span><span class="p">,</span>
+
+<span class="n">OnOpen</span><span class="p">:</span> <span class="n">function</span> <span class="p">(</span><span class="n">aResult</span><span class="p">,</span> <span class="n">aTransportType</span><span class="p">)</span> <span class="p">{</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">m_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;MCS OnOpen, aResult:&quot;</span><span class="p">,</span> <span class="n">aResult</span><span class="p">,</span> <span class="s2">&quot;aTransportType:&quot;</span><span class="p">,</span> <span class="n">aTransportType</span><span class="p">,</span> <span class="s2">&quot;sessionType:&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">m_cSessionType</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">aTransportType</span> <span class="o">===</span> <span class="n">PduDefines</span><span class="o">.</span><span class="n">MM_SESSION_TRANSPORT_TYPE</span><span class="o">.</span><span class="n">MM_SESSION_TRANSPORT_TYPE_MCS_COMMAND</span><span class="p">)</span> <span class="p">{</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">sendJoinRequest</span><span class="p">();</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<ol class="arabic" start="5">
+<li><p>clientSession.sendJoinRequest</p></li>
+<li><p>clientSession.OnMCSSessionJoin</p></li>
+<li><p>clientSession.OnSessionJoin</p></li>
+<li><p>mediacc..OnSessionJoin</p>
+<blockquote>
+<div><p>call OnSessionJoinEx if mediaType is sharing</p>
+</div></blockquote>
+</li>
+<li><p>mediacc._handleSessionJoinSuccess</p></li>
+</ol>
+<ul class="simple">
+<li><p>setup the turn server</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">me</span><span class="o">.</span><span class="n">mediaCmsc</span><span class="o">.</span><span class="n">updateSessionConfig</span><span class="p">(</span><span class="s2">&quot;iceServer&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">);</span>
+<span class="n">me</span><span class="o">.</span><span class="n">mediaCmsc</span><span class="o">.</span><span class="n">updateSessionConfig</span><span class="p">(</span><span class="s2">&quot;useUfragChar&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">);</span>
+<span class="n">me</span><span class="o">.</span><span class="n">mediaCmsc</span><span class="o">.</span><span class="n">updateSessionConfig</span><span class="p">(</span><span class="s2">&quot;bundle&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">);</span>
+
+<span class="n">me</span><span class="o">.</span><span class="n">mediaCmsc</span><span class="o">.</span><span class="n">setupSession</span><span class="p">({</span><span class="n">video</span><span class="p">:</span> <span class="n">isVideo</span><span class="p">,</span> <span class="n">disableCapture</span><span class="p">:</span> <span class="n">disableCapture</span><span class="p">},</span><span class="o">..</span> <span class="n">me</span><span class="o">.</span><span class="n">_onCmscSetupSessionCallback</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="10">
+<li><p>mediacc.startConnection</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">me</span><span class="o">.</span><span class="n">mediaCmsc</span><span class="o">.</span><span class="n">manageSession</span><span class="p">(</span><span class="s2">&quot;start&quot;</span><span class="p">,</span> <span class="n">mediaParam</span><span class="p">,</span> <span class="n">function</span> <span class="p">(</span><span class="n">success</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">me</span><span class="o">.</span><span class="n">_onCmscManageSessionCallback</span><span class="p">(</span><span class="n">success</span><span class="p">,</span> <span class="n">result</span><span class="p">);</span>
+
+<span class="p">});</span>
+</pre></div>
+</div>
+<ol class="arabic" start="11">
+<li><p>mediacc._onCmscManageSessionCallback</p>
+<p>reconnect if not success</p>
+</li>
+</ol>
+<p>refer to cmsc_api</p>
+</section>
+</section>
+<section id="main-methods">
+<h2>Main Methods<a class="headerlink" href="#main-methods" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>_init = function (cType, pSink, dcParam)</p></li>
+<li><p>JoinSession = function (strMCCAddress, wPort, cEncryptType, // 0: no encrypt, 1: webex encrypt, 2: ssl.</p></li>
+<li><p>findViewOnlyMcc = function (joinMCC, normalMcc)</p></li>
+<li><p>LeaveSession = function (SessionID, dwReason)</p></li>
+<li><p>resetSessionConnection = function ()</p></li>
+<li><p>clearSessionInfo = function ()</p></li>
+<li><p>_isRealMultiStreamSupported = function ()</p></li>
+<li><p>JoinMCSSession = function (strMCSAddress, aPort, aTransportType)</p></li>
+<li><p>SendChannelJoinRequestEx = function (ChannelID, bIsSrc)</p></li>
+<li><p>sendJoinRequest = function ()</p></li>
+<li><p>SendLeaveSessionRequest = function (SessionID, dwReason)</p></li>
+<li><p>SendSubscribeVideoSize = function (dwSessionID, dwSubscriberID, dwSourceID, dwChannelID, dwVideoSize, peerId, CSI)</p></li>
+<li><p>SendVideoBroadCastStatus = function (on)</p></li>
+<li><p>sendAsAudioCSIPairPdu = function (dwSlideAudioCSI, dwTelephoneAudioCSI)</p></li>
+<li><p>sendAsBroadcastStatus = function (infoArray)</p></li>
+<li><p>sendShareType = function (info)</p></li>
+<li><p>SendRtcpPacket = function (rtcp_data)</p></li>
+<li><p>SendTPActiveVideoUser = function (SenderID, ActiveUserID, ForwardByServer, DummyUserID)</p></li>
+<li><p>SendTPNonVideoActiveVideoPdu = function (nonVideoActiveUseID, bForwardByServer, dwReserved)</p></li>
+<li><p>SendTPActiveVideoLockedStatusPdu = function (ActiveUseID, bLocked, bForwardByServer, dwReserved)</p></li>
+<li><p>SendAsTahoeInfo = function (dwSenderId, wCodecType, strTahoeMacc, strTahoeConfId, strTahoeSubConfId, strMcsVoipId)</p></li>
+<li><p>SendTahoeInfo = function (SenderID, szTahoeIP, szConfID, szSubConfID, ulReserved)</p></li>
+<li><p>SendChannelJoinRequest = function (SessionID, ChannelID, UserID, confid, bIsSrc)</p></li>
+<li><p>SendChannelLeaveRequest = function (SessionID, ChannelID, UserID, confid, dwReason)</p></li>
+<li><p>SendVideoCapabilityPDU = function (dwUserID, dwMaxWidth, dwMaxHeight, dwMaxFPS, dwReserved, bForwardByServer)</p></li>
+<li><p>SendCommand = function (ID, cSendType, dwLength, lpData, wNeedRecord)</p></li>
+<li><p>ChangeRole = function (dwRole)</p></li>
+<li><p>SetUserInfo = function (UserInfo)</p></li>
+<li><p>SetTicket = function (strTicket)</p></li>
+<li><p>SetSequence = function (wSequence)</p></li>
+<li><p>GetClientVersion = function ()</p></li>
+<li><p>GetSessionType = function ()</p></li>
+<li><p>OnMCSSessionJoin = function (sjResponse)</p></li>
+<li><p>OnMCSSessionJoinV2 = function (sjResponse)</p></li>
+<li><p>OnMCSSessionLeaveResp = function (slResponse)</p></li>
+<li><p>OnMCSChannelJoin = function (sjResponse)</p></li>
+<li><p>OnMCSChannelLeave = function (sjResponse)</p></li>
+<li><p>OnMCSChannelChange = function (sjResponse)</p></li>
+<li><p>OnMCSRosterChange = function (rcResponse)</p></li>
+<li><p>OnMCSKeepaliveReceive = function (type)</p></li>
+<li><p>onServerCmscMsg = function (cmscMsgPdu)</p></li>
+<li><p>onServerCmscMedia = function (rtpDataPdu)</p></li>
+<li><p>OnMCSEncryptInfoEx = function (pduSessionServerEncryptInfoEx)</p></li>
+<li><p>OnMCSRejectUserReceived = function (aData)</p></li>
+<li><p>OnMCSCommandReceive = function (cmResponse)</p></li>
+<li><p>OnSessionJoin = function (aResult, aError, sessionID, userID, serverVersion, isWCBEnabled)</p></li>
+<li><p>OnSessionLeave = function (aReason, aError, sessionID)</p></li>
+<li><p>CreateXMLHttpRequest = function ()</p></li>
+<li><p>CreateHTTPRequest = function ()</p></li>
+<li><p>CreateWSRequest = function (transportType)</p></li>
+<li><p>CreateURLRequest = function (strType, transportType)</p></li>
+<li><p>sendKeepAliveRequest = function (nCode)</p></li>
+<li><p>IsMCSSessionJoined = function ()</p></li>
+<li><p>sendServerCmscMsg = function (cmscMsg)</p></li>
+<li><p>sendServerCmscMedia = function (cmscMedia, isAudio, peerId)</p></li>
+<li><p>SendMuteMicInfo = function (muteInfoList, cUserCount, dwSenderId)</p></li>
+<li><p>sendNBRStatus = function (NBRStatus)</p></li>
+<li><p>sendStartNBRCommand = function (senderId, info)</p></li>
+<li><p>sendStopNBRCommand = function (senderId, info)</p></li>
+<li><p>sendVideoRecordSize = function (senderId, videoSize)</p></li>
+<li><p>sendVideoBillingStatus = function (senderId, billingTrueFalse)</p></li>
+<li><p>sendTelemetry = function (eventType, report)</p></li>
+<li><p>updateTelephoneCSI = function (teleCSI, userId, sessionId, dwRole)</p></li>
+</ul>
+</section>
+<section id="armclientsession">
+<h2>ArmClientSession<a class="headerlink" href="#armclientsession" title="Permalink to this headline"></a></h2>
+<section id="id1">
+<h3>main methods<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>_init = function (cType, pSink)</p></li>
+<li><p>JoinSession = function (sessionParam)</p></li>
+<li><p>OnReceive = function (data, status)</p></li>
+<li><p>SendData = function(data)</p></li>
+<li><p>sendServerCmscMsg = function (cmscMsg)</p></li>
+<li><p>LeaveSession = function ()</p></li>
+<li><p>sendKeepAliveRequest = function (nCode)</p></li>
+<li><p>sendNBRStatus = function (NBRStatus, setNBRStatusObj)</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="cscc_api.html" class="btn btn-neutral float-left" title="CSCC API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="metrics.html" class="btn btn-neutral float-right" title="Thin Client Metrics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Walter Fan.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

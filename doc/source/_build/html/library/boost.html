@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Boost &mdash; A Programmer Prepares 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Boost asio module" href="boost_asio.html" />
+    <link rel="prev" title="flite" href="flite.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> A Programmer Prepares
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">论程序员的自我修养</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interview.html">程序员面试要点</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resume.html">Resume</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithm/index.html">Algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../language/index.html">Programming Language</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Libraries</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ace.html">ACE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flite.html">flite</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Boost</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="boost_asio.html">Boost asio module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">代码结构</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">安装编译</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">模块</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#atomic">atomic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#thread">thread</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#asio">asio</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">示例</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="boost_asio.html">Boost asio module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="boost_python.html">Boost Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="boost_beast.html">Boost beast module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libevent.html">Libevent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libuv.html">libuv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="netty.html">Netty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nio.html">Java NIO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protobuf.html">Protobuf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="socket.io.html">Socket.io</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skimage.html">scikit-image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openssl.html">OpenSSL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opencv.html">opencv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#overview">Overview</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../oss/index.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html">mathematics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#overview">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#least-squares-method">最小二乘法 least squares method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pattern/index.html">Pattern</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/index.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool/index.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mmp/index.html">MMP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../thinclient/index.html">Thin Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utiltp/index.html">UTILTP</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">A Programmer Prepares</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Libraries</a> &raquo;</li>
+      <li>Boost</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/library/boost.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="boost">
+<h1>Boost<a class="headerlink" href="#boost" title="Permalink to this headline"></a></h1>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">programming language:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="boost_asio.html">Boost asio module</a></li>
+</ul>
+</div>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#id1" id="id7">代码结构</a></p></li>
+<li><p><a class="reference internal" href="#id2" id="id8">安装编译</a></p></li>
+<li><p><a class="reference internal" href="#id3" id="id9">模块</a></p>
+<ul>
+<li><p><a class="reference internal" href="#atomic" id="id10">atomic</a></p></li>
+<li><p><a class="reference internal" href="#thread" id="id11">thread</a></p></li>
+<li><p><a class="reference internal" href="#asio" id="id12">asio</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id4" id="id13">同步操作</a></p></li>
+<li><p><a class="reference internal" href="#id5" id="id14">异步操作</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id6" id="id15">示例</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<section id="id1">
+<h2><a class="toc-backref" href="#id7">代码结构</a><a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>algorithm 算法库</p></li>
+<li><p>align 内存对齐库</p></li>
+<li><p>asio 异步并发库</p></li>
+<li><p>atomic 原子操作库</p></li>
+<li><p>beast 高级网络通信库</p></li>
+<li><p>bind - bind 表达式库</p></li>
+</ul>
+</section>
+<section id="id2">
+<h2><a class="toc-backref" href="#id8">安装编译</a><a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./bootstrap.sh
+./b2 install
+ls -l /usr/local/include /usr/local/lib
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h2><a class="toc-backref" href="#id9">模块</a><a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
+<section id="atomic">
+<h3><a class="toc-backref" href="#id10">atomic</a><a class="headerlink" href="#atomic" title="Permalink to this headline"></a></h3>
+</section>
+<section id="thread">
+<h3><a class="toc-backref" href="#id11">thread</a><a class="headerlink" href="#thread" title="Permalink to this headline"></a></h3>
+</section>
+<section id="asio">
+<h3><a class="toc-backref" href="#id12">asio</a><a class="headerlink" href="#asio" title="Permalink to this headline"></a></h3>
+<section id="id4">
+<h4><a class="toc-backref" href="#id13">同步操作</a><a class="headerlink" href="#id4" title="Permalink to this headline"></a></h4>
+<p>我们的程序将至少具有一个 I/O 执行上下文，例如 boost::asio::io_context 对象，<cite>boost::asio::thread_pool 对象或 boost::asio::system_context</cite>。
+此 I/O 执行上下文表示您的程序与操作系统的 I/O 服务的链接。</p>
+<ol class="arabic simple">
+<li><p>您的程序通过调用I/O 对象来启动连接操作：</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>socket.connect（server_endpoint）;
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>I/O 对象将请求转发到 I/O 执行上下文。</p></li>
+<li><p>I/O 执行上下文在操作系统上调用以执行连接操作。</p></li>
+<li><p>操作系统将操作结果返回到 I/O 执行上下文。</p></li>
+<li><p>I/O 执行上下文将由操作导致的任何错误转换为 boost::system::error_code 类型的对象。 可以将error_code与特定值进行比较，或将其作为布尔值进行测试（错误结果表示未发生错误）。 然后将结果转发回I/O 对象。</p></li>
+<li><p>如果操作失败，则I/O 对象将引发类型为 boost::system::system_error 的异常。 如果启动操作的代码改为编写为：</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>boost::system::error_code ec;
+socket.connect（server_endpoint，ec）;
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h4><a class="toc-backref" href="#id14">异步操作</a><a class="headerlink" href="#id5" title="Permalink to this headline"></a></h4>
+<p>1.您的程序通过调用 I/O 对象来启动连接操作：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>socket.async_connect（server_endpoint，your_completion_handler）;
+</pre></div>
+</div>
+<p>其中 your_completion_handler 是具有签名的函数或函数对象：
+无效 your_completion_handler（const boost::system::error_code＆ec ;
+所需的确切签名取决于正在执行的异步操作。 参考文档指出了每种操作的适当形式。</p>
+<ol class="arabic simple" start="2">
+<li><p>I/O 对象将请求转发到 I/O 执行上下文。</p></li>
+<li><p>I/O 执行上下文向操作系统发出信号，表明它应该启动异步连接。</p></li>
+<li><p>操作系统通过将结果放在队列中来指示连接操作已完成，该队列准备由 I/O 执行上下文拾取。</p></li>
+<li><p>使用 io_context 作为 I/O 执行上下文时，您的程序必须调用 io_context::run()（或类似的  io_context 成员函数之一）才能检索结果。 在未完成的异步操作完成时，对 io_context::run() 的调用会阻塞，因此通常在开始第一个异步操作后立即调用它。</p></li>
+<li><p>在调用 io_context::run() 的同时， I/O 执行上下文使操作结果出队，将其转换为 error_code ，然后将其传递给完成处理程序。</p></li>
+</ol>
+</section>
+</section>
+<section id="id6">
+<h3><a class="toc-backref" href="#id15">示例</a><a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>chart server</p></li>
+</ul>
+<p><a class="reference external" href="https://www.boost.org/doc/libs/1_74_0/doc/html/boost_asio/example/cpp11/chat/chat_server.cpp">https://www.boost.org/doc/libs/1_74_0/doc/html/boost_asio/example/cpp11/chat/chat_server.cpp</a></p>
+<ul class="simple">
+<li><p>chart client</p></li>
+</ul>
+<p><a class="reference external" href="https://www.boost.org/doc/libs/1_74_0/doc/html/boost_asio/example/cpp11/chat/chat_client.cpp">https://www.boost.org/doc/libs/1_74_0/doc/html/boost_asio/example/cpp11/chat/chat_client.cpp</a></p>
+<ul class="simple">
+<li><p>chart message</p></li>
+</ul>
+<p><a class="reference external" href="https://www.boost.org/doc/libs/1_74_0/doc/html/boost_asio/example/cpp11/chat/chat_message.hpp">https://www.boost.org/doc/libs/1_74_0/doc/html/boost_asio/example/cpp11/chat/chat_message.hpp</a></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="flite.html" class="btn btn-neutral float-left" title="flite" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="boost_asio.html" class="btn btn-neutral float-right" title="Boost asio module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Walter Fan.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

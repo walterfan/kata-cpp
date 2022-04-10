@@ -1,0 +1,442 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>C++ STL &mdash; Beautiful C++ 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="C++ Thread" href="cpp_thread.html" />
+    <link rel="prev" title="Resource management" href="cpp_memory.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Beautiful C++
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">C++ Language</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cpp.html">C++</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_interview.html">C++ Interview Questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_evolution.html">C++ Evolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_lambda.html">C++ Lambda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_memory.html">Resource management</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">C++ STL</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#contrainers-library">容器库 contrainers library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iterators-library">迭代器库 iterators library</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">迭代器分类</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">迭代器适配器</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#algorithms-library">算法库 algorithms library</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">1. 非变化序列运算</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">2. 可变序列元素值运算</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">3. 可变序列元素顺序运算</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#numberics-library">数值库 numberics library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">函数对象</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lambda">Lambda 表达式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">智能指针</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#unique-ptr">unique_ptr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#shared-ptr">shared_ptr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#weak-ptr">weak_ptr</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_thread.html">C++ Thread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_rvalue.html">右值引用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_object_model.html">C++ Object Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_server.html">C++ Server</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../library/index.html">C++ Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool/index.html">Tools</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Beautiful C++</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">C++ Language</a> &raquo;</li>
+        
+      <li>C++ STL</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/language/cpp_stl.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="c-stl">
+<h1>C++ STL<a class="headerlink" href="#c-stl" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#contrainers-library" id="id8">容器库 contrainers library</a></p></li>
+<li><p><a class="reference internal" href="#iterators-library" id="id9">迭代器库 iterators library</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id1" id="id10">迭代器分类</a></p></li>
+<li><p><a class="reference internal" href="#id2" id="id11">迭代器适配器</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#algorithms-library" id="id12">算法库 algorithms library</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id3" id="id13">1. 非变化序列运算</a></p></li>
+<li><p><a class="reference internal" href="#id4" id="id14">2. 可变序列元素值运算</a></p></li>
+<li><p><a class="reference internal" href="#id5" id="id15">3. 可变序列元素顺序运算</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#numberics-library" id="id16">数值库 numberics library</a></p></li>
+<li><p><a class="reference internal" href="#id6" id="id17">函数对象</a></p></li>
+<li><p><a class="reference internal" href="#lambda" id="id18">Lambda 表达式</a></p></li>
+<li><p><a class="reference internal" href="#id7" id="id19">智能指针</a></p>
+<ul>
+<li><p><a class="reference internal" href="#unique-ptr" id="id20">unique_ptr</a></p></li>
+<li><p><a class="reference internal" href="#shared-ptr" id="id21">shared_ptr</a></p></li>
+<li><p><a class="reference internal" href="#weak-ptr" id="id22">weak_ptr</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="contrainers-library">
+<h2><a class="toc-backref" href="#id8">容器库 contrainers library</a><a class="headerlink" href="#contrainers-library" title="Permalink to this headline">¶</a></h2>
+<p>序列容器，关联容器，窗口适配器</p>
+<p>放在容器中的对象要被复制，移动，交换，所以它们要实现</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">T</span> <span class="p">{</span>
+    <span class="k">public</span><span class="o">:</span>
+        <span class="n">T</span><span class="p">();</span>
+        <span class="n">T</span><span class="p">(</span><span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span> <span class="n">t</span><span class="p">);</span>
+        <span class="o">~</span><span class="n">T</span><span class="p">();</span>
+        <span class="n">T</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span> <span class="n">t</span><span class="p">);</span>
+        <span class="kt">bool</span> <span class="k">operator</span> <span class="o">&lt;</span><span class="p">(</span><span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span> <span class="n">t</span><span class="p">);</span><span class="c1">//for sort and map/set contrainer</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>array</p></li>
+<li><p>vector</p></li>
+<li><p>stack</p></li>
+<li><p>query</p></li>
+<li><p>dqueue</p></li>
+<li><p>list</p></li>
+<li><p>forward_list</p></li>
+<li><p>set</p></li>
+<li><p>unordered_set</p></li>
+<li><p>map</p></li>
+<li><p>unordered_map</p></li>
+</ul>
+</div>
+<div class="section" id="iterators-library">
+<h2><a class="toc-backref" href="#id9">迭代器库 iterators library</a><a class="headerlink" href="#iterators-library" title="Permalink to this headline">¶</a></h2>
+<p>iterator</p>
+<div class="section" id="id1">
+<h3><a class="toc-backref" href="#id10">迭代器分类</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>输入迭代器 input iterators</p>
+<p>输出迭代器 output iterators</p>
+<p>正向迭代器 forward iterators</p>
+<p>双向迭代器 brdirection iterators</p>
+<p>随机访问迭代器 random access  iterators</p>
+</div>
+<div class="section" id="id2">
+<h3><a class="toc-backref" href="#id11">迭代器适配器</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><p>反向适配器 revers_iterator</p></li>
+<li><p>插入适配器 insert_iterator</p></li>
+<li><p>移动适配器 move_iterator</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="algorithms-library">
+<h2><a class="toc-backref" href="#id12">算法库 algorithms library</a><a class="headerlink" href="#algorithms-library" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>algorithm</p></li>
+</ul>
+<div class="section" id="id3">
+<h3><a class="toc-backref" href="#id13">1. 非变化序列运算</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>它不会改变原始序列中的元素的值和顺序</p>
+<p>inner_product
+accumulate
+find
+count
+mismatch
+search
+equal</p>
+</div>
+<div class="section" id="id4">
+<h3><a class="toc-backref" href="#id14">2. 可变序列元素值运算</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>会改变原始序列中的元素的值</p>
+<p>swap
+copy
+transform
+replace
+remove
+revsrse
+rotate
+fill
+shufle</p>
+</div>
+<div class="section" id="id5">
+<h3><a class="toc-backref" href="#id15">3. 可变序列元素顺序运算</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>会改变原始序列中的元素的顺序</p>
+<p>sort
+stable_sort
+binary_search
+merge
+min
+max</p>
+</div>
+</div>
+<div class="section" id="numberics-library">
+<h2><a class="toc-backref" href="#id16">数值库 numberics library</a><a class="headerlink" href="#numberics-library" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>complex</p></li>
+<li><p>cmath</p></li>
+<li><p>valarray</p></li>
+<li><p>numberic</p></li>
+<li><p>random</p></li>
+<li><p>ratio</p></li>
+<li><p>cfenv</p></li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h2><a class="toc-backref" href="#id17">函数对象</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>也称防函数， 这是一种重载了函数调用运算符 <cite>operator()()</cite> 的类对象, 它提供了一种比原生指针更加高效的，
+将函数作为实参传入另一个函数的方式</p>
+<p>例如</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Volume</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="kt">double</span> <span class="k">operator</span><span class="p">()(</span><span class="kt">double</span> <span class="n">x</span><span class="p">,</span> <span class="kt">double</span> <span class="n">y</span><span class="p">,</span> <span class="kt">double</span> <span class="n">z</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span> <span class="o">*</span> <span class="n">z</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="n">Volume</span> <span class="n">volume</span><span class="p">;</span>
+<span class="kt">double</span> <span class="n">room</span><span class="p">{</span> <span class="n">volume</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">);};</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="lambda">
+<h2><a class="toc-backref" href="#id18">Lambda 表达式</a><a class="headerlink" href="#lambda" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="p">[](</span><span class="kt">double</span> <span class="n">value</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">value</span><span class="o">*</span><span class="n">value</span><span class="o">*</span><span class="n">value</span><span class="p">;</span> <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h2><a class="toc-backref" href="#id19">智能指针</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<p>指针的模板类。在很多情况下,它们没有任何差别。但是,有些情况下,它们还是有两点</p>
+<p>差别:
+* 智能指针只能用来保存堆上分配的内存的地址。
+* 不能像对原生指针那样, 对智能指针进行一些自增或自减这样的算术运算。</p>
+<div class="section" id="unique-ptr">
+<h3><a class="toc-backref" href="#id20">unique_ptr</a><a class="headerlink" href="#unique-ptr" title="Permalink to this headline">¶</a></h3>
+<p><cite>unique_ptr&lt;&gt;</cite> 对象就像一个指向类型T的指针, 而且 <cite>unique_ptr&lt;T&gt;</cite> 是排他的,</p>
+<p>这意味着不可能有其他的 unique_ptr&lt;T&gt; 指向同一个地址。</p>
+<p>一个 unique_ptr&lt;&gt; 对象完全拥有它所指向的内容。不能指定或复制一个 uniqueptr&lt;&gt;对象可以通过使用
+一个定义在 utility头文件中的 <cite>std:move()</cite> 函数来移出一个 unique_ptr&lt;T对象存储的地址。</p>
+<p>在进行这个操作之后, 之前的 <cite>unique_ptr&lt;t&gt;</cite> 变为无效。当需要独占一个对象的所有权时, 可以使用 <cite>unique_ptr&lt;T&gt;</cite></p>
+</div>
+<div class="section" id="shared-ptr">
+<h3><a class="toc-backref" href="#id21">shared_ptr</a><a class="headerlink" href="#shared-ptr" title="Permalink to this headline">¶</a></h3>
+<p><cite>shared_ptr&lt;T&gt;</cite> 对象就像一个指向类型T的指针, 和 <cite>unique_ptr&lt;T&gt;</cite> 不同的是,多个 <cite>shared_ptr&lt;T&gt;</cite> 可以指向同一个地址,
+因此 <cite>sharedptr&lt;T&gt;</cite> 允许共享一个对象的所有权。引用计数保存了指向给定地址的 <cite>shared_ptr&lt;T&gt;</cite> 的数量.</p>
+<ul class="simple">
+<li><p>每当一个新的 <cite>shared_ptr&lt;T&gt;</cite> 指针指向一个特定堆地址时,引用计数就会加 1。</p></li>
+<li><p>当一个 <cite>shared_ptr&lt;T&gt;</cite> 被释放或者指向了新的地址时,引用计数就会减1。</p></li>
+<li><p>当没有 <cite>shared ptr&lt;T&gt;</cite> 指向这个地址时,引用计数将会变为0,在堆上为这个对象分配的内存就会自动释放。</p></li>
+</ul>
+<p>所有指向同一个地址的 <cite>shared_ptr&lt;T&gt;</cite> 都能得到引用计数的值。</p>
+</div>
+<div class="section" id="weak-ptr">
+<h3><a class="toc-backref" href="#id22">weak_ptr</a><a class="headerlink" href="#weak-ptr" title="Permalink to this headline">¶</a></h3>
+<p><cite>weak_ptr&lt;T&gt;</cite> 可以从一个 <cite>shared_ptr&lt;T&gt;</cite> 对象创建,它们指向相同的地址。</p>
+<p>创建一个 <cite>weak_ptr&lt;T&gt;</cite> 不会增加 <cite>shared_ptr&lt;T&gt;</cite> 对象的引用计数,所以它会阻止指向的对象销毁。</p>
+<p>当最后一个 <cite>shared ptr&lt;T&gt;</cite> 引用被释放或重新指向一个不同的地址时, 它们所指向对象的内存将被释放,即使相关的 <cite>weak_ptr&lt;T&gt;</cite> 可能仍然存在</p>
+<p>使用 <cite>weak_ptr&lt;T&gt;</cite> 对象的主要原因是, 我们可能在不经意间创建一个循环引用。</p>
+<p>循环引用从概念上说就是一个 <cite>shared_ptr&lt;T&gt;</cite> 对象 pA, 指向了另一个 <cite>shared ptr&lt;T&gt;</cite> 对象 pB, pB 反过来变如此。
+在这种情况下,两个对象都不能被释放。在实际中,循环引用的发生要比这个复杂。</p>
+<p>设计 <cite>weak_ptr&lt;T&gt;</cite> 就是为了避免循环引用的问题。通过使用`weak_ptr&lt;T&gt;` 指向一个`shared_ptr&lt;&gt;`
+所指向的对象,就可以避免循环引用,稍后会对此做一些解释。</p>
+<p>当最后一个 <cite>shared_ptr&lt;&gt;</cite> 对象析构时, 它所指向的对象也析构了, 这个时候任何和 <cite>shared ptr&lt;&gt;`关联的 `weak_ptr&lt;t&gt;</cite>
+对象都指向一个无效的对象。</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="cpp_thread.html" class="btn btn-neutral float-right" title="C++ Thread" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="cpp_memory.html" class="btn btn-neutral float-left" title="Resource management" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, Walter Fan.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

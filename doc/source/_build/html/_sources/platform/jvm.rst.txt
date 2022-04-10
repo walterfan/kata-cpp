@@ -1,0 +1,57 @@
+Java Virtual Machine
+============================
+
+
+Options
+-----------------------------
+
+
+.. code-block::
+
+   -Xms3328m
+   -Xmx3328m
+   -XX:+UseG1GC
+   -XX:+AlwaysPreTouch
+   -XX:MaxGCPauseMillis=100
+   -XX:ParallelGCThreads=20
+   -XX:ConcGCThreads=5
+   -XX:MetaspaceSize=128m
+   -XX:MaxMetaspaceSize=256m
+   -XX:-G1UseAdaptiveIHOP
+   -XX:InitiatingHeapOccupancyPercent=25
+   -XX:NativeMemoryTracking=summary
+   -XX:+UnlockDiagnosticVMOptions
+   -XX:+PrintNMTStatistics
+   -Xlog:gc*=info
+   -Xlog:gc+ihop*=debug
+   -Dio.netty.allocator.maxOrder=4
+   -Djdk.nio.maxCachedBufferSize=131072
+   -Dio.netty.tryReflectionSetAccessible=true
+
+
+.. csv-table:: a title
+   :header: "name", "description", "meaning"
+   :widths: 20, 20, 10
+
+   "AlwaysPreTouch", "John", 40
+   "MaxGCPauseMillis", "John, Junior", 20
+
+GC分类:
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* Minor GC
+  
+也称 Scavenge GC, 收集新生代
+新对象在 Eden区申请空间失败时会触发
+
+* Major GC
+  
+也称 Full GC, 收集新生代，年老代和永久代
+年老代或永久代被写满时会触发
+
+GC算法:
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+* 引用计数 Reference Counting
+* 标记清除 Mark-Sweep
+* 复制 Copying
+* 标记-压缩 Mark-Compact

@@ -1,0 +1,276 @@
+##########
+CSCC
+##########
+
+
+============ =============
+**Abstract** Client Session Connection Component (CSCC)
+**Authors**  Walter Fan
+**Status**   WIP
+**Updated**  |date|
+============ =============
+
+.. |date| date::
+
+.. contents::
+   :local:
+
+Overview
+===============
+
+It is Client Session Connection Component
+It is for session management.
+
+The purpose of the Client Session Control Component (CSCC) is to handle the signalling business logic between the client and the CB/MMP servers. 
+Examples of mechanisms handled by this module include:
+
+* Session management including creation, updating, and ending of either audio, video, or screen sharing sessions
+* Create and maintain data channels between client and servers using "keep alive" techniques
+* Receive notifications of media related events from the Multimedia Platform (MMP) and routes those messages if necessary to the Client Media Session Component (CMSC) object
+* Receive changes in media objects through the messages sent by the CMSC through callback functions
+* Uses media statistic messages to determine if connections are still alive
+
+Note, typically there are separate CSCC instances for each type of media:  Audio, Video, and Screen Sharing.  The type of CSCC instance that is created is configured by the the session configuration parameters passed during the initialize() method
+
+
+Interface
+================
+
+.. list-table:: class Cscc
+   :widths: 30 30 40
+   :header-rows: 1
+
+   * - Properties
+     - Responsibility
+     - Comments
+   * - _trace
+     -
+     -
+   * - _appTraceCb
+     -
+     -
+   * - _csccCount
+     -
+     -
+   * - _bInitDone
+     -
+     -
+   * - _eventCb
+     -
+     -
+   * - _deviceMgrCb
+     -
+     -
+   * - _sessionConfig
+     -
+     -
+   * - conferenceId
+     -
+     -
+   * - MCSSessionParameter
+     -
+     - for CB or MCS: confID, nodeID, mediaType, sendMsgrServerFunc
+   * - MCSUserInfo
+     -
+     -
+   * - nMaxAudioTrack
+     -
+     - default: 4
+   * - nMaxVideoTrack
+     -
+     - default: 7
+   * - nMaxSendVideoTrack
+     -
+     - default: 4
+   * - nMaxASReciverTrack
+     -
+     - 1
+   * - nMaxASSenderTrack
+     -
+     - 1
+
+
+SessionConfig
+------------------
+.. code-block::
+
+     Cscc.prototype.SessionConfig = function() {
+        // conference
+        this.conferenceId = 0;
+
+        // for MCS and CB specifically {confID, nodeID, mediaType, sendMsgToServerFunc}
+        this.MCSSessionParameter = {};
+        this.MCSUserInfo = {};
+
+        // Break Out session info define {wSessionType, strTahoeSubConfID, dwMeetingSubConfID, dwReserver1, dwReserver2}
+        this.BOSessionInfo = {};
+
+        // Media type
+        this.mediaType = '';    // 'audio', 'video' or 'sharing'
+
+        // default number of media tracks
+        this.nMaxAudioTrack = 4;
+        this.nMaxVideoTrack = 7; //for video receiving
+        this.nMaxSendVideoTrack = 4;
+
+        // default number of AS media tracks
+        this.nMaxASReceiveTrack = 1;
+        this.nMaxASSendTrack = 1;
+
+        // media stream bundling, not yet used
+        this.bBundleAudio = false;
+        this.bBundleVideo = false;
+
+        // media codec preferences
+        this.audioCodec = "OPUS"; // "G711", "G722"
+        this.videoCodec = "H264";
+
+        // default sending video resolution
+        this.camWidth = 1280;
+        this.camHeight = 720;
+        this.camFrameRate = 30;
+
+        // signaling server and protocol
+        this.signalAVURL = "";
+        this.avServerName = "mcs"; // "ccp"
+        this.signalASVideoURL = "";
+        this.asServerName = "cb";
+        this.signalProtocol = "ROAP"; // "SIP", "XMPP", "REST"
+        this.signalConnectionType = "WebSocket"; // "XMLHttpRequest", "HTTP"
+        this.signalServerUrl = "wss://1.2.3.4:8443";
+        this.authToken = "the auth token string";
+
+        // TURN and STUN severs
+        this.avStunServer = {url:""}; //stun:stun.l.google.com:19302
+        this.avTurnServer = {url:"", username:"", credential:""}; //sample url: turn:192.158.29.39:3478?transport=udp
+        this.ASStunServer = {url:""}; //stun:stun.l.google.com:19302
+        this.ASTurnServer = {url:"", username:"", credential:""}; //sample url: turn:192.158.29.39:3478?transport=udp
+
+        // maintain
+        this.setupSessionTimeout = 3000; // 3 seconds
+        this.manageSessionTimeout = 30000; // 30 sesonds
+
+        // debug helper or cache the local AS video stream for grabbing
+        this.enableDumpSharingStream = true;
+
+        this.audioRecvOnly = false;
+
+        // deafult to muted the audio while receive the sharing-audio on HFRS
+        this.ASAudioMuted = true;
+
+        // as normal and hfrs control
+        this.asWidth = 1920;
+        this.asHeight = 1080;
+        this.asEnableAudioCapture = false;
+        this.asFrameRate = 5;
+    };
+
+components
+==================
+
+* cscc.api.js
+
+  - High level API functions that are exposed to allow a user to easily do things such as initialize a CSCC object, manage a session, send messages to remote servers, or manage the state of media controls.
+
+* cscc.apiImpl.js
+
+  - Actual implementation of the API above.
+
+* cscc.clientSession.js - One of the two main pieces of the CSCC module.  ClientSession is used to manage the data channel between the MCC/MCS servers and use the other lower level utilities, pdu and wbxcommon, to encode/decode the messages sent between them.
+
+* cscc.constants.js - A file that contains all event definitions and their corresponding constant value.
+
+* cscc.mediacc.js - The other main component of the CSCC object, a combination of previously used Hybridcc and Videocc files.  Mediacc contains the actual business and routing logic for the messages that are received through either the registered event handlers or through the clientSession object.
+
+* cscc.pdu.js - Low level file that creates the PDU, or format, for the exchange of messages between the client and server.
+
+* cscc.pduDefines.js - Low level file that defines how the PDU is created
+
+* cscc.trace.js - Tracer utility that is passed during the initialization of the CSCC object.  This utility offers four levels of trace functions including onErrorTrace(), onWarningTrace(), onInfoTrace(), and onLogTrace()
+
+* cscc.utility.js - Utility file for testing things such as if an object is a function or a number.
+
+* cscc.wbxcommon.io.js - Common Webex utilities for IO operations
+
+* cscc.wbxcommon.js - Attaches the wbxcommon.io and wbxcommon.util files to the CSCC object.
+
+* cscc.wbxcommon.util.js - Another file of common Webex utilities for functions such as checking if an email is valid and creating a hashtable.
+
+main flow
+======================
+
+1. The UI, client application, uses the cscc.api to create and initialize an instance of a CSCC
+
+  * video.js:
+  * hybrid.js
+  * share.js
+
+2. After initialized, the cscc.api creates a mediaCC object used for handling the signalling between the client and the CB/MMP servers
+
+3. To communicate with the CB/MMP servers, mediaCC creates a clientSession object to handle the actual communication channels
+
+4. The clientSessions utilizes the lower level pdu and wbxcommon files to marshal the sent and received packets between CSCC and the CB/MMP servers
+
+5. The clientSession packages and encodes the client's events and sends the requests either though HTTPS or WebSockets, depending on the type of request, to the CB/MMP servers
+
+6. The assigned MCS server sends encrypted responses back to CSCC through the clientSession, where they are decoded
+
+7. To handle media related events, the CSCC object also registers event handlers (callback functions) with the CMSC object
+
+8. CMSC uses these callback functions to signal to CSCC when media related events occur on the MCS server.
+
+9. Finally, the UI is notified by CSCC of state changes from the server
+
+basic flow
+=========================
+
+.. code-block::
+
+    var videoSizeIndex = {
+        VIDEO_SIZE_90p: 0,
+        VIDEO_SIZE_180p: 1,
+        VIDEO_SIZE_360p: 2,
+        VIDEO_SIZE_720p: 3
+    };
+
+    me.logger.log("_onVideoSubscriptReport, channelId:", channelId, "report:", subModeArray)
+
+
+
+start share
+----------------------------
+
+option 1: Use CB Servr
+
+option 2: use MCS server
+
+cscc.media.cc -   - mediaCc.startSharing
+
+1. session = new ClientSession
+
+2. session.JoinSession(...)
+
+3. OnSessionJoinEx
+
+4. notifiy defs.EVENTS.EVENT_ON_MMP_SESSION_JOIN
+
+5. check _isRealMultiStreamSupported()
+
+6. mediaCmsc.manageSession("start", ...)
+
+   - cmsc.sessionMgr.manageSession("start", ...)
+   - _mediaMgr.manageMedia("sharing", ...)
+
+7. startMyShare()
+
+8. _handleSendShare()
+
+9. cmsc.controlMedia("enableASSend", {action: "Send", req:me._shareUpdateReq}, ...)
+
+10. _sessionMgr._mediaMgr.openMedia("shareing", ...);
+
+   - cmsc.getUserMediaEx
+
+11. cmsc.deviceMgr._resultSharingCB
+
+12. _sessionMgr._mediaMgr.addStreamSharing(req, resultCB)

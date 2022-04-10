@@ -1,0 +1,16 @@
+##############
+How to
+##############
+
+
+how to read codes of wcb
+================================
+
+* protocols: DTLS, RTP, SDP, H.264, Opus
+
+
+how to build web client bridge
+================================
+* Thin+Client+Server+%28MCS%29+build+guide  <https://wiki.cisco.com/display/PAN/Thin+Client+Server+%28MCS%29+build+guide>_
+
+* how+to+start+incognito+mode+on+Browser <https://wiki.cisco.com/display/PAN/how+to+start+incognito+mode+on+Browser>_

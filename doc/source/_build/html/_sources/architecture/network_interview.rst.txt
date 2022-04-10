@@ -1,0 +1,28 @@
+########################
+Network Interview
+########################
+
+.. include:: ../links.ref
+.. include:: ../tags.ref
+.. include:: ../abbrs.ref
+
+============ ==========================
+**Abstract** Network Interview
+**Authors**  Walter Fan
+**Status**   WIP
+**Updated**  |date|
+============ ==========================
+
+.. |date| date::
+
+.. contents::
+   :local:
+
+TCP
+=======================
+* 三次握手和四次挥手
+* time_wait, close_wait
+* 阻塞与非阻塞，异步与非异步
+* 半包和粘包处理
+* 拥塞控制
+* 应用层心跳

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reactor &mdash; A Programmer Prepares 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Observer Pattern" href="observer.html" />
+    <link rel="prev" title="Intercepting Filter" href="intercepting_filter.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> A Programmer Prepares
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">论程序员的自我修养</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interview.html">程序员面试要点</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resume.html">Resume</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithm/index.html">Algorithm</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Architecture</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="consensus.html">一致性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ddd.html">DDD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="distribution.html">分布式系统</a></li>
+<li class="toctree-l2"><a class="reference internal" href="raft.html">Raft</a></li>
+<li class="toctree-l2"><a class="reference internal" href="zab.html">ZAB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="micro_service.html">概述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="micro_service.html#id2">亚马逊的架构规定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="web_conference.html">Web Conference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="instant_message.html">Instatnt Message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="design_principles.html">Design Principles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="design_patterns.html">Design Patterns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intercepting_filter.html">Intercepting Filter</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Reactor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="observer.html">Observer Pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service_mesh.html">Service Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="architect_interview.html">Architect Interview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="network_interview.html">Network Interview</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../language/index.html">Programming Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../library/index.html">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oss/index.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html">mathematics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#overview">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#least-squares-method">最小二乘法 least squares method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pattern/index.html">Pattern</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/index.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool/index.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mmp/index.html">MMP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../thinclient/index.html">Thin Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utiltp/index.html">UTILTP</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">A Programmer Prepares</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Architecture</a> &raquo;</li>
+      <li>Reactor</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/architecture/reactor.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="reactor">
+<h1>Reactor<a class="headerlink" href="#reactor" title="Permalink to this headline"></a></h1>
+<img alt="../_images/Reactor.png" src="../_images/Reactor.png" />
+<p>基于Reactor模式的IO框架一般包含如下几个组件:</p>
+<ul class="simple">
+<li><p>句柄（事件源）：IO框架库要处理的对象，即IO事件，信号和定时事件。句柄的作用是，当内核检测到就绪事件时，它通过句柄来通知应用程序这一事件。Linux下IO事件对应文件描述符，信号事件则为相应的信号值。</p></li>
+<li><p>事件多路分发器：由操作系统提供的I/O多路复用机制，如select和epoll。程序首先将其关心的句柄（事件源）及其事件注册到event demultiplexer上，当有事件到达时，event demultiplexer会发出通知“在已经注册的句柄集上，有一个或多个句柄的时事件已经就绪”，程序收到通知后，可以在非阻塞的情况下对事件进行处理。libevent使用结构体eventop对IO复用select,poll,epoll等进行封装，以统一接口来支持这些I/O多路复用机制，达到了对外隐藏底层系统机制的目的。</p></li>
+<li><p>Reactor：事件管理的接口，内部使用event demultiplexer注册，注销事件，并运行事件循环，当有事件进入“就绪”状态时，调用注册事件的回调函数处理事件。对于libevent的event_base结构体。</p></li>
+<li><p>Event Handler ：对应于libevent的event结构体。提供了一组接口，每个接口对应一种类型事件，供Reactor在相应事件发生时调用，执行相应的事件处理</p></li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="intercepting_filter.html" class="btn btn-neutral float-left" title="Intercepting Filter" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="observer.html" class="btn btn-neutral float-right" title="Observer Pattern" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Walter Fan.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

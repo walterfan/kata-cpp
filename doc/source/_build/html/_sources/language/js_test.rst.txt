@@ -1,0 +1,24 @@
+#####################
+JS Test
+#####################
+
+ https://bower.io/
+
+.. code-block::
+
+    bower install
+    # registered package
+    bower install jquery
+    # GitHub shorthand
+    bower install desandro/masonry
+    # Git endpoint
+    bower install git://github.com/user/package.git
+    # URL
+    bower install http://example.com/script.js
+
+
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+
+npm install -g phantomjs
+
+https://www.ianlewis.org/en/phantom-qunit-test-runner

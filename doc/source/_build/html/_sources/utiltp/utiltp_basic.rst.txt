@@ -1,0 +1,74 @@
+##################
+UtilTP
+##################
+
+Overview
+=========================================
+
+ACE reactor pattern
+
+
+
+Reference
+==========================================
+
+refer to UtilTP_glance.pptx
+
+
+
+.. code-block:: c++
+
+    CmResult CCmTransportTcp:: SendData(CCmMessageBlock &aData, CCmTransportParameter *aPara)
+    {
+        if (aPara)
+            aPara->m_dwHaveSent = 0;
+
+        if (m_SocketTcp.GetHandle() == CM_INVALID_HANDLE) {
+            CM_WARNING_TRACE_THIS("CCmTransportTcp::SendData, socket is invalid.");
+            return CM_ERROR_NOT_INITIALIZED;
+        }
+        
+        static iovec iov[CM_IOV_MAX];
+        DWORD dwFill = aData.FillIov(iov, CM_IOV_MAX);
+        CM_ASSERTE_RETURN(dwFill > 0, CM_OK);
+
+        int nSend = m_SocketTcp.SendV(iov, dwFill);
+        //CM_INFO_TRACE_THIS("CCmTransportTcp::SendData, nSend=" << nSend);
+        if (nSend < 0) {
+            if (errno == EWOULDBLOCK) {
+    #ifdef CM_USE_REACTOR_SELECT
+                m_pReactor->RegisterHandler(this, ACmEventHandler::READ_MASK | ACmEventHandler::WRITE_MASK);
+    #endif // CM_USE_REACTOR_SELECT
+                m_bNeedOnSend = TRUE;
+                return CM_ERROR_PARTIAL_DATA;
+            }
+            else {
+                CM_WARNING_TRACE_THIS("CCmTransportTcp::SendData, sendv() failed! err=" << errno << 
+                    " fd=" << m_SocketTcp.GetHandle() << 
+                    " addr1=" << m_LocalAddr.GetIpDisplayName() <<
+                    " port1=" << m_LocalAddr.GetPort() << 
+                    " addr2=" << m_RemoteAddr.GetIpDisplayName() <<
+                    " port2=" << m_RemoteAddr.GetPort());
+                // Don't NotifyHandler avoid blocking due to otify pipe overflow.
+    //			if (m_pReactor)
+    //				m_pReactor->NotifyHandler(this, ACmEventHandler::CLOSE_MASK);
+                return CM_ERROR_NETWORK_SOCKET_ERROR;
+            }
+        }
+
+        if (aPara)
+            aPara->m_dwHaveSent = nSend;
+
+        aData.AdvanceChainedReadPtr(nSend);
+        if (aData.GetChainedLength()) {
+            
+        //CM_INFO_TRACE_THIS("CCmTransportTcp::SendData, toSend=" << aData.GetChainedLength());
+    #ifdef CM_USE_REACTOR_SELECT
+            m_pReactor->RegisterHandler(this, ACmEventHandler::READ_MASK | ACmEventHandler::WRITE_MASK);
+    #endif // CM_USE_REACTOR_SELECT
+            m_bNeedOnSend = TRUE;
+            return CM_ERROR_PARTIAL_DATA;
+        }
+        else
+            return CM_OK;
+    }

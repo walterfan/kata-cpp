@@ -1,0 +1,132 @@
+############
+Java
+############
+
+Java 十大面试题
+--------------------------------------
+
+Bean lifecycle in Spring Contrainer
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+How to implement AOP
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+How to sum a list elements by stream API
+
+.. code-block:: Java
+
+    public long getTotalMcsCount() {
+        return this.pools.stream().map( x -> x.getMcsCount()).reduce(0L, (a, b) -> a + b);
+    }
+
+How to reduce the GC time
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Java Class Structure
+--------------------------------------
+
+.. code-block::
+
+    ClassFile {
+        u4             magic;
+        u2             minor_version;
+        u2             major_version;
+        u2             constant_pool_count;
+        cp_info        constant_pool[constant_pool_count-1];
+        u2             access_flags;
+        u2             this_class;
+        u2             super_class;
+        u2             interfaces_count;
+        u2             interfaces[interfaces_count];
+        u2             fields_count;
+        field_info     fields[fields_count];
+        u2             methods_count;
+        method_info    methods[methods_count];
+        u2             attributes_count;
+        attribute_info attributes[attributes_count];
+    }
+
+
+
+
+Java 11
+--------------------------------------
+
+module
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When we create a module, we include a descriptor file that defines several aspects of our new module:
+
+* Name – the name of our module
+* Dependencies – a list of other modules that this module depends on
+* Public Packages – a list of all packages we want accessible from outside the module
+* Services Offered – we can provide service implementations that can be consumed by other modules
+* Services Consumed – allows the current module to be a consumer of a service
+* Reflection Permissions – explicitly allows other classes to use reflection to access the private members of a package
+
+The module naming rules are similar to how we name packages (dots are allowed, dashes are not). It's very common to do either project-style (my.module) or Reverse-DNS (com.baeldung.mymodule) style names. We'll use project-style in this guide.
+
+We need to list all packages we want to be public because by default all packages are module private.
+
+* module-info.java
+
+.. code-block: Java
+
+    * require $module
+    * exports $module
+
+try-with-resource
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block: Java
+
+    r1 = ...
+    r2 = ...
+    try(r1,r2) {
+    
+    }
+
+ZGC
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* major gc less than 10ms
+* thoughout affection less than 15%
+
+
+Other features
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* Reactive stream
+* Embed Http Client support WebSocket and HTTP2
+* Embed lightweight Json API
+* Immutable collection API
+* Stream interface: dropWhile, takeWhile 满足条件马上停止
+* support TLS1.3
+* jshell like python shell
+* String from char array to byte array
+* "_" became a key word
+* javadoc support html5 and search
+
+
+Snippets
+-------------------------
+
+.. code-block:: Java
+
+    public class CombinedComparator extends MmpZoneComparator {
+
+        private Comparator<MmpZoneUsageInfo> comparator;
+
+        public CombinedComparator(List<MmpZoneComparator> comparators){
+            this.comparator = ComparatorUtils.chainedComparator(comparators);
+        }
+
+        @Override
+        protected int _compare(MmpZoneUsageInfo o1, MmpZoneUsageInfo o2) {
+            return comparator.compare(o1,o2);
+        }
+
+    }

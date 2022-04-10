@@ -1,0 +1,134 @@
+######################
+Python
+######################
+
+
+
+GIL
+====================
+
+Global Intepreter lock
+
+线程需要抢占该锁以便安全操作资源(垃圾回收的计数机制)
+
+
+
+Snippets
+--------------------
+
+
+自动添加前导符
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: Python
+
+    import sys, pyperclip
+
+    def add_prefix(text, prefix):
+
+        lines = text.split("\n")
+
+        for i in range(len(lines)):
+            lines[i] = prefix + lines[i]
+
+        text = '\n'.join(lines)
+
+        return text
+
+
+    if __name__ == '__main__':
+        if len(sys.argv) < 2:
+            print('usage: python add_prefix <prefix> - add prefix to the text in clipboard')
+            sys.exit(1)
+
+        prefix = sys.argv[1]
+        text = pyperclip.paste()
+        print("copied text to clipboard:\n{}\n{}\n".format('-'*20,text))
+        text = add_prefix(text, prefix)
+        print("copied text from clipboard:\n{}\n{}\n".format('-'*20,text))
+
+
+将你的代码片段复制到剪贴板中
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1. 建立一个代码片段仓库
+
+2. 为这些片段建立索引并添加标签
+
+3. 查找你想要的代码片段，并复制到剪贴板中
+
+
+.. code-block:: Python
+
+    getCurrentTimeStr = """
+        def getCurrentTimeStr(fmtStr = '%Y%m%d%H%M'):
+            now = datetime.datetime.now()
+            #return "{}{}{}{}{}{}".format(now.year, now.month, now.day, now.hour, now.minute, now.second)
+            return now.strftime(fmtStr)
+        """
+
+    getTimeStr = """
+        def getTimeStr(dayDelta = 0, fmtStr = '%Y-%m-%d %H:%M:%S', dt = None):
+            if None == dt:
+                dt = datetime.datetime.now()
+            if dayDelta != 0:
+                delta = datetime.timedelta(days = dayDelta)
+                dt = dt + delta
+
+            return dt.strftime(fmtStr)
+        """
+    import sys, pyperclip
+
+    snippets = {
+        "getTimeStr": getTimeStr,
+        "getCurrentTimeStr": getCurrentTimeStr
+    }
+
+    if len(sys.argv) < 2:
+        print('usage: python copy_snippet tag - copy snippet to clipboard')
+        sys.exit(1)
+
+    snippet = sys.argv[1]
+
+    if snippet in snippets:
+        pyperclip.copy(snippets[snippet])
+        print("snippet for {} copied to clipboard".format(snippet))
+    else:
+        print("snippet for {} copied is not found".format(snippet))
+
+倒计时
+~~~~~~~~~~~~~~~~~~~~·
+
+.. code-block:: Python
+
+    import sys
+    import time
+    import os
+
+    def countdown(seconds):
+        while seconds > 0:
+            print(seconds, end=' ')
+            time.sleep(1)
+            seconds = seconds -1
+        return
+
+    if __name__ == '__main__':
+
+        if len(sys.argv) < 3:
+            print('usage: python countdown seconds wavfile - countdown according the specified seconds')
+            sys.exit(1)
+
+        seconds = int(sys.argv[1])
+        wavfile = sys.argv[2]
+        countdown(seconds)
+        os.system("play " + wavfile)
+
+
+FAQ
+------------
+
+PIP exception because of version conflict
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block::
+
+    python3 -m pip install -U pip

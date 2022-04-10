@@ -1,0 +1,68 @@
+###################
+CMSC Flow RTP
+###################
+
+
+Overview
+==================
+
+* WasmMgr starts and manages the status of port 443 media.
+* MediaEngInst handles encoding and decoding 443 media.
+* FlowRtp handles RTP packet reordering and packetization.
+
+
+
+Video
+==================
+
+create H264 encoder
+
+.. code-block::
+
+    if (type.match(/h264Encoder|h264Decoder/i)) {
+        this.worker = this.createWorker(this.getH264WorkerMethods(), this.onH264WorkerMessage.bind(this));
+    }
+
+    MediaEngInst.prototype.createH264Encoder = function (peerId, frameRate, bitrate, maxVideoHeight) {
+        var h264EncInfo = {};
+        h264EncInfo.inputVideo = window.document.createElement('video');
+        h264EncInfo.inputCanvas = typeof OffscreenCanvas !== "undefined" ? new OffscreenCanvas(0, 0): window.document.createElement('canvas');
+        h264EncInfo.inputContext = h264EncInfo.inputCanvas.getContext('2d');
+        h264EncInfo.prevProcessTimestamp = 0;
+        h264EncInfo.processVideoFrameInterval = 0;
+        h264EncInfo.forceNextFrameIDR = true;
+        h264EncInfo.picWidth = 0;
+        h264EncInfo.picHeight = 0;
+        h264EncInfo.frameRate = frameRate || 30;
+        h264EncInfo.bitrate = bitrate || 768000;
+        h264EncInfo.maxVideoHeight = maxVideoHeight || 360;
+        h264EncInfo.dir = 'sending';
+        this.h264EncInfoMap.set(peerId, h264EncInfo);
+        return h264EncInfo;
+    };
+
+
+
+FAQ
+==================
+
+
+How to get payload from rtp packet
+---------------------------------------
+
+.. code-block::
+
+  /**
+     * Get the payload of the RTP packet. The payload index is dependent on whether a header
+     * extension is present.
+     * @param {Uint8Array} packet = RTP packet to get information from
+     * @returns {Uint8Array} payload of the packet
+     */
+    FlowRtp.prototype.getPayload = function(packet) {
+        //var index = this.cmsc.readUint8(packet, 0) & 0x10 ? 20 : 12;
+        var extension = this.cmsc.readUint8(packet, 0) & 0x10;
+        var csrcCount = this.cmsc.readUint8(packet, 0) & 0x0F;
+        var totalExtBytes = extension ? 4 + 4 * this.cmsc.readUint16(packet, 12 + (4 * csrcCount) + 2) : 0;
+        var index = 12 + (4 * csrcCount) + totalExtBytes;
+        return this.cmsc.getSubArray(packet, index);
+    };

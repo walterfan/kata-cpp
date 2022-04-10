@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thin Client ICE &mdash; A Programmer Prepares 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="WCB message" href="wcb_message.html" />
+    <link rel="prev" title="WCB DTLS" href="wcb_dtls.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> A Programmer Prepares
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">论程序员的自我修养</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interview.html">程序员面试要点</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resume.html">Resume</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithm/index.html">Algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../language/index.html">Programming Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../library/index.html">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oss/index.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html">mathematics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#overview">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#least-squares-method">最小二乘法 least squares method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pattern/index.html">Pattern</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/index.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool/index.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mmp/index.html">MMP</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Thin Client</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="app_share.html">Application Share</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audio_mgr.html">Audio Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audio_443.html">Audio over 443</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_to.html">How to</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocols.html">Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qos.html">QoS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc.html">CMSC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc_asm.html">CMSC ASM media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc_flowrtp.html">CMSC Flow RTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc_MediaEngInst.html">Media Engine Instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc_connection_monitor.html">CMSC Connection Monitor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cscc.html">CSCC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cscc_api.html">CSCC API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cscc_clientsession.html">ClientSession</a></li>
+<li class="toctree-l2"><a class="reference internal" href="metrics.html">Thin Client Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wca.html">Web Client Agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb.html">Web Client Bridge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_client.html">WCB Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_dtls.html">WCB DTLS</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Thin Client ICE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ice">ICE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mmp-implementation">MMP implementation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cmmserverturnservermgr">CMmServerTurnServerMgr ;</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cmmworkthreaddispatcher">CMmWorkThreadDispatcher</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#istunmessage">IStunMessage</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_message.html">WCB message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_mqe.html">MQE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_sdp.html">WCB SDP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_rtp.html">WCB RTP module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_source.html">WCB source structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_flowrtp.html">WCB Flow RTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_media_stats.html">Media Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="web_client_bridge.html">Web Client Bridge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disciplines_on_code_development.html">Disciplines on Code Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#overall">Overall</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#feature">Feature</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#reference">Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../utiltp/index.html">UTILTP</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">A Programmer Prepares</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Thin Client</a> &raquo;</li>
+      <li>Thin Client ICE</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/thinclient/wcb_ice.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="thin-client-ice">
+<h1>Thin Client ICE<a class="headerlink" href="#thin-client-ice" title="Permalink to this headline"></a></h1>
+<section id="ice">
+<h2>ICE<a class="headerlink" href="#ice" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>ICE is a technique to collect the transport candidates which could be used in offer/answer (in m lines). The candidates are specified in the new SDP attributes, a=candidate: ….</p></li>
+<li><p>ICE uses STUN to get the reflective transport in the outermost NAT and/or TURN to allocate transports (in the outermost NAT and peers).</p></li>
+<li><p>ICE defines schemes to pair the candidates between local/remote clients, aiming to find connections between the two clients.</p></li>
+<li><p>ICE defines two type of clients, lite client (in public networks) and full clients (behind NAT).</p></li>
+<li><p>ICE defines two attributes in SDP, a=ice-pwd:xxxx and a=ice-ufrag, which could be used in the STUN and TURN attribute (USERNAME) and for message integrity.</p></li>
+<li><p>The STUN attribute, USERNAME is formed by cascading two peer usernames, such as client_a:client_b for messages from client a to client b. “password” is from the client which issues the messages.</p></li>
+<li><p>ICE-TCP defines tcp as a transport, in addition to UDP, which could be used to pass through firewall with UDP disabled.</p></li>
+</ul>
+</section>
+<section id="mmp-implementation">
+<h2>MMP implementation<a class="headerlink" href="#mmp-implementation" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>MCS is a lite ICE client</p>
+<ul>
+<li><p>No transport candidate collection (since not needed and only one candidate in public networks)</p></li>
+<li><p>Will not check the connection on pairs but response to the connection check (via STUN/TURN messages)</p></li>
+</ul>
+</li>
+<li><p>MCS is a STUN/TURN server</p>
+<ul>
+<li><p>Thin Client will connect to MCS for connection check.</p></li>
+<li><p>Port 9000 (not 3478 of the default STUN port) will be used for all connections include the mcs as a lite ice client.</p></li>
+</ul>
+</li>
+<li><p>Thin Client (actually, CMSC)  is a full ICE client (so, it is a controller)</p>
+<ul>
+<li><p>Need to specify the STUN/TURN servers (or MCS) for its use (iceCandidate for WebRTC)</p></li>
+</ul>
+</li>
+<li><p>ice-ufrag from MCS (in answer to client offer) is used to map to the right client for the streams</p>
+<ul>
+<li><p>Each client will have a different username</p></li>
+<li><p>The streams could be told by the source IP and port in STUN/TURN messages.</p></li>
+</ul>
+</li>
+<li><p>TCP will be used a fallback with port 443.
+- Firefox uses TURN for tcp connection; Chrome uses STUN.</p></li>
+</ul>
+<section id="cmmserverturnservermgr">
+<h3>CMmServerTurnServerMgr ;<a class="headerlink" href="#cmmserverturnservermgr" title="Permalink to this headline"></a></h3>
+<p>it is m_turnServerMgr of CMmSessionServerAcceptor</p>
+</section>
+<section id="cmmworkthreaddispatcher">
+<h3>CMmWorkThreadDispatcher<a class="headerlink" href="#cmmworkthreaddispatcher" title="Permalink to this headline"></a></h3>
+<p>it is m_WorkThreadDispatcher of CMmSessionServerAcceptor</p>
+</section>
+<section id="istunmessage">
+<h3>IStunMessage<a class="headerlink" href="#istunmessage" title="Permalink to this headline"></a></h3>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="wcb_dtls.html" class="btn btn-neutral float-left" title="WCB DTLS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="wcb_message.html" class="btn btn-neutral float-right" title="WCB message" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Walter Fan.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

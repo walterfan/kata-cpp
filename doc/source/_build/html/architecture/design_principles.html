@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Design Principles &mdash; A Programmer Prepares 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Design Patterns" href="design_patterns.html" />
+    <link rel="prev" title="Instatnt Message" href="instant_message.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> A Programmer Prepares
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">论程序员的自我修养</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interview.html">程序员面试要点</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resume.html">Resume</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithm/index.html">Algorithm</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Architecture</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="consensus.html">一致性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ddd.html">DDD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="distribution.html">分布式系统</a></li>
+<li class="toctree-l2"><a class="reference internal" href="raft.html">Raft</a></li>
+<li class="toctree-l2"><a class="reference internal" href="zab.html">ZAB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="micro_service.html">概述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="micro_service.html#id2">亚马逊的架构规定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="web_conference.html">Web Conference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="instant_message.html">Instatnt Message</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Design Principles</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#solid">SOLID</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#srp">SRP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ocp">OCP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#isp">ISP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dip">DIP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#yagni">YAGNI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rule-of-three">Rule of Three</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#kiss">KISS 原则</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pola">POLA 原则</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="design_patterns.html">Design Patterns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intercepting_filter.html">Intercepting Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reactor.html">Reactor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="observer.html">Observer Pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service_mesh.html">Service Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="architect_interview.html">Architect Interview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="network_interview.html">Network Interview</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../language/index.html">Programming Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../library/index.html">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oss/index.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html">mathematics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#overview">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#least-squares-method">最小二乘法 least squares method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pattern/index.html">Pattern</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/index.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool/index.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mmp/index.html">MMP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../thinclient/index.html">Thin Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utiltp/index.html">UTILTP</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">A Programmer Prepares</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Architecture</a> &raquo;</li>
+      <li>Design Principles</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/architecture/design_principles.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="design-principles">
+<h1>Design Principles<a class="headerlink" href="#design-principles" title="Permalink to this headline"></a></h1>
+<section id="solid">
+<h2>SOLID<a class="headerlink" href="#solid" title="Permalink to this headline"></a></h2>
+</section>
+<section id="srp">
+<h2>SRP<a class="headerlink" href="#srp" title="Permalink to this headline"></a></h2>
+</section>
+<section id="ocp">
+<h2>OCP<a class="headerlink" href="#ocp" title="Permalink to this headline"></a></h2>
+</section>
+<section id="isp">
+<h2>ISP<a class="headerlink" href="#isp" title="Permalink to this headline"></a></h2>
+</section>
+<section id="dip">
+<h2>DIP<a class="headerlink" href="#dip" title="Permalink to this headline"></a></h2>
+</section>
+<section id="yagni">
+<h2>YAGNI<a class="headerlink" href="#yagni" title="Permalink to this headline"></a></h2>
+<p>You Ain’t Gonna Need It 你不会需要它</p>
+<p>奥卡姆（Ockham）剃刀原则：</p>
+<p>Occam’s razor (or Ockham’s razor) is a principle from philosophy. Suppose there exist two explanations for an occurrence.</p>
+<p>In this case the one that requires the smallest number of assumptions is usually correct.</p>
+<p>Another way of saying it is that the more assumptions you have to make, the more unlikely an explanation.</p>
+<p>Occam’s razor applies especially in the philosophy of science, but also more generally.</p>
+<p>奥卡姆他在《箴言书注》2卷15题说“切勿浪费较多东西，去做‘用较少的东西，同样可以做好的事情’。”换一种说法，如果关于同一个问题有许多种理论，每一种都能作出同样准确的预言，那么应该挑选其中使用假定最少的。尽管越复杂的方法通常能做出越好的预言，但是在不考虑预言能力（即結果大致相同）的情况下，假设越少越好。
+也就是“如无必要，勿增实体”（Do not multiply entities beyond necessity）来表达。这一想法非常简单：如果你能找到一个更简单的理论，包含更少的因素、更少的实体，而它也一样可以很好地解释现象，就不要再构造一个大而无当的复杂理论了</p>
+</section>
+<section id="rule-of-three">
+<h2>Rule of Three<a class="headerlink" href="#rule-of-three" title="Permalink to this headline"></a></h2>
+<p>三次原则，指当某个功能第三次出现的时候就有必要进行”抽象化”了</p>
+<ol class="arabic simple">
+<li><p>第一次用到某个功能时，写一个特定的解决方法</p></li>
+<li><p>第二次用到的时候，复制上一次的代码</p></li>
+<li><p>第三次出现的时候，才着手“抽象化”，写出通用的解决方法</p></li>
+</ol>
+</section>
+<section id="kiss">
+<h2>KISS 原则<a class="headerlink" href="#kiss" title="Permalink to this headline"></a></h2>
+<p>Keep It Simple and Stupid</p>
+</section>
+<section id="pola">
+<h2>POLA 原则<a class="headerlink" href="#pola" title="Permalink to this headline"></a></h2>
+<p>POLA (Principle of least astonishment) 最小惊奇原则</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="instant_message.html" class="btn btn-neutral float-left" title="Instatnt Message" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="design_patterns.html" class="btn btn-neutral float-right" title="Design Patterns" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Walter Fan.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

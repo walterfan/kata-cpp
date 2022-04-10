@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Netty &mdash; A Programmer Prepares 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Java NIO" href="nio.html" />
+    <link rel="prev" title="libuv" href="libuv.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> A Programmer Prepares
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">论程序员的自我修养</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interview.html">程序员面试要点</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resume.html">Resume</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithm/index.html">Algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../language/index.html">Programming Language</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Libraries</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ace.html">ACE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flite.html">flite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="boost.html">Boost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="boost_asio.html">Boost asio module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="boost_python.html">Boost Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="boost_beast.html">Boost beast module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libevent.html">Libevent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libuv.html">libuv</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Netty</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#template-codes">Template codes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#server">server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#client">client</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#prepender">Prepender</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#decoder-and-encoder">Decoder and encoder</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#reference">Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="nio.html">Java NIO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protobuf.html">Protobuf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="socket.io.html">Socket.io</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skimage.html">scikit-image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openssl.html">OpenSSL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opencv.html">opencv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#overview">Overview</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../oss/index.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html">mathematics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#overview">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#least-squares-method">最小二乘法 least squares method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pattern/index.html">Pattern</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/index.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool/index.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mmp/index.html">MMP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../thinclient/index.html">Thin Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utiltp/index.html">UTILTP</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">A Programmer Prepares</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Libraries</a> &raquo;</li>
+      <li>Netty</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/library/netty.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="netty">
+<h1>Netty<a class="headerlink" href="#netty" title="Permalink to this headline"></a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline"></a></h2>
+<ul>
+<li><p>BIO -&gt; NIO -&gt; Netty</p>
+<p>selector是Java非阻塞I/0实现的关键。</p>
+<p>使用事件通知机制告之一组非阻塞套接字中哪些已经就绪能够进行读写。</p>
+</li>
+<li><dl class="simple">
+<dt>Netty的主要构件：</dt><dd><ul class="simple">
+<li><p>channel：它代表一个可读写的开放连接。</p></li>
+<li><p>callback：由事件触发的回调方法。</p></li>
+<li><p>Future：一个异步操作的结果的占位符，它在未来某个时刻完成，并提供对其结果的访问。</p></li>
+<li><p>Event 和 ChannelHandler：入站事件有连接激活和失活，数据读取，用户事件，错误事件，出站事件有打开或关闭远程连接，将数据写到或刷新flush到套接字。</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Netty为每个channel 分配一个Eventloop，用于处理所有事件，包括：</dt><dd><p>1. 注册感兴趣的事件
+1. 将事件派发给 channelHandler
+1. 安排进一步的动作</p>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="template-codes">
+<h2>Template codes<a class="headerlink" href="#template-codes" title="Permalink to this headline"></a></h2>
+<section id="server">
+<h3>server<a class="headerlink" href="#server" title="Permalink to this headline"></a></h3>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="nd">@Slf4j</span>
+<span class="nd">@Setter</span>
+<span class="nd">@Getter</span>
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">AbstractServer</span> <span class="kd">implements</span> <span class="n">IServer</span> <span class="p">{</span>
+
+   <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">READ_TIMEOUT_IN_SECONDS</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span>
+   <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">WRITE_TIMEOUT_IN_SECONDS</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span>
+   <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">WRITE_BUFFER_HIGH_WATER_MARK</span> <span class="o">=</span> <span class="mi">32</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">;</span>
+   <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">WRITE_BUFFER_LOW_WATER_MARK</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">;</span>
+
+   <span class="kd">private</span> <span class="n">SortedMap</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">ChannelHandler</span><span class="o">&gt;</span> <span class="n">handlers</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ConcurrentSkipListMap</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+
+   <span class="kd">private</span> <span class="n">String</span> <span class="n">host</span><span class="p">;</span>
+   <span class="kd">private</span> <span class="kt">int</span> <span class="n">port</span><span class="p">;</span>
+
+   <span class="kd">private</span> <span class="kd">volatile</span> <span class="kt">boolean</span> <span class="n">isStarted</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+
+   <span class="kd">private</span> <span class="n">EventLoopGroup</span> <span class="n">bossGroup</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NioEventLoopGroup</span><span class="p">();</span>
+   <span class="kd">private</span> <span class="n">EventLoopGroup</span> <span class="n">workerGroup</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NioEventLoopGroup</span><span class="p">();</span>
+
+   <span class="kd">public</span> <span class="nf">AbstractServer</span><span class="p">()</span> <span class="p">{</span>
+
+   <span class="p">}</span>
+
+   <span class="kd">public</span> <span class="nf">AbstractServer</span><span class="p">(</span><span class="n">String</span> <span class="n">host</span><span class="p">,</span> <span class="kt">int</span> <span class="n">port</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="na">host</span> <span class="o">=</span> <span class="n">host</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="na">port</span> <span class="o">=</span> <span class="n">port</span><span class="p">;</span>
+   <span class="p">}</span>
+
+
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">addChannelHandler</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">,</span> <span class="n">ChannelHandler</span> <span class="n">handler</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="na">handlers</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">handler</span><span class="p">);</span>
+   <span class="p">}</span>
+
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">start</span><span class="p">(){</span>
+      <span class="n">log</span><span class="p">.</span><span class="na">info</span><span class="p">(</span><span class="s">&quot;start {}&quot;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="na">getClass</span><span class="p">().</span><span class="na">getSimpleName</span><span class="p">());</span>
+      <span class="k">try</span> <span class="p">{</span>
+            <span class="n">ServerBootstrap</span> <span class="n">bootstrap</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ServerBootstrap</span><span class="p">();</span>
+            <span class="n">bootstrap</span><span class="p">.</span><span class="na">childOption</span><span class="p">(</span><span class="n">ChannelOption</span><span class="p">.</span><span class="na">ALLOCATOR</span><span class="p">,</span> <span class="n">PooledByteBufAllocator</span><span class="p">.</span><span class="na">DEFAULT</span><span class="p">);</span>
+            <span class="n">bootstrap</span><span class="p">.</span><span class="na">childOption</span><span class="p">(</span><span class="n">ChannelOption</span><span class="p">.</span><span class="na">SO_KEEPALIVE</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+            <span class="n">bootstrap</span><span class="p">.</span><span class="na">childOption</span><span class="p">(</span><span class="n">ChannelOption</span><span class="p">.</span><span class="na">TCP_NODELAY</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+            <span class="n">bootstrap</span><span class="p">.</span><span class="na">childOption</span><span class="p">(</span><span class="n">ChannelOption</span><span class="p">.</span><span class="na">SO_LINGER</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+
+
+            <span class="n">bootstrap</span><span class="p">.</span><span class="na">group</span><span class="p">(</span><span class="n">bossGroup</span><span class="p">,</span> <span class="n">workerGroup</span><span class="p">);</span>
+            <span class="n">bootstrap</span><span class="p">.</span><span class="na">channel</span><span class="p">(</span><span class="n">NioServerSocketChannel</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+
+            <span class="n">bootstrap</span><span class="p">.</span><span class="na">childHandler</span><span class="p">(</span><span class="k">new</span> <span class="n">ChannelInitializer</span><span class="o">&lt;</span><span class="n">Channel</span><span class="o">&gt;</span><span class="p">()</span> <span class="p">{</span>
+               <span class="nd">@Override</span>
+               <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">initChannel</span><span class="p">(</span><span class="n">Channel</span> <span class="n">channel</span><span class="p">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="p">{</span>
+                  <span class="n">handlers</span><span class="p">.</span><span class="na">entrySet</span><span class="p">().</span><span class="na">stream</span><span class="p">().</span><span class="na">forEach</span><span class="p">(</span> <span class="n">entry</span> <span class="o">-&gt;</span> <span class="p">{</span>
+                        <span class="n">log</span><span class="p">.</span><span class="na">info</span><span class="p">(</span><span class="s">&quot;add handler: {}&quot;</span><span class="p">,</span> <span class="n">entry</span><span class="p">.</span><span class="na">getKey</span><span class="p">());</span>
+                        <span class="n">channel</span><span class="p">.</span><span class="na">pipeline</span><span class="p">().</span><span class="na">addLast</span><span class="p">(</span><span class="n">entry</span><span class="p">.</span><span class="na">getKey</span><span class="p">(),</span> <span class="n">entry</span><span class="p">.</span><span class="na">getValue</span><span class="p">());</span>
+                  <span class="p">});</span>
+               <span class="p">}</span>
+
+            <span class="p">});</span>
+
+            <span class="n">ChannelFuture</span> <span class="n">channelFuture</span> <span class="o">=</span> <span class="n">bootstrap</span><span class="p">.</span><span class="na">bind</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">).</span><span class="na">sync</span><span class="p">();</span>
+
+            <span class="n">log</span><span class="p">.</span><span class="na">info</span><span class="p">(</span><span class="s">&quot;started on {}&quot;</span> <span class="p">,</span> <span class="n">channelFuture</span><span class="p">.</span><span class="na">channel</span><span class="p">().</span><span class="na">localAddress</span><span class="p">());</span>
+
+            <span class="n">ChannelFuture</span> <span class="n">closeFuture</span> <span class="o">=</span> <span class="n">channelFuture</span><span class="p">.</span><span class="na">channel</span><span class="p">().</span><span class="na">closeFuture</span><span class="p">();</span>
+            <span class="n">closeFuture</span><span class="p">.</span><span class="na">sync</span><span class="p">();</span>
+
+      <span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="n">Exception</span> <span class="n">e</span><span class="p">){</span>
+            <span class="n">log</span><span class="p">.</span><span class="na">error</span><span class="p">(</span><span class="s">&quot;start failed&quot;</span> <span class="o">+</span> <span class="n">port</span><span class="p">,</span><span class="n">e</span><span class="p">);</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="n">RuntimeException</span><span class="p">(</span><span class="s">&quot;tcp server&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">);</span>
+      <span class="p">}</span>
+   <span class="p">}</span>
+
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">stop</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">try</span><span class="p">{</span>
+            <span class="n">log</span><span class="p">.</span><span class="na">info</span><span class="p">(</span><span class="s">&quot;[tcp][server]close&quot;</span><span class="p">);</span>
+            <span class="n">workerGroup</span><span class="p">.</span><span class="na">shutdownGracefully</span><span class="p">();</span>
+            <span class="n">bossGroup</span><span class="p">.</span><span class="na">shutdownGracefully</span><span class="p">();</span>
+      <span class="p">}</span><span class="k">catch</span><span class="p">(</span><span class="n">Exception</span> <span class="n">e</span><span class="p">){</span>
+            <span class="n">log</span><span class="p">.</span><span class="na">warn</span><span class="p">(</span><span class="s">&quot;stop  failed &quot;</span><span class="p">,</span><span class="n">e</span><span class="p">);</span>
+      <span class="p">}</span>
+
+   <span class="p">}</span>
+
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isStarted</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="na">isStarted</span><span class="p">;</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nd">@Slf4j</span>
+<span class="kd">class</span> <span class="nc">DiscardHandler</span> <span class="kd">extends</span> <span class="n">ChannelInboundHandlerAdapter</span> <span class="p">{</span>
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">channelRead</span><span class="p">(</span><span class="n">ChannelHandlerContext</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">Object</span> <span class="n">msg</span><span class="p">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="p">{</span>
+      <span class="n">ByteBuf</span> <span class="n">in</span> <span class="o">=</span> <span class="p">(</span><span class="n">ByteBuf</span><span class="p">)</span><span class="n">msg</span><span class="p">;</span>
+      <span class="n">log</span><span class="p">.</span><span class="na">info</span><span class="p">(</span><span class="s">&quot;Got message and discard&quot;</span><span class="p">);</span>
+      <span class="k">try</span> <span class="p">{</span>
+            <span class="k">while</span> <span class="p">(</span><span class="n">in</span><span class="p">.</span><span class="na">isReadable</span><span class="p">())</span> <span class="p">{</span>
+               <span class="n">log</span><span class="p">.</span><span class="na">info</span><span class="p">(</span><span class="s">&quot;{}&quot;</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="p">)</span> <span class="n">in</span><span class="p">.</span><span class="na">readByte</span><span class="p">());</span>
+            <span class="p">}</span>
+      <span class="p">}</span> <span class="k">finally</span> <span class="p">{</span>
+            <span class="n">ReferenceCountUtil</span><span class="p">.</span><span class="na">release</span><span class="p">(</span><span class="n">msg</span><span class="p">);</span>
+      <span class="p">}</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nd">@Slf4j</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">DiscardServer</span> <span class="kd">extends</span> <span class="n">AbstractServer</span> <span class="kd">implements</span> <span class="n">CommandLineRunner</span> <span class="p">{</span>
+
+   <span class="kd">public</span> <span class="nf">DiscardServer</span><span class="p">(</span><span class="n">String</span> <span class="n">host</span><span class="p">,</span> <span class="kt">int</span> <span class="n">port</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">super</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">);</span>
+   <span class="p">}</span>
+
+   <span class="kd">public</span> <span class="nf">DiscardServer</span><span class="p">()</span> <span class="p">{</span>
+      <span class="kd">super</span><span class="p">();</span>
+   <span class="p">}</span>
+
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
+      <span class="n">log</span><span class="p">.</span><span class="na">info</span><span class="p">(</span><span class="s">&quot;init {}&quot;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="na">getClass</span><span class="p">().</span><span class="na">getSimpleName</span><span class="p">());</span>
+      <span class="n">addChannelHandler</span><span class="p">(</span><span class="s">&quot;discardServer&quot;</span><span class="p">,</span> <span class="k">new</span> <span class="n">DiscardHandler</span><span class="p">());</span>
+   <span class="p">}</span>
+
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="p">(</span><span class="n">String</span><span class="p">...</span> <span class="n">args</span><span class="p">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="p">{</span>
+      <span class="n">log</span><span class="p">.</span><span class="na">info</span><span class="p">(</span><span class="s">&quot;run {}&quot;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="na">getClass</span><span class="p">().</span><span class="na">getSimpleName</span><span class="p">());</span>
+      <span class="k">if</span><span class="p">(</span><span class="n">args</span><span class="p">.</span><span class="na">length</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">setHost</span><span class="p">(</span><span class="n">args</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">);</span>
+            <span class="n">setPort</span><span class="p">(</span><span class="n">Integer</span><span class="p">.</span><span class="na">parseInt</span><span class="p">(</span><span class="n">args</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">));</span>
+      <span class="p">}</span>
+      <span class="n">init</span><span class="p">();</span>
+      <span class="n">start</span><span class="p">();</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="client">
+<h3>client<a class="headerlink" href="#client" title="Permalink to this headline"></a></h3>
+</section>
+</section>
+<section id="prepender">
+<h2>Prepender<a class="headerlink" href="#prepender" title="Permalink to this headline"></a></h2>
+<p>半包或粘包的解决方法就是在包头加上一个包的长度，或者为包指定分界符</p>
+<ul class="simple">
+<li><p>LengthFieldPrepender</p></li>
+</ul>
+<p>An encoder that prepends the length of the message. The length value is prepended as a binary form.
+For example, LengthFieldPrepender(2) will encode the following 12-bytes string:</p>
+<blockquote>
+<div><table class="docutils align-default">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>“HELLO, WORLD”</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<dl>
+<dt>into the following:</dt><dd><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td rowspan="2"><p>0x000C</p></td>
+<td rowspan="2"><p>“HELLO, WORLD”</p></td>
+</tr>
+<tr class="row-even"></tr>
+</tbody>
+</table>
+</dd>
+<dt>If you turned on the lengthIncludesLengthFieldLength flag in the constructor, the encoded data would look like the following (12 (original data) + 2 (prepended data) = 14 (0xE)):</dt><dd><table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td rowspan="2"><p>0x000E</p></td>
+<td rowspan="2"><p>“HELLO, WORLD”</p></td>
+</tr>
+<tr class="row-even"></tr>
+</tbody>
+</table>
+</dd>
+</dl>
+<section id="decoder-and-encoder">
+<h3>Decoder and encoder<a class="headerlink" href="#decoder-and-encoder" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>MessageToByteEncoder</p></li>
+</ul>
+<p>ByteToMessageDecoder将入栈处理器中的字节流解析为其他类型的消息类型，称为解码器；继承自ChannelInboundHandlerAdapter，该类是所有解码类的顶级抽象类，定义解码的操作流程，具体解码的实现用户可以自己实现抽象的方法decode,比如FixedLengthFrameDecoder，LengthFieldBasedFrameDecoder，DelimiterBasedFrameDecoder，LineBasedFrameDecoder</p>
+<ul class="simple">
+<li><p>ByteToMessageDecoder</p></li>
+<li><p>MessageToMessageEncoder</p></li>
+<li><p>LineBasedFrameDecoder</p></li>
+<li><p>DelimiterBasedFrameDecoder</p></li>
+<li><p>Head-Content</p></li>
+</ul>
+</section>
+</section>
+<section id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://dzone.com/articles/thousands-of-socket-connections-in-java-practical">https://dzone.com/articles/thousands-of-socket-connections-in-java-practical</a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="libuv.html" class="btn btn-neutral float-left" title="libuv" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="nio.html" class="btn btn-neutral float-right" title="Java NIO" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Walter Fan.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

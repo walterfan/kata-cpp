@@ -1,0 +1,16 @@
+##################
+Application Share
+##################
+
+
+
+
+Overall
+====================
+
+
+
+Main flow
+--------------------
+
+.. image:: ../_static/thin-client-as-workflow.png

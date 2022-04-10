@@ -1,0 +1,20 @@
+##############
+Algorithm
+##############
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Middleware
+
+   accrual-failure-detector
+   data_structure
+   reservoir-sampling
+   data_compress
+   lsm-tree
+
+   raft
+   tree
+   linked_list
+
+   ds_interview
+   al_interview

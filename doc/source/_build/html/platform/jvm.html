@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Java Virtual Machine &mdash; A Programmer Prepares 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="OpenJDK" href="jdk.html" />
+    <link rel="prev" title="Platform" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> A Programmer Prepares
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">论程序员的自我修养</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interview.html">程序员面试要点</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resume.html">Resume</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithm/index.html">Algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../language/index.html">Programming Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../library/index.html">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oss/index.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html">mathematics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#overview">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#least-squares-method">最小二乘法 least squares method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pattern/index.html">Pattern</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Platform</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Java Virtual Machine</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#options">Options</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#gc">GC分类:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">GC算法:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="jdk.html">OpenJDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gc.html">Gabarge Collector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="g1.html">Gabarge First</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ubuntu.html">Ubuntu</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tool/index.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mmp/index.html">MMP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../thinclient/index.html">Thin Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utiltp/index.html">UTILTP</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">A Programmer Prepares</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Platform</a> &raquo;</li>
+      <li>Java Virtual Machine</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/platform/jvm.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="java-virtual-machine">
+<h1>Java Virtual Machine<a class="headerlink" href="#java-virtual-machine" title="Permalink to this headline"></a></h1>
+<section id="options">
+<h2>Options<a class="headerlink" href="#options" title="Permalink to this headline"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">Xms3328m</span>
+<span class="o">-</span><span class="n">Xmx3328m</span>
+<span class="o">-</span><span class="n">XX</span><span class="p">:</span><span class="o">+</span><span class="n">UseG1GC</span>
+<span class="o">-</span><span class="n">XX</span><span class="p">:</span><span class="o">+</span><span class="n">AlwaysPreTouch</span>
+<span class="o">-</span><span class="n">XX</span><span class="p">:</span><span class="n">MaxGCPauseMillis</span><span class="o">=</span><span class="mi">100</span>
+<span class="o">-</span><span class="n">XX</span><span class="p">:</span><span class="n">ParallelGCThreads</span><span class="o">=</span><span class="mi">20</span>
+<span class="o">-</span><span class="n">XX</span><span class="p">:</span><span class="n">ConcGCThreads</span><span class="o">=</span><span class="mi">5</span>
+<span class="o">-</span><span class="n">XX</span><span class="p">:</span><span class="n">MetaspaceSize</span><span class="o">=</span><span class="mi">128</span><span class="n">m</span>
+<span class="o">-</span><span class="n">XX</span><span class="p">:</span><span class="n">MaxMetaspaceSize</span><span class="o">=</span><span class="mi">256</span><span class="n">m</span>
+<span class="o">-</span><span class="n">XX</span><span class="p">:</span><span class="o">-</span><span class="n">G1UseAdaptiveIHOP</span>
+<span class="o">-</span><span class="n">XX</span><span class="p">:</span><span class="n">InitiatingHeapOccupancyPercent</span><span class="o">=</span><span class="mi">25</span>
+<span class="o">-</span><span class="n">XX</span><span class="p">:</span><span class="n">NativeMemoryTracking</span><span class="o">=</span><span class="n">summary</span>
+<span class="o">-</span><span class="n">XX</span><span class="p">:</span><span class="o">+</span><span class="n">UnlockDiagnosticVMOptions</span>
+<span class="o">-</span><span class="n">XX</span><span class="p">:</span><span class="o">+</span><span class="n">PrintNMTStatistics</span>
+<span class="o">-</span><span class="n">Xlog</span><span class="p">:</span><span class="n">gc</span><span class="o">*=</span><span class="n">info</span>
+<span class="o">-</span><span class="n">Xlog</span><span class="p">:</span><span class="n">gc</span><span class="o">+</span><span class="n">ihop</span><span class="o">*=</span><span class="n">debug</span>
+<span class="o">-</span><span class="n">Dio</span><span class="o">.</span><span class="n">netty</span><span class="o">.</span><span class="n">allocator</span><span class="o">.</span><span class="n">maxOrder</span><span class="o">=</span><span class="mi">4</span>
+<span class="o">-</span><span class="n">Djdk</span><span class="o">.</span><span class="n">nio</span><span class="o">.</span><span class="n">maxCachedBufferSize</span><span class="o">=</span><span class="mi">131072</span>
+<span class="o">-</span><span class="n">Dio</span><span class="o">.</span><span class="n">netty</span><span class="o">.</span><span class="n">tryReflectionSetAccessible</span><span class="o">=</span><span class="n">true</span>
+</pre></div>
+</div>
+<table class="colwidths-given docutils align-default" id="id2">
+<caption><span class="caption-text">a title</span><a class="headerlink" href="#id2" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 40%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>name</p></th>
+<th class="head"><p>description</p></th>
+<th class="head"><p>meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>AlwaysPreTouch</p></td>
+<td><p>John</p></td>
+<td><p>40</p></td>
+</tr>
+<tr class="row-odd"><td><p>MaxGCPauseMillis</p></td>
+<td><p>John, Junior</p></td>
+<td><p>20</p></td>
+</tr>
+</tbody>
+</table>
+<section id="gc">
+<h3>GC分类:<a class="headerlink" href="#gc" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>Minor GC</p></li>
+</ul>
+<p>也称 Scavenge GC, 收集新生代
+新对象在 Eden区申请空间失败时会触发</p>
+<ul class="simple">
+<li><p>Major GC</p></li>
+</ul>
+<p>也称 Full GC, 收集新生代，年老代和永久代
+年老代或永久代被写满时会触发</p>
+</section>
+<section id="id1">
+<h3>GC算法:<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>引用计数 Reference Counting</p></li>
+<li><p>标记清除 Mark-Sweep</p></li>
+<li><p>复制 Copying</p></li>
+<li><p>标记-压缩 Mark-Compact</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Platform" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="jdk.html" class="btn btn-neutral float-right" title="OpenJDK" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Walter Fan.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

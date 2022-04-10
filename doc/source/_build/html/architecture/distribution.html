@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>分布式系统 &mdash; A Programmer Prepares 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Raft" href="raft.html" />
+    <link rel="prev" title="DDD" href="ddd.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> A Programmer Prepares
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">论程序员的自我修养</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interview.html">程序员面试要点</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resume.html">Resume</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithm/index.html">Algorithm</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Architecture</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="consensus.html">一致性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ddd.html">DDD</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">分布式系统</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">关于网络的误解</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">基本共识</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">经典算法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">关键技术</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id6">全栈监控</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#cap">CAP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">一致性常见方案</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#faq">FAQ</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#acid-base">谈谈 ACID 与 BASE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">如何实现一个分布式锁</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#paxos">大致讲讲 paxos 协议</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">参考资料</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="raft.html">Raft</a></li>
+<li class="toctree-l2"><a class="reference internal" href="zab.html">ZAB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="micro_service.html">概述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="micro_service.html#id2">亚马逊的架构规定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="web_conference.html">Web Conference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="instant_message.html">Instatnt Message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="design_principles.html">Design Principles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="design_patterns.html">Design Patterns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intercepting_filter.html">Intercepting Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reactor.html">Reactor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="observer.html">Observer Pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service_mesh.html">Service Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="architect_interview.html">Architect Interview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="network_interview.html">Network Interview</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../language/index.html">Programming Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../library/index.html">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oss/index.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html">mathematics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#overview">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#least-squares-method">最小二乘法 least squares method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pattern/index.html">Pattern</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/index.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool/index.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mmp/index.html">MMP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../thinclient/index.html">Thin Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utiltp/index.html">UTILTP</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">A Programmer Prepares</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Architecture</a> &raquo;</li>
+      <li>分布式系统</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/architecture/distribution.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>分布式系统<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#overview" id="id10">Overview</a></p></li>
+<li><p><a class="reference internal" href="#id2" id="id11">关于网络的误解</a></p></li>
+<li><p><a class="reference internal" href="#id3" id="id12">基本共识</a></p></li>
+<li><p><a class="reference internal" href="#id4" id="id13">经典算法</a></p></li>
+<li><p><a class="reference internal" href="#id5" id="id14">关键技术</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id6" id="id15">全栈监控</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#cap" id="id16">CAP</a></p></li>
+<li><p><a class="reference internal" href="#id7" id="id17">一致性常见方案</a></p></li>
+<li><p><a class="reference internal" href="#faq" id="id18">FAQ</a></p>
+<ul>
+<li><p><a class="reference internal" href="#acid-base" id="id19">谈谈 ACID 与 BASE</a></p></li>
+<li><p><a class="reference internal" href="#id8" id="id20">如何实现一个分布式锁</a></p></li>
+<li><p><a class="reference internal" href="#paxos" id="id21">大致讲讲 paxos 协议</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id9" id="id22">参考资料</a></p></li>
+</ul>
+</div>
+<section id="overview">
+<h2><a class="toc-backref" href="#id10">Overview</a><a class="headerlink" href="#overview" title="Permalink to this headline"></a></h2>
+<p>分布式系统设计目标</p>
+<ol class="arabic simple">
+<li><p>可用性</p></li>
+<li><p>可扩展性</p></li>
+<li><p>容错性</p></li>
+<li><p>性能</p></li>
+</ol>
+</section>
+<section id="id2">
+<h2><a class="toc-backref" href="#id11">关于网络的误解</a><a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>网络是稳定的。</p></li>
+<li><p>网络传输的延迟是零。</p></li>
+<li><p>网络的带宽是无穷大。</p></li>
+<li><p>网络是安全的。</p></li>
+<li><p>网络的拓扑不会改变。</p></li>
+<li><p>只有一个系统管理员。</p></li>
+<li><p>传输数据的成本为零。</p></li>
+<li><p>整个网络是同构的。</p>
+<ul>
+<li><p>阿尔农·罗特姆 - 盖尔 - 奥兹（Arnon Rotem-Gal-Oz）”Fallacies of Distributed Computing Explained”</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id3">
+<h2><a class="toc-backref" href="#id12">基本共识</a><a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>CAP 不能同时满足： 进程之间有可丢失消息，那么不可能实现一致性存储的同时响应所有请求</p></li>
+<li><p>FLP 不可能性： 一致性不可能同时满足 1） 总是正确 2） 异步系统只要有一台机器发生故障，系统总是能终止运行</p></li>
+<li><p>容错需要冗余</p></li>
+<li><p>一般消息少于两轮都不可能达成共识</p></li>
+</ul>
+</section>
+<section id="id4">
+<h2><a class="toc-backref" href="#id13">经典算法</a><a class="headerlink" href="#id4" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>顶点涂色算法</p></li>
+<li><p>分布式的树算法：广播算法，会聚算法，广度优先搜索树算法，最小生成树算法</p></li>
+<li><p>Paxos, ZAB 及  Raft 算法</p></li>
+<li><p>Vector Clock: 向量时钟</p></li>
+<li><p>Gossip 协议： push/pull</p></li>
+</ul>
+</section>
+<section id="id5">
+<h2><a class="toc-backref" href="#id14">关键技术</a><a class="headerlink" href="#id5" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>全栈系统监控</p></li>
+<li><p>服务和资源调度</p></li>
+<li><p>流量调度</p></li>
+<li><p>状态/数据调度</p></li>
+<li><p>开发和运维的自动化</p></li>
+</ul>
+<section id="id6">
+<h3><a class="toc-backref" href="#id15">全栈监控</a><a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>多层：</p>
+<ul>
+<li><p>基础层： CPU, Mem, Network, Disk I/O</p></li>
+<li><p>中间层:  Nginx, Redis, Kafka, Cassandra, MySQL, etc.</p></li>
+<li><p>应用层:  Usage, Performance, Error</p></li>
+<li><p>业务层</p></li>
+</ul>
+</li>
+<li><p>标准化：</p>
+<ul>
+<li><p>日志数据结构化</p></li>
+<li><p>监控数据格式标准化</p></li>
+<li><p>统一的监控平台</p></li>
+<li><p>统一的日志分析</p></li>
+</ul>
+</li>
+<li><p>原则</p>
+<ul>
+<li><p>全局思维：自顶向下，自底向上相结合，关注面向多数用户的整体应用的 SLA</p></li>
+<li><p>合纵连横：将纵向各层次间的指标，横向各组件间的度量和监控指标结合起来看</p></li>
+<li><p>快速定位：通过 trackingId 和一些关键标识将整个流程串起来，纲举目张</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="cap">
+<h2><a class="toc-backref" href="#id16">CAP</a><a class="headerlink" href="#cap" title="Permalink to this headline"></a></h2>
+<p>分布式数据存储不可能同时满足以下三个条件。</p>
+<ul class="simple">
+<li><p>一致性（Consistency）</p></li>
+</ul>
+<p>每次读取要么获得最近写入的数据，要么获得一个错误。</p>
+<ul class="simple">
+<li><p>可用性（Availability）</p></li>
+</ul>
+<p>每次请求都能获得一个（非错误）响应，但不保证返回的是最新写入的数据。</p>
+<ul class="simple">
+<li><p>分区容忍（Partition tolerance）</p></li>
+</ul>
+<p>尽管任意数量的消息被节点间的网络丢失（或延迟），系统仍继续运行。</p>
+<p>所以我们有如下的权衡</p>
+<ul class="simple">
+<li><p>CA (consistency + availability)</p></li>
+</ul>
+<p>这样的系统关注一致性和可用性，它需要非常严格的全体一致的协议，比如“两阶段提交”（2PC）。</p>
+<p>CA 系统不能容忍网络错误或节点错误，一旦出现这样的问题，整个系统就会拒绝写请求，因为它并不知道对面的那个结点是否挂掉了，还是只是网络问题。唯一安全的做法就是把自己变成只读的。</p>
+<ul class="simple">
+<li><p>CP (consistency + partition tolerance)</p></li>
+</ul>
+<p>这样的系统关注一致性和分区容忍性。它关注的是系统里大多数人的一致性协议，比如：Paxos 算法（Quorum 类的算法）。
+这样的系统只需要保证大多数结点数据一致，而少数的结点会在没有同步到最新版本的数据时变成不可用的状态。这样能够提供一部分的可用性。</p>
+<ul class="simple">
+<li><p>AP (availability + partition tolerance)</p></li>
+</ul>
+<p>这样的系统关心可用性和分区容忍性。因此，这样的系统不能达成一致性，需要给出数据冲突，给出数据冲突就需要维护数据版本。
+Dynamo 就是这样的系统。</p>
+</section>
+<section id="id7">
+<h2><a class="toc-backref" href="#id17">一致性常见方案</a><a class="headerlink" href="#id7" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>Master-slave</p></li>
+<li><p>Master-master</p></li>
+<li><p>两阶段和三阶段提交：Plan-Reserve-Confirm</p></li>
+<li><p>Paxos 及其类似方案</p></li>
+</ul>
+</section>
+<section id="faq">
+<h2><a class="toc-backref" href="#id18">FAQ</a><a class="headerlink" href="#faq" title="Permalink to this headline"></a></h2>
+<section id="acid-base">
+<h3><a class="toc-backref" href="#id19">谈谈 ACID 与 BASE</a><a class="headerlink" href="#acid-base" title="Permalink to this headline"></a></h3>
+<p>ACID stands for:</p>
+<ul class="simple">
+<li><p>Atomic – Each transaction is either properly carried out or the process halts and the database reverts back to the state before the transaction started. This ensures that all data in the database is valid.</p></li>
+<li><p>Consistent – A processed transaction will never endanger the structural integrity of the database.</p></li>
+<li><p>Isolated – Transactions cannot compromise the integrity of other transactions by interacting with them while they are still in progress.</p></li>
+<li><p>Durable – The data related to the completed transaction will persist even in the cases of network or power outages. If a transaction fails, it will not impact the manipulated data.</p></li>
+</ul>
+<p>BASE stands for:</p>
+<ul class="simple">
+<li><p>Basically Available – Rather than enforcing immediate consistency, BASE-modelled NoSQL databases will ensure availability of data by spreading and replicating it across the nodes of the database cluster.</p></li>
+<li><p>Soft State – Due to the lack of immediate consistency, data values may change over time. The BASE model breaks off with the concept of a database which enforces its own consistency, delegating that responsibility to developers.</p></li>
+<li><p>Eventually Consistent – The fact that BASE does not enforce immediate consistency does not mean that it never achieves it. However, until it does, data reads are still possible (even though they might not reflect the reality).</p></li>
+</ul>
+</section>
+<section id="id8">
+<h3><a class="toc-backref" href="#id20">如何实现一个分布式锁</a><a class="headerlink" href="#id8" title="Permalink to this headline"></a></h3>
+</section>
+<section id="paxos">
+<h3><a class="toc-backref" href="#id21">大致讲讲 paxos 协议</a><a class="headerlink" href="#paxos" title="Permalink to this headline"></a></h3>
+</section>
+</section>
+<section id="id9">
+<h2><a class="toc-backref" href="#id22">参考资料</a><a class="headerlink" href="#id9" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#distributed-systems-for-fun-and-profit">Distributed Systems for Fun and Profit</a></p></li>
+</ul>
+<span class="target" id="distributed-systems-for-fun-and-profit"></span></section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ddd.html" class="btn btn-neutral float-left" title="DDD" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="raft.html" class="btn btn-neutral float-right" title="Raft" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Walter Fan.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

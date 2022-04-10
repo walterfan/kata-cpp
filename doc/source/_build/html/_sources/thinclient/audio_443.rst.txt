@@ -1,0 +1,57 @@
+##################
+Audio over 443
+##################
+
+
+encode audio data
+=========================
+
+
+.. csv-table:: CMmSessionPDURtpData
+   :header: "Field", "Type", "Description"
+   :widths: 30,  30, 40
+
+   m_ChannelId, CMmSID, ""
+   m_UserId, CMmSID, ""
+   m_dwClockRate, DWORD, ""
+   m_bSVSAudio, DWORD, ""
+   m_dwRtpDataLen, DWORD, ""
+   m_pEncodeRtpData, BYTE*, ""
+
+
+
+.. code:: cpp
+
+    // =============== Media over 443 =====================
+    /**
+     * Wrapping raw RTP stream into MM_SESSION_PDU_TYPE_RTP_DATA  PDU
+     *
+     * @param pRtp -- The pointer of RTP packet buffer
+     * @param len -- The byte count of RTP packet
+     * @param pPC -- The pointer of PC that handles the media stream
+     */
+    int CWCBClient::SendMediaPDU2TC(u8 *pRtp, u32 len, CWCBPeerConnection *pPC , bool bAudioPacket)
+    {
+      WCB_ON_ERR(pRtp && len > 0 && pPC, "CWCBClient::SendMediaPDU2TC: invalid parameter" <<
+                 " pRtp:" << pRtp << " Len:" << len << " pPc:" << pPC, WCB_ERROR);
+
+      u8 pduId = MM_SESSION_PDU_TYPE_RTP_DATA;
+      u8 cmdId = 0;
+      u16 peerId = pPC->GetPeerId();
+
+      MmRtpHeaderExtMap RtpHeaderExts;
+      CMmSessionPDURtpData mediaData= CMmSessionPDURtpData(peerId, 0, len, pRtp, RtpHeaderExts, 0, bAudioPacket);
+
+      CCmMessageBlock msg(mediaData.GetLength());
+      int rv = mediaData.Encode(msg);
+      WCB_ON_ERR(!rv, "CWCBClient::SendMediaPDU2TC() MM_SESSION_PDU_TYPE_RTP_DATA PDU encode error", WCB_ERROR);
+
+      // trace it
+      if (pPC->m_dwBindMediaSentCnt++ < WCB::MAX_INIT_TRACE_SIZE || pPC->m_dwBindMediaSentCnt%500 == 0) {
+        WCB_INFO("CWCBClient::SendMediaPDU2TC = " <<
+                 " peerId:" << peerId << " pRtp: " << pRtp << " packetLen:" << len <<
+                 " dwBindMediaSentCnt: " << pPC->m_dwBindMediaSentCnt);
+      }
+
+      return SendMsgToThinClient_n(pduId, cmdId, msg);
+    }

@@ -1,0 +1,43 @@
+###################
+Tree 树
+###################
+
+
+基本结构
+=================
+
+.. code-block::
+
+    struct TreeNode {
+        Object element;
+        TreeNode *firstChild;
+        TreeNode *nextSibling;
+    };
+
+
+
+.. code-block::
+
+    struct BinaryNode {
+        Object element;
+        BinaryNode *left;
+        BinaryNode *right;
+
+    };
+
+
+
+
+二叉树
+-----------------
+
+二叉查找树
+~~~~~~~~~~~~~~~~~
+
+AVL 树
+~~~~~~~~~~~~~~~~~
+插入一个结点可能会破坏 AVL 树的平衡性，我们可以通过简单的修正来恢复平衡 - rotation 旋转
+
+
+红黑树
+~~~~~~~~~~~~~~~~~

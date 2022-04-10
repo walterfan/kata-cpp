@@ -1,0 +1,150 @@
+######################
+Web Client Bridge
+######################
+
+
+.. contents::
+    :local:
+
+Main Flow
+======================
+
+.. image:: ../_static/wcb-thin-client-bind-data.png
+
+
+1. Web App Client Join Session Request PDU (PDU 205)
+    Msg goes through CMmSessionServerAcceptor()
+    WCB client created
+2. WCB send MCS standard Join Session Request (PDU 206, Response PDU 195)
+
+3. MCS send WCB/Client roster and channel change messages (PDU 25, 23, 38)
+
+4. MCS send WCB/Client video mode/active video user messages (PDU 76, cmdId 17, 25, 38)
+
+5. Web App Client Join Channel Rqst (PDU 15)
+
+6. Media negotiation (PDU 251)
+    WCB Client Create Peer Connection
+    Handle ROAP messages
+    WCB send media negotiation to MCS (PDU 252, Response PDU 253)
+
+7. Establish TURN/STUN media connections
+
+8. Subscription messages (PDU 76, cmdId 44, 45)
+    SCR/SCA messages between WCB and MCS (RTCP packets)
+
+9. Media Starts to Flow
+
+10. WCB media switch (SRTP encryption/dec)
+
+
+
+Main classes
+=======================
+
+Conference -- Session -- Client -- PeerConnection
+
+CWCBClientProxy
+
+
+
+* CWCBClientProxy::RetrieveJSRParamsV2
+
+* CWCBConference::CWCBConference
+
+* CWCBSession::Init
+
+* CWCBControl::AddClient
+
+* CWCBClientProxy::CreateEncryptor,
+
+* CWCBPeerConnection::Init
+
+* CWCBPeerConnection::HandleClientMsg
+
+* CWCBClient::HandleRoapMsg
+
+* CWCBPeerConnection::Init
+
+* CWCBMediaChanProxy::SetAckIceUfragPassw,
+
+* CWCBPeerConnection::ParseIceUsername
+
+* CWCBControl::Connect2TurnPee
+
+* CWCBPeerConnection::OnReceiveRawData
+
+* CWCBClient::HandleStatisticsData
+
+* CWCBControl::CheckConferenceStatus
+
+CRC of WCB
+-----------------------------------
+
+.. list-table:: CRC
+   :widths: 30 30 40
+   :header-rows: 1
+
+   * - Class
+     - Responsibility
+     - Collaborator
+   * - CWCBConference
+     - represents a web conference
+     - members: CWCBAudioSession, CWCBVideoSession, CWCBSharingSession, CWCBControl(pointer)
+   * - CWCBSession
+     - represents a parent class of audio, video and sharing session
+     - contains WCBClient, children: CWCBAudioSession, CWCBVideoSession, CWCBSharingSession
+   * - CWCBClient
+     - represents a client connection/transport, accept connection, send and receive message from browser
+     - contains WCBClient, parent: CWCBClientApi， IWCBNBRProxyClientSink， IWCBTimer; friends: CWCBMediaChanProxy; CWCBClientProxy; CWCBAudioClientProxy; class CWCBVideoClientProxy;
+   * - VideoUserInfo
+     - represends a video user
+     - it contains userName, nodeId, role, isPresent, sessionInfo
+   * - CMmRosterInfo
+     - roster info sent to client
+     - contains nodeId, attendeeId, userId and guestId, username, role, language,
+   * - MediaSessionInfo
+     - media session info
+     - CmmRosterMedia
+   * - CWCBClientProxy
+     - it is a proxy of CWCBClient
+     - parent: ICmTransport, IWCBTimer, WCB: myThread; children: CWCBAudioClientProxy, CWCBVideoClientProxy, CWCBSharingClientProxy
+   * - CWCBVideoClient
+     - represents video client from browser, it can parse SDP, handle channel request
+     -
+
+Important class
+==============================
+
+* CWCBClient: CWCBAudioClient, CWCBVideoClient, CWCBSharingClient
+  - CWCBClient contains a CWCBClientProxy to do somethings
+
+* CWCBClientProxy: CWCBAudioClientProxy, CWCBVideoClientProxy, CWCBSharingClientProxy
+
+
+.. list-table:: member methods
+   :widths: 30 30 40
+   :header-rows: 1
+
+   * - name
+     - description
+     - comments
+   * - name
+     - description
+     - comments
+
+
+
+
+.. list-table:: member variables
+   :widths: 30 30 40
+   :header-rows: 1
+
+   * - name
+     - description
+     - comments
+   * - name
+     - description
+     - comments
+
+

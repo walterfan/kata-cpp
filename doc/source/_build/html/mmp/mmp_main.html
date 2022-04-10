@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MMP Main Flow &mdash; A Programmer Prepares 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="MCS PDU" href="mmp_pdu.html" />
+    <link rel="prev" title="Session Endpoint" href="mmp_endpoint.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> A Programmer Prepares
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">论程序员的自我修养</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interview.html">程序员面试要点</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resume.html">Resume</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithm/index.html">Algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../language/index.html">Programming Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../library/index.html">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oss/index.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html">mathematics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#overview">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#least-squares-method">最小二乘法 least squares method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pattern/index.html">Pattern</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/index.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool/index.html">Tools</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">MMP</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="mmp_basic.html">MMP Basic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mmp_config.html">MMP Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mmp_endpoint.html">Session Endpoint</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">MMP Main Flow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#main-classes">main classes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cmmserversessionapi">CMmServerSessionAPI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cmmsessioinserveracceptor">CMmSessioinServerAcceptor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cwcbavatar">CWCBAvatar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cwcbcontrol">CWCBControl</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cwcbtimerservice">CWCBTimerService</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mmp_pdu.html">MCS PDU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mmp_turn.html">MMP TURN Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mmp_rtp.html">MMP RTP</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../thinclient/index.html">Thin Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utiltp/index.html">UTILTP</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">A Programmer Prepares</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">MMP</a> &raquo;</li>
+      <li>MMP Main Flow</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/mmp/mmp_main.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="mmp-main-flow">
+<h1>MMP Main Flow<a class="headerlink" href="#mmp-main-flow" title="Permalink to this headline"></a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#overview" id="id1">Overview</a></p></li>
+<li><p><a class="reference internal" href="#main-classes" id="id2">main classes</a></p>
+<ul>
+<li><p><a class="reference internal" href="#cmmserversessionapi" id="id3">CMmServerSessionAPI</a></p>
+<ul>
+<li><p><a class="reference internal" href="#methods" id="id4">methods</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#cmmsessioinserveracceptor" id="id5">CMmSessioinServerAcceptor</a></p></li>
+<li><p><a class="reference internal" href="#cwcbavatar" id="id6">CWCBAvatar</a></p></li>
+<li><p><a class="reference internal" href="#cwcbcontrol" id="id7">CWCBControl</a></p></li>
+<li><p><a class="reference internal" href="#cwcbtimerservice" id="id8">CWCBTimerService</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<section id="overview">
+<h2><a class="toc-backref" href="#id1">Overview</a><a class="headerlink" href="#overview" title="Permalink to this headline"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>//1. Read configuration webex.cfg
+nodeType: AWS | Cloud
+
+//2. AudioNoticeFileMgr.Initialize
+
+//3. Initialize CI Provider
+
+//4. Initialize Thread Pool
+
+//5. Wqos::BandwidthControl_Init
+
+//6. initialize rtsp serve
+CRtspComponent as m_pRtspServer, sink is MediaServer
+m_pRtspServer-&gt;Initialize(…)
+
+//7. Initialize m_pStreamingSession
+    m_pStreamingSession = new CAudioStreamingSession(m_pRtspServer.ParaIn());
+
+//8. create timer to detect MCS CPU info and crate timer to detect conf which stop
+
+//9. rv = CAudioStreamingAcceptorManager::Instance().Initialize(m_strStreamIP.c_str(), m_wStreamingRtpPort, m_wStreamingRealRtpPort);
+
+//10. listen tcp and udp ports
+      [wws  Fc]                                                    aUdpAddr,
+                                                aTcpAddrEx,
+                                                this,
+                                                this);
+
+//11. initialize srtp library
+
+//12. Listen port for MCT monitor of KM
+//CHttpService::Instance()-&gt;InitLog(this);
+</pre></div>
+</div>
+</section>
+<section id="main-classes">
+<h2><a class="toc-backref" href="#id2">main classes</a><a class="headerlink" href="#main-classes" title="Permalink to this headline"></a></h2>
+<section id="cmmserversessionapi">
+<h3><a class="toc-backref" href="#id3">CMmServerSessionAPI</a><a class="headerlink" href="#cmmserversessionapi" title="Permalink to this headline"></a></h3>
+<p>listen TCP and UDP addree</p>
+<section id="methods">
+<h4><a class="toc-backref" href="#id4">methods</a><a class="headerlink" href="#methods" title="Permalink to this headline"></a></h4>
+<ul>
+<li><p>CMediaServer::Initiatilize</p></li>
+<li><p>CMmServerSessionAPI::ListenContorlAndDataAddr</p>
+<blockquote>
+<div><p>CMmServerSessionAPI::ListenContorlAndDataAddr,
+aTcpAddr.ip=10.224.82.98 aTcpAddr.port=80
+aUdpAddr.ip=10.224.82.98 aU dpAddr.port=9000
+aTcpAddrEx.ip=10.224.82.98 aTcpAddrEx.port=5004
+aJoinSink=0x2509d60 MmServerSessionApi.cpp:38</p>
+</div></blockquote>
+</li>
+</ul>
+</section>
+</section>
+<section id="cmmsessioinserveracceptor">
+<h3><a class="toc-backref" href="#id5">CMmSessioinServerAcceptor</a><a class="headerlink" href="#cmmsessioinserveracceptor" title="Permalink to this headline"></a></h3>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">CMmSessionServerAcceptor</span><span class="w"></span>
+<span class="w">    </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">ICmEvent</span><span class="w"></span>
+<span class="w">    </span><span class="p">,</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">ICmAcceptorConnectorSink</span><span class="w"></span>
+<span class="w">    </span><span class="p">,</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">ICmChannelServerSink</span><span class="w"></span>
+<span class="w">    </span><span class="p">,</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">ICmTransportSink</span><span class="w"></span>
+<span class="w">    </span><span class="p">,</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">IHttpConnectAndReceiveSink</span><span class="w"></span>
+<span class="w">    </span><span class="p">,</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">CCmTimerWrapperIDSink</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">        </span><span class="n">CMmSessionServerAcceptor</span><span class="p">(</span><span class="w"></span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">CCmInetAddr</span><span class="w"> </span><span class="o">&amp;</span><span class="n">aTcpAddr</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">CCmInetAddr</span><span class="w"> </span><span class="o">&amp;</span><span class="n">aUdpAddr</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">CCmInetAddr</span><span class="w"> </span><span class="o">&amp;</span><span class="n">aTcpAddrEx</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="n">ACmThread</span><span class="w"> </span><span class="o">*</span><span class="n">aThreadNetwork</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="n">ACmThread</span><span class="w"> </span><span class="o">*</span><span class="n">aThreadUser</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="w">        </span><span class="n">CCmComAutoPtr</span><span class="o">&lt;</span><span class="n">ICmAcceptor</span><span class="o">&gt;</span><span class="w"> </span><span class="n">m_pTcpAcceptor</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">CCmComAutoPtr</span><span class="o">&lt;</span><span class="n">ICmAcceptor</span><span class="o">&gt;</span><span class="w"> </span><span class="n">m_pTcpAcceptorEx</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">CCmComAutoPtr</span><span class="o">&lt;</span><span class="n">ICmAcceptor</span><span class="o">&gt;</span><span class="w"> </span><span class="n">m_pUdpAcceptor</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">CCmComAutoPtr</span><span class="o">&lt;</span><span class="n">ICmChannelServerAcceptor</span><span class="o">&gt;</span><span class="w"> </span><span class="n">m_pWebSocketAcceptor</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">CCmInetAddr</span><span class="w"> </span><span class="n">m_AddrTcp</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">CCmInetAddr</span><span class="w"> </span><span class="n">m_AddrTcpEx</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">CCmInetAddr</span><span class="w"> </span><span class="n">m_AddrUdp</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">CCmInetAddr</span><span class="w"> </span><span class="n">m_AddrWebSocket</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">ACmThread</span><span class="w"> </span><span class="o">*</span><span class="n">m_pThreadNetwork</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">ACmThread</span><span class="w"> </span><span class="o">*</span><span class="n">m_pThreadUser</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">typedef</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">set</span><span class="o">&lt;</span><span class="n">ICmTransport</span><span class="o">*&gt;</span><span class="w"> </span><span class="n">PendingTransportsType</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">PendingTransportsType</span><span class="w"> </span><span class="n">m_PendingTransports</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">CDataTransferHelper</span><span class="w"> </span><span class="n">m_aHelper</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">CM_THREAD_ID</span><span class="w"> </span><span class="n">m_networkThreadId</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1">// for MCS support Restful API</span>
+<span class="w">        </span><span class="n">CCmComAutoPtr</span><span class="o">&lt;</span><span class="n">IMmAgent</span><span class="o">&gt;</span><span class="w">                     </span><span class="n">m_pAgent</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1">// ----- Functions for Thin Client ----------</span>
+<span class="w">     </span><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">        </span><span class="n">CmResult</span><span class="w"> </span><span class="n">DispatchTurnServerBindRequest</span><span class="p">(</span><span class="n">CMmServerTurnServer</span><span class="o">*</span><span class="w"> </span><span class="n">pTurnServer</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">strUserName</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="kt">bool</span><span class="w"> </span><span class="n">bForced</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">bTurn</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">static</span><span class="w"> </span><span class="n">CmResult</span><span class="w"> </span><span class="nf">HandleUserJoinSession</span><span class="p">(</span><span class="n">CCmMessageBlock</span><span class="w"> </span><span class="o">&amp;</span><span class="n">aData</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                              </span><span class="n">BYTE</span><span class="w"> </span><span class="n">aPduType</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                              </span><span class="n">ICmTransport</span><span class="w"> </span><span class="o">*</span><span class="n">aTrptId</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                              </span><span class="n">CMmSessionServerEndPoint</span><span class="w"> </span><span class="o">*</span><span class="n">aEndPoint</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                              </span><span class="n">CAuthTicketFormat</span><span class="o">*</span><span class="w"> </span><span class="n">pFormat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                              </span><span class="n">CAuthTicketAttributes</span><span class="o">*</span><span class="w"> </span><span class="n">pAttrib</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">     </span><span class="k">private</span><span class="o">:</span><span class="w"> </span><span class="c1">// for WebRtc TURN servers</span>
+<span class="w">        </span><span class="c1">// the manager will create, delete and manage the TURN/STUN servers.</span>
+<span class="w">        </span><span class="c1">// The actual TURN/STUN messages are hanled in TURN/STUN server.</span>
+<span class="w">        </span><span class="n">CMmServerTurnServerMgr</span><span class="w"> </span><span class="n">m_turnServerMgr</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">CMmWorkThreadDispatcher</span><span class="w"> </span><span class="n">m_WorkThreadDispatcher</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">ReJoinSessionReqList</span><span class="w"> </span><span class="n">m_ReJoinSessionReqs</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">friend</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">CHttpConnectAndReceiveRspEvent</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">friend</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">CDispatchUserJoinEvent</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">CCmTimerWrapperID</span><span class="w">                                   </span><span class="n">m_WaitTimer</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">DWORD</span><span class="w"> </span><span class="n">m_RecvPDUNum</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">DWORD</span><span class="w"> </span><span class="n">m_TimeoutNum</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">DWORD</span><span class="w"> </span><span class="n">m_OtherReasonNum</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="cwcbavatar">
+<h3><a class="toc-backref" href="#id6">CWCBAvatar</a><a class="headerlink" href="#cwcbavatar" title="Permalink to this headline"></a></h3>
+</section>
+<section id="cwcbcontrol">
+<h3><a class="toc-backref" href="#id7">CWCBControl</a><a class="headerlink" href="#cwcbcontrol" title="Permalink to this headline"></a></h3>
+</section>
+<section id="cwcbtimerservice">
+<h3><a class="toc-backref" href="#id8">CWCBTimerService</a><a class="headerlink" href="#cwcbtimerservice" title="Permalink to this headline"></a></h3>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="mmp_endpoint.html" class="btn btn-neutral float-left" title="Session Endpoint" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="mmp_pdu.html" class="btn btn-neutral float-right" title="MCS PDU" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Walter Fan.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

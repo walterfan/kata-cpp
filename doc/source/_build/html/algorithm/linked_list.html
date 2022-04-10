@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Linked List 链表 &mdash; A Programmer Prepares 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Data Structure interview" href="ds_interview.html" />
+    <link rel="prev" title="Tree 树" href="tree.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> A Programmer Prepares
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">论程序员的自我修养</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interview.html">程序员面试要点</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resume.html">Resume</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Algorithm</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="accrual-failure-detector.html">Accrual Failure Detector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_structure.html">Data Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reservoir-sampling.html">Reservoir Sampling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_compress.html">数据压缩</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lsm-tree.html">LSM Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="raft.html">Raft</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tree.html">Tree 树</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Linked List 链表</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">基本结构</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">快慢指针技术</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">问题：如何判断一个链表中是否含有闭环？</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ds_interview.html">Data Structure interview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="al_interview.html">Algorithm Interview</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../language/index.html">Programming Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../library/index.html">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oss/index.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html">mathematics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#overview">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#least-squares-method">最小二乘法 least squares method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pattern/index.html">Pattern</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/index.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool/index.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mmp/index.html">MMP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../thinclient/index.html">Thin Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utiltp/index.html">UTILTP</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">A Programmer Prepares</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Algorithm</a> &raquo;</li>
+      <li>Linked List 链表</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/algorithm/linked_list.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="linked-list">
+<h1>Linked List 链表<a class="headerlink" href="#linked-list" title="Permalink to this headline"></a></h1>
+<section id="id1">
+<h2>基本结构<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">struct</span> <span class="n">Node</span> <span class="p">{</span>
+    <span class="n">Object</span> <span class="n">data</span><span class="p">;</span>
+    <span class="n">Node</span> <span class="o">*</span><span class="n">prev</span><span class="p">;</span>
+    <span class="n">Node</span> <span class="o">*</span><span class="nb">next</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h2>快慢指针技术<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
+<section id="id3">
+<h3>问题：如何判断一个链表中是否含有闭环？<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>分析</p></li>
+</ul>
+<p>在生活中，两个人相遇在一起谓之为环路，所以两个指针可以帮助检测环</p>
+<ul class="simple">
+<li><p>解答</p></li>
+</ul>
+<p>采用双指针，一个快指针跑得快，一个慢指针跑得慢，
+如果不含有环，快指针会很快遇到 null
+如果其中含有环，快指针最终会超越慢指针一圈，和慢指针相遇</p>
+<ul class="simple">
+<li><p>示例</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>template &lt;typename T&gt;
+class SingleLinkedList
+{
+public:
+    struct Node {
+        Node(T d, Node* pn=NULL):data(d), next(pn) {}
+        T data;
+        Node* next;
+    };
+
+    SingleLinkedList():m_nSize(0),m_pHead(NULL) {}
+
+
+    void pushBack(Node* pNode) {
+        m_nSize++;
+        if(!m_pHead) {
+            m_pHead = pNode;
+            return;
+        }
+        Node* pLast, *pTail;
+        pLast = pTail = m_pHead;
+
+        while(pTail != NULL &amp;&amp; pLast-&gt;next != NULL) {
+            pLast = pLast-&gt;next;
+            pTail = pLast-&gt;next;
+            if(pTail == pLast) break;
+        }
+        pLast-&gt;next = pNode;
+    }
+    bool hasCycle() {
+        Node* pFast, *pSlow;
+        pFast = pSlow = m_pHead;
+
+        while(pFast != NULL &amp;&amp; pFast-&gt;next != NULL) {
+            //two steps
+            pFast = pFast-&gt;next-&gt;next;
+            //one step
+            pSlow = pSlow-&gt;next;
+            if(pFast == pSlow) return true;
+        }
+        return false;
+    }
+
+
+    friend std::ostream&amp; operator&lt;&lt;(std::ostream&amp; os, const SingleLinkedList&amp; aList) {
+            os &lt;&lt; &quot;SingleLinkedList: &quot; &lt;&lt; aList.m_nSize &lt;&lt; &quot;: &quot; &lt;&lt;endl;
+            Node* pNode = aList.m_pHead;
+            while(pNode != NULL) {
+                os &lt;&lt; pNode-&gt;data &lt;&lt; endl;
+                pNode = pNode-&gt;next;
+                if(pNode == aList.m_pHead) break;
+            }
+
+            return os;
+    }
+private:
+    int m_nSize;
+    Node* m_pHead;
+};
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="tree.html" class="btn btn-neutral float-left" title="Tree 树" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ds_interview.html" class="btn btn-neutral float-right" title="Data Structure interview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Walter Fan.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

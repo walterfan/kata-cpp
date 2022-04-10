@@ -1,0 +1,62 @@
+##################
+Thin Client ROAP
+##################
+
+ROAP
+=====================
+
+
+* A simple protocol to setup media sessions for WebRTC
+
+Greatly simplified Offer/Answer
+
+* Assume reliable transportation underline
+
+WebSocket
+
+* Messages:
+
+ - Format: JSON + SDP
+ - Message Type: OFFER, ANSWER, OK and ERROR
+ - Error msg: NOMATCH, TIMEOUT, REFUSED, CONFLICT, DOUBLECONFLICT, FAILED
+
+* Message Fields
+
+ - messageType: OFFER, ANSWER, OK and ERROR
+ - Session ID: offererSessionId + answererSessionId
+ - Sequence no: seq  -- started with 1 and increase one for every additional 	update session
+ - tiebreaker  -- a flag to break the tie in parameter update
+ - Session tokens: setSessionToken and sessionToken  -- for addition info
+ - Response Tokens: setResponseToken and responseToken – similar to sessions tokens but valid for the pair req/response.
+ - SDP: a SDP string.
+ - moreComing: to use with ICE
+
+
+Extension
+=======================
+
+* Additional Message Types:
+* INFO --  to make a simple request
+
+  - To mute/unmute
+  - Send candidate
+     - Remove all content-type and length
+
+.. code-block::
+
+    {“messageType”:”INFO”, “offererSessionId”:xxx ("answererSessionId“ if exists), “candidate”: a = adfafd…. a=mid…}
+    {“messageType”:”OK”, , …”requestType”:”INFO”..}
+
+* BYE – to terminates an existing session.
+
+.. code-block::
+
+    {“messageType”:”BYE”, “offererSessionId”:xxx ("answererSessionId“, tiebreaker = xxxx)
+     {“messageType”:”OK”, , …”requestType”:”BYE”..}
+
+* Message Fields
+
+  - Use Session token for conference ID
+
+     - setSessionToken: <conference Id>
+     - sessionToken: <conference Id>

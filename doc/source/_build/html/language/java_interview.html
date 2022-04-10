@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Java Interview &mdash; A Programmer Prepares 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Java 字节码" href="java_bytecode.html" />
+    <link rel="prev" title="Java Concurrency" href="java_concurrency.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> A Programmer Prepares
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">论程序员的自我修养</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interview.html">程序员面试要点</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resume.html">Resume</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithm/index.html">Algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">Architecture</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Programming Language</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cpp.html">C++</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_interview.html">C++ Interview Questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_evolution.html">C++ Evolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_lambda.html">C++ Lambda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_memory.html">Resource management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_stl.html">C++ STL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_thread.html">C++ Thread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_rvalue.html">右值引用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_object_model.html">C++ Object Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_server.html">C++ Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="java.html">Java</a></li>
+<li class="toctree-l2"><a class="reference internal" href="java_concurrency.html">Java Concurrency</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Java Interview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">一般问题</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#top-10-questions">Top 10 questions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#jvm">1. JVM 内存区域</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#java-gc">2.  Java GC 的分类和优化要点</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#java">3. Java 线程池及其优化要点</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">4. Java 锁有哪些，各有什么应用场合？</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cas-aqs-aba">5. CAS 和 AQS 是什么？ ABA 问题如何解决？</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#java-agent">6. java agent 的原理是什么？</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#spring-boot-starter-autoconfiguration">7. Spring boot 的 starter 和 AutoConfiguration 对依赖的管理机制</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">其他问题</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="java_bytecode.html">Java 字节码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="java_classloader.html">Java 类加载器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="java_collection.html">Java collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python.html">Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="javascript.html">JavaScript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="js_promise.html">Promise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="js_test.html">JS Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="js_visualize.html">JavaScript Visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="js_interview.html">JS Interview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="js_async.html">javascript asynchronous programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodejs.html">NodeJS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="go.html">Go lanaguage</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../library/index.html">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oss/index.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html">mathematics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#overview">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#least-squares-method">最小二乘法 least squares method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pattern/index.html">Pattern</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/index.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool/index.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mmp/index.html">MMP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../thinclient/index.html">Thin Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utiltp/index.html">UTILTP</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">A Programmer Prepares</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Programming Language</a> &raquo;</li>
+      <li>Java Interview</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/language/java_interview.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="java-interview">
+<h1>Java Interview<a class="headerlink" href="#java-interview" title="Permalink to this headline"></a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#id1" id="id7">一般问题</a></p></li>
+<li><p><a class="reference internal" href="#top-10-questions" id="id8">Top 10 questions</a></p>
+<ul>
+<li><p><a class="reference internal" href="#jvm" id="id9">1. JVM 内存区域</a></p></li>
+<li><p><a class="reference internal" href="#java-gc" id="id10">2.  Java GC 的分类和优化要点</a></p></li>
+<li><p><a class="reference internal" href="#java" id="id11">3. Java 线程池及其优化要点</a></p></li>
+<li><p><a class="reference internal" href="#id2" id="id12">4. Java 锁有哪些，各有什么应用场合？</a></p></li>
+<li><p><a class="reference internal" href="#cas-aqs-aba" id="id13">5. CAS 和 AQS 是什么？ ABA 问题如何解决？</a></p></li>
+<li><p><a class="reference internal" href="#java-agent" id="id14">6. java agent 的原理是什么？</a></p></li>
+<li><p><a class="reference internal" href="#spring-boot-starter-autoconfiguration" id="id15">7. Spring boot 的 starter 和 AutoConfiguration 对依赖的管理机制</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id3" id="id16">其他问题</a></p></li>
+</ul>
+</div>
+<section id="id1">
+<h2><a class="toc-backref" href="#id7">一般问题</a><a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<ol class="arabic simple">
+<li><p>Java OOP 特性的实现： 继承，封装，多态(方法覆盖和重载)</p></li>
+<li><p>Java 对象的 hashcode and equals 有什么区别，要返回一致的结果吗</p></li>
+<li><p>Java 程序的 crash，内存溢出和内存泄漏的原因和对策</p></li>
+<li><p>JVM 有哪些内存区域，重要的初始参数和垃圾回收算法</p></li>
+<li><p>Java 线程池的监控与优化， 线程模型与多路复用</p></li>
+<li><p>Spring 的原理 - IoC and DI(方式), AoP（方式）
+- BeanFactory, ApplicationContext, Spring Proxy</p></li>
+<li><p>Spring Boot 的 starter 和 autoconfiguration 是怎么做到的</p></li>
+<li><p>Spring MVC 的 dispatch servlet 的作用和请求处理流程</p></li>
+<li><p>HTTP: 缓存与并发控制，连接管理</p></li>
+<li><p>Java 中的 HashMap, TreeMap, ConcurrentSkipListMap 等的区别</p></li>
+<li><p>设计模式： Proxy, Observer, Strategy, etc.</p></li>
+<li><p>微服务的分流，限流和断流</p></li>
+<li><p>Spring core /Spring MVC 流程</p></li>
+<li><p>HTTPS完整流程</p></li>
+<li><p>CAP 的理解和常见数据存储系统的选择
+- <a class="reference external" href="https://www.jianshu.com/p/9c1bbb8879d2">https://www.jianshu.com/p/9c1bbb8879d2</a></p></li>
+<li><p>Java 内存和性能问题的诊断流程</p></li>
+<li><p>JVM tool set</p></li>
+<li><p>ThreadLocal</p></li>
+<li><p>类加载器</p></li>
+</ol>
+</section>
+<section id="top-10-questions">
+<h2><a class="toc-backref" href="#id8">Top 10 questions</a><a class="headerlink" href="#top-10-questions" title="Permalink to this headline"></a></h2>
+<section id="jvm">
+<h3><a class="toc-backref" href="#id9">1. JVM 内存区域</a><a class="headerlink" href="#jvm" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>线程私有区域
+程序计数器
+虚拟机栈
+本地方法区</p></li>
+<li><p>线程共享区域 - heap
+- 年轻代 Young Generation: 一般分为伊甸园 Eden 和幸存区 Survivor(通过分为两个区S0, S1)， 新创建的对象放在Eden 区
+- 年老代 Old Generation
+- 永久代(方法区，metaspace): 类信息，静态变量，常量池</p></li>
+<li><p>直接内存（堆外内存）</p></li>
+</ul>
+</section>
+<section id="java-gc">
+<h3><a class="toc-backref" href="#id10">2.  Java GC 的分类和优化要点</a><a class="headerlink" href="#java-gc" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>GC分类:
+- Minor GC: 也称 Scavenge GC, 收集新生代, 新对象在 Eden区申请空间失败时会触发
+- Major GC: 也称 Full GC, 收集新生代，年老代和永久代, 年老代或永久代被写满时会触发</p></li>
+<li><p>GC算法:</p>
+<ul>
+<li><p>引用计数 Reference Counting</p></li>
+<li><p>标记清除 Mark-Sweep</p></li>
+<li><p>复制 Copying</p></li>
+<li><p>标记-压缩 Mark-Compact</p></li>
+</ul>
+</li>
+</ul>
+<p>JVM参数:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>-Xmx=2048m 堆的最大值
+-Xms=1024m 堆的初始值
+-Xmn=128m 年轻代大小的值
+-XX:newSize= 年轻代大小的初始值
+-XX:maxNewSize= 年轻代大小的最大值
+-XX:NewRatio= 年轻代与年老代的比例=年老代大小/年轻代大小
+-XX:SurvivorRatio= 年轻代中的 Eden 区与 Survivor 区的比例=Eden区大小/(S1或S2区的大小)
+-XX:MetaSpaceSize= 元空间（永久代）大小的初始值
+-XX:MaxMetaSpaceSize= 元空间（永久代）大小的最大值
+-Xss: 每个线程的堆栈大小
+-XX:MaxDirectMemorySize= 直接内存大小的最大值
+-XX:CompressedClassSpaceSize= 堆在小于32G时会将类信息放入 CompressedClassSpace, 即地址将64bit压缩成32bit
+-XX:+AlwaysPreTouch 启动时预先初始化内存页，这样运行期就省去了初始化内存页这个步骤了
+</pre></div>
+</div>
+</section>
+<section id="java">
+<h3><a class="toc-backref" href="#id11">3. Java 线程池及其优化要点</a><a class="headerlink" href="#java" title="Permalink to this headline"></a></h3>
+<p>参见 <a class="reference external" href="https://www.jianshu.com/p/6b71221792fb">https://www.jianshu.com/p/6b71221792fb</a></p>
+</section>
+<section id="id2">
+<h3><a class="toc-backref" href="#id12">4. Java 锁有哪些，各有什么应用场合？</a><a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>synchronized</p></li>
+<li><p>Lock: ReentrantLock: ReentrantReadWriteLock.ReadLock, ReentrantReadWriteLock.WriteLock</p></li>
+<li><p>StampedLock</p></li>
+<li><p>Semaphore</p></li>
+<li><p>CountDownLatch</p></li>
+<li><p>CyclicBarrier</p></li>
+<li><p>Phaser</p></li>
+<li><p>Exchanger</p></li>
+<li><p>CompletableFuture</p></li>
+</ul>
+<p>乐观锁: 基于 CAS（Compare And Swap)</p>
+<ul class="simple">
+<li><p>AtomicLong</p></li>
+</ul>
+<p>悲观锁: 基于 AQS (Abstract Queued Synchronized)</p>
+<ul class="simple">
+<li><p>Synchronized, ReentrantLock, Semaphore, CountDownLatch</p></li>
+</ul>
+<p>偏向锁</p>
+</section>
+<section id="cas-aqs-aba">
+<h3><a class="toc-backref" href="#id13">5. CAS 和 AQS 是什么？ ABA 问题如何解决？</a><a class="headerlink" href="#cas-aqs-aba" title="Permalink to this headline"></a></h3>
+</section>
+<section id="java-agent">
+<h3><a class="toc-backref" href="#id14">6. java agent 的原理是什么？</a><a class="headerlink" href="#java-agent" title="Permalink to this headline"></a></h3>
+</section>
+<section id="spring-boot-starter-autoconfiguration">
+<h3><a class="toc-backref" href="#id15">7. Spring boot 的 starter 和 AutoConfiguration 对依赖的管理机制</a><a class="headerlink" href="#spring-boot-starter-autoconfiguration" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>starter pom 中定义了一组相关的依赖组件的包名和版本号</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">dependencyManagement</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">depenndencies</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">dependenncy</span><span class="o">&gt;</span> <span class="o">...</span><span class="n">package</span> <span class="n">name</span><span class="p">,</span> <span class="n">version</span> <span class="o">...</span> <span class="o">&lt;/</span><span class="n">dependenncy</span><span class="o">&gt;</span>
+
+<span class="o">&lt;/</span><span class="n">depenndencies</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">dependencyManagement</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>EnableAutoConfiguration</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>-&gt; @AutoConfigurationPackage -&gt; AutoConfigurationPackages.Registrar.class
+-&gt; @AutoConfigurationImportSelector -&gt; SpringFactoriesLoader
+</pre></div>
+</div>
+<p>在 spring-boot-autoconfigure-xxx.jar 包的 META-INF/spring.factories 中定义了一百多个依赖项
+通过  ConditionalOnXxx 来根据一些特定条件来引入</p>
+</section>
+</section>
+<section id="id3">
+<h2><a class="toc-backref" href="#id16">其他问题</a><a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>Spring 对于循环依赖问题的对策</p></li>
+<li><p>并发控制：锁</p></li>
+<li><p>数据结构，常见容器</p></li>
+<li><p>Big O 算法复杂度</p></li>
+<li><p><a class="reference external" href="../architecture/distribution.html">分布式架构</a></p></li>
+<li><p><a class="reference external" href="../architecture/design_pattern.html">设计模式</a></p></li>
+<li><p><a class="reference external" href="../algorithm/data_structure.html">数据结构与算法</a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="java_concurrency.html" class="btn btn-neutral float-left" title="Java Concurrency" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="java_bytecode.html" class="btn btn-neutral float-right" title="Java 字节码" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Walter Fan.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

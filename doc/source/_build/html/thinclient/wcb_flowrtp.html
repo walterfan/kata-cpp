@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WCB Flow RTP &mdash; A Programmer Prepares 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Media Statistics" href="wcb_media_stats.html" />
+    <link rel="prev" title="WCB source structure" href="wcb_source.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> A Programmer Prepares
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">论程序员的自我修养</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interview.html">程序员面试要点</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resume.html">Resume</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithm/index.html">Algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../language/index.html">Programming Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../library/index.html">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oss/index.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html">mathematics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#overview">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#least-squares-method">最小二乘法 least squares method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pattern/index.html">Pattern</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/index.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool/index.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mmp/index.html">MMP</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Thin Client</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="app_share.html">Application Share</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audio_mgr.html">Audio Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audio_443.html">Audio over 443</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_to.html">How to</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocols.html">Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qos.html">QoS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc.html">CMSC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc_asm.html">CMSC ASM media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc_flowrtp.html">CMSC Flow RTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc_MediaEngInst.html">Media Engine Instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc_connection_monitor.html">CMSC Connection Monitor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cscc.html">CSCC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cscc_api.html">CSCC API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cscc_clientsession.html">ClientSession</a></li>
+<li class="toctree-l2"><a class="reference internal" href="metrics.html">Thin Client Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wca.html">Web Client Agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb.html">Web Client Bridge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_client.html">WCB Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_dtls.html">WCB DTLS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_ice.html">Thin Client ICE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_message.html">WCB message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_mqe.html">MQE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_sdp.html">WCB SDP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_rtp.html">WCB RTP module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_source.html">WCB source structure</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">WCB Flow RTP</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#main-methods">main methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#statistics">Statistics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sps">SPS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_media_stats.html">Media Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="web_client_bridge.html">Web Client Bridge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disciplines_on_code_development.html">Disciplines on Code Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#overall">Overall</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#feature">Feature</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#reference">Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../utiltp/index.html">UTILTP</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">A Programmer Prepares</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Thin Client</a> &raquo;</li>
+      <li>WCB Flow RTP</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/thinclient/wcb_flowrtp.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="wcb-flow-rtp">
+<h1>WCB Flow RTP<a class="headerlink" href="#wcb-flow-rtp" title="Permalink to this headline"></a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>The class peeks the RTP packets and parses the RTCP reports.</p></li>
+<li><p>It generates the required RTCP reports and traffic control requests.</p></li>
+<li><p>The module provides the necessary information and tool for the traffic control through REMB.</p></li>
+<li><p>This module depends on no other modules but c libs. There is no timer used in this module.</p></li>
+<li><p>All the timing actions are done synchronously (no callbacks) and are derived from the packets peeked/parsed by basing on the clock time.</p></li>
+</ul>
+</section>
+<section id="main-methods">
+<h2>main methods<a class="headerlink" href="#main-methods" title="Permalink to this headline"></a></h2>
+<table class="colwidths-given docutils align-default" id="id1">
+<caption><span class="caption-text">methods</span><a class="headerlink" href="#id1" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 18%" />
+<col style="width: 55%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>function</p></th>
+<th class="head"><p>parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>peekRtpHeader</p></td>
+<td><p>2.99</p></td>
+<td><p>On a stick!</p></td>
+</tr>
+<tr class="row-odd"><td><p>addAudioLevel</p></td>
+<td><p>1.49</p></td>
+<td><p>If we took the bones out, it wouldn’t be
+crunchy, now would it?</p></td>
+</tr>
+<tr class="row-even"><td><p>calculateJitter</p></td>
+<td><p>1.99</p></td>
+<td><p>On a stick!</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="statistics">
+<h2>Statistics<a class="headerlink" href="#statistics" title="Permalink to this headline"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>void CWCBMediaChanProxy::UpdateMStats(u8 *pNalData, u32 nalSize, u16 streamId, bool bUp2MCS)
+{
+  if (!pNalData || nalSize == 0  ||
+      (streamId &gt;= WCB::MAX_SSVC_DOWN_STREAMS &amp;&amp; !bUp2MCS) ||
+      (streamId &gt; WCB::MAX_SHARING_VIDEO_INDEX &amp;&amp; bUp2MCS)) {return;}
+
+  CWCBWmeFlowRtp &amp;flowRtp = bUp2MCS ? m_wmeflowRtpUp[streamId] : m_wmeflowRtpDown[streamId];
+
+  u8 nalType = pNalData[0] &amp; 0x1f;
+  if (nalType == WCB_NALTYPE_IDR) {
+    flowRtp.UpdateMStats(CWCBFlowRtp::MStatsRecvKeyFrame, 0, !bUp2MCS);
+  } else if (nalType == WCB_NALTYPE_SPS || nalType == WCB_NALTYPE_SVC_SPS) { // TODO, need not double parse it.
+    CWCBFlowRtp::sps_t sps;
+    int rv = CWCBH264Stream::parseSPS(pNalData, nalSize, 0, sps);
+    if (!rv) {
+      flowRtp.SetVideoSizeInfo(sps, !bUp2MCS);
+    }
+  }
+}
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>void CWCBFlowRtp::SetVideoSizeInfo(sps_t&amp; sps, bool bRecv)
+{
+  FlowMediaStatistics_t&amp; mStats = bRecv ? m_recvMStats : m_sendMStats;
+  mStats.videoInfo.profileIdc = sps.profile_idc;
+  mStats.videoInfo.constraint = sps.constraint;
+  mStats.videoInfo.widthMB = sps.pic_width_in_mbs;
+  mStats.videoInfo.leftOffset = sps.frame_crop_left_offset;
+  mStats.videoInfo.rightOffset = sps.frame_crop_right_offset;
+  mStats.videoInfo.heightMB = sps.pic_height_in_map_units;
+  mStats.videoInfo.topOffset = sps.frame_crop_top_offset;
+  mStats.videoInfo.bottomOffset = sps.frame_crop_bottom_offset;
+}
+</pre></div>
+</div>
+</section>
+<section id="sps">
+<h2>SPS<a class="headerlink" href="#sps" title="Permalink to this headline"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span> <span class="n">CWCBFlowRtp</span><span class="p">::</span><span class="n">parseRtpNal1_23</span><span class="p">(</span><span class="n">u8</span> <span class="o">*</span><span class="n">pRtp</span><span class="p">,</span> <span class="n">rtpParam_t</span> <span class="o">&amp;</span><span class="n">rtpParam</span><span class="p">,</span>
+                                 <span class="nb">bool</span> <span class="o">&amp;</span><span class="n">bKeyFrame</span><span class="p">,</span>  <span class="nb">bool</span> <span class="o">&amp;</span><span class="n">bKeyFrameReq</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="o">//...</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">nalType</span> <span class="o">==</span> <span class="n">WCB_NALTYPE_SVC_SPS</span> <span class="o">||</span>  <span class="n">nalType</span> <span class="o">==</span> <span class="n">WCB_NALTYPE_SPS</span><span class="p">)</span> <span class="p">{</span> <span class="n">setSpsRecv</span><span class="p">();}</span> <span class="o">//</span> <span class="n">sps</span>
+
+  <span class="o">/...</span>
+  <span class="n">pPacket</span><span class="o">-&gt;</span><span class="n">setState</span><span class="p">(</span><span class="n">WCB</span><span class="p">::</span><span class="n">BUFF_COMPLTE</span><span class="p">);</span>
+  <span class="n">UpdateStoredNals</span><span class="p">(</span><span class="n">pPacket</span><span class="p">,</span> <span class="n">rtpParam</span><span class="o">.</span><span class="n">mark</span><span class="p">,</span> <span class="n">bKeyFrame</span><span class="p">,</span> <span class="n">bKeyFrameReq</span><span class="p">);</span>
+  <span class="k">return</span> <span class="n">WCB_OK</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="wcb_source.html" class="btn btn-neutral float-left" title="WCB source structure" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="wcb_media_stats.html" class="btn btn-neutral float-right" title="Media Statistics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Walter Fan.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Raft &mdash; A Programmer Prepares 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ZAB" href="zab.html" />
+    <link rel="prev" title="分布式系统" href="distribution.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> A Programmer Prepares
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">论程序员的自我修养</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interview.html">程序员面试要点</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resume.html">Resume</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithm/index.html">Algorithm</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Architecture</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="consensus.html">一致性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ddd.html">DDD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="distribution.html">分布式系统</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Raft</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">隐喻</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">选老大</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">日志复制</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="zab.html">ZAB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="micro_service.html">概述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="micro_service.html#id2">亚马逊的架构规定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="web_conference.html">Web Conference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="instant_message.html">Instatnt Message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="design_principles.html">Design Principles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="design_patterns.html">Design Patterns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intercepting_filter.html">Intercepting Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reactor.html">Reactor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="observer.html">Observer Pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service_mesh.html">Service Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="architect_interview.html">Architect Interview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="network_interview.html">Network Interview</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../language/index.html">Programming Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../library/index.html">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oss/index.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html">mathematics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#overview">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#least-squares-method">最小二乘法 least squares method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pattern/index.html">Pattern</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/index.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool/index.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mmp/index.html">MMP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../thinclient/index.html">Thin Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utiltp/index.html">UTILTP</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">A Programmer Prepares</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Architecture</a> &raquo;</li>
+      <li>Raft</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/architecture/raft.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="raft">
+<h1>Raft<a class="headerlink" href="#raft" title="Permalink to this headline"></a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline"></a></h2>
+<p>Raft is a consensus algorithm that is designed to be easy to understand.</p>
+<p>It’s equivalent to Paxos in fault-tolerance and performance.</p>
+<p>The difference is that it’s decomposed into relatively independent subproblems, and it cleanly addresses all major pieces needed for practical systems.</p>
+<p>We hope Raft will make consensus available to a wider audience, and that this wider audience will be able to develop a variety of higher quality consensus-based systems than are available today</p>
+<p>参见 <a class="reference external" href="https://raft.github.io/">https://raft.github.io/</a></p>
+<p>Paper: <a class="reference external" href="https://raft.github.io/raft.pdf">https://raft.github.io/raft.pdf</a></p>
+<ul>
+<li><p>将复杂问题分解成若干个子问题</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>领袖选举</p></li>
+<li><p>日志复制</p></li>
+<li><p>安全性</p></li>
+<li><p>成员关系变化</p></li>
+</ol>
+</div></blockquote>
+</li>
+<li><p>减少状态空间</p></li>
+</ul>
+</section>
+<section id="id1">
+<h2>隐喻<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<p>黑社会的运作机制</p>
+<ul class="simple">
+<li><p>三类角色</p>
+<ul>
+<li><p>Leader 领导 -&gt; 老大</p></li>
+<li><p>Candidate 候选人 -&gt; 资深大佬</p></li>
+<li><p>Follower 跟随者 -&gt; 小弟</p></li>
+</ul>
+</li>
+</ul>
+<p>领导是有任期的 (Term) 的</p>
+<section id="id2">
+<h3>选老大<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
+<p>运作规则</p>
+<ol class="arabic simple">
+<li><p>老大要定期给小弟们发布心跳消息 (heartbeat ), 如果小弟们好长时间没有收到老大的心跳消息，则有理由认为老大已经挂了，需要选新老大</p></li>
+<li><p>小弟们发现大佬挂了，</p></li>
+</ol>
+<blockquote>
+<div><p>2.1 将自己本地维护的当前任期号递增： current_term_id += 1</p>
+<p>2.2 将自己的状态切换到候选人 (Candidate), 并为自己投票</p>
+<p>2.3 向其他小弟发送请求(RequestVote RPC) 包括 (current_term_id),要求他们投票给自己</p>
+</div></blockquote>
+<p>这时候，有三种可能的结果</p>
+<ol class="arabic simple">
+<li><p>得到多数选票，成功当选 Leader</p></li>
+<li><p>其他节点得到多数，自己切换为 Follower</p></li>
+<li><p>一段时间后发觉没人赢得多数票，重新发起一次选举</p></li>
+</ol>
+<p>在一个任期内，一个小弟（ Raft 节点）只有一张选票，只能为一个候选人投票，按照先到先到的原则，投给最早来拉票的人
+一个小弟在等待他人的选票时，如果收到一个自称领导人的心跳消息，如果比当前自己的任期值大，则承认这个新老大合法，否则拒绝，返回最新的 term_id
+如果小弟们在一个超时范围内没有人赢得选举，在这个超时范围内随机开始新一轮的拉票</p>
+<section id="requestvote-reqeust">
+<h4>RequestVote Reqeust<a class="headerlink" href="#requestvote-reqeust" title="Permalink to this headline"></a></h4>
+<ul class="simple">
+<li><p>term</p></li>
+<li><p>canndiateId</p></li>
+<li><p>lastLogIndex</p></li>
+<li><p>lastLogTerm</p></li>
+</ul>
+</section>
+<section id="requestvode-response">
+<h4>RequestVode Response<a class="headerlink" href="#requestvode-response" title="Permalink to this headline"></a></h4>
+<ul class="simple">
+<li><p>term</p></li>
+<li><p>voteGranted</p></li>
+</ul>
+</section>
+</section>
+<section id="id3">
+<h3>日志复制<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
+<p>老大当选了，要向小弟同步状态</p>
+<ol class="arabic simple">
+<li><p>内线告诉老大最近当局要进行一轮扫黑除恶，大家最近小心点别犯事</p></li>
+<li><p>老大把这条消息加入其日志文件中，然后并行向小弟们发给 AppendEntries RPC ，要求小弟们复制这个日志条目</p></li>
+<li><p>老大会不断重试 AppendEntries RPC 指令给各个小弟，确保所有的小弟都同步了这条消息</p></li>
+</ol>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="distribution.html" class="btn btn-neutral float-left" title="分布式系统" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="zab.html" class="btn btn-neutral float-right" title="ZAB" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Walter Fan.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

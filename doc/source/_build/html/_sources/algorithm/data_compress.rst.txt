@@ -1,0 +1,33 @@
+数据压缩
+##############
+
+
+概论
+==============
+
+信息熵： Information entropy
+
+.. math::
+
+    H(S) = \sum_{i=1}^{n}p_i lb(p_i)
+
+
+.. math::
+
+    lb(x) = \frac{log(x)}{log(2)}
+
+
+数据压缩的两个思路
+
+1. 减少数据中不同符号的数量
+2. 用更少的位数对更常见的符号进行编码
+
+分类
+==============
+1. 变长压缩 Variable-length codes
+2. 统计压缩 statistical compression
+3. 字典编码 dictionary encodings
+4. 上下方模型 context modeling
+5. 多上下文模型 multicontext modeling
+
+

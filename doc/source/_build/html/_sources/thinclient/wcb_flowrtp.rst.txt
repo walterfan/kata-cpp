@@ -1,0 +1,99 @@
+#############################
+WCB Flow RTP
+#############################
+
+Overview
+==============================
+
+* The class peeks the RTP packets and parses the RTCP reports.
+
+* It generates the required RTCP reports and traffic control requests.
+
+* The module provides the necessary information and tool for the traffic control through REMB.
+
+* This module depends on no other modules but c libs. There is no timer used in this module.
+
+* All the timing actions are done synchronously (no callbacks) and are derived from the packets peeked/parsed by basing on the clock time.
+
+
+main methods
+==============================
+
+.. list-table:: methods
+   :widths: 15 10 30
+   :header-rows: 1
+
+   * - function
+     - parameter
+     - Description
+   * - peekRtpHeader
+     - 2.99
+     - On a stick!
+   * - addAudioLevel
+     - 1.49
+     - If we took the bones out, it wouldn't be
+       crunchy, now would it?
+   * - calculateJitter
+     - 1.99
+     - On a stick!
+
+Statistics
+===============================
+
+
+
+
+.. code-block::
+
+    void CWCBMediaChanProxy::UpdateMStats(u8 *pNalData, u32 nalSize, u16 streamId, bool bUp2MCS)
+    {
+      if (!pNalData || nalSize == 0  ||
+          (streamId >= WCB::MAX_SSVC_DOWN_STREAMS && !bUp2MCS) ||
+          (streamId > WCB::MAX_SHARING_VIDEO_INDEX && bUp2MCS)) {return;}
+
+      CWCBWmeFlowRtp &flowRtp = bUp2MCS ? m_wmeflowRtpUp[streamId] : m_wmeflowRtpDown[streamId];
+
+      u8 nalType = pNalData[0] & 0x1f;
+      if (nalType == WCB_NALTYPE_IDR) {
+        flowRtp.UpdateMStats(CWCBFlowRtp::MStatsRecvKeyFrame, 0, !bUp2MCS);
+      } else if (nalType == WCB_NALTYPE_SPS || nalType == WCB_NALTYPE_SVC_SPS) { // TODO, need not double parse it.
+        CWCBFlowRtp::sps_t sps;
+        int rv = CWCBH264Stream::parseSPS(pNalData, nalSize, 0, sps);
+        if (!rv) {
+          flowRtp.SetVideoSizeInfo(sps, !bUp2MCS);
+        }
+      }
+    }
+
+.. code-block::
+
+    void CWCBFlowRtp::SetVideoSizeInfo(sps_t& sps, bool bRecv)
+    {
+      FlowMediaStatistics_t& mStats = bRecv ? m_recvMStats : m_sendMStats;
+      mStats.videoInfo.profileIdc = sps.profile_idc;
+      mStats.videoInfo.constraint = sps.constraint;
+      mStats.videoInfo.widthMB = sps.pic_width_in_mbs;
+      mStats.videoInfo.leftOffset = sps.frame_crop_left_offset;
+      mStats.videoInfo.rightOffset = sps.frame_crop_right_offset;
+      mStats.videoInfo.heightMB = sps.pic_height_in_map_units;
+      mStats.videoInfo.topOffset = sps.frame_crop_top_offset;
+      mStats.videoInfo.bottomOffset = sps.frame_crop_bottom_offset;
+    }
+
+SPS
+===============================
+
+
+.. code-block::
+
+    int CWCBFlowRtp::parseRtpNal1_23(u8 *pRtp, rtpParam_t &rtpParam,
+                                     bool &bKeyFrame,  bool &bKeyFrameReq)
+    {
+      //...
+      if (nalType == WCB_NALTYPE_SVC_SPS ||  nalType == WCB_NALTYPE_SPS) { setSpsRecv();} // sps
+
+      /...
+      pPacket->setState(WCB::BUFF_COMPLTE);
+      UpdateStoredNals(pPacket, rtpParam.mark, bKeyFrame, bKeyFrameReq);
+      return WCB_OK;
+    }

@@ -1,0 +1,167 @@
+####################
+分布式系统
+####################
+
+.. contents::
+   :local:
+
+Overview
+====================================
+
+分布式系统设计目标
+
+1. 可用性
+2. 可扩展性
+3. 容错性
+4. 性能
+
+关于网络的误解
+==========================
+* 网络是稳定的。
+* 网络传输的延迟是零。
+* 网络的带宽是无穷大。
+* 网络是安全的。
+* 网络的拓扑不会改变。
+* 只有一个系统管理员。
+* 传输数据的成本为零。
+* 整个网络是同构的。
+
+  - 阿尔农·罗特姆 - 盖尔 - 奥兹（Arnon Rotem-Gal-Oz）"Fallacies of Distributed Computing Explained"
+
+
+基本共识
+======================================
+
+* CAP 不能同时满足： 进程之间有可丢失消息，那么不可能实现一致性存储的同时响应所有请求
+* FLP 不可能性： 一致性不可能同时满足 1） 总是正确 2） 异步系统只要有一台机器发生故障，系统总是能终止运行
+* 容错需要冗余
+* 一般消息少于两轮都不可能达成共识
+
+
+
+经典算法
+======================================
+
+* 顶点涂色算法
+* 分布式的树算法：广播算法，会聚算法，广度优先搜索树算法，最小生成树算法
+* Paxos, ZAB 及  Raft 算法
+* Vector Clock: 向量时钟
+* Gossip 协议： push/pull
+
+
+
+关键技术
+=====================================
+
+* 全栈系统监控
+* 服务和资源调度
+* 流量调度
+* 状态/数据调度
+* 开发和运维的自动化
+
+全栈监控
+--------------------------------------
+* 多层：
+
+  - 基础层： CPU, Mem, Network, Disk I/O
+  - 中间层:  Nginx, Redis, Kafka, Cassandra, MySQL, etc.
+  - 应用层:  Usage, Performance, Error
+  - 业务层
+
+* 标准化：
+
+  - 日志数据结构化
+  - 监控数据格式标准化
+  - 统一的监控平台
+  - 统一的日志分析
+
+* 原则
+
+  - 全局思维：自顶向下，自底向上相结合，关注面向多数用户的整体应用的 SLA
+  - 合纵连横：将纵向各层次间的指标，横向各组件间的度量和监控指标结合起来看
+  - 快速定位：通过 trackingId 和一些关键标识将整个流程串起来，纲举目张
+
+CAP
+======================================
+
+分布式数据存储不可能同时满足以下三个条件。
+
+* 一致性（Consistency）
+
+每次读取要么获得最近写入的数据，要么获得一个错误。
+
+* 可用性（Availability）
+
+每次请求都能获得一个（非错误）响应，但不保证返回的是最新写入的数据。
+
+* 分区容忍（Partition tolerance）
+
+尽管任意数量的消息被节点间的网络丢失（或延迟），系统仍继续运行。
+
+
+所以我们有如下的权衡
+
+* CA (consistency + availability)
+
+这样的系统关注一致性和可用性，它需要非常严格的全体一致的协议，比如“两阶段提交”（2PC）。
+
+CA 系统不能容忍网络错误或节点错误，一旦出现这样的问题，整个系统就会拒绝写请求，因为它并不知道对面的那个结点是否挂掉了，还是只是网络问题。唯一安全的做法就是把自己变成只读的。
+
+* CP (consistency + partition tolerance)
+
+这样的系统关注一致性和分区容忍性。它关注的是系统里大多数人的一致性协议，比如：Paxos 算法（Quorum 类的算法）。
+这样的系统只需要保证大多数结点数据一致，而少数的结点会在没有同步到最新版本的数据时变成不可用的状态。这样能够提供一部分的可用性。
+
+* AP (availability + partition tolerance)
+
+这样的系统关心可用性和分区容忍性。因此，这样的系统不能达成一致性，需要给出数据冲突，给出数据冲突就需要维护数据版本。
+Dynamo 就是这样的系统。
+
+
+一致性常见方案
+==========================
+
+* Master-slave
+* Master-master
+* 两阶段和三阶段提交：Plan-Reserve-Confirm
+* Paxos 及其类似方案
+
+
+FAQ
+==========================
+
+
+谈谈 ACID 与 BASE
+--------------------------------------
+
+ACID stands for:
+
+* Atomic – Each transaction is either properly carried out or the process halts and the database reverts back to the state before the transaction started. This ensures that all data in the database is valid.
+* Consistent – A processed transaction will never endanger the structural integrity of the database.
+* Isolated – Transactions cannot compromise the integrity of other transactions by interacting with them while they are still in progress.
+* Durable – The data related to the completed transaction will persist even in the cases of network or power outages. If a transaction fails, it will not impact the manipulated data.
+
+BASE stands for:
+
+* Basically Available – Rather than enforcing immediate consistency, BASE-modelled NoSQL databases will ensure availability of data by spreading and replicating it across the nodes of the database cluster.
+* Soft State – Due to the lack of immediate consistency, data values may change over time. The BASE model breaks off with the concept of a database which enforces its own consistency, delegating that responsibility to developers.
+* Eventually Consistent – The fact that BASE does not enforce immediate consistency does not mean that it never achieves it. However, until it does, data reads are still possible (even though they might not reflect the reality).
+
+
+如何实现一个分布式锁
+--------------------------------------
+
+
+大致讲讲 paxos 协议
+--------------------------------------
+
+
+参考资料
+===========================
+
+* `Distributed Systems for Fun and Profit`_
+
+.. _Distributed Systems for Fun and Profit:
+
+
+

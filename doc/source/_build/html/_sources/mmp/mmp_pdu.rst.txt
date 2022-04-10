@@ -1,0 +1,296 @@
+##################
+MCS PDU
+##################
+
+
+
+MM_SESSION_PDU_TYPE_JOIN_SESSION_RQST_T22
+client->MMP server
+
+NO
+
+ 
+
+MM_SESSION_PDU_TYPE_BO_JOIN_SESSION_RQST_T22
+
+client->MMP server
+
+NO
+
+ 
+
+MM_SESSION_PDU_TYPE_JOIN_SESSION_RQST
+
+client->MMP server
+
+NO
+ 
+
+MM_SESSION_PDU_TYPE_BO_JOIN_SESSION_RQST
+
+client->MMP server
+
+NO
+ 
+
+MM_SESSION_PDU_TYPE_JOIN_SESSION_RQST_NBR2_RECORD
+
+client->MMP server
+
+NO
+ 
+
+MM_SESSION_PDU_TYPE_BO_JOIN_SESSION_RQST_NBR2
+
+client->MMP server
+
+NO
+ 
+
+MM_SESSION_PDU_TYPE_JOIN_SESSION_RQST_T25
+
+client->MMP server
+
+NO
+ 
+
+MM_SESSION_PDU_TYPE_BO_JOIN_SESSION_RQST_T25
+
+client->MMP server
+
+NO
+ 
+
+MM_SESSION_PDU_TYPE_JOIN_SESSION_RQST_T27
+
+client->MMP server
+
+NO
+ 
+
+MM_SESSION_PDU_TYPE_BO_JOIN_SESSION_RQST_T27
+
+client->MMP server
+
+NO
+ 
+
+MM_SESSION_PDU_TELEPRES_USER_JOIN_REQUEST
+
+client->MMP server
+
+NO
+ 
+
+MM_SESSION_PDU_TYPE_COMM_JOIN_REQUEST
+
+client->MMP server
+
+NO
+ 
+
+MM_SESSION_PDU_TYPE_BIND_DATA_CHANNEL_RQST
+
+client->MMP server
+
+Yes
+
+combine confid and sessionid in PDU, find the specified session(audio/video), then set the base load weight value for this client endpoint.
+
+MM_SESSION_PDU_TYPE_BINDCHANN_REQUEST_EX
+
+client->MMP server
+
+Yes
+
+combine confid and sessionid in PDU, find the specified session(audio/video), then set the base load weight value for this client endpoint.
+MM_SESSION_PDU_TYPE_APPLICATION_COMMAND
+
+client->MMP server
+
+Yes
+
+confid is not used
+
+MM_SESSION_PDU_TYPE_APPLICATION_COMMAND_NBR2
+
+client->MMP server
+
+Yes
+
+confid is not used
+MM_SESSION_PDU_TELEPRES_VIDEO_DATA
+
+client->MMP server
+
+Yes
+
+confid is not used
+MM_SESSION_PDU_TYPE_APPLICATION_DATA_T27
+
+client->MMP server
+
+Yes
+
+confid is not used
+MM_SESSION_PDU_TYPE_APP_MEDIA_STREAMING_DATA
+
+client->MMP server
+
+Yes
+
+confid is not used
+MM_SESSION_PDU_TYPE_SVC_ENGINE_DATA
+
+client->MMP server
+
+Yes
+
+confid is not used
+MM_SESSION_PDU_TYPE_QOS_CONTROL_PARAM
+
+client->MMP server
+
+NO
+ 
+
+MM_SESSION_PDU_QOSCONTROL
+
+client->MMP server
+
+NO
+ 
+
+MM_SESSION_PDU_TYPE_APP_CMD_T27
+
+client->MMP server
+
+Yes
+
+confid is not used
+MM_SESSION_PDU_TYPE_APPLICATION_DATA_T22
+
+client->MMP server
+
+NO
+ 
+
+MM_SESSION_PDU_TYPE_APPLICATION_DATA
+
+client->MMP server
+
+NO
+ 
+
+MM_SESSION_PDU_TYPE_VOIP_DATA_COMBINED_T25
+
+client->MMP server
+
+NO
+ 
+
+MM_SESSION_PDU_TYPE_VOIP_DATA_COMBINED_NBR2
+
+client->MMP server
+
+NO
+ 
+
+MM_SESSION_PDU_TYPE_VOIP_DATA_COMBINED
+
+client->MMP server
+
+NO
+ 
+
+MM_SESSION_PDU_TYPE_CHANGE_ROLE_RQST
+
+client->MMP server
+
+NO
+ 
+
+MM_SESSION_PDU_CHANGE_ROSTER_INFO_REQUEST
+
+client->MMP server
+
+NO
+ 
+
+MM_SESSION_PDU_TYPE_APPLICATION_RTCP_DATA_RR
+
+client->MMP server
+
+Yes
+
+RTCP report,  it is old QOS mechanism. client didn't send it now.
+
+MM_SESSION_PDU_TYPE_APPLICATION_RTCP_DATA_SR
+
+client->MMP server
+
+Yes
+
+RTCP report, it is old QOS mechanism. client didn't send it now.
+
+MM_SESSION_PDU_TYPE_RECEIVER_REPORT
+
+client->MMP server
+
+Yes
+
+confid is not used
+MM_SESSION_PDU_TYPE_QOS_RTP_CLT_INF
+
+client->MMP server
+
+NO
+ 
+
+MM_SESSION_PDU_TRACEOUTPUT_TOSERVER
+
+client->MMP server
+
+Yes
+
+this PDU is used for recording some client logs in server side. server just print the confid
+to server log.
+
+ 
+
+ 
+
+ 
+
+ 
+
+For permission
+
+ 
+
+ 
+
+ 
+
+MMMSG_TYPE_NBR_APP_START
+
+client->MMP server
+
+NO
+
+start NBR recording in MMP
+
+MMMSG_TYPE_NBR_APP_STOP
+
+client->MMP server
+
+NO
+
+stop NBR recording in MMP
+
+MMMSG_TYPE_NBR_APP_STATUS
+client->MMP server
+NO
+
+pause NBR recording in MMP
+

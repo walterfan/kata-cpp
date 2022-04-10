@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>C++ Interview Questions &mdash; A Programmer Prepares 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="C++ Evolution" href="cpp_evolution.html" />
+    <link rel="prev" title="C++" href="cpp.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> A Programmer Prepares
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">论程序员的自我修养</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interview.html">程序员面试要点</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resume.html">Resume</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithm/index.html">Algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">Architecture</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Programming Language</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cpp.html">C++</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">C++ Interview Questions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#c">C语言</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#char-const-char-char-constconst-char-const">描述char*、const char*、char* const、const char* const的区别？</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">C++基础知识面试题</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#c-11">C++11新特性</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">C++11新特性你都了解多少？可以介绍一下吗？</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#autodecltype">了解auto和decltype吗？</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">谈一谈你对左值和右值的了解，了解左值引用和右值引用吗？</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">了解移动语义和完美转发吗？</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#stl">STL系列</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">设计模式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">操作系统</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">编译原理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reference">Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_evolution.html">C++ Evolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_lambda.html">C++ Lambda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_memory.html">Resource management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_stl.html">C++ STL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_thread.html">C++ Thread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_rvalue.html">右值引用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_object_model.html">C++ Object Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_server.html">C++ Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="java.html">Java</a></li>
+<li class="toctree-l2"><a class="reference internal" href="java_concurrency.html">Java Concurrency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="java_interview.html">Java Interview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="java_bytecode.html">Java 字节码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="java_classloader.html">Java 类加载器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="java_collection.html">Java collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python.html">Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="javascript.html">JavaScript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="js_promise.html">Promise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="js_test.html">JS Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="js_visualize.html">JavaScript Visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="js_interview.html">JS Interview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="js_async.html">javascript asynchronous programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodejs.html">NodeJS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="go.html">Go lanaguage</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../library/index.html">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oss/index.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html">mathematics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#overview">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#least-squares-method">最小二乘法 least squares method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pattern/index.html">Pattern</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/index.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool/index.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mmp/index.html">MMP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../thinclient/index.html">Thin Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utiltp/index.html">UTILTP</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">A Programmer Prepares</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Programming Language</a> &raquo;</li>
+      <li>C++ Interview Questions</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/language/cpp_interview.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="c-interview-questions">
+<h1>C++ Interview Questions<a class="headerlink" href="#c-interview-questions" title="Permalink to this headline"></a></h1>
+<section id="c">
+<h2>C语言<a class="headerlink" href="#c" title="Permalink to this headline"></a></h2>
+<p>const的作用有哪些，谈一谈你对const的理解？</p>
+<section id="char-const-char-char-constconst-char-const">
+<h3>描述char*、const char*、char* const、const char* const的区别？<a class="headerlink" href="#char-const-char-char-constconst-char-const" title="Permalink to this headline"></a></h3>
+<blockquote>
+<div><p>char* p0;              //指向 char 的指针
+char * const p1;       //指向 char 的 const 指针 - 指针本身不能改动
+char const * p2;       //指向 const char 的指针
+const char* p3；       //指向 const char 的指针
+const char* const p4;  //指向 const char 的 const 指针</p>
+</div></blockquote>
+<p>指针常量和常量指针有什么区别？</p>
+<p>static的作用是什么，什么情况下用到static？</p>
+<p>全局变量与局部变量的区别？</p>
+<p>宏定义的作用是什么？</p>
+<p>内存对齐的概念？</p>
+<p>为什么会有内存对齐？</p>
+<p>inline 内联函数的特点有哪些？它的优缺点是什么？</p>
+<p>如何避免野指针？</p>
+<p>如何计算结构体长度？</p>
+<p>sizeof和strlen有什么区别？</p>
+<p>知道条件变量吗？</p>
+<p>条件变量为什么要和锁配合使用？</p>
+<p>如何用C 实现 C++ 的面向对象特性（封装、继承、多态）</p>
+<p>memcpy怎么实现让它效率更高？</p>
+<p>typedef和define有什么区别？</p>
+<p>extern有什么作用，extern C有什么作用？</p>
+</section>
+</section>
+<section id="id1">
+<h2>C++基础知识面试题<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<p>C++ OOP</p>
+<p>C语言和C++有什么区别？</p>
+<p>struct和class有什么区别？</p>
+<p>extern “C”的作用？</p>
+<p>了解RAII吗？介绍一下？RAII可是C++很重要的一个特性。</p>
+<p>函数重载和覆盖有什么区别？</p>
+<p>谈一谈你对多态的理解，运行时多态的实现原理是什么？</p>
+<p>对虚函数机制的理解，单继承、多继承、虚继承条件下虚函数表的结构</p>
+<p>如果虚函数是有效的，那为什么不把所有函数设为虚函数？</p>
+<p>构造函数可以是虚函数吗？析构函数可以是虚函数吗？</p>
+<p>基类的析构函数可以调用虚函数吗？</p>
+<p>基类的构造函数可以调用虚函数吗？</p>
+<p>什么场景需要用到纯虚函数？纯虚函数的作用是什么？</p>
+<p>指针和引用有什么区别？什么情况下用指针，什么情况下用引用？</p>
+<p>new和malloc有什么区别？malloc的内存可以用delete释放吗？malloc出来20字节内存，为什么free不需要传入20呢，不会产生内存泄漏吗？</p>
+<p>new[]和delete[]一定要配对使用吗？为什么？</p>
+<p>类的大小怎么计算？</p>
+<p>volatile关键字的作用</p>
+<p>如何实现一个线程池？说一下基本思路即可！</p>
+<p>了解各种强制类型转换的原理及使用吗？说说？</p>
+</section>
+<section id="c-11">
+<h2>C++11新特性<a class="headerlink" href="#c-11" title="Permalink to this headline"></a></h2>
+<section id="id2">
+<h3>C++11新特性你都了解多少？可以介绍一下吗？<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
+</section>
+<section id="autodecltype">
+<h3>了解auto和decltype吗？<a class="headerlink" href="#autodecltype" title="Permalink to this headline"></a></h3>
+</section>
+<section id="id3">
+<h3>谈一谈你对左值和右值的了解，了解左值引用和右值引用吗？<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
+<p>左值具有可标识的内存地址并可以长期存在，右值没有可识别的内存地址，仅存储暂时的结果。
+判断一个表达是否是左值就是看它是否可以长期存在，即它是否有一个地址。</p>
+<p>左值可以转换为右值</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span><span class="mi">2</span><span class="p">;</span>
+<span class="nb">int</span> <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">;</span> <span class="o">//</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="n">隐式转换为右值</span>
+</pre></div>
+</div>
+<p>右值不能转换为左值，但是右值可以产生一个左值。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>int arr[] = {1, 2}
+int *p = &amp;arr[0];
+*(p + 1) = 10; // p+1 是右值， *(p + 1) 是一个左值。
+</pre></div>
+</div>
+<p>一般普通引用都是左值引用， C++11 引入了右值引用，既引用也可以是一个右值，为一个临时表达式的别名, 用 <cite>T&amp;&amp; var = expr</cite> 来表示</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span> <span class="n">var</span><span class="p">{</span><span class="mi">5</span><span class="p">}</span>
+<span class="nb">int</span><span class="o">&amp;</span> <span class="n">leftRef</span><span class="p">{</span><span class="n">var</span><span class="p">};</span>
+<span class="nb">int</span><span class="o">&amp;&amp;</span> <span class="n">rightRef</span><span class="p">{</span><span class="n">var</span> <span class="o">+</span> <span class="mi">3</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>右值引用主要用于 move 移动语义</p>
+</section>
+<section id="id4">
+<h3>了解移动语义和完美转发吗？<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
+<p>enum 和 enum class有什么区别？了</p>
+<p>解列表初始化吗？</p>
+<p>对C++11的智能指针了解多少，可以自己实现一个智能指针吗？</p>
+<p>平时会用到function、bind、lambda吗，都什么场景下会用到？</p>
+<p>对C++11的mutex和RAII lock有过了解吗？</p>
+<p>一般什么情况下会出现内存泄漏？出现内存泄漏如何调试？</p>
+<p>unique_ptr如何转换的所有权？</p>
+<p>谈一谈你对面向对象的理解, 什么场景下使用继承方式，什么场景下使用组合？</p>
+</section>
+</section>
+<section id="stl">
+<h2>STL系列<a class="headerlink" href="#stl" title="Permalink to this headline"></a></h2>
+<p>C++直接使用数组好还是使用std::array好？</p>
+<p>std::array是怎么实现的？</p>
+<p>std::vector最大的特点是什么？它的内部是怎么实现的？resize和reserve的区别是什么？clear是怎么实现的？</p>
+<p>deque的底层数据结构是什么？它的内部是怎么实现的？</p>
+<p>map和unordered_map有什么区别？分别在什么场景下使用？</p>
+<p>list的使用场景？std::find可以传入list对应的迭代器吗？</p>
+<p>string的常用函数</p>
+</section>
+<section id="id5">
+<h2>设计模式<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h2>
+<p>不强求一一列出那23种设计模式，说出几个常见的即可。</p>
+<p>分别写出饿汉和懒汉线程安全的单例模式</p>
+<p>说出观察者模式类关系和优点</p>
+<p>说出代理模式类关系和优点</p>
+<p>说出工厂模式概念和优点</p>
+<p>说出构造者模式概念</p>
+<p>说出适配器模式概念</p>
+</section>
+<section id="id6">
+<h2>操作系统<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h2>
+<p>进程和线程的区别？</p>
+<p>操作系统是怎么进行进程管理的？操</p>
+<p>作系统是如何做到进程阻塞的？</p>
+<p>进程之间的通信方式有哪些？</p>
+<p>线程是如何实现的？</p>
+<p>线程之间私有和共享的资源有哪些？</p>
+<p>一般应用程序内存空间的堆和栈的区别是什么？</p>
+<p>进程虚拟空间是怎么布局的？</p>
+<p>虚拟内存是如何映射到物理内存的？</p>
+<p>了解分页内存管理吗？</p>
+<p>什么是上下文切换，操作系统是怎么做的上下文切换？</p>
+<p>什么是大端字节，什么是小端字节？如何转换字节序？</p>
+<p>产生死锁的必要条件有哪些？如何避免死锁？</p>
+<p>信号和信号量的区别是什么？</p>
+<p>锁的性能开销，锁的实现原理？</p>
+</section>
+<section id="id7">
+<h2>编译原理<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h2>
+<p>gcc hello.c 这行命令具体的执行过程，内部究竟做了什么？</p>
+<p>程序一定会从main函数开始运行吗？</p>
+<p>如何确定某个函数有被编译输出？</p>
+</section>
+<section id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/fightingwangzq/cpp-learning">https://github.com/fightingwangzq/cpp-learning</a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="cpp.html" class="btn btn-neutral float-left" title="C++" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cpp_evolution.html" class="btn btn-neutral float-right" title="C++ Evolution" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Walter Fan.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

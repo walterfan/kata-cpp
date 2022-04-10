@@ -1,0 +1,31 @@
+################
+Java 类加载器
+################
+
+Overview
+===============
+
+Classloader is a subsystem of JVM which is used to load class files. Whenever we run the java program, it is loaded first by the classloader. There are three built-in classloaders in Java.
+
+* Bootstrap ClassLoader: This is the first classloader which is the superclass of Extension classloader. It loads the rt.jar file which contains all class files of Java Standard Edition like java.lang package classes, java.net package classes, java.util package classes, java.io package classes, java.sql package classes, etc.
+* Extension ClassLoader: This is the child classloader of Bootstrap and parent classloader of System classloader. It loads the jar files located inside $JAVA_HOME/jre/lib/ext directory.
+* System/Application ClassLoader: This is the child classloader of Extension classloader. It loads the class files from the classpath. By default, the classpath is set to the current directory. You can change the classpath using "-cp" or "-classpath" switch. It is also known as Application classloader.
+
+
+JVM 四级类加载器
+
+* 启用类加载器 Bootstrap - rt.jar
+* 扩展类加载器 Extenstion - jre/lib/ext
+* 应用类加载器 Application - classpath 里的
+* 用户自定义的类加载器  Plugin
+
+
+类加载器的双亲委托机制： 先看有不有加载，没有的话找父加载器，再没有的话由当前加载器加载
+
+每一个 class 都有一个 classLoader 成员变量
+
+
+Service Loader
+================
+
+Java6 引入的新特性

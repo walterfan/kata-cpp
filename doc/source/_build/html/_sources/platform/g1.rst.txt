@@ -1,0 +1,26 @@
+Gabarge First
+======================
+
+Overview
+----------------------
+G1 的目标是在满足短时间停顿的同时达到一个高的吞吐量，适用于多核处理器，大容量内存系统。
+
+特点
+1. 停顿时间短并可控
+2. 高吞吐量
+
+
+Glossry
+----------------------
+
+STW(Stop the World)
+
+Safepoint
+
+Mutator 改变对象属性的方法
+
+Remember Set
+
+Refine
+
+Evacuation: 转移，撤退或者回收

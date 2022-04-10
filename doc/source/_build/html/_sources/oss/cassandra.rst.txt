@@ -1,0 +1,68 @@
+########################
+Cassandra
+########################
+
+.. contents::
+   :local:
+
+Overview
+=========================
+
+Overview
+-------------------------
+
+Apache Cassandra is an open source, distributed, NoSQL database. It presents a partitioned wide column storage model with eventually consistent semantics.
+
+
+Cassandra was designed as a best in class combination of both systems to meet emerging large scale, both in data footprint and query volume, storage requirements. 
+
+As applications began to require full global replication and always available low-latency reads and writes, it became imperative to design a new kind of database model as the relational database systems of the time struggled to meet the new requirements of global scale applications.
+
+Systems like Cassandra are designed for these challenges and seek the following design objectives:
+
+* Full multi-master database replication  完全的多主节点数据库复制
+* Global availability at low latency 低延迟下的全局有效
+* Scaling out on commodity hardware 在一般的硬件上的水平扩展
+* Linear throughput increase with each additional processor 随着线性吞吐量增长
+* Online load balancing and cluster growth
+* Partitioned key-oriented queries
+* Flexible schema
+
+
+Features
+-------------------
+Cassandra provides the Cassandra Query Language (CQL), an SQL-like language, to create and update database schema and access data. 
+
+CQL allows users to organize data within a cluster of Cassandra nodes using:
+
+    * Keyspace: defines how a dataset is replicated, for example in which datacenters and how many copies. Keyspaces contain tables.
+
+    * Table: defines the typed schema for a collection of partitions. Cassandra tables have flexible addition of new columns to tables with zero downtime. Tables contain partitions, which contain partitions, which contain columns.
+
+    * Partition: defines the mandatory part of the primary key all rows in Cassandra must have. All performant queries supply the partition key in the query.
+
+    * Row: contains a collection of columns identified by a unique primary key made up of the partition key and optionally additional clustering keys.
+
+    * Column: A single datum with a type which belong to a row.
+
+* CQL supports numerous advanced features over a partitioned dataset such as:
+
+  - Single partition lightweight transactions with atomic compare and set semantics.
+  - User-defined types, functions and aggregates
+  - Collection types including sets, maps, and lists.
+  - Local secondary indices
+  - (Experimental) materialized views
+
+
+Cassandra explicitly chooses not to implement operations that require cross partition coordination as they are typically slow and hard to provide highly available global semantics. For example Cassandra does not support:
+
+* Cross partition transactions
+  - Distributed joins
+  - Foreign keys or referential integrity.
+
+Data Model
+-------------------------
+
+
+Code structure
+-------------------------

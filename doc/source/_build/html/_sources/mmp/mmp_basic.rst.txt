@@ -1,0 +1,208 @@
+##############
+MMP Basic
+##############
+
+.. contents::
+    :local:
+
+
+
+Build
+======================
+
+
+.. code-block:: bash
+
+    git clone git clone ssh://git@bitbucket-eng-chn-sjc1.cisco.com:7999/cctgfork/webex-mmp
+    git clone git clone ssh://git@bitbucket-eng-chn-sjc1.cisco.com:7999/cctgfork/webex-pangu
+    cd webex-mmp/dependencies
+    source getwdm_dep.sh
+    cd ../src && make
+    cd ../test && make  // compile and run unit test
+
+
+Start and stop
+======================
+
+* start
+
+.. code-block::
+
+    /etc/webex/init.d/mmp start
+
+    g_GroupOwner="wrt-mmp:nobody"
+    g_CorePath='/opt/webex/core'
+    g_ErrorFile='/tmp/cmc.output' 
+    l_Index=1
+    l_ProcNum=0
+    l_ProcessName="wbxmcs-0$l_Index"
+    l_WorkPath=${WEBEX_MMP_HOME:-/opt/webex/mmp}
+    l_FullProcessName="${l_WorkPath}/bin/${l_ProcessName}"
+    source /opt/webex/mmp/bin/runenv.sh >/dev/null 2>&1
+    nohup ${l_FullProcessName} -f "webex-${l_Index}.cfg" >/dev/null 2>>${g_ErrorFile} &
+
+* stop
+
+.. code-block::
+
+    if [ -f /etc/webex/init.d/mmp ]; 
+        then /etc/webex/init.d/mmp stop; 
+    else 
+        /etc/webex/init.d/wbxd stop; 
+    fi
+
+* check 
+
+.. code-block::
+
+    /etc/webex/init.d/mmp status
+
+
+
+
+configuration
+======================
+* webex.cfg
+
+.. code-block::
+
+    [root@gmhz61mcs101 logs]# netstat -anp|grep mcs
+    tcp        0      0 10.224.184.103:5004     0.0.0.0:*               LISTEN      9206/wbxmcs-01
+    tcp        0      0 10.224.184.103:80       0.0.0.0:*               LISTEN      9206/wbxmcs-01
+    tcp        0      0 10.224.184.103:8081     0.0.0.0:*               LISTEN      9206/wbxmcs-01
+    tcp        0      0 10.224.184.103:5062     0.0.0.0:*               LISTEN      9206/wbxmcs-01
+    tcp        0      0 10.224.184.103:8554     0.0.0.0:*               LISTEN      9206/wbxmcs-01
+    tcp        0      1 10.224.184.103:36590    10.224.188.71:1521      SYN_SENT    9206/wbxmcs-01
+    tcp        0      0 10.224.184.103:56118    10.224.189.107:12342    ESTABLISHED 9206/wbxmcs-01
+    udp        0      0 10.224.184.103:7071     0.0.0.0:*                           9206/wbxmcs-01
+    udp        0      0 10.224.184.103:39999    0.0.0.0:*                           9206/wbxmcs-01
+    udp        0      0 10.224.184.103:7500     0.0.0.0:*                           9206/wbxmcs-01
+    udp        0      0 10.224.184.103:7501     0.0.0.0:*                           9206/wbxmcs-01
+    udp        0      0 10.224.184.103:9000     0.0.0.0:*                           9206/wbxmcs-01
+    udp        0      0 0.0.0.0:34497           0.0.0.0:*                           9206/wbxmcs-01
+    udp        0      0 10.224.184.103:5060     0.0.0.0:*                           9206/wbxmcs-01
+    raw   113152      0 10.224.184.103:17       0.0.0.0:*               7           9206/wbxmcs-01
+    raw   113152      0 10.224.184.103:17       0.0.0.0:*               7           9206/wbxmcs-01
+    unix  3      [ ]         STREAM     CONNECTED     34551948 9206/wbxmcs-01
+    unix  3      [ ]         STREAM     CONNECTED     34551949 9206/wbxmcs-01
+    unix  3      [ ]         STREAM     CONNECTED     34551715 9206/wbxmcs-01
+    unix  3      [ ]         STREAM     CONNECTED     34551716 9206/wbxmcs-01    
+
+Glossary
+======================
+
+* AGC: Automatic Gain Control
+
+* VAD: Voice Activity Detection
+
+* AEC: Acoustic Echo Cancellation
+
+* PLC: Packet Lost Cancellation
+
+* NR: Noise Reduction
+
+* FEC: Forward Error Correction
+
+
+
+
+MCS
+======================
+
+CMediaServer
+----------------------
+
+CRC(classes, responsibilities, and collaborations )
+
+parent classes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+public IMmServerSessionJoinSink,
+public IMmRestfulAPIReceivedSink,
+public ISvrProxyMgrSink, 
+#ifndef __STREAMING_SERVER__
+public IRtspServerSink,
+#endif
+#ifdef _MM_DB_ // 12/19/05,get DB log error
+public IDBLogInterfaceSink,
+#endif
+public CCmTimerWrapperIDSink,
+public IServerLoadNotifySink,
+public CHttpServiceSink,
+public CHttpServiceLogSink,
+public ICmObserver,
+public IAppSessionSink
+
+
+member classes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* IRtspServer
+* CMmServerSessionAPI
+
+
+
+
+PDU
+======================
+
+JoinSession PDU
+----------------------
+
+.. code-block:: c++
+
+    class CMmSessionJoinPDURequest : public CMmSessionPDUBase
+    {
+    public:
+        CMmSessionJoinPDURequest()
+            : m_lpTicket( NULL )
+            , m_wTicketLen( 0 )
+            , m_lpUserInfo( NULL )
+            , m_wUserInfoLen( 0 )
+            , m_cEncryptType( 0 )
+            , m_cSessionType( 0 )
+            , m_wSequence( 0 )
+            , m_bHaveUserInfo( TRUE )
+            , m_dwSeqOfCreate( 0 )
+        {
+            m_cType = MM_SESSION_PDU_TYPE_JOIN_SESSION_RQST;
+        }
+    private:    
+
+        BYTE*							m_lpTicket;
+        WORD							m_wTicketLen;
+        BYTE*							m_lpUserInfo;
+        WORD							m_wUserInfoLen;
+        MM_SESSION_ENCRYPTION_TYPE		m_cEncryptType;
+        MM_SESSION_TYPE					m_cSessionType;
+        WORD							m_wSequence;
+        BOOL							m_bHaveUserInfo;
+        DWORD							m_dwSeqOfCreate;
+
+        CCmString						m_strTicket;
+        CCmString						m_strUserInfo;
+    }
+
+
+
+Typical flow
+======================
+
+
+.. code-block:: c++
+
+    mResult CMmSessionServerEndPoint::
+    OnSessionJoin_u(CCmMessageBlock &aData, BYTE aPduType,
+                    PAUTHTICKETFORMAT pFormat , PAUTHTICKETATTRIB pAttrib)
+    {
+        CM_INFO_TRACE("CMmSessionServerEndPoint::OnSessionJoin_u. " <<
+            Param(aPduType) << Sep << EndpointPtr(this));
+        CM_ASSERTE(CCmThreadManager::IsEqualCurrentThread(
+            m_pSessionManager->GetUserThread()->GetThreadId()));
+
+        if (aPduType == MM_SESSION_PDU_TYPE_JOIN_SESSION_RQST) {
+            m_clientVer = MM_CLIENT_T21;
+            m_joinInfoExt.m_clientVersion = MM_CLIENT_T21;
+            m_joinInfoExt.m_requiredVersion = MM_SERVER_VERSION_3_4_1_0;
+            CMmSessionJoinPDURequest pduRequest;
+            ProcJoinSessionRequest(aData,  pduRequest, pFormat, pAttrib);
+        }

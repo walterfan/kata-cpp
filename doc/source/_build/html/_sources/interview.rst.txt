@@ -1,0 +1,79 @@
+#######################
+程序员面试要点
+#######################
+
+
+.. contents::
+   :local:
+
+概述
+=====================
+* 技能和知识 Skills & Knowledge
+* 态度 Attributes
+* 成绩 Achievements
+* 动机 Motivation
+
+能力
+-----------------
+* 学习能力
+* 分析能力
+* 总结能力
+* 沟通能力
+* 问题解决能力
+* 设计编码能力
+* 英语交流能力
+  
+知识
+------------------
+* 数据结构与算法： 参见 `Data Structure Interview`_， `Algorithm Interview`_ 等
+* 操作系统
+* 高等数学
+* 网络协议： 例如 TCP, UDP, RTP, SDP 等, 参见 `Network Interview`_
+* 编程语言： 参见 * `cpp interview`_， `java interview`_ 等
+* 数据存储中间件: 例如 `cassandra`_
+* 媒体处理知识： 例如音视频编码，传输，调优等
+* 分布式服务架构：参见 `Architecture Interview`_
+
+经验及成就
+------------------
+* 专著
+* 项目： 规模与关键点
+* 职称
+* 证书
+
+.. _Algorithm Interview: ./algorithm/al_interview.html
+.. _Data Structure Interview: ./algorithm/ds_interview.html
+.. _Architecture Interview: ./architecture/architect_interview.html
+.. _Network Interview: ./architecture/network_interview.html
+.. _cpp interview: ./language/cpp_interview.html
+.. _java interview: ./language/java_interview.html
+.. _cassandra: ./middleware/cassandra.html
+
+
+品质与价值观
+-------------------
+* 态度决定成败
+* 价值观决定方向
+
+问题
+=================================
+重点在于解决问题的能力,坚韧不拔的品质
+
+编程和算法问题
+--------------------
+问题与算法, 考察思路与深度
+
+设计和架构问题
+--------------------
+问题与解决方案, 考察见解与广度
+
+
+行为问题
+--------------------
+在极限环境下的生存能力,文化,品质与价值观的契合度
+
+* 你的兴奋点是什么
+
+* 你如何面对挑战
+
+* 你的兴趣所在

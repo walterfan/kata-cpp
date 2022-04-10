@@ -1,0 +1,120 @@
+###############
+CMSC API
+###############
+
+
+Overview
+==================
+
+refer to https://confluence-eng-gpk2.cisco.com/conf/display/~yafan/2020/11/26/CSCC+and+CMSC
+
+
+4 Major APIs
+----------------------------
+* setupSession()  -- for Media Setup and callback event
+* ManageSession() – for PeerConnection setup
+* ControlMedia()  -- for mute/unmute, preview, etc.
+* closeSession()
+
+
+Interface
+----------------------------
+* Asynchronous callback for service request/ management
+* Event notification for progress status update
+* implement “Promise” as needed
+
+
+Components
+============================
+
+sessionMgr
+----------------------------
+
+
+
+
+
+
+Congestion Control
+========================
+
+* NACK/FB
+
+* REMB
+
+* RTCP SR/RR
+
+
+Algorithms
+-------------------------
+
+Client as sender
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+According to UDP PDR(Packet Drop Rate), UP or down a level
+
+1. 90p:  64 kpbs
+2. 180p: 256 kpbs
+3. 320p: 768 kpbs
+4. 720p: 1920 kpbs
+
+
+Contansts
+==========================
+
+
+
+.. code-block::
+
+    Cmsc.prototype.constantDef = {
+        // audio track
+        MIN_AUDIO_TRACK: 0,
+        MAX_AUDIO_TRACK: 4,
+        DEFAULT_AUDIO_TRACK: 4,
+
+
+        // audio codec
+        AUDIO_CODEC_NONE: 0,
+        AUDIO_CODEC_OPUS: 1,
+        AUDIO_CODEC_G711: 2,
+        AUDIO_CODEC_G722: 3,
+
+        // video track
+        MIN_VIDEO_TRACK: 0,
+        MAX_VIDEO_TRACK: 7,
+        DEFAULT_VIDEO_TRACK: 7,
+        MAX_VIDEO_RECEIVE_BITRATE: 1536000,
+
+        // send video track
+        MIN_EXTRA_VIDEO_TRACK: 0,
+        MAX_EXTRA_VIDEO_TRACK: 4,
+        EXTRA_DEFAULT_VIDEO_TRACK:4,
+        EXTRA_DEFAULT_VIDEO_TRACK_BITRATES:[[768000],[64000, 768000],[64000, 196000, 768000],[64000, 196000, 576000, 1536000]],
+
+        DEFAULT_CAM_WIDTH: 1280,
+        DEFAULT_CAM_HEIGHT: 720,
+        DEFAULT_CAM_FRAMERATE: 30,
+        DEFAULT_CAM_KEEPALIVE_FRAMERATE: 1,
+
+        // Receive AS video track
+        MIN_ASVIDEO_TRACK: 0,
+        MAX_ASVIDEO_TRACK: 1,
+        DEFAULT_ASVIDEO_TRACK: 1,
+        DEFAULT_ASVIDEO_TRACK_BITRATES:1536000,
+        MCSTYPE_HFRS_SHARING: 1,
+        MCSTYPE_HFRS_STATIC_SHARING: 2,
+
+        // sending AS video Track
+        MIN_EXTRA_ASVIDEO_TRACK: 0,
+        MAX_EXTRA_ASVIDEO_TRACK: 2,
+        EXTRA_DEFAULT_ASVIDEO_TRACK: 1,
+        EXTRA_DEFAULT_ASVIDEO_TRACK_BITRATES:1536000, //1024000
+        EXTRA_DEFAULT_ASVIDEO_TRACK_BITRATES_A:[[1536000],[768000, 1536000]], //[720p], [360p, 720p]] array
+        DEFAULT_ASVIDEO_SOURCE: ["screen"],
+        DEFAULT_ASVIDEO_WIDTH: 1920,
+        DEFAULT_ASVIDEO_HEIGHT: 1080,
+        DEFAULT_ASVIDEO_FRAMERATE: 5,
+    //...
+    }
+
+

@@ -1,0 +1,50 @@
+############
+Socket.io
+############
+
+What
+============
+
+Socket.io 是一个在浏览器与服务器之间启用了实时，双向和事件通信的软件库，它包括：
+
+* 一个 Node.js 的服务器
+* 一个 Javascript 的用于浏览器的客户端软件库
+
+![](https://socket.io/images/bidirectional-communication.png)
+
+还有用其他语言实现的客户端库
+
+* Java: https://github.com/socketio/socket.io-client-java
+* C++: https://github.com/socketio/socket.io-client-cpp
+* Swift: https://github.com/socketio/socket.io-client-swift
+* Dart: https://github.com/rikulo/socket.io-client-dart
+* Python: https://github.com/miguelgrinberg/python-socketio
+* .Net: https://github.com/Quobject/SocketIoClientDotNet
+
+
+Why
+============
+
+
+
+How
+=============
+
+
+Example
+=============
+
+
+Conclusion
+==============
+
+
+Example
+==============
+
+
+Reference
+===============
+
+* https://socket.io/docs/v3
+* https://github.com/socketio/socket.io

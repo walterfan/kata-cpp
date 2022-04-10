@@ -1,0 +1,157 @@
+#################
+MMP RTP
+#################
+
+.. contents::
+    :local:
+
+
+main class
+===================
+
+
+.. list-table:: IMMRTPSessionSink
+   :widths: 15 10 30
+   :header-rows: 1
+
+   * - name
+     - description
+     - comments
+   * - OnRtcpSendIndicate
+     -
+     -
+
+
+* IMMRTPSession
+
+  - SetReady
+  - AddRtpHeaderForSend
+  - InputReceivedRtpData
+  - InputReceivedRtcpData
+  - ModifyReceivedSRNtpTime
+  - RemoveRtpSource
+
+* IMmRtpSessionPlc
+
+  - PackData
+  - GenerateAppRtcpAndSend
+  - GetFrameInfo
+
+.. code-block:: c++
+
+    class IMMRTPSession
+    {
+    public:
+    /* call SetReady to start run internal rtp session process.
+    */
+        virtual void SetReady() = 0;
+
+        /*  for sending data : input sending raw buffer, then this function add RTP header in it
+          the rtp packet will return through sink function OnRTPFrameSendIndicate
+            BYTE * data :  payload buffer
+            UINT dwLength: payload length
+            DWORD userId:  get from session layer defined CMmSID m_UserId ;  used as RTP ssrc
+            BYTE pt:   codec payload type.
+            BYTE * ExtensionData  : extension data used for rtpheader extension field
+            UINT ExtensionLength: extension length
+        */
+        virtual CmResult AddRtpHeaderForSend(BYTE * data, UINT dwLength, DWORD userId /* used as RTP ssrc*/,
+            BYTE pt, BYTE * ExtensionData, UINT ExtensionLength) = 0;
+
+    /* For received rtp data: input raw rtp data ,  RTPlib put it into the jitter buffer and return back to the upper layer through OnRTPFrameDataIndicate() function.
+    */
+        virtual CmResult InputReceivedRtpData(BYTE * data, UINT dwLength, UINT dwSourceUid = 0) = 0;
+    /* For received RTCP data: input raw rctp data (including SR/RR).
+    */
+        virtual CmResult InputReceivedRtcpData(BYTE * data, UINT dwLength) = 0;
+
+    // for MCS session layer use
+    /*
+      When MCS forward RTP packet to the video clients attaching it, it need call this
+      function to modify the RTP SR time to the MCS machine local time.
+      */
+        virtual CmResult ModifyReceivedSRNtpTime(BYTE * data, UINT dwLength) = 0;
+
+        /*
+        *	Remove the sourceid when an atendee leave the session.
+        */
+        virtual void RemoveRtpSource(UINT srcid) = 0;
+
+
+    //	virtual void SetDefaultVideoRate(DWORD vidoRate) = 0;
+    // now this function is not used in MCS
+    // 	virtual CmResult SetRTCPSendingInterval(UINT PacktIntvl) = 0;
+        virtual ~IMMRTPSession( ) {};
+    };
+
+    class IMmRtpSessionPlc : public IMMRTPSession
+    {
+    public:
+         /* the usage is the same with the AddRtpHeaderForSend in IMMRTPSession except it add some parameters*/
+         virtual CmResult PackData(const SliceInfo &slice, DWORD uid, BYTE payloadType, BYTE *rtpExtension, DWORD extsionLen, DWORD dwTimeStamp=0) = 0;
+
+        //add by Steven for send app rtcp, 2007-06-28
+        virtual long GenerateAppRtcpAndSend(const unsigned int iStartFrameIndex,const unsigned int iLostFrameNum) = 0;
+
+        //Mar 21 08
+        virtual bool GetFrameInfo(unsigned long timestamp, BYTE &frameType, int &frameIndex, bool &integrated) = 0;
+    };
+
+* IMMRTPSessionSink
+
+  - OnRtcpSendIndicate
+  - OnRTPFrameSendIndicate
+  - OnRTPFrameRecvIndicate
+  - OnAppRTCPRecvIndicate
+  - OnNetStatusIndicate
+
+.. code-block:: c++
+
+    class IMMRTPSessionSink
+    {
+    public:
+    /*  When it is time for sending RTCP packet, rtplib will collect the rtcp data and construct
+    the packet then call back through this function. call layer  should send this data to receiver.
+    _rtcp_type_t reportType  :
+        RTCP_SR   =	200,
+        RTCP_RR   =	201,
+        RTCP_SDES =	202,
+        RTCP_BYE  =	203,
+        RTCP_APP  =	204
+    UINT userId  :  sender user Id or local user id
+        */
+        virtual void OnRtcpSendIndicate(BYTE *buffer,
+       INT offset,_rtcp_type_t reportType,UINT userId) = 0;
+
+        /* After video  frame put into the rtplib, when frame size is exceed 1k, rtplib will
+        divide into 1k for every packet and add rtp header then  call back through this function
+        */
+        virtual void OnRTPFrameSendIndicate(CRTPPacket & rtpPacket) = 0;
+
+        /* When call layer  receive rtp package from socket , it call InputReceivedRtpData to put
+        data into rtplib and rtplib will put parse rtp header and put into jitter buffer, then
+        another thread will get packet from jitter buffer and call back through this function.
+        the parameter type is define as :
+        typedef enum{
+           RTP_AUDIO,
+           RTP_VIDEO
+        }RTPMediaType;
+        */
+        virtual void OnRTPFrameRecvIndicate(CRTPPacket & rtpPacket,INT type) = 0;
+
+        //add by Frank Qiao for app rtcp received 2007-5-29
+        //virtual void OnAppRTCPRecvIndicate(const unsigned int iStartFrameIndex, const unsigned int iLostFrameNum) = 0;
+
+    /*  Net status include recent calculated packet  loss rate  and round trip delay
+       this indicate is call back after one RR received and call back the parse result.
+    */
+        virtual void OnNetStatusIndicate( NetStatusInfo * netinfo, DWORD userid) = 0;
+    };
+
+    class IMmRtpSessionSinkPlc : public IMMRTPSessionSink
+    {
+    public:
+        /* the call back function similar with the homonymous function OnRTPFrameSendIndicate in the IMMRTPSessionSink except it provide an extra parameter packet_priority used in plc. */
+        virtual void OnRTPFrameSendIndicate(CRTPPacket & rtpPacket, const BYTE packet_priority) = 0;
+    };
+

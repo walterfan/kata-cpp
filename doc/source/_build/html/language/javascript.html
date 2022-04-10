@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JavaScript &mdash; A Programmer Prepares 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Promise" href="js_promise.html" />
+    <link rel="prev" title="Python" href="python.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> A Programmer Prepares
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">论程序员的自我修养</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interview.html">程序员面试要点</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resume.html">Resume</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithm/index.html">Algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">Architecture</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Programming Language</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cpp.html">C++</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_interview.html">C++ Interview Questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_evolution.html">C++ Evolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_lambda.html">C++ Lambda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_memory.html">Resource management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_stl.html">C++ STL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_thread.html">C++ Thread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_rvalue.html">右值引用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_object_model.html">C++ Object Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp_server.html">C++ Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="java.html">Java</a></li>
+<li class="toctree-l2"><a class="reference internal" href="java_concurrency.html">Java Concurrency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="java_interview.html">Java Interview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="java_bytecode.html">Java 字节码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="java_classloader.html">Java 类加载器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="java_collection.html">Java collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python.html">Python</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">JavaScript</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#basic">Basic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#closure">Closure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#prototype-chain">Prototype chain</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">继承</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#strict-mode">Strict mode 严格模式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#console">Console</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#function">function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tools">tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#library">Library</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="js_promise.html">Promise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="js_test.html">JS Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="js_visualize.html">JavaScript Visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="js_interview.html">JS Interview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="js_async.html">javascript asynchronous programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodejs.html">NodeJS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="go.html">Go lanaguage</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../library/index.html">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oss/index.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html">mathematics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#overview">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#least-squares-method">最小二乘法 least squares method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pattern/index.html">Pattern</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/index.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool/index.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mmp/index.html">MMP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../thinclient/index.html">Thin Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utiltp/index.html">UTILTP</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">A Programmer Prepares</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Programming Language</a> &raquo;</li>
+      <li>JavaScript</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/language/javascript.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="javascript">
+<h1>JavaScript<a class="headerlink" href="#javascript" title="Permalink to this headline"></a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#basic" id="id2">Basic</a></p></li>
+<li><p><a class="reference internal" href="#closure" id="id3">Closure</a></p></li>
+<li><p><a class="reference internal" href="#prototype-chain" id="id4">Prototype chain</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id1" id="id5">继承</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#strict-mode" id="id6">Strict mode 严格模式</a></p></li>
+<li><p><a class="reference internal" href="#console" id="id7">Console</a></p></li>
+<li><p><a class="reference internal" href="#function" id="id8">function</a></p></li>
+<li><p><a class="reference internal" href="#tools" id="id9">tools</a></p></li>
+<li><p><a class="reference internal" href="#library" id="id10">Library</a></p></li>
+</ul>
+</div>
+<section id="basic">
+<h2><a class="toc-backref" href="#id2">Basic</a><a class="headerlink" href="#basic" title="Permalink to this headline"></a></h2>
+<p>基本数据类型</p>
+<ul class="simple">
+<li><p>Boolean</p></li>
+<li><p>Null</p></li>
+<li><p>Undefined</p></li>
+<li><p>Number</p></li>
+<li><p>String</p></li>
+<li><p>Symbol* ES6: <cite>var sym = Symbol(“aSymbol”);</cite></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ node --version
+v14.13.1
+$ npm --version
+6.14.8
+</pre></div>
+</div>
+</section>
+<section id="closure">
+<h2><a class="toc-backref" href="#id3">Closure</a><a class="headerlink" href="#closure" title="Permalink to this headline"></a></h2>
+<p>闭包是指有权访问另一个函数作用域中的变量的函数。
+创建闭包的常见方式是在一个函数内部创建另一个函数。</p>
+<p>在全局函数中， this 等于 window, 而当函数被作为某个对象的方法调用时， this 等于那个对象。
+匿名函数的执行环境具有全局性，因此其 this 对象通常指向 window</p>
+<p>var 定义距离最近的函数级变量或者全局变量
+Let , const 定义距离最近级别的变量，包括块级变量(ES6)
+const 允许定义只允许赋值一次的变量</p>
+</section>
+<section id="prototype-chain">
+<h2><a class="toc-backref" href="#id4">Prototype chain</a><a class="headerlink" href="#prototype-chain" title="Permalink to this headline"></a></h2>
+<p>当谈到继承时，JavaScript 只有一种结构：对象。每个实例对象（ object ）都有一个私有属性（称之为 __proto__ ）指向它的构造函数的原型对象（prototype ）。</p>
+<p>该原型对象也有一个自己的原型对象( __proto__ ) ，层层向上直到一个对象的原型对象为 null。根据定义，null 没有原型，并作为这个原型链中的最后一个环节。</p>
+<p>几乎所有 JavaScript 中的对象都是位于原型链顶端的 Object 的实例</p>
+<p>see <a class="reference external" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Inheritance_and_the_prototype_chain">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Inheritance_and_the_prototype_chain</a></p>
+<section id="id1">
+<h3><a class="toc-backref" href="#id5">继承</a><a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
+<p>JavaScript 对象是动态的属性“包”（指其自己的属性）。JavaScript 对象有一个指向一个原型对象的链。</p>
+<p>当试图访问一个对象的属性时，它不仅仅在该对象上搜寻，还会搜寻该对象的原型，以及该对象的原型的原型，依次层层向上搜索，直到找到一个名字匹配的属性或到达原型链的末尾。</p>
+<p>在 JavaScript 中，函数（function）是允许拥有属性的。所有的函数会有一个特别的属性 —— prototype 。</p>
+<p>ECMAScript 5 中引入了一个新方法：Object.create()。可以调用这个方法来创建一个新对象。新对象的原型就是调用 create 方法时传入的第一个参数：</p>
+</section>
+</section>
+<section id="strict-mode">
+<h2><a class="toc-backref" href="#id6">Strict mode 严格模式</a><a class="headerlink" href="#strict-mode" title="Permalink to this headline"></a></h2>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>变量必须事先声明</p></li>
+<li><p>函数必须在作用域的顶部声明</p></li>
+<li><p>函数参数禁止同名， arguments 对象具有更少的属性
+- 无方法的函数中的 this 的值为 undefined</p></li>
+<li><p>设置或者删除不可改变的属性会抛出异常</p></li>
+</ul>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">str</span> <span class="o">=</span> <span class="s2">&quot;abc&quot;</span><span class="p">;</span>
+<span class="kd">function</span> <span class="nx">strictFunc</span><span class="p">()</span> <span class="p">{</span>
+    <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+    <span class="nx">str</span><span class="p">.</span><span class="nx">length</span> <span class="o">=</span> <span class="mf">5</span><span class="p">;</span><span class="c1">//type error because length property is read only</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>不合格的标识符不能删除, 例如 <cite>delete foo</cite> 去删除全局变量是不合法的，要用下面的方法</p></li>
+</ul>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="ow">delete</span> <span class="nb">window</span><span class="p">.</span><span class="nx">foo</span><span class="p">;</span> <span class="c1">// in browser</span>
+<span class="ow">delete</span> <span class="nb">global</span><span class="p">.</span><span class="nx">foo</span><span class="p">;</span> <span class="c1">// in nodejs</span>
+
+<span class="ow">delete</span> <span class="k">this</span><span class="p">.</span><span class="nx">foo</span><span class="p">;</span> <span class="c1">//everywhere, in global scope</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>eval 更加简洁，要执行的字符串中声明的变量不会添加到 eval() 所在的作用域中</p></li>
+<li><p>严格格式中以下特性被禁用</p>
+<ul>
+<li><p>with 语句不能再被调用</p></li>
+<li><p>没有八进制数字</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="console">
+<h2><a class="toc-backref" href="#id7">Console</a><a class="headerlink" href="#console" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>console.log</p></li>
+<li><p>console.info</p></li>
+<li><p>console.warn</p></li>
+<li><p>console.info</p></li>
+<li><p>console.assert</p></li>
+<li><p>console.dir: output object all attributes</p></li>
+<li><p>console.time(label): begin to record time</p></li>
+<li><p>console.timeEnd(label): end to record time</p></li>
+</ul>
+</section>
+<section id="function">
+<h2><a class="toc-backref" href="#id8">function</a><a class="headerlink" href="#function" title="Permalink to this headline"></a></h2>
+<div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">sum</span> <span class="o">=</span> <span class="p">(</span><span class="nx">n</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="mf">0</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mf">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;=</span><span class="nx">n</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">result</span> <span class="o">+=</span> <span class="nx">i</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="tools">
+<h2><a class="toc-backref" href="#id9">tools</a><a class="headerlink" href="#tools" title="Permalink to this headline"></a></h2>
+<p>grant：自动化构建工具</p>
+<p>gulp： 自动化构建工具</p>
+<p>babel: 编译转换器，将 ES6 转换为 ES5</p>
+<p>ESLint: 格式检查工具</p>
+</section>
+<section id="library">
+<h2><a class="toc-backref" href="#id10">Library</a><a class="headerlink" href="#library" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/webex/webex-js-sdk">https://github.com/webex/webex-js-sdk</a></p></li>
+<li><p>KineticJS &lt;<a class="reference external" href="https://github.com/ericdrowell/KineticJS">https://github.com/ericdrowell/KineticJS</a>&gt;_</p></li>
+<li><p>InteractJS &lt;<a class="reference external" href="https://github.com/taye/interact.js">https://github.com/taye/interact.js</a>&gt;_</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="python.html" class="btn btn-neutral float-left" title="Python" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="js_promise.html" class="btn btn-neutral float-right" title="Promise" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Walter Fan.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

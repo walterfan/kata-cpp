@@ -1,0 +1,76 @@
+###########################################
+WCB Client
+###########################################
+
+
+Main Flows
+=========================
+
+.. code-block::
+
+    CWCBClient::OnWCBTimer -> CWCBClient::_OnWCBTimer_n
+    CWCBClient::_OnWCBTimer_n -> CWCBClient::HandleStatisticsDataVer2
+
+
+
+Question
+============================
+
+When and how to fill mediaStat ROAP Info for frame width and height message in WCB
+--------------------------------------------------------------------------------------
+* There is a timer to make the statistics
+
+.. code-block:: C++
+
+    CWCBClient::OnWCBTimer
+    CWCBClient::_OnWCBTimer_n
+    CWCBClient::HandleStatisticsDataVer2
+    CWCBClient::GetStreamStat
+    CWCBPeerConnection::GetPacketStat
+    CWCBMediaChanProxy::GetFlowRtp
+    CWCBFlowRtp::getSenderMStats()
+
+* CWCBClient::GetStreamStat
+
+.. code-block:: C++
+
+     if (bVideo) {
+        CWCBMediaChanProxy *pVideoProxy = m_pProxy ? m_pProxy->GetMediaChanProxy(false) : NULL;
+        if (pVideoProxy) {
+          int streamId = pPC->IsRecvPC() ? pPC->GetRecvStreamId() : pPC->GetPeerId(); // GetSendStreamId() has issue
+
+          CWCBFlowRtp &flowRtp_MC = pVideoProxy->GetFlowRtp(!pPC->IsRecvPC(), streamId);
+          CWCBFlowRtp::FlowMediaStatistics_t &mStats_MC = pPC->IsRecvPC() ? flowRtp_MC.getSenderMStats() : flowRtp_MC.getReceiverMStats();
+          int frmWidth = mStats_MC.videoInfo.widthMB * 16 - (mStats_MC.videoInfo.leftOffset + mStats_MC.videoInfo.rightOffset);
+          int frmHeight = mStats_MC.videoInfo.heightMB * 16 - (mStats_MC.videoInfo.topOffset + mStats_MC.videoInfo.bottomOffset);
+          value["frameWidth"] = frmWidth;
+          value["frameHeight"] = frmHeight;
+        }
+     }
+
+* CWCBFlowRtp SetVideoSizeInfo call stack
+
+.. code-block::
+
+    CWCBFlowRtp::SetVideoSizeInfo(CWCBH264Stream::sps_t &, bool) : void
+        CWCBMediaChanProxy::UpdateMStats(u8 *, u32, u16, bool) : void
+            CWCBMediaChanProxy::EncryptNal(u8 * &, u32 &, CWCBMediaPacket *, CWCBFlowCtl::flowInfo_t &) : int
+                CWCBMediaChanProxy::HandleTCNalPacket(CWCBMediaPacket *, CWCBFlowCtl::flowInfo_t &) : void
+                    CWCBMediaChanProxy::SendAvatar2StdEp(u8 *, u32, int, bool, bool) : int
+                    CWCBSharingClientProxy::HandleTCNalPacket(CWCBMediaPacket *, CWCBFlowCtl::flowInfo_t &) : void
+                    CWCBVideoClientProxy::HandleTCNalPacket(CWCBMediaPacket *, CWCBFlowCtl::flowInfo_t &) : void
+                        CWCBVideoClient::Dispatch2NC(CWCBPeerConnection *, CWCBFlowCtl::flowInfo_t &) : void
+                            CWCBVideoClient::ProcessRtpData(CWCBPeerConnection *, u8 *, u32) : void
+                                CWCBPeerConnection::ProcessPacket_n(u8 *, u32, bool) : int
+                                    CWCBClient::HandleBindMediaRTPData(CCmMessageBlock &) : int
+                                    CWCBPeerConnection::DecryptRawData_n(u8 *, u32) : void
+                                    CWCBPeerConnection::OnReceiveData_n(CWCBSwitchPacket *) : void
+                                    CWCBPeerConnection::ProcessPacket_n(u8 *, u32, bool) : int
+                                    WCBAudioClientTest_Audiobundlehandle_Test::TestBody() : void
+                                    WCBAudioClientTest_ProcessRtpData_Test::TestBody() : void
+                                WCBClientProxyTest_VideoClientProxyTest_Test::TestBody() : void
+                        WCBMediaChanProxyTest_HandleTCNalPacket_Test::TestBody() : void (2 matches)
+                        WCBMediaChanProxyTest_HandleTCNalPacketNew_Test::TestBody() : void
+            CWCBMediaChanProxy::EncryptNPackNal24(CWCBMediaPacket * &, CWCBFlowCtl::flowInfo_t &) : int (2 matches)
+            CWCBMediaChanProxy::HandleSingleNal(u8 * &, u32 &, int) : int
+            CWCBMediaChanProxy::PackSubNal24(CWCBMediaPacket *, WCB_webex2std_repack_t &, int, int, int) : int

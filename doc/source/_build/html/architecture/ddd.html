@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DDD &mdash; A Programmer Prepares 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="分布式系统" href="distribution.html" />
+    <link rel="prev" title="一致性" href="consensus.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> A Programmer Prepares
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">论程序员的自我修养</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interview.html">程序员面试要点</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resume.html">Resume</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithm/index.html">Algorithm</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Architecture</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="consensus.html">一致性</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">DDD</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">领域对象模型</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="distribution.html">分布式系统</a></li>
+<li class="toctree-l2"><a class="reference internal" href="raft.html">Raft</a></li>
+<li class="toctree-l2"><a class="reference internal" href="zab.html">ZAB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="micro_service.html">概述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="micro_service.html#id2">亚马逊的架构规定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="web_conference.html">Web Conference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="instant_message.html">Instatnt Message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="design_principles.html">Design Principles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="design_patterns.html">Design Patterns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intercepting_filter.html">Intercepting Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reactor.html">Reactor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="observer.html">Observer Pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service_mesh.html">Service Mesh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="architect_interview.html">Architect Interview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="network_interview.html">Network Interview</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../language/index.html">Programming Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../library/index.html">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oss/index.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html">mathematics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#overview">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#least-squares-method">最小二乘法 least squares method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pattern/index.html">Pattern</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/index.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool/index.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mmp/index.html">MMP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../thinclient/index.html">Thin Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utiltp/index.html">UTILTP</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">A Programmer Prepares</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Architecture</a> &raquo;</li>
+      <li>DDD</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/architecture/ddd.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ddd">
+<h1>DDD<a class="headerlink" href="#ddd" title="Permalink to this headline"></a></h1>
+<p>技术经常更新换代，语言层出不穷，这些都会过时, 淘汰和更新换代, 可以业务逻辑及商业模型不会轻易废弃，因为它是企业安身立命，生存和赚钱的根本，需要小心维护，应用户的需求，企业未来的发展而增强和改进。</p>
+<p>而商业模型和业务逻辑如何能映射到软件系统中呢?答案就是领域模型，它是软件设计的核心，指导着我们如何实现，如何编码。</p>
+<p>所谓领域主要就是指业务逻辑，规则和流程所对应的的软件设计模型，对于那些重要的，复杂的业务模型称为核心域，相对次要的模型称为支撑子域，这些领域都有一个边界上下文，使用一种通用语言来描述。</p>
+<p>领域的边界，彼此之间的关系以及集成方式使用上下文映射图来表示</p>
+<p>领域驱动设计采用的架构不一而足，视具体案例情况而定。比如分层架构，端口和适配器，SOA，REST，CQRS，事件驱动(管道和过滤器，长时间处理过程，事件源)</p>
+<p>领域模型的基础是实体和值对象，而对于它们的处理以及流程控制更适合用领域服务来表示，而领域事件在不同的服务和系统之间用于集成和交互很有用。以模块来划分领域对象，以聚合来整合相关的对象，以工厂来创建对象，以资源库来存取对象，这些都是领域驱动设计中的核心。</p>
+<p>../_static/DDD1.png</p>
+<section id="id1">
+<h2>领域对象模型<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<p>模型可以表示为</p>
+<ul class="simple">
+<li><p>module/package</p></li>
+<li><p>entity</p></li>
+<li><p>value object</p></li>
+<li><p>service</p></li>
+</ul>
+<p>模型对象</p>
+<ul class="simple">
+<li><p>通过 factory 来创建</p></li>
+<li><p>通过 aggregate 来封装</p></li>
+<li><p>通过 repository 来访问</p></li>
+<li><p>用分层 layered architecture 来隔离领域</p></li>
+</ul>
+<p># 领域对象的生命周期</p>
+<ul class="simple">
+<li><p>Aggregate</p></li>
+<li><p>Factory</p></li>
+<li><p>Repository</p></li>
+</ul>
+<p># 柔性设计</p>
+<ul class="simple">
+<li><p>Intention=revealing interfaces</p></li>
+<li><p>Assertion</p></li>
+<li><p>Conceptual contour</p></li>
+<li><p>Standalone class</p></li>
+<li><p>Closure of operation</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="consensus.html" class="btn btn-neutral float-left" title="一致性" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="distribution.html" class="btn btn-neutral float-right" title="分布式系统" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Walter Fan.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

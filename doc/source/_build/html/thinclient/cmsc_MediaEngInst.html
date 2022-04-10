@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Media Engine Instance &mdash; A Programmer Prepares 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="CSCC" href="cscc.html" />
+    <link rel="prev" title="CMSC Flow RTP" href="cmsc_flowrtp.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> A Programmer Prepares
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">论程序员的自我修养</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interview.html">程序员面试要点</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resume.html">Resume</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../algorithm/index.html">Algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../language/index.html">Programming Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../library/index.html">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../oss/index.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html">mathematics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#overview">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../math/index.html#least-squares-method">最小二乘法 least squares method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pattern/index.html">Pattern</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platform/index.html">Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tool/index.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mmp/index.html">MMP</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Thin Client</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="app_share.html">Application Share</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audio_mgr.html">Audio Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audio_443.html">Audio over 443</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_to.html">How to</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocols.html">Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qos.html">QoS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc.html">CMSC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc_asm.html">CMSC ASM media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc_flowrtp.html">CMSC Flow RTP</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Media Engine Instance</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#opus-module">opus module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">opus module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#h-264-encoder-and-decoder">H.264 encoder and decoder</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cmsc_connection_monitor.html">CMSC Connection Monitor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cscc.html">CSCC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cscc_api.html">CSCC API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cscc_clientsession.html">ClientSession</a></li>
+<li class="toctree-l2"><a class="reference internal" href="metrics.html">Thin Client Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wca.html">Web Client Agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb.html">Web Client Bridge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_client.html">WCB Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_dtls.html">WCB DTLS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_ice.html">Thin Client ICE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_message.html">WCB message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_mqe.html">MQE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_sdp.html">WCB SDP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_rtp.html">WCB RTP module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_source.html">WCB source structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_flowrtp.html">WCB Flow RTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wcb_media_stats.html">Media Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="web_client_bridge.html">Web Client Bridge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disciplines_on_code_development.html">Disciplines on Code Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#overall">Overall</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#feature">Feature</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#reference">Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../utiltp/index.html">UTILTP</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">A Programmer Prepares</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Thin Client</a> &raquo;</li>
+      <li>Media Engine Instance</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/thinclient/cmsc_MediaEngInst.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="media-engine-instance">
+<h1>Media Engine Instance<a class="headerlink" href="#media-engine-instance" title="Permalink to this headline"></a></h1>
+<section id="opus-module">
+<h2>opus module<a class="headerlink" href="#opus-module" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>opus encoder and decoder</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">create</span> <span class="n">opus</span> <span class="n">encoder</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">type</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="o">/</span><span class="n">opusEncoder</span><span class="o">/</span><span class="n">i</span><span class="p">))</span> <span class="p">{</span>
+    <span class="n">this</span><span class="o">.</span><span class="n">inputAudioSourceNode</span> <span class="o">=</span> <span class="n">null</span><span class="p">;</span>
+    <span class="n">this</span><span class="o">.</span><span class="n">inputAudioScriptNode</span> <span class="o">=</span> <span class="n">null</span><span class="p">;</span>
+    <span class="n">this</span><span class="o">.</span><span class="n">inputAudioBufferOffset</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">this</span><span class="o">.</span><span class="n">inputAudioBuffer</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Float32Array</span><span class="p">(</span><span class="n">this</span><span class="o">.</span><span class="n">audioBufferSize</span> <span class="o">*</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="n">instantiateOpusModule</span><span class="p">()</span><span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">module</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">this</span><span class="o">.</span><span class="n">module</span> <span class="o">=</span> <span class="n">module</span><span class="p">;</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">_initialize_encoder</span><span class="p">();</span>
+        <span class="n">this</span><span class="o">.</span><span class="n">encoderInitialized</span> <span class="o">=</span> <span class="n">true</span><span class="p">;</span>
+    <span class="p">}</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">this</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="o">//</span> <span class="n">create</span> <span class="n">opus</span> <span class="n">decoder</span>
+<span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nb">type</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="o">/</span><span class="n">opusDecoder</span><span class="o">/</span><span class="n">i</span><span class="p">))</span> <span class="p">{</span>
+    <span class="n">this</span><span class="o">.</span><span class="n">outputAudioBufferOffset</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">this</span><span class="o">.</span><span class="n">outputAudioBuffer</span> <span class="o">=</span> <span class="n">this</span><span class="o">.</span><span class="n">audioCtx</span><span class="o">.</span><span class="n">createBuffer</span><span class="p">(</span><span class="n">this</span><span class="o">.</span><span class="n">numAudioChannels</span><span class="p">,</span> <span class="n">this</span><span class="o">.</span><span class="n">audioFrameSize</span><span class="p">,</span> <span class="n">this</span><span class="o">.</span><span class="n">audioSampleRate</span><span class="p">);</span>
+    <span class="n">this</span><span class="o">.</span><span class="n">outputAudioDestination</span> <span class="o">=</span> <span class="n">null</span><span class="p">;</span>
+    <span class="n">this</span><span class="o">.</span><span class="n">outputAudioPlaybackRate</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">;</span> <span class="o">//</span> <span class="n">TODO</span><span class="p">:</span> <span class="n">make</span> <span class="n">adaptive</span>
+    <span class="n">instantiateOpusModule</span><span class="p">()</span><span class="o">.</span><span class="n">then</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">module</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">this</span><span class="o">.</span><span class="n">module</span> <span class="o">=</span> <span class="n">module</span><span class="p">;</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">_initialize_decoder</span><span class="p">();</span>
+        <span class="n">this</span><span class="o">.</span><span class="n">decoderInitialized</span> <span class="o">=</span> <span class="n">true</span><span class="p">;</span>
+    <span class="p">}</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">this</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &quot;opus.h&quot;</span>
+<span class="c1">#include &lt;emscripten.h&gt;</span>
+
+<span class="c1">#define CHANNELS 1</span>
+<span class="c1">#define FRAME_SIZE 1920</span>
+<span class="c1">#define SAMPLE_RATE 48000</span>
+<span class="c1">#define BITRATE 64000</span>
+<span class="c1">#define MAX_PACKET_SIZE 1276</span>
+<span class="c1">#define MAX_FRAME_SIZE 1920</span>
+
+<span class="n">OpusEncoder</span> <span class="o">*</span><span class="n">encoder</span><span class="p">;</span>
+<span class="n">OpusDecoder</span> <span class="o">*</span><span class="n">decoder</span><span class="p">;</span>
+
+<span class="n">extern</span> <span class="s2">&quot;C&quot;</span>
+<span class="n">EMSCRIPTEN_KEEPALIVE</span>
+<span class="nb">int</span> <span class="n">initialize_encoder</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nb">int</span> <span class="n">err</span><span class="p">;</span>
+  <span class="n">encoder</span> <span class="o">=</span> <span class="n">opus_encoder_create</span><span class="p">(</span><span class="n">SAMPLE_RATE</span><span class="p">,</span> <span class="n">CHANNELS</span><span class="p">,</span> <span class="n">OPUS_APPLICATION_VOIP</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">err</span><span class="p">);</span>
+  <span class="n">opus_encoder_ctl</span><span class="p">(</span><span class="n">encoder</span><span class="p">,</span> <span class="n">OPUS_SET_COMPLEXITY</span><span class="p">(</span><span class="mi">4</span><span class="p">));</span>
+  <span class="n">opus_encoder_ctl</span><span class="p">(</span><span class="n">encoder</span><span class="p">,</span> <span class="n">OPUS_SET_BITRATE</span><span class="p">(</span><span class="n">BITRATE</span><span class="p">));</span>
+  <span class="n">opus_encoder_ctl</span><span class="p">(</span><span class="n">encoder</span><span class="p">,</span> <span class="n">OPUS_SET_MAX_BANDWIDTH</span><span class="p">(</span><span class="n">OPUS_BANDWIDTH_WIDEBAND</span><span class="p">));</span>
+  <span class="n">opus_encoder_ctl</span><span class="p">(</span><span class="n">encoder</span><span class="p">,</span> <span class="n">OPUS_SET_INBAND_FEC</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
+  <span class="n">opus_encoder_ctl</span><span class="p">(</span><span class="n">encoder</span><span class="p">,</span> <span class="n">OPUS_SET_PACKET_LOSS_PERC</span><span class="p">(</span><span class="mi">100</span><span class="p">));</span>
+  <span class="n">opus_encoder_ctl</span><span class="p">(</span><span class="n">encoder</span><span class="p">,</span> <span class="n">OPUS_SET_DTX</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
+  <span class="k">return</span> <span class="n">err</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nb">int</span> <span class="n">encoder_result</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+<span class="n">extern</span> <span class="s2">&quot;C&quot;</span>
+<span class="n">EMSCRIPTEN_KEEPALIVE</span>
+<span class="n">void</span> <span class="n">encode_audio</span><span class="p">(</span><span class="nb">float</span><span class="o">*</span> <span class="n">pcm</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">unsigned</span> <span class="n">char</span> <span class="n">data_out</span><span class="p">[</span><span class="n">MAX_PACKET_SIZE</span><span class="p">];</span>
+  <span class="nb">int</span> <span class="n">size</span><span class="p">;</span>
+
+  <span class="n">size</span> <span class="o">=</span> <span class="n">opus_encode_float</span><span class="p">(</span><span class="n">encoder</span><span class="p">,</span> <span class="n">pcm</span><span class="p">,</span> <span class="n">FRAME_SIZE</span><span class="p">,</span> <span class="n">data_out</span><span class="p">,</span> <span class="n">MAX_PACKET_SIZE</span><span class="p">);</span>
+
+  <span class="n">encoder_result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="n">data_out</span><span class="p">;</span>
+  <span class="n">encoder_result</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">size</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">extern</span> <span class="s2">&quot;C&quot;</span>
+<span class="n">EMSCRIPTEN_KEEPALIVE</span>
+<span class="nb">int</span> <span class="n">get_encoder_result_pointer</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">encoder_result</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="n">extern</span> <span class="s2">&quot;C&quot;</span>
+<span class="n">EMSCRIPTEN_KEEPALIVE</span>
+<span class="nb">int</span> <span class="n">get_encoder_result_size</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">encoder_result</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="n">extern</span> <span class="s2">&quot;C&quot;</span>
+<span class="n">EMSCRIPTEN_KEEPALIVE</span>
+<span class="n">void</span> <span class="n">destroy_encoder</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">opus_encoder_destroy</span><span class="p">(</span><span class="n">encoder</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">extern</span> <span class="s2">&quot;C&quot;</span>
+<span class="n">EMSCRIPTEN_KEEPALIVE</span>
+<span class="nb">int</span> <span class="n">initialize_decoder</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nb">int</span> <span class="n">err</span><span class="p">;</span>
+  <span class="n">decoder</span> <span class="o">=</span> <span class="n">opus_decoder_create</span><span class="p">(</span><span class="n">SAMPLE_RATE</span><span class="p">,</span> <span class="n">CHANNELS</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">err</span><span class="p">);</span>
+  <span class="k">return</span> <span class="n">err</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nb">int</span> <span class="n">decoder_result</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+<span class="n">extern</span> <span class="s2">&quot;C&quot;</span>
+<span class="n">EMSCRIPTEN_KEEPALIVE</span>
+<span class="n">void</span> <span class="n">decode_audio</span><span class="p">(</span><span class="n">unsigned</span> <span class="n">char</span><span class="o">*</span> <span class="n">data</span><span class="p">,</span> <span class="nb">int</span> <span class="n">length</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nb">float</span> <span class="n">pcm_out</span><span class="p">[</span><span class="n">MAX_FRAME_SIZE</span> <span class="o">*</span> <span class="n">CHANNELS</span><span class="p">];</span>
+  <span class="nb">int</span> <span class="n">size</span><span class="p">;</span>
+
+  <span class="n">size</span> <span class="o">=</span> <span class="n">opus_decode_float</span><span class="p">(</span><span class="n">decoder</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">pcm_out</span><span class="p">,</span> <span class="n">MAX_FRAME_SIZE</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+
+  <span class="n">decoder_result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="n">pcm_out</span><span class="p">;</span>
+  <span class="n">decoder_result</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">size</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">extern</span> <span class="s2">&quot;C&quot;</span>
+<span class="n">EMSCRIPTEN_KEEPALIVE</span>
+<span class="nb">int</span> <span class="n">get_decoder_result_pointer</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">decoder_result</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="n">extern</span> <span class="s2">&quot;C&quot;</span>
+<span class="n">EMSCRIPTEN_KEEPALIVE</span>
+<span class="nb">int</span> <span class="n">get_decoder_result_size</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">decoder_result</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="n">extern</span> <span class="s2">&quot;C&quot;</span>
+<span class="n">EMSCRIPTEN_KEEPALIVE</span>
+<span class="n">void</span> <span class="n">destroy_decoder</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">opus_decoder_destroy</span><span class="p">(</span><span class="n">decoder</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="id1">
+<h2>opus module<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<section id="h-264-encoder-and-decoder">
+<h3>H.264 encoder and decoder<a class="headerlink" href="#h-264-encoder-and-decoder" title="Permalink to this headline"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">create</span> <span class="n">h264</span> <span class="n">encoder</span>
+<span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nb">type</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="o">/</span><span class="n">h264Encoder</span><span class="o">/</span><span class="n">i</span><span class="p">))</span> <span class="p">{</span>
+    <span class="n">this</span><span class="o">.</span><span class="n">inputVideo</span> <span class="o">=</span> <span class="n">window</span><span class="o">.</span><span class="n">document</span><span class="o">.</span><span class="n">createElement</span><span class="p">(</span><span class="s1">&#39;video&#39;</span><span class="p">);</span>
+    <span class="n">this</span><span class="o">.</span><span class="n">inputCanvas</span> <span class="o">=</span> <span class="n">window</span><span class="o">.</span><span class="n">document</span><span class="o">.</span><span class="n">createElement</span><span class="p">(</span><span class="s1">&#39;canvas&#39;</span><span class="p">);</span>
+    <span class="n">this</span><span class="o">.</span><span class="n">inputContext</span> <span class="o">=</span> <span class="n">this</span><span class="o">.</span><span class="n">inputCanvas</span><span class="o">.</span><span class="n">getContext</span><span class="p">(</span><span class="s1">&#39;2d&#39;</span><span class="p">);</span>
+    <span class="n">this</span><span class="o">.</span><span class="n">prevProcessTimestamp</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">this</span><span class="o">.</span><span class="n">processSharingFrameInterval</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">this</span><span class="o">.</span><span class="n">forceNextFrameIDR</span> <span class="o">=</span> <span class="n">false</span><span class="p">;</span>
+    <span class="n">this</span><span class="o">.</span><span class="n">worker</span> <span class="o">=</span> <span class="n">this</span><span class="o">.</span><span class="n">createH264Worker</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="o">//</span> <span class="n">create</span> <span class="n">h264</span> <span class="n">decoder</span>
+<span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nb">type</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="o">/</span><span class="n">h264Decoder</span><span class="o">/</span><span class="n">i</span><span class="p">))</span> <span class="p">{</span>
+    <span class="n">this</span><span class="o">.</span><span class="n">outputCanvas</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">cmsc</span><span class="o">.</span><span class="n">createYuvCanvas</span><span class="p">();</span>
+    <span class="n">this</span><span class="o">.</span><span class="n">outputStream</span> <span class="o">=</span> <span class="n">null</span><span class="p">;</span>
+    <span class="n">this</span><span class="o">.</span><span class="n">partialBitstreamPieces</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="n">this</span><span class="o">.</span><span class="n">partialBitstreamLength</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">this</span><span class="o">.</span><span class="n">worker</span> <span class="o">=</span> <span class="n">this</span><span class="o">.</span><span class="n">createH264Worker</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="cmsc_flowrtp.html" class="btn btn-neutral float-left" title="CMSC Flow RTP" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cscc.html" class="btn btn-neutral float-right" title="CSCC" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Walter Fan.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

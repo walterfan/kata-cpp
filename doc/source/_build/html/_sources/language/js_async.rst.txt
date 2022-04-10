@@ -1,0 +1,78 @@
+#########################################
+javascript asynchronous programming
+#########################################
+
+.. contents::
+  :local:
+
+  
+
+Overview
+====================
+
+
+ES8 的 async/await 旨在解决利用异步结构组织代码的问题。为此，ECMAScript 对函数进行了扩展，
+为其增加了两个新关键字:async 和 await。 
+
+1. async
+--------------------
+async 关键字用于声明异步函数。这个关键字可以用在函数声明、函数表达式、箭头函数和方法上: 
+
+.. code-block::
+
+    async function foo() {}
+    
+    let bar = async function() {};
+    let baz = async () => {};
+
+    class Qux { 
+       async qux() {}
+    }
+
+使用 async 关键字可以让函数具有异步特征，但总体上其代码仍然是同步求值的。
+而在参数或闭 包方面，异步函数仍然具有普通 JavaScript 函数的正常行为    
+
+异步函数如果使用 return 关键字返回了值(如果没有 return 则会返回 undefined)，这 个值会被 Promise.resolve()包装成一个 Promise 对象。
+异步函数始终返回 Promise 对象。
+
+2. await 
+--------------------
+
+因为异步函数主要针对不会马上完成的任务，所以自然需要一种暂停和恢复执行的能力。使用 await
+关键字可以暂停异步函数代码的执行，等待Promise 解决。
+
+.. code-block::
+
+    let p = new Promise((resolve, reject) => setTimeout(resolve, 1000, 3)); 
+    p.then((x) => console.log(x)); // 3
+    //使用 async/await 可以写成这样:
+    async function foo() {
+       let p = new Promise((resolve, reject) => setTimeout(resolve, 1000, 3)); 
+       console.log(await p);
+    }
+    foo(); // 3
+
+await 关键字期待(但实际上并不要求)一个实现 thenable 接口的对象，但常规的值也可以。
+如果是实现 thenable 接口的对象，则这个对象可以由 await 来“解包”。
+如果不是，则这个值就被当作 已经解决的 Promise。
+
+
+
+3. await 的限制
+--------------------
+
+await 关键字必须在异步函数中使用，不能在顶级上下文如<script>标签或模块中使用。不过，
+定义并立即调用异步函数是没问题的。下面两段代码实际是相同的:
+
+.. code-block::
+
+    async function foo() {
+      console.log(await Promise.resolve(3));
+    } foo(); // 3
+    // 立即调用的异步函数表达式 (async function() {
+        console.log(await Promise.resolve(3));
+    })();
+    // 3
+
+此外，异步函数的特质不会扩展到嵌套函数。因此，await 关键字也只能直接出现在异步函数的定义中。
+在同步函数内部使用 await 会抛出 SyntaxError
