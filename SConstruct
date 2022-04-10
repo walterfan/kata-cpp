@@ -26,6 +26,12 @@ run_example=env.Program(target='./bin/run_example', source=[
     LIBS = ['jsoncpp', 'pthread','boost_log','boost_thread', 'boost_program_options'],
     LIBPATH = LIB_PATH)
 
+
+unittest=env.Program(target='./bin/unit_test', source=['./test/unit_test.cpp',
+	'./test/emcpp_7.cpp'],
+    LIBS = ['gmock','gtest', 'pthread'], LIBPATH = LIB_PATH)
+
 Default(run_example,
-    wordbankdemo)
+    wordbankdemo,
+    unittest)
 
