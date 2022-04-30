@@ -10,17 +10,19 @@ using namespace testing;
 struct Packet
 {
     Packet() = default;
-    Packet(uint32_t type, uint32_t len):mType(type), mLength(len) {};
+    Packet(uint32_t type, string& name):mType(type), mName(name) {};
+    Packet(uint32_t type, string name, std::vector<string> values):mType(type), mName(name), mValues(values) {};
 
     uint32_t mType = 0;
-    uint32_t mLength;
-    std::vector<char> mValues;
+    //uint32_t mLength;
+    string mName;
+    std::vector<string> mValues;
 };
 
 
 inline std::ostream& operator<<(std::ostream& o, Packet& packet) {
     o << "type=" << packet.mType;
-    o << ", length=" <<packet.mLength;
+    o << ", name=" <<packet.mName;
     o << ", values=";
     for(const auto& value: packet.mValues) {
         o << value << " ";
@@ -67,13 +69,13 @@ TEST_F(InitializationTest, testInitByBrace)
 {
     RecordTestCase("an object", "initialize it by brace", "the object was initialized");
 
-    Packet p0{1, 2};
+    Packet p0{1, "a"};
     cout << p0 << endl;
     ASSERT_EQ(p0.mType, 1);
-    ASSERT_EQ(p0.mLength, 2);
+    ASSERT_EQ(p0.mName, "alpha");
     ASSERT_EQ(p0.mValues.size(), 0);
 
-    //Packet p1{.mType{0}, .mLength{1}, .mValues{'2','3'}};
+    Packet p1{0, "b", {"1","2", "3"}};
 
 }
 
