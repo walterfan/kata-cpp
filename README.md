@@ -2,6 +2,8 @@
 
 beautiful cpp minutes and examples
 
+Pattern and Kata are the best methods for computer language learning
+
 # Learning notes
 * [Beautiful C++ Wiki](https://github.com/walterfan/beautiful_cpp/wiki)
 * [Mordern C++](./note/modern_cpp.md)
@@ -15,6 +17,15 @@ scons
 ls ./bin
 ```
 
+# Code Kata
+
+```
+cd kata
+mkdir bld
+cd bld
+cmake ..
+make
+```
 
 # Reference
 * [C++ 11 standard](./refer/cpp-11.pdf)
