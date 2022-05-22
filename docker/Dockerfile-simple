@@ -1,0 +1,17 @@
+FROM ubuntu:bionic
+LABEL Author="Walter Fan <walter.fan@gmail.com>"
+LABEL Description="Docker image for C++ program"
+RUN mkdir -p /opt/bcpp
+
+ENV APP_ROOT="/opt/bcpp"
+
+RUN apt-get update && apt-get -y install curl \
+    cmake \
+    git \
+    build-essential \
+    vim \
+    netcat
+
+
+WORKDIR $APP_ROOT
+ENTRYPOINT ["bash"]

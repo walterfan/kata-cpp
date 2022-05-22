@@ -1,0 +1,19 @@
+FROM ubuntu:bionic
+LABEL Author="Walter Fan <walter.fan@gmail.com>"
+LABEL Description="Docker image for C++ program"
+RUN mkdir -p /opt
+RUN apt-get update && apt-get -y install curl \
+    cmake \
+    git \
+    build-essential \
+    vim \
+    xz-utils \
+    && rm -rf /var/lib/apt/lists/* \
+    && curl -SL https://github.com/llvm/llvm-project/releases/download/llvmorg-14.0.3/clang+llvm-14.0.3-aarch64-linux-gnu.tar.xz \
+    | tar -xJC . && \
+    mv clang+llvm-14.0.3-aarch64-linux-gnu /opt/clang_14.0.3 && \
+    echo 'export PATH=/opt/clang_14.0.3/bin:$PATH' >> ~/.bashrc && \
+    echo 'export LD_LIBRARY_PATH=/opt/clang_14.0.3/lib:$LD_LIBRARY_PATH' >> ~/.bashrc
+
+# Start from a Bash prompt
+CMD [ "/bin/bash" ]

@@ -48,5 +48,5 @@ RUN apt-get clean && \
   rm -rf /var/lib/apt && \
   rm /opt/libevent-2.1.12-stable.tar.gz
 
-
+ENTRYPOINT ["bash"]
 
