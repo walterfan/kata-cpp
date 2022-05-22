@@ -6,3 +6,6 @@ target_link_libraries(admin tinyutil pthread)
 
 add_executable(uas uas.cpp)
 target_link_libraries(uas tinyutil pthread)
+
+add_executable(complaint-server complaint-server.cpp)
+add_executable(complaint-client complaint-client.cpp)
