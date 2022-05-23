@@ -8,6 +8,9 @@ extern int function_demo(int argc, char** argv);
 extern int lambda_demo(int argc, char* argv[]);
 extern int rvalue_demo(int argc, char* argv[]);
 extern int smart_ptr_demo(int argc, char** argv);
+extern int asio_timer_demo(int argc, char** argv);
+
+extern int asio_udp_demo(int argc, char** argv);
 
 const int CASE_COUNT = 5;
 
@@ -22,7 +25,7 @@ const char* usage = R"name(please specify example name:
 
 //C++11: delegate constructor
 Command::Command():Command("") {
-    BOOST_LOG_TRIVIAL(trace) << "line " <<__LINE__<< ". construct: " << m_name << "@" <<this;    
+    BOOST_LOG_TRIVIAL(trace) << "line " <<__LINE__<< ". construct: " << m_name << "@" <<this;
 }
 
 Command::Command(string name):m_name(name) {
@@ -176,6 +179,19 @@ size_t ExampleRunner::size() const {
     return m_func_examples.size();
 }
 
+void ExampleRunner::display_menu() const {
+    cout<<"===================================================== \n";
+    cout<<" \t\tMENU \t \n ";
+    cout<<"===================================================== \n";
+    cout<<" 1. smart pointer demo\n";
+    cout<<" 2. function bind demo\n";
+    cout<<" 3. lambda demo\n";
+    cout<<" 4. rvalue demo\n";
+    cout<<" 5. boost asio timer demo\n";
+    cout<<" 6. boost asio udp server and client demo\n";
+    cout<<" 0. quit\n";
+}
+
 int main(int argc, char** argv)
 {
     unique_ptr<ExampleRunner> runner = my_make_unique<ExampleRunner>();
@@ -191,19 +207,38 @@ int main(int argc, char** argv)
 
     po::variables_map vm;
     po::store(po::parse_command_line(argc, argv, desc), vm);
-    po::notify(vm);    
+    po::notify(vm);
 
     if (vm.count("help")) {
         BOOST_LOG_TRIVIAL(trace) << desc << "\n";
         return 1;
     }
 
+    boost::log::core::get()->set_filter (
+        boost::log::trivial::severity >= boost::log::trivial::info
+    );
+
     if (vm.count("name")) {
         BOOST_LOG_TRIVIAL(trace) << "* example name is "<< vm["name"].as<string>() << ".";
         runner->execute_example(vm["name"].as<string>(), argc, argv);
     } else {
-        BOOST_LOG_TRIVIAL(trace) << "example name was not set.";
-        BOOST_LOG_TRIVIAL(trace) << desc ;
+        runner->display_menu();
+        int yourchoice;
+        do {
+            cout<<"Enter your choice(0-6):";
+            cin>>yourchoice;
+            switch (yourchoice)
+            {
+                case 1: smart_ptr_demo(argc, argv); break;
+                case 2: function_demo(argc, argv); break;
+                case 3: lambda_demo(argc, argv); break;
+                case 4: rvalue_demo(argc, argv); break;
+                case 5: asio_timer_demo(argc, argv); break;
+                case 6: asio_udp_demo(argc, argv); break;
+                case 0: cout<<"bye"<<endl; break;
+                default: cout<<"Invalid option, please select again"<<endl; runner->display_menu(); break;
+            }
+        } while (yourchoice > 0);
     }
 
     return 0;

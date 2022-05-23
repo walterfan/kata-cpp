@@ -20,6 +20,8 @@ run_example=env.Program(target='./bin/run_example', source=[
     './exam/run_example.cpp',
     './exam/boost_function.cpp',
     './exam/boost_memory.cpp',
+    './exam/boost_asio_timer.cpp',
+    './exam/boost_asio_udp.cpp',
     './exam/std_function_exam.cpp',
     './exam/cpp11_lambda.cpp',
     './exam/AudioLevelCalculator.cpp'],

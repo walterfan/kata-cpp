@@ -10,8 +10,8 @@ using namespace testing;
 struct Packet
 {
     Packet() = default;
-    Packet(uint32_t type, string& name):mType(type), mName(name) {};
-    Packet(uint32_t type, string name, std::vector<string> values):mType(type), mName(name), mValues(values) {};
+    Packet(uint32_t type, const string& name):mType(type), mName(name) {};
+    Packet(uint32_t type, const string& name, std::vector<string> values):mType(type), mName(name), mValues(values) {};
 
     uint32_t mType = 0;
     //uint32_t mLength;

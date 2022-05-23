@@ -9,3 +9,6 @@ target_link_libraries(uas tinyutil pthread)
 
 add_executable(complaint-server complaint-server.cpp)
 add_executable(complaint-client complaint-client.cpp)
+
+
+add_executable(kata13-counting-code-lines kata13-counting-code-lines.cpp)

@@ -10,7 +10,11 @@
 #include <memory>
 
 #include <unordered_map>
+
+#include <boost/log/core.hpp>
 #include <boost/log/trivial.hpp>
+#include <boost/log/expressions.hpp>
+
 #include <boost/program_options.hpp>
 #include <boost/core/noncopyable.hpp>
 #include <boost/assert.hpp>
@@ -70,9 +74,11 @@ public:
     void register_example(const std::string& name, const exam_func_t &exam);
 
     int execute_example(const std::string& name, int argc, char** argv) const;
+
+    void display_menu() const;
 private:
     volatile uint32_t m_example_count = 0;
-    std::unordered_map<std::string, exam_func_t> m_func_examples;        
+    std::unordered_map<std::string, exam_func_t> m_func_examples;
 };
 
 
