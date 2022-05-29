@@ -22,7 +22,7 @@ set(SRCS run_example.cpp
     boost_function.cpp
     boost_memory.cpp
     boost_asio_timer.cpp
-    boost_asio_udp.cpp
+    boost_asio_chat.cpp
     std_function_exam.cpp
     std_lambda.cpp
     std_thread.cpp

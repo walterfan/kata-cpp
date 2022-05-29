@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>C++ Interview Questions &mdash; Beautiful C++ 0.1 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -100,12 +99,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="c-interview-questions">
+  <div class="section" id="c-interview-questions">
 <h1>C++ Interview Questions<a class="headerlink" href="#c-interview-questions" title="Permalink to this headline"></a></h1>
-<section id="c">
+<div class="section" id="c">
 <h2>C语言<a class="headerlink" href="#c" title="Permalink to this headline"></a></h2>
 <p>const的作用有哪些，谈一谈你对const的理解？</p>
-<section id="char-const-char-char-constconst-char-const">
+<div class="section" id="char-const-char-char-constconst-char-const">
 <h3>描述char*、const char*、char* const、const char* const的区别？<a class="headerlink" href="#char-const-char-char-constconst-char-const" title="Permalink to this headline"></a></h3>
 <blockquote>
 <div><p>char* p0;              //指向 char 的指针
@@ -130,9 +129,9 @@ const char* const p4;  //指向 const char 的 const 指针</p>
 <p>memcpy怎么实现让它效率更高？</p>
 <p>typedef和define有什么区别？</p>
 <p>extern有什么作用，extern C有什么作用？</p>
-</section>
-</section>
-<section id="id1">
+</div>
+</div>
+<div class="section" id="id1">
 <h2>C++基础知识面试题<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
 <p>C++ OOP</p>
 <p>C语言和C++有什么区别？</p>
@@ -154,16 +153,16 @@ const char* const p4;  //指向 const char 的 const 指针</p>
 <p>volatile关键字的作用</p>
 <p>如何实现一个线程池？说一下基本思路即可！</p>
 <p>了解各种强制类型转换的原理及使用吗？说说？</p>
-</section>
-<section id="c-11">
+</div>
+<div class="section" id="c-11">
 <h2>C++11新特性<a class="headerlink" href="#c-11" title="Permalink to this headline"></a></h2>
-<section id="id2">
+<div class="section" id="id2">
 <h3>C++11新特性你都了解多少？可以介绍一下吗？<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
-</section>
-<section id="autodecltype">
+</div>
+<div class="section" id="autodecltype">
 <h3>了解auto和decltype吗？<a class="headerlink" href="#autodecltype" title="Permalink to this headline"></a></h3>
-</section>
-<section id="id3">
+</div>
+<div class="section" id="id3">
 <h3>谈一谈你对左值和右值的了解，了解左值引用和右值引用吗？<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
 <p>左值具有可标识的内存地址并可以长期存在，右值没有可识别的内存地址，仅存储暂时的结果。
 判断一个表达是否是左值就是看它是否可以长期存在，即它是否有一个地址。</p>
@@ -185,8 +184,8 @@ int *p = &amp;arr[0];
 </pre></div>
 </div>
 <p>右值引用主要用于 move 移动语义</p>
-</section>
-<section id="id4">
+</div>
+<div class="section" id="id4">
 <h3>了解移动语义和完美转发吗？<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
 <p>enum 和 enum class有什么区别？了</p>
 <p>解列表初始化吗？</p>
@@ -196,9 +195,9 @@ int *p = &amp;arr[0];
 <p>一般什么情况下会出现内存泄漏？出现内存泄漏如何调试？</p>
 <p>unique_ptr如何转换的所有权？</p>
 <p>谈一谈你对面向对象的理解, 什么场景下使用继承方式，什么场景下使用组合？</p>
-</section>
-</section>
-<section id="stl">
+</div>
+</div>
+<div class="section" id="stl">
 <h2>STL系列<a class="headerlink" href="#stl" title="Permalink to this headline"></a></h2>
 <p>C++直接使用数组好还是使用std::array好？</p>
 <p>std::array是怎么实现的？</p>
@@ -207,8 +206,8 @@ int *p = &amp;arr[0];
 <p>map和unordered_map有什么区别？分别在什么场景下使用？</p>
 <p>list的使用场景？std::find可以传入list对应的迭代器吗？</p>
 <p>string的常用函数</p>
-</section>
-<section id="id5">
+</div>
+<div class="section" id="id5">
 <h2>设计模式<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h2>
 <p>不强求一一列出那23种设计模式，说出几个常见的即可。</p>
 <p>分别写出饿汉和懒汉线程安全的单例模式</p>
@@ -217,8 +216,8 @@ int *p = &amp;arr[0];
 <p>说出工厂模式概念和优点</p>
 <p>说出构造者模式概念</p>
 <p>说出适配器模式概念</p>
-</section>
-<section id="id6">
+</div>
+<div class="section" id="id6">
 <h2>操作系统<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h2>
 <p>进程和线程的区别？</p>
 <p>操作系统是怎么进行进程管理的？操</p>
@@ -235,20 +234,20 @@ int *p = &amp;arr[0];
 <p>产生死锁的必要条件有哪些？如何避免死锁？</p>
 <p>信号和信号量的区别是什么？</p>
 <p>锁的性能开销，锁的实现原理？</p>
-</section>
-<section id="id7">
+</div>
+<div class="section" id="id7">
 <h2>编译原理<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h2>
 <p>gcc hello.c 这行命令具体的执行过程，内部究竟做了什么？</p>
 <p>程序一定会从main函数开始运行吗？</p>
 <p>如何确定某个函数有被编译输出？</p>
-</section>
-<section id="reference">
+</div>
+<div class="section" id="reference">
 <h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline"></a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/fightingwangzq/cpp-learning">https://github.com/fightingwangzq/cpp-learning</a></p></li>
 </ul>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

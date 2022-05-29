@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>右值引用 &mdash; Beautiful C++ 0.1 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -84,9 +83,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="id1">
+  <div class="section" id="id1">
 <h1>右值引用<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h1>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getVar</span><span class="p">();</span><span class="w"></span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">getVar</span><span class="p">();</span>
 </pre></div>
 </div>
 <p>上面的这行代码很简单，从getVar()函数获取一个整形值，然而，这行代码会产生几种类型的值呢？
@@ -94,14 +93,14 @@
 而左值 i 在表达式结束后仍然存在，这个临时值就是右值，具体来说是一个纯右值，右值是不具名的。</p>
 <p>区分左值和右值的一个简单办法是：看能不能对表达式取地址，如果能，则为左值，否则为右值。</p>
 <p>所有的具名变量或对象都是左值，而匿名变量则是右值，比如，简单的赋值语句：</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>在这条语句中，i 是左值，0 是字面量，就是右值。在上面的代码中，i 可以被引用，0 就不可以了。
 具体来说上面的表达式中等号右边的0是纯右值（prvalue），在C++11中所有的值必属于左值、将亡值、纯右值三者之一。
 比如，非引用返回的临时变量、运算表达式产生的临时变量、原始字面量和lambda表达式等都是纯右值。
 而将亡值是C++11新增的、与右值引用相关的表达式，比如，将要被移动的对象、T&amp;&amp;函数返回值、std::move返回值和转换为T&amp;&amp;的类型的转换函数的返回值等。</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">T</span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getVar</span><span class="p">();</span><span class="w"></span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">T</span><span class="o">&amp;&amp;</span> <span class="n">k</span> <span class="o">=</span> <span class="n">getVar</span><span class="p">();</span>
 </pre></div>
 </div>
 <p>第二行代码和第一行代码很像，只是相比第一行代码多了“&amp;&amp;”，他就是右值引用，我们知道左值引用是对左值的引用，
@@ -117,7 +116,7 @@
 <li><p>右值引用的第二个特点</p></li>
 </ol>
 <p>右值引用独立于左值和右值。意思是右值引用类型的变量可能是左值也可能是右值。比如下面的例子：</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">var1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="o">&amp;&amp;</span> <span class="n">var1</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>var1类型为右值引用，但var1本身是左值，因为具名变量都是左值。</p>
@@ -130,13 +129,13 @@
 </div></blockquote>
 </li>
 </ol>
-<section id="id2">
+<div class="section" id="id2">
 <h2>参考资料<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.cnblogs.com/qicosmos/p/4283455.html">https://www.cnblogs.com/qicosmos/p/4283455.html</a></p></li>
 </ul>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

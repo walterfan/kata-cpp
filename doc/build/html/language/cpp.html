@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>C++ &mdash; Beautiful C++ 0.1 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -107,7 +106,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="c">
+  <div class="section" id="c">
 <h1>C++<a class="headerlink" href="#c" title="Permalink to this headline"></a></h1>
 <table class="docutils align-default">
 <colgroup>
@@ -125,7 +124,7 @@
 <td><p>v1</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>Updated</strong></p></td>
-<td><p>2022-04-10</p></td>
+<td><p>2022-05-29</p></td>
 </tr>
 </tbody>
 </table>
@@ -160,9 +159,9 @@
 </li>
 </ul>
 </div>
-<section id="c-11">
+<div class="section" id="c-11">
 <h2><a class="toc-backref" href="#id14">C++ 11 新特性</a><a class="headerlink" href="#c-11" title="Permalink to this headline"></a></h2>
-<section id="id1">
+<div class="section" id="id1">
 <h3><a class="toc-backref" href="#id15">改进的对象构造</a><a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
 <ul class="simple">
 <li><p>继承基类的构造函数</p></li>
@@ -172,8 +171,8 @@
 <li><p>final 关键字</p></li>
 <li><p>统一的初始化 {}</p></li>
 </ul>
-</section>
-<section id="id2">
+</div>
+<div class="section" id="id2">
 <h3><a class="toc-backref" href="#id16">其他语言增强</a><a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
 <ul class="simple">
 <li><p>基于范围的 for 循环</p></li>
@@ -187,8 +186,8 @@
 <li><p>可变参数模板</p></li>
 <li><p>改善了右尖括号的处理</p></li>
 </ul>
-</section>
-<section id="id3">
+</div>
+<div class="section" id="id3">
 <h3><a class="toc-backref" href="#id17">新的关键字</a><a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
 <ul class="simple">
 <li><p>auto 自动类型推导</p></li>
@@ -197,8 +196,8 @@
 <li><p>nullptr: 空指针</p></li>
 <li><p>thread_local: 线程局部存储</p></li>
 </ul>
-</section>
-<section id="id4">
+</div>
+<div class="section" id="id4">
 <h3><a class="toc-backref" href="#id18">对 C++ 库的增强</a><a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
 <ul class="simple">
 <li><p>stl 容器的列表初始化</p></li>
@@ -209,76 +208,76 @@
 <li><p>元组模板</p></li>
 <li><p>其他的新类型: chrono(时间测量), ratio(有理数分数), complex(复数)</p></li>
 </ul>
-</section>
-</section>
-<section id="id5">
+</div>
+</div>
+<div class="section" id="id5">
 <h2><a class="toc-backref" href="#id19">C++ 服务器端编程</a><a class="headerlink" href="#id5" title="Permalink to this headline"></a></h2>
 <ul class="simple">
 <li><p>事件驱动</p></li>
 <li><p>多路复用</p></li>
 <li><p>多线程并发</p></li>
 </ul>
-<section id="id6">
+<div class="section" id="id6">
 <h3><a class="toc-backref" href="#id20">示例</a><a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
-</section>
-</section>
-<section id="id7">
+</div>
+</div>
+<div class="section" id="id7">
 <h2><a class="toc-backref" href="#id21">C++ 十大面试题</a><a class="headerlink" href="#id7" title="Permalink to this headline"></a></h2>
 <ul class="simple">
 <li><p>Reactor 模式</p></li>
 <li><p>Move semantic</p></li>
 <li><p>菱形继承</p></li>
 </ul>
-<section id="id8">
+<div class="section" id="id8">
 <h3><a class="toc-backref" href="#id22">1. C++中 指针与引用的区别</a><a class="headerlink" href="#id8" title="Permalink to this headline"></a></h3>
 <p>数组名会自动转换为指向数组第一个元素的指针</p>
 <ul class="simple">
 <li><p>指向 const 对象的指针: 不允许用指针操作来改变其所批的 const 值</p></li>
 </ul>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">pi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.14</span><span class="p">;</span><span class="w"></span>
-<span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">pi</span><span class="p">;</span><span class="w"> </span><span class="c1">//.. error</span>
-<span class="k">const</span><span class="w"> </span><span class="n">doube</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">pi</span><span class="p">;</span><span class="w"> </span><span class="c1">// correct</span>
-<span class="o">*</span><span class="n">ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.14159</span><span class="p">;</span><span class="w"> </span><span class="c1">// error</span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">const</span> <span class="kt">double</span> <span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14</span><span class="p">;</span>
+<span class="kt">double</span> <span class="o">*</span> <span class="n">ptr</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">pi</span><span class="p">;</span> <span class="c1">//.. error</span>
+<span class="k">const</span> <span class="n">doube</span> <span class="o">*</span> <span class="n">ptr</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">pi</span><span class="p">;</span> <span class="c1">// correct</span>
+<span class="o">*</span><span class="n">ptr</span> <span class="o">=</span> <span class="mf">3.14159</span><span class="p">;</span> <span class="c1">// error</span>
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>const 指针: 指针本身的值不能修改</p></li>
 </ul>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">errorCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
-<span class="kt">int</span><span class="w"> </span><span class="n">errorCode2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span><span class="w"></span>
-<span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">ptrErr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">errorCode</span><span class="p">;</span><span class="w"></span>
-<span class="n">ptrErr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">errorCode2</span><span class="p">;</span><span class="w"> </span><span class="c1">//error</span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">errorCode</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">errorCode2</span> <span class="o">=</span> <span class="mi">-1</span><span class="p">;</span>
+<span class="kt">int</span> <span class="o">*</span> <span class="k">const</span> <span class="n">ptrErr</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">errorCode</span><span class="p">;</span>
+<span class="n">ptrErr</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">errorCode2</span><span class="p">;</span> <span class="c1">//error</span>
 </pre></div>
 </div>
-</section>
-<section id="c-class">
+</div>
+<div class="section" id="c-class">
 <h3><a class="toc-backref" href="#id23">2. 一个空的 C++ class ，编译器会为它默认添加哪些东西</a><a class="headerlink" href="#c-class" title="Permalink to this headline"></a></h3>
 <p>默认构造函数，复制构造函数，析构函数，赋值函数以及取值函数</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">User</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="n">Public</span><span class="w"></span>
-<span class="w">    </span><span class="nf">User</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="n">User</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">User</span><span class="o">&amp;</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="o">~</span><span class="n">User</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="n">User</span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">User</span><span class="o">&amp;</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="n">User</span><span class="o">*</span><span class="w"> </span><span class="k">operator</span><span class="o">&amp;</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="n">Const</span><span class="w"> </span><span class="n">User</span><span class="o">*</span><span class="w"> </span><span class="k">operator</span><span class="o">&amp;</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">User</span>
+<span class="p">{</span>
+<span class="n">Public</span>
+    <span class="nf">User</span><span class="p">();</span>
+    <span class="n">User</span><span class="p">(</span><span class="k">const</span> <span class="n">User</span><span class="o">&amp;</span><span class="p">);</span>
+    <span class="o">~</span><span class="n">User</span><span class="p">();</span>
+    <span class="n">User</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">User</span><span class="o">&amp;</span><span class="p">)</span>
+    <span class="n">User</span><span class="o">*</span> <span class="k">operator</span><span class="o">&amp;</span><span class="p">();</span>
+    <span class="n">Const</span> <span class="n">User</span><span class="o">*</span> <span class="k">operator</span><span class="o">&amp;</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
 
-<span class="w">    </span><span class="c1">//c++ 11, move constructor</span>
-<span class="w">    </span><span class="n">User</span><span class="p">(</span><span class="n">User</span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">other</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">User</span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="n">User</span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">other</span><span class="p">);</span><span class="w"></span>
+    <span class="c1">//c++ 11, move constructor</span>
+    <span class="n">User</span><span class="p">(</span><span class="n">User</span><span class="o">&amp;&amp;</span> <span class="n">other</span><span class="p">);</span>
+    <span class="n">User</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="n">User</span><span class="o">&amp;&amp;</span> <span class="n">other</span><span class="p">);</span>
 
 
-<span class="p">}</span><span class="w"></span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>explicit 构造函数是用来防止隐式转换的</p>
-</section>
-<section id="id9">
+</div>
+<div class="section" id="id9">
 <h3><a class="toc-backref" href="#id24">3. 封装，访问控制与友元</a><a class="headerlink" href="#id9" title="Permalink to this headline"></a></h3>
 <p>public, private, protected, friend</p>
-</section>
-<section id="id10">
+</div>
+<div class="section" id="id10">
 <h3><a class="toc-backref" href="#id25">4. C++ 虚函数，虚继承与虚函数表</a><a class="headerlink" href="#id10" title="Permalink to this headline"></a></h3>
 <p>虚函数是通过虚函数表实现的，如果一个类含有虚函数，系统会为这个类分配一个指针成员指向一张虚函数表，表中每一项指向一个虚函数的地址，实现上就是一个函数指针的数组</p>
 <p>在类对象的内存布局中，首先是该类的 vtbl 指针，然后者对象数据，在通过对象指针 调用一个虚函数时，编译器生成的代码将先获取对象类的 vtbl 指针，然后调用  vtbl 中对应的项，从而实现多态性</p>
@@ -296,8 +295,8 @@
 <p>当然，如果在派生类中没有动态申请有资源的时候，是不会造成内存泄漏的。而当派生类对象的析构函数中有内存需要回收，并且在编程过程中采用了基类指针指向派生类对象，如为了实现多态，并且通过基类指针将对象销毁，这时，就会因为基类的析构函数为非虚函数而不触发动态绑定，从而没有调用派生类的析构函数而导致内存泄漏。</p>
 <p>因此，为了防止这种情况下的内存泄漏的发生，最后将基类的析构函数写成virtual虚析构函数。</p>
 </div></blockquote>
-</section>
-<section id="id11">
+</div>
+<div class="section" id="id11">
 <h3><a class="toc-backref" href="#id26">5. C++ 显示显式类型转换的好处和分类</a><a class="headerlink" href="#id11" title="Permalink to this headline"></a></h3>
 <ul class="simple">
 <li><p>static_cast 完成相关类型之间的转换</p></li>
@@ -305,27 +304,27 @@
 <li><p>dynamic_cast 将基类类型转换为子类的类型，它涉及运行时检查</p></li>
 <li><p>const_cast 转换掉表达式的 const 性质</p></li>
 </ul>
-</section>
-<section id="id12">
+</div>
+<div class="section" id="id12">
 <h3><a class="toc-backref" href="#id27">6. 如果避免多重继承中的在派生层次中出现多次</a><a class="headerlink" href="#id12" title="Permalink to this headline"></a></h3>
 <p>虚继承,
 比如 istream 继承自 ios， ostream 也继承自 ios, 而 iostream 继承自 istream 和 ostream,
 所以一个 iostream 对象可能会包含两个 ios 对象，所以要用到虚继承。</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">istream</span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">ios</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
-<span class="k">class</span> <span class="nc">ostream</span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">ios</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">istream</span><span class="o">:</span> <span class="k">public</span> <span class="k">virtual</span> <span class="n">ios</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
+<span class="k">class</span> <span class="nc">ostream</span><span class="o">:</span> <span class="k">public</span> <span class="k">virtual</span> <span class="n">ios</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
 </pre></div>
 </div>
-</section>
-<section id="id13">
+</div>
+<div class="section" id="id13">
 <h3><a class="toc-backref" href="#id28">7. 什么是模板的特化与偏特化</a><a class="headerlink" href="#id13" title="Permalink to this headline"></a></h3>
-</section>
-<section id="vector-list-dqeue-map-hashmap">
+</div>
+<div class="section" id="vector-list-dqeue-map-hashmap">
 <h3><a class="toc-backref" href="#id29">8. vector, list, dqeue, map(红黑树), hashmap 的区别</a><a class="headerlink" href="#vector-list-dqeue-map-hashmap" title="Permalink to this headline"></a></h3>
-</section>
-<section id="auto-ptr-shared-ptr-unique-ptr-weak-ptr">
+</div>
+<div class="section" id="auto-ptr-shared-ptr-unique-ptr-weak-ptr">
 <h3><a class="toc-backref" href="#id30">9. 什么是 <cite>auto_ptr</cite>, 它有什么缺点，和 <cite>shared_ptr</cite>/<cite>unique_ptr</cite>/<cite>weak_ptr</cite> 有什么不一样？</a><a class="headerlink" href="#auto-ptr-shared-ptr-unique-ptr-weak-ptr" title="Permalink to this headline"></a></h3>
-</section>
-<section id="extern-c">
+</div>
+<div class="section" id="extern-c">
 <h3><a class="toc-backref" href="#id31">10. 为什么要用 extern c</a><a class="headerlink" href="#extern-c" title="Permalink to this headline"></a></h3>
 <p>由于gcc和g++生成符号表的方式不同，导致在C++项目中如果使用gcc编译的C模块，会出现链接错误。因为链接器会去C模块的（.o）文件中查找，__Z3addii这样的符号。显然在C模块的目标文件(.o)中，不存在__Z3addii这样的符号，它有的只是_add。</p>
 <p>通过extern “C”，告诉g++编译器，不要对这些函数进行Name mangling，按照C编译器的方式去生成符号表符号。这样在main.c的目标文件(.o)中，参数列表为两个int类型的add函数名称为_add。链接器可以正确找到util.o中的add函数（他们都是_add）。注意参数列表为两个double类型的add函数名称还是__Z3adddd。</p>
@@ -333,9 +332,9 @@
 <li><p>锁的类型和用法</p></li>
 <li></li>
 </ol>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
 
            </div>

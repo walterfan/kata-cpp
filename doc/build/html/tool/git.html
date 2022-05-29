@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>git &mdash; Beautiful C++ 0.1 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -105,7 +104,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="git">
+  <div class="section" id="git">
 <h1>git<a class="headerlink" href="#git" title="Permalink to this headline"></a></h1>
 <div class="contents local topic" id="contents">
 <ul class="simple">
@@ -170,11 +169,11 @@
 <li><p><a class="reference internal" href="#reference" id="id54">Reference</a></p></li>
 </ul>
 </div>
-<section id="overview">
+<div class="section" id="overview">
 <h2><a class="toc-backref" href="#id14">overview</a><a class="headerlink" href="#overview" title="Permalink to this headline"></a></h2>
-<section id="work-flow">
+<div class="section" id="work-flow">
 <h3><a class="toc-backref" href="#id15">work flow</a><a class="headerlink" href="#work-flow" title="Permalink to this headline"></a></h3>
-<section id="prepare">
+<div class="section" id="prepare">
 <h4><a class="toc-backref" href="#id16">Prepare</a><a class="headerlink" href="#prepare" title="Permalink to this headline"></a></h4>
 <blockquote>
 <div><ul class="simple">
@@ -183,8 +182,8 @@
 <li><p>git remote add cctg <a class="reference external" href="https://yafan&#64;stash-eng-chn-sjc1.cisco.com/stash/scm/cctg/webex-telephony-tahoe.git">https://yafan&#64;stash-eng-chn-sjc1.cisco.com/stash/scm/cctg/webex-telephony-tahoe.git</a></p></li>
 </ul>
 </div></blockquote>
-</section>
-<section id="work-for-project">
+</div>
+<div class="section" id="work-for-project">
 <h4><a class="toc-backref" href="#id17">Work For Project</a><a class="headerlink" href="#work-for-project" title="Permalink to this headline"></a></h4>
 <blockquote>
 <div><ul class="simple">
@@ -192,24 +191,24 @@
 <li><p>git checkout -b workspace cctg/master</p></li>
 </ul>
 </div></blockquote>
-</section>
-<section id="coding-and-git-commit">
+</div>
+<div class="section" id="coding-and-git-commit">
 <h4><a class="toc-backref" href="#id18">Coding and git commit</a><a class="headerlink" href="#coding-and-git-commit" title="Permalink to this headline"></a></h4>
 <blockquote>
 <div><ul class="simple">
 <li><p>git push origin workspace:master</p></li>
 </ul>
 </div></blockquote>
-</section>
-<section id="code-review">
+</div>
+<div class="section" id="code-review">
 <h4><a class="toc-backref" href="#id19">Code Review</a><a class="headerlink" href="#code-review" title="Permalink to this headline"></a></h4>
 <blockquote>
 <div><ul class="simple">
 <li><p>pull request</p></li>
 </ul>
 </div></blockquote>
-</section>
-<section id="push-code">
+</div>
+<div class="section" id="push-code">
 <h4><a class="toc-backref" href="#id20">Push code</a><a class="headerlink" href="#push-code" title="Permalink to this headline"></a></h4>
 <blockquote>
 <div><ul class="simple">
@@ -218,8 +217,8 @@
 <li><p>git push cctgfork workspace:gate/yafan</p></li>
 </ul>
 </div></blockquote>
-</section>
-<section id="create-local-and-remote-branch">
+</div>
+<div class="section" id="create-local-and-remote-branch">
 <h4><a class="toc-backref" href="#id21">create local and remote branch</a><a class="headerlink" href="#create-local-and-remote-branch" title="Permalink to this headline"></a></h4>
 <blockquote>
 <div><ul class="simple">
@@ -231,19 +230,19 @@
 <span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">feature</span><span class="o">/</span><span class="n">customize_ivr</span><span class="p">:</span><span class="n">feature</span><span class="o">/</span><span class="n">customize_ivr</span>
 </pre></div>
 </div>
-</section>
-</section>
-<section id="tips">
+</div>
+</div>
+<div class="section" id="tips">
 <h3><a class="toc-backref" href="#id22">Tips</a><a class="headerlink" href="#tips" title="Permalink to this headline"></a></h3>
-<section id="id1">
+<div class="section" id="id1">
 <h4><a class="toc-backref" href="#id23">1. 代码会存在于三个区域：</a><a class="headerlink" href="#id1" title="Permalink to this headline"></a></h4>
 <ol class="arabic simple">
 <li><p>工作区 working directory</p></li>
 <li><p>暂存区 staging area</p></li>
 <li><p>仓库区 repository</p></li>
 </ol>
-</section>
-<section id="id2">
+</div>
+<div class="section" id="id2">
 <h4><a class="toc-backref" href="#id24">5. 代码从拉到推</a><a class="headerlink" href="#id2" title="Permalink to this headline"></a></h4>
 <p>git fetch origin &lt;branch&gt;
 git merge &lt;branch&gt;</p>
@@ -254,8 +253,8 @@ git rebase &lt;branch&gt;</p>
 <p>git add xxx
 git commit -m “xxx”
 git push origin &lt;branch&gt;</p>
-</section>
-<section id="id3">
+</div>
+<div class="section" id="id3">
 <h4><a class="toc-backref" href="#id25">3. 替换本地改动</a><a class="headerlink" href="#id3" title="Permalink to this headline"></a></h4>
 <blockquote>
 <div><ul class="simple">
@@ -279,8 +278,8 @@ git checkout remote/branch – a/file b/file
 git reset –hard remote/branch
 git reset –hard HEAD
 git reset &lt;commit_hash_id&gt; &lt;filepath&gt;</p>
-</section>
-<section id="id4">
+</div>
+<div class="section" id="id4">
 <h4><a class="toc-backref" href="#id26">4. 创新切换删除分支</a><a class="headerlink" href="#id4" title="Permalink to this headline"></a></h4>
 <ol class="arabic simple">
 <li><p>创新分支 git checkout -b &lt;branchname&gt;</p></li>
@@ -292,23 +291,23 @@ git reset &lt;commit_hash_id&gt; &lt;filepath&gt;</p>
 or git push origin :&lt;branchname&gt;</p></li>
 <li><p>清空本地分支: git remote prune origin</p></li>
 </ul>
-</section>
-<section id="id5">
+</div>
+<div class="section" id="id5">
 <h4><a class="toc-backref" href="#id27">4) 查看分支</a><a class="headerlink" href="#id5" title="Permalink to this headline"></a></h4>
 <p>git branch -a</p>
-</section>
-<section id="id6">
+</div>
+<div class="section" id="id6">
 <h4><a class="toc-backref" href="#id28">5) 重命名分支</a><a class="headerlink" href="#id6" title="Permalink to this headline"></a></h4>
 <p>git branch -m &lt;old_branch_name&gt; &lt;new_branch_name&gt;
 git push origin &lt;new_branch_name&gt;</p>
 <p>note: origin is a remote repo
 git remote add &lt;repo_name&gt; &lt;git_url&gt;</p>
-</section>
-<section id="id7">
+</div>
+<div class="section" id="id7">
 <h4><a class="toc-backref" href="#id29">6) 比较分支</a><a class="headerlink" href="#id7" title="Permalink to this headline"></a></h4>
 <p>git diff &lt;branch1&gt;..&lt;branch2&gt; –stat</p>
-</section>
-<section id="id8">
+</div>
+<div class="section" id="id8">
 <h4><a class="toc-backref" href="#id30">5. 查看历史</a><a class="headerlink" href="#id8" title="Permalink to this headline"></a></h4>
 <ul class="simple">
 <li><p>显示最近5次的提交的概要历史记录</p></li>
@@ -322,8 +321,8 @@ git remote add &lt;repo_name&gt; &lt;git_url&gt;</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">log</span> <span class="o">-</span><span class="n">p</span> <span class="o">-</span><span class="mi">3</span>
 </pre></div>
 </div>
-</section>
-<section id="id9">
+</div>
+<div class="section" id="id9">
 <h4><a class="toc-backref" href="#id31">6. 比较区别</a><a class="headerlink" href="#id9" title="Permalink to this headline"></a></h4>
 <ol class="arabic simple">
 <li><p>比较工作区和暂存区 git diff</p></li>
@@ -331,8 +330,8 @@ git remote add &lt;repo_name&gt; &lt;git_url&gt;</p>
 <li><p>比较工作区和仓库区 git diff HEAD</p></li>
 <li><p>比较两个分支 git diff branch_1..branch_2</p></li>
 </ol>
-</section>
-<section id="id10">
+</div>
+<div class="section" id="id10">
 <h4><a class="toc-backref" href="#id32">7. 管理标签</a><a class="headerlink" href="#id10" title="Permalink to this headline"></a></h4>
 <ul class="simple">
 <li><p>显示标签</p></li>
@@ -360,8 +359,8 @@ git push origin –delete tag &lt;tagname&gt;</p>
 <li><p>检出标签对应的代码</p></li>
 </ul>
 <p>git checkout tags/&lt;tag_name&gt;</p>
-</section>
-<section id="id11">
+</div>
+<div class="section" id="id11">
 <h4><a class="toc-backref" href="#id33">8. 子模块</a><a class="headerlink" href="#id11" title="Permalink to this headline"></a></h4>
 <ul class="simple">
 <li><p>添加子模块</p></li>
@@ -375,22 +374,22 @@ git push origin –delete tag &lt;tagname&gt;</p>
 <li><p>修改子模块</p></li>
 </ul>
 <p>git submodule update</p>
-</section>
-<section id="id12">
+</div>
+<div class="section" id="id12">
 <h4><a class="toc-backref" href="#id34">1. 回退</a><a class="headerlink" href="#id12" title="Permalink to this headline"></a></h4>
 <ul class="simple">
 <li><p>git log -10</p></li>
 <li><p>git reset xxx</p></li>
 <li><p>git push origin &lt;branchname&gt; –force</p></li>
 </ul>
-</section>
-<section id="id13">
+</div>
+<div class="section" id="id13">
 <h4><a class="toc-backref" href="#id35">10. 冲突解决</a><a class="headerlink" href="#id13" title="Permalink to this headline"></a></h4>
 <p>git stash
 git stash pop</p>
-</section>
-</section>
-<section id="compare-with-svn">
+</div>
+</div>
+<div class="section" id="compare-with-svn">
 <h3><a class="toc-backref" href="#id36">Compare with SVN</a><a class="headerlink" href="#compare-with-svn" title="Permalink to this headline"></a></h3>
 <blockquote>
 <div><ul class="simple">
@@ -405,14 +404,14 @@ git stash pop</p>
 </li>
 </ul>
 </div></blockquote>
-</section>
-</section>
-<section id="book-and-tips">
+</div>
+</div>
+<div class="section" id="book-and-tips">
 <h2><a class="toc-backref" href="#id37">Book and tips</a><a class="headerlink" href="#book-and-tips" title="Permalink to this headline"></a></h2>
 <ul class="simple">
 <li><p>every version is snapshot, not diff</p></li>
 </ul>
-<section id="three-states">
+<div class="section" id="three-states">
 <h3><a class="toc-backref" href="#id38">Three states</a><a class="headerlink" href="#three-states" title="Permalink to this headline"></a></h3>
 <ul class="simple">
 <li><ol class="arabic simple">
@@ -430,16 +429,16 @@ git stash pop</p>
 <li><p>unmodified</p></li>
 <li><p>untracked</p></li>
 </ul>
-</section>
-<section id="ares">
+</div>
+<div class="section" id="ares">
 <h3><a class="toc-backref" href="#id39">ares</a><a class="headerlink" href="#ares" title="Permalink to this headline"></a></h3>
 <ul class="simple">
 <li><p>working directory</p></li>
 <li><p>staging area</p></li>
 <li><p>git directory(repository)</p></li>
 </ul>
-</section>
-<section id="commands">
+</div>
+<div class="section" id="commands">
 <h3><a class="toc-backref" href="#id40">commands</a><a class="headerlink" href="#commands" title="Permalink to this headline"></a></h3>
 <ul class="simple">
 <li><p>git remote -v</p></li>
@@ -450,8 +449,8 @@ git stash pop</p>
 <li><p>git reflog # change list</p></li>
 <li><p>git diff –cached</p></li>
 </ul>
-</section>
-<section id="git-branch-r">
+</div>
+<div class="section" id="git-branch-r">
 <h3><a class="toc-backref" href="#id41">git branch -r</a><a class="headerlink" href="#git-branch-r" title="Permalink to this headline"></a></h3>
 <ul class="simple">
 <li><p>origin/HEAD -&gt; origin/master</p></li>
@@ -459,8 +458,8 @@ git stash pop</p>
 <li><p>HEAD 最新的代码</p></li>
 <li><p>origin is remote server</p></li>
 </ul>
-</section>
-<section id="branch-management">
+</div>
+<div class="section" id="branch-management">
 <h3><a class="toc-backref" href="#id42">branch management</a><a class="headerlink" href="#branch-management" title="Permalink to this headline"></a></h3>
 <ul class="simple">
 <li><p>git fetch</p></li>
@@ -468,17 +467,17 @@ git stash pop</p>
 <li><p>git rebase</p></li>
 <li><p>git gc</p></li>
 </ul>
-</section>
-<section id="create-branch">
+</div>
+<div class="section" id="create-branch">
 <h3><a class="toc-backref" href="#id43">create branch</a><a class="headerlink" href="#create-branch" title="Permalink to this headline"></a></h3>
 <ul class="simple">
 <li><p>git branch dev</p></li>
 <li><p>git checkout dev</p></li>
 <li><p><a class="reference external" href="http://blog.jobbole.com/23398/">http://blog.jobbole.com/23398/</a></p></li>
 </ul>
-</section>
-</section>
-<section id="tutorial">
+</div>
+</div>
+<div class="section" id="tutorial">
 <h2><a class="toc-backref" href="#id44">Tutorial</a><a class="headerlink" href="#tutorial" title="Permalink to this headline"></a></h2>
 <ul>
 <li><p>Git simple tutorial</p>
@@ -487,8 +486,8 @@ git stash pop</p>
 <li><p>setup a git server on macosx
 <a class="reference external" href="http://www.tomdalling.com/blog/software-processes/how-to-set-up-a-secure-git-server-at-home-osx/">http://www.tomdalling.com/blog/software-processes/how-to-set-up-a-secure-git-server-at-home-osx/</a></p></li>
 </ul>
-</section>
-<section id="spark-build-pipeline">
+</div>
+<div class="section" id="spark-build-pipeline">
 <h2><a class="toc-backref" href="#id45">Spark build pipeline</a><a class="headerlink" href="#spark-build-pipeline" title="Permalink to this headline"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>fork the cloud-apps to another repo, such as https://sqbu-github.cisco.com/yafan/cloud-apps
 then clone the repoe and add remote repo like below
@@ -515,8 +514,8 @@ if the codes change is in waitng quue firlst ,If it goes to vestibule list then,
 Otherwise, you need to check the failed reason. If the error is not caused by your codes change, you can click the retry button to retry the build again.
 </pre></div>
 </div>
-</section>
-<section id="tools">
+</div>
+<div class="section" id="tools">
 <h2><a class="toc-backref" href="#id46">Tools</a><a class="headerlink" href="#tools" title="Permalink to this headline"></a></h2>
 <ul class="simple">
 <li><p>gitosis: <a class="reference external" href="https://github.com/res0nat0r/gitosis">https://github.com/res0nat0r/gitosis</a></p></li>
@@ -550,7 +549,7 @@ Existing Git Repo?
   git push -u origin master
 </pre></div>
 </div>
-<section id="install-on-centos">
+<div class="section" id="install-on-centos">
 <h3><a class="toc-backref" href="#id47">Install On CentOS</a><a class="headerlink" href="#install-on-centos" title="Permalink to this headline"></a></h3>
 <ul class="simple">
 <li><p>new version</p></li>
@@ -579,29 +578,29 @@ $ make install
 <ul class="simple">
 <li><p>ssh-keygen -t rsa -C “<a class="reference external" href="mailto:walter&#46;fan&#37;&#52;&#48;gmail&#46;com">walter<span>&#46;</span>fan<span>&#64;</span>gmail<span>&#46;</span>com</a>”</p></li>
 </ul>
-</section>
-</section>
-<section id="faq">
+</div>
+</div>
+<div class="section" id="faq">
 <h2><a class="toc-backref" href="#id48">FAQ</a><a class="headerlink" href="#faq" title="Permalink to this headline"></a></h2>
-<section id="how-to-set-up-a-secure-git-server-at-home-osx">
+<div class="section" id="how-to-set-up-a-secure-git-server-at-home-osx">
 <h3><a class="toc-backref" href="#id49">how-to-set-up-a-secure-git-server-at-home-osx</a><a class="headerlink" href="#how-to-set-up-a-secure-git-server-at-home-osx" title="Permalink to this headline"></a></h3>
 <p><a class="reference external" href="http://www.tomdalling.com/blog/software-processes/how-to-set-up-a-secure-git-server-at-home-osx/">http://www.tomdalling.com/blog/software-processes/how-to-set-up-a-secure-git-server-at-home-osx/</a></p>
-</section>
-<section id="q-ssh-t-git-github-com-permission-denied">
+</div>
+<div class="section" id="q-ssh-t-git-github-com-permission-denied">
 <h3>Q 使用命令 ssh -T <a class="reference external" href="mailto:git&#37;&#52;&#48;github&#46;com">git<span>&#64;</span>github<span>&#46;</span>com</a> 的时候，系统总是提示 permission denied<a class="headerlink" href="#q-ssh-t-git-github-com-permission-denied" title="Permalink to this headline"></a></h3>
 <ol class="upperalpha simple">
 <li><p>修改/etc/ssh/sshd_config</p></li>
 </ol>
 <p>修改/etc/ssh/sshd_config文件.将其中的PermitRootLogin no修改为yes
 或者用 ssh -vvv <a class="reference external" href="mailto:git&#37;&#52;&#48;github&#46;com">git<span>&#64;</span>github<span>&#46;</span>com</a> 查看一下，是不是公钥没上传正确</p>
-</section>
-<section id="how-to-disable-gnome-ssh-askpass">
+</div>
+<div class="section" id="how-to-disable-gnome-ssh-askpass">
 <h3><a class="toc-backref" href="#id51">How to disable gnome-ssh-askpass?</a><a class="headerlink" href="#how-to-disable-gnome-ssh-askpass" title="Permalink to this headline"></a></h3>
 <ul class="simple">
 <li><p>unset SSH_ASKPASS</p></li>
 </ul>
-</section>
-<section id="how-to-use-submodule">
+</div>
+<div class="section" id="how-to-use-submodule">
 <h3><a class="toc-backref" href="#id52">How to use submodule</a><a class="headerlink" href="#how-to-use-submodule" title="Permalink to this headline"></a></h3>
 <ul class="simple">
 <li><p>git submodule add <a class="reference external" href="https://github.com/libevent/libevent.git">https://github.com/libevent/libevent.git</a> third_party/libevent</p></li>
@@ -609,23 +608,23 @@ $ make install
 <li><p>git submodule init</p></li>
 <li><p>git submodule update</p></li>
 </ul>
-</section>
-<section id="q-unable-to-access-git-ssl-certificate-problem-invalid-certificate-chain">
+</div>
+<div class="section" id="q-unable-to-access-git-ssl-certificate-problem-invalid-certificate-chain">
 <h3><a class="toc-backref" href="#id53">Q. unable to access git SSL certificate problem: Invalid certificate chain</a><a class="headerlink" href="#q-unable-to-access-git-ssl-certificate-problem-invalid-certificate-chain" title="Permalink to this headline"></a></h3>
 <ol class="upperalpha simple">
 <li><p>git config –global http.sslVerify false</p></li>
 </ol>
-</section>
-</section>
-<section id="reference">
+</div>
+</div>
+<div class="section" id="reference">
 <h2><a class="toc-backref" href="#id54">Reference</a><a class="headerlink" href="#reference" title="Permalink to this headline"></a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="http://rogerdudler.github.com/git-guide/index.zh.html">http://rogerdudler.github.com/git-guide/index.zh.html</a></p></li>
 <li><p>rebase: <a class="reference external" href="https://git-scm.com/book/zh/ch3-6.html">https://git-scm.com/book/zh/ch3-6.html</a></p></li>
 <li><p><a class="reference external" href="http://git-scm.com/book/zh/v1">http://git-scm.com/book/zh/v1</a></p></li>
 </ul>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>
