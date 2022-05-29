@@ -2,6 +2,7 @@
 
 using namespace std;
 namespace po = boost::program_options;
+extern std::string current_time();
 
 extern int std_function_test(int argc, char** argv);
 extern int function_demo(int argc, char** argv);
@@ -11,6 +12,8 @@ extern int smart_ptr_demo(int argc, char** argv);
 
 extern int asio_timer_demo_1(int argc, char** argv);
 extern int asio_timer_demo_2(int argc, char** argv);
+extern int asio_timer_demo_3(int argc, char** argv);
+extern int asio_timer_demo_4(int argc, char** argv);
 
 extern int asio_udp_demo(int argc, char** argv);
 
@@ -42,7 +45,8 @@ void ExampleRunner::init() {
     register_example("std_function_test", std_function_test);
     register_example("asio_time_demo_1", asio_timer_demo_1);
     register_example("asio_time_demo_2", asio_timer_demo_2);
-
+    register_example("asio_time_demo_3", asio_timer_demo_3);
+    register_example("asio_time_demo_4", asio_timer_demo_4);
 }
 
 void ExampleRunner::register_example(const string& name, const exam_func_t &exam)
@@ -137,7 +141,9 @@ int main(int argc, char** argv)
 
             auto func_ptr = runner->find_example(nChoice);
             if(func_ptr) {
+                cout << "# start at " << current_time() << endl;
                 func_ptr(argc, argv);
+                cout << "# end at " << current_time() << endl;
             } else {
                 cout<<"Invalid option, please select again"<<endl; runner->display_menu();
             }

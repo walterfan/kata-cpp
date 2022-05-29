@@ -8,14 +8,17 @@ using namespace boost::asio;
 int asio_udp_server(int argc, char* argv[])
 {
     //TBD
+    return 0;
 }
 
 int asio_udp_client(int argc, char* argv[])
 {
     //TBD
+    return 0;
 }
 
 int asio_udp_demo(int argc, char* argv[])
 {
     std::cout << "TBD..." << std::endl;
+    return 0;
 }

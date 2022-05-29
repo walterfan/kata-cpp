@@ -17,6 +17,7 @@ Command::Command(string name):m_name(name) {
 Command::Command(const Command& other) {
     BOOST_LOG_TRIVIAL(trace) << "line " <<__LINE__<< ". copy construct: " << m_name << "@" <<this;
     m_name = other.m_name;
+    m_executor = other.m_executor;
     for (const auto& kv : other.m_parameters) {
         BOOST_LOG_TRIVIAL(trace) << kv.first << " has value " << kv.second;
         m_parameters.insert(kv);
@@ -29,6 +30,7 @@ Command& Command::operator=(const Command& other) {
     if (this != &other)
     {
         this->m_name = other.m_name;
+        this->m_executor = other.m_executor;
         for (const auto& kv : other.m_parameters) {
             std::cout << kv.first << " has value " << kv.second << std::endl;
             m_parameters.insert(kv);
@@ -47,6 +49,7 @@ Command& Command::operator=(const Command& other) {
 Command::Command(Command&& other) {
     BOOST_LOG_TRIVIAL(trace) << "line " <<__LINE__<< " move copy construct: " << other.m_name << "@" <<this;
     m_name = std::move(other.m_name);
+    m_executor = std::move(other.m_executor);
     m_parameters = std::move(other.m_parameters);
 
     // Copy the data pointer and its length from the source object.
@@ -66,6 +69,7 @@ Command& Command::operator=(Command&& other)
    if (this != &other)
    {
       m_name = std::move(other.m_name);
+      m_executor = std::move(other.m_executor);
       m_parameters = std::move(other.m_parameters);
       // Free the existing resource.
       delete[] m_data;

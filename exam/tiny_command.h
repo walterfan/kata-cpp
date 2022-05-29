@@ -5,7 +5,7 @@
 #include <map>
 #include <iostream>
 #include <memory>
-
+#include <functional>
 
 using command_executor = std::function<int(int, char**)>;
 
@@ -34,4 +34,5 @@ private:
     std::map<std::string, std::string> m_parameters;
     size_t m_length = 0;
     uint8_t* m_data = nullptr;
+    command_executor m_executor = nullptr;
 };
