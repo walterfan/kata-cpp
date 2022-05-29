@@ -27,7 +27,7 @@ run_example=env.Program(target='./bin/run_example', source=[
     './exam/std_thread.cpp',
     './exam/tiny_command.cpp',
     './exam/AudioLevelCalculator.cpp'],
-    LIBS = ['jsoncpp', 'pthread','boost_log','boost_thread', 'boost_program_options'],
+    LIBS = ['pthread','boost_log','boost_thread', 'boost_program_options'],
     LIBPATH = LIB_PATH)
 
 
