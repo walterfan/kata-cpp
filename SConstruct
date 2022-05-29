@@ -20,10 +20,12 @@ run_example=env.Program(target='./bin/run_example', source=[
     './exam/run_example.cpp',
     './exam/boost_function.cpp',
     './exam/boost_memory.cpp',
-    './exam/boost_asio_timer.cpp',
+    './exam/boost_asio_timer_1.cpp',
+    './exam/boost_asio_timer_2.cpp',
     './exam/boost_asio_udp.cpp',
     './exam/std_function_exam.cpp',
     './exam/cpp11_lambda.cpp',
+    './exam/tiny_command.cpp',
     './exam/AudioLevelCalculator.cpp'],
     LIBS = ['jsoncpp', 'pthread','boost_log','boost_thread', 'boost_program_options'],
     LIBPATH = LIB_PATH)

@@ -8,11 +8,11 @@ extern int function_demo(int argc, char** argv);
 extern int lambda_demo(int argc, char* argv[]);
 extern int rvalue_demo(int argc, char* argv[]);
 extern int smart_ptr_demo(int argc, char** argv);
-extern int asio_timer_demo(int argc, char** argv);
+
+extern int asio_timer_demo_1(int argc, char** argv);
+extern int asio_timer_demo_2(int argc, char** argv);
 
 extern int asio_udp_demo(int argc, char** argv);
-
-const int CASE_COUNT = 5;
 
 const char* usage = R"name(please specify example name:
     function_demo
@@ -20,128 +20,14 @@ const char* usage = R"name(please specify example name:
     or rvalue_demo
     or smart_ptr_demo
     or std_function_test
+    or ...
 )name";
 
 
-//C++11: delegate constructor
-Command::Command():Command("") {
-    BOOST_LOG_TRIVIAL(trace) << "line " <<__LINE__<< ". construct: " << m_name << "@" <<this;
-}
 
-Command::Command(string name):m_name(name) {
-    BOOST_LOG_TRIVIAL(trace) << "line " <<__LINE__<< ". construct: " << m_name << "@" <<this;    
-}
-
-Command::Command(const Command& other) {
-    BOOST_LOG_TRIVIAL(trace) << "line " <<__LINE__<< ". copy construct: " << m_name << "@" <<this;
-    m_name = other.m_name;
-    for (const auto& kv : other.m_parameters) {
-        BOOST_LOG_TRIVIAL(trace) << kv.first << " has value " << kv.second;
-        m_parameters.insert(kv);
-    }
-    std::copy(other.m_data, other.m_data + m_length, m_data);
-}
-
-Command& Command::operator=(const Command& other) {
-	BOOST_LOG_TRIVIAL(trace) << "line " <<__LINE__<< ". operator =: " << other.m_name;
-    if (this != &other)
-    {
-        this->m_name = other.m_name;
-        for (const auto& kv : other.m_parameters) {
-            std::cout << kv.first << " has value " << kv.second << std::endl;
-            m_parameters.insert(kv);
-        }
-        // Free the existing resource.
-        if(m_data) {
-            delete[] m_data;
-        }
-        m_length = other.m_length;
-        m_data = new uint8_t[m_length];
-        std::copy(other.m_data, other.m_data + m_length, m_data);
-    }
-    return *this;
-}
-
-Command::Command(Command&& other) {
-    BOOST_LOG_TRIVIAL(trace) << "line " <<__LINE__<< " move copy construct: " << other.m_name << "@" <<this;
-    m_name = std::move(other.m_name);
-    m_parameters = std::move(other.m_parameters);
-
-    // Copy the data pointer and its length from the source object.
-    m_data = other.m_data;
-    m_length = other.m_length;
-
-    // Release the data pointer from the source object so that
-    // the destructor does not free the memory multiple times.
-    other.m_data = nullptr;
-    other.m_length = 0;
-
-}
-
-Command& Command::operator=(Command&& other) 
-{
-	BOOST_LOG_TRIVIAL(trace) << "line " <<__LINE__<< " move operator ==" << other.m_name;
-   if (this != &other)
-   {
-      m_name = std::move(other.m_name);
-      m_parameters = std::move(other.m_parameters);
-      // Free the existing resource.
-      delete[] m_data;
-
-      // Copy the data pointer and its length from the
-      // source object.
-      m_data = other.m_data;
-      m_length = other.m_length;
-
-      // Release the data pointer from the source object so that
-      // the destructor does not free the memory multiple times.
-      other.m_data = nullptr;
-      other.m_length = 0;
-   }
-   return *this;
-}
-
-Command::~Command() {
-    BOOST_LOG_TRIVIAL(trace) << "line " <<__LINE__<< ". destruct: " << m_name ;
-}
-
-
-void Command::setName(const string& name) {
-    m_name = name;
-}
-void Command::setParameter(const string& name, const string& value) {
-    m_parameters[name] = value;
-}
-
-void Command::setData(const uint8_t* pData, size_t length) {
-    BOOST_LOG_TRIVIAL(trace) << "line " <<__LINE__<< ". setData: " << m_name;
-	if(nullptr != m_data) {
-        delete[] m_data;
-    }
-	
-    m_length = length;
-	m_data = new uint8_t[length];
-    std::copy(pData, pData + length, m_data);
-}
-
-ostream& operator<<(ostream& os, const Command& obj)
-{
-    os << obj.m_name;
-    os << ": ";
-    //for (map<string, string>::iterator it = obj.m_parameters.begin(); it != obj.m_parameters.end(); ++it)
-    for (const auto& kv : obj.m_parameters)
-    {
-        os << kv.first << "=" << kv.second << endl;
-    }
-    for(size_t i=0; i< obj.m_length; ++i) {
-        os << *(obj.m_data + i);
-    }
-    return os;
-}
-
-
-ExampleRunner::ExampleRunner(): m_example_count(0),m_func_examples() {
-    BOOST_LOG_TRIVIAL(trace)<<"* ExampleRunner construct: " ;    
+//----------------------- ExampleRunner ------------------------------//
+ExampleRunner::ExampleRunner(): m_example_count(0),m_examples() {
+    BOOST_LOG_TRIVIAL(trace)<<"* ExampleRunner construct: " ;
 }
 
 ExampleRunner::~ExampleRunner() {
@@ -154,18 +40,22 @@ void ExampleRunner::init() {
     register_example("lambda_demo", lambda_demo);
 	register_example("rvalue_demo", rvalue_demo);
     register_example("std_function_test", std_function_test);
+    register_example("asio_time_demo_1", asio_timer_demo_1);
+    register_example("asio_time_demo_2", asio_timer_demo_2);
+
 }
 
 void ExampleRunner::register_example(const string& name, const exam_func_t &exam)
 {
     m_example_count++;
-    m_func_examples[name] = exam;
+    m_examples[name] = exam;
+    m_commands[m_example_count] = name;
 }
 
 int ExampleRunner::execute_example(const string& name, int argc, char** argv) const
 {
-    auto it = m_func_examples.find(name);
-    if(it != m_func_examples.end()) {
+    auto it = m_examples.find(name);
+    if(it != m_examples.end()) {
         BOOST_LOG_TRIVIAL(trace) << "execute "<< it->first;
         exam_func_t func = it->second;
         return func(argc, argv);
@@ -174,32 +64,49 @@ int ExampleRunner::execute_example(const string& name, int argc, char** argv) co
     return -1;
 }
 
+exam_func_ptr ExampleRunner::find_example(int exampleId) const {
+    auto it = m_commands.find(exampleId);
+    if(it != m_commands.end()) {
+        return find_example(it->second);
+    }
+    return nullptr;
+}
+
+exam_func_ptr ExampleRunner::find_example(const std::string& exampleName) const {
+
+    auto it = m_examples.find(exampleName);
+    if(it != m_examples.end()) {
+        return it->second;
+    }
+    return nullptr;
+}
+
 
 size_t ExampleRunner::size() const {
-    return m_func_examples.size();
+    return m_examples.size();
 }
 
 void ExampleRunner::display_menu() const {
     cout<<"===================================================== \n";
     cout<<" \t\tMENU \t \n ";
     cout<<"===================================================== \n";
-    cout<<" 1. smart pointer demo\n";
-    cout<<" 2. function bind demo\n";
-    cout<<" 3. lambda demo\n";
-    cout<<" 4. rvalue demo\n";
-    cout<<" 5. boost asio timer demo\n";
-    cout<<" 6. boost asio udp server and client demo\n";
+
+
+    for(auto&& [first,second]: m_commands) {
+        cout << " " << first << ". " << second << endl;
+    }
     cout<<" 0. quit\n";
+
 }
 
 int main(int argc, char** argv)
 {
     unique_ptr<ExampleRunner> runner = my_make_unique<ExampleRunner>();
     runner->init();
-    BOOST_ASSERT_MSG(runner->size()==CASE_COUNT, "example count should be 2");
+
     //c++11 R"raw string"
     po::options_description desc("Allowed options:");
-    
+
     desc.add_options()
         ("help,h", "produce help message")
         ("name,n", po::value<string>(), usage)
@@ -223,22 +130,19 @@ int main(int argc, char** argv)
         runner->execute_example(vm["name"].as<string>(), argc, argv);
     } else {
         runner->display_menu();
-        int yourchoice;
+        int nChoice = 0;
         do {
-            cout<<"Enter your choice(0-6):";
-            cin>>yourchoice;
-            switch (yourchoice)
-            {
-                case 1: smart_ptr_demo(argc, argv); break;
-                case 2: function_demo(argc, argv); break;
-                case 3: lambda_demo(argc, argv); break;
-                case 4: rvalue_demo(argc, argv); break;
-                case 5: asio_timer_demo(argc, argv); break;
-                case 6: asio_udp_demo(argc, argv); break;
-                case 0: cout<<"bye"<<endl; break;
-                default: cout<<"Invalid option, please select again"<<endl; runner->display_menu(); break;
+            cout<<"Enter your choice(0-" << runner->size() << "):";
+            cin>>nChoice;
+
+            auto func_ptr = runner->find_example(nChoice);
+            if(func_ptr) {
+                func_ptr(argc, argv);
+            } else {
+                cout<<"Invalid option, please select again"<<endl; runner->display_menu();
             }
-        } while (yourchoice > 0);
+
+        } while (nChoice > 0);
     }
 
     return 0;

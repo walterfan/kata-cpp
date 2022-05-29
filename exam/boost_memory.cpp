@@ -1,4 +1,7 @@
-#include "run_example.h"
+#include "tiny_command.h"
+#include <boost/log/core.hpp>
+#include <boost/log/trivial.hpp>
+#include <boost/log/expressions.hpp>
 
 using namespace std;
 
@@ -27,7 +30,7 @@ int smart_ptr_demo(int argc, char* argv[])
 
     BOOST_LOG_TRIVIAL(trace) << "line " <<__LINE__ << " -- unique_ptr --";
     //unique_ptr<Command> ptr = unique_ptr<Command>(new Command());
-    unique_ptr<Command> uniquePtr = my_make_unique<Command>();
+    unique_ptr<Command> uniquePtr = make_unique<Command>();
     uniquePtr->setName("create");
     uniquePtr->setParameter("user", "walter");
     BOOST_LOG_TRIVIAL(trace) << "line " <<__LINE__ << ". unique pointer=" << uniquePtr.get() <<", command="<< *uniquePtr;

@@ -5,7 +5,7 @@
 
 using namespace boost::asio;
 
-int asio_timer_demo(int argc, char* argv[])
+int asio_timer_demo_1(int argc, char* argv[])
 {
   io_service ioservice;
 
@@ -18,4 +18,6 @@ int asio_timer_demo(int argc, char* argv[])
     { std::cout << "400 milliseconds\n"; });
 
   ioservice.run();
+
+  return 0;
 }
