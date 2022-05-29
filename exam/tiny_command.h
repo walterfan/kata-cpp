@@ -5,7 +5,7 @@
 #include <map>
 #include <iostream>
 #include <memory>
-
+#include <functional>
 
 using command_executor = std::function<int(int, char**)>;
 
