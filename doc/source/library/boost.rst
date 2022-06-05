@@ -30,8 +30,11 @@ Boost
 
 .. code-block:: bash
 
-    ./bootstrap.sh
+    ./bootstrap.sh --with-libraries=all --with-toolset=clang
+
+    ./b2 -j8
     ./b2 install
+
     ls -l /usr/local/include /usr/local/lib
 
 

@@ -9,11 +9,13 @@ extern int function_demo(int argc, char** argv);
 extern int lambda_demo(int argc, char* argv[]);
 extern int rvalue_demo(int argc, char* argv[]);
 extern int smart_ptr_demo(int argc, char** argv);
+extern int enable_shared_from_this_demo(int argc, char** argv);
 
 extern int asio_timer_demo_1(int argc, char** argv);
 extern int asio_timer_demo_2(int argc, char** argv);
 extern int asio_timer_demo_3(int argc, char** argv);
 extern int asio_timer_demo_4(int argc, char** argv);
+extern int std_visit_demo(int argc, char** argv);
 
 extern int asio_udp_demo(int argc, char** argv);
 
@@ -40,6 +42,7 @@ ExampleRunner::~ExampleRunner() {
 void ExampleRunner::init() {
     register_example("function_demo", function_demo);
     register_example("smart_ptr_demo", smart_ptr_demo);
+    register_example("enable_shared_from_this_demo", enable_shared_from_this_demo);
     register_example("lambda_demo", lambda_demo);
 	register_example("rvalue_demo", rvalue_demo);
     register_example("std_function_test", std_function_test);
@@ -47,6 +50,7 @@ void ExampleRunner::init() {
     register_example("asio_time_demo_2", asio_timer_demo_2);
     register_example("asio_time_demo_3", asio_timer_demo_3);
     register_example("asio_time_demo_4", asio_timer_demo_4);
+    register_example("std_visit_demo", std_visit_demo);
 }
 
 void ExampleRunner::register_example(const string& name, const exam_func_t &exam)

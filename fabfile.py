@@ -23,7 +23,7 @@ def make_doc(c):
 def publish_doc(c):
     c.local("touch %s/build/html/.nojekyll" % GUIDE_PATH)
     c.local("git add %s" % GUIDE_PATH)
-    c.local('git commit -m "update guilde"')
+    c.local('git commit -m "update doc"')
     c.local("git subtree push --prefix %s/build/html origin gh-pages" % GUIDE_FOLDER)
 
 @task(hosts=default_hosts)

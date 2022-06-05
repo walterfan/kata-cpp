@@ -25,6 +25,7 @@ run_example=env.Program(target='./bin/run_example', source=[
     './exam/std_function_exam.cpp',
     './exam/std_lambda.cpp',
     './exam/std_thread.cpp',
+    './exam/std_visit_demo.cpp',
     './exam/tiny_command.cpp',
     './exam/AudioLevelCalculator.cpp'],
     LIBS = ['pthread','boost_log','boost_thread', 'boost_program_options'],
