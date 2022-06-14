@@ -21,7 +21,7 @@ run_example=env.Program(target='./bin/run_example', source=[
     './exam/boost_function.cpp',
     './exam/boost_memory.cpp',
     './exam/boost_asio_timer.cpp',
-    './exam/boost_asio_chat.cpp',
+    './exam/boost_asio_strand.cpp',
     './exam/std_function_exam.cpp',
     './exam/std_lambda.cpp',
     './exam/std_thread.cpp',

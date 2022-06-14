@@ -59,12 +59,12 @@ public:
         return shared_from_this();
     }
     //dangerous of double delete
-    shared_ptr<Entity> getThis() {
-        return shared_ptr(this);
+    shared_ptr<Entity> getThisSharedPtr() {
+        return shared_ptr<Entity>(this);
     }
 
     //dangerous of the raw pointer
-    Entity* getThis() {
+    Entity* getThisPtr() {
         return this;
     }
 

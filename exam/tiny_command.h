@@ -32,7 +32,10 @@ public:
 private:
     std::string m_name = "";
     std::map<std::string, std::string> m_parameters;
+
+    command_executor m_executor = nullptr;
+
     size_t m_length = 0;
     uint8_t* m_data = nullptr;
-    command_executor m_executor = nullptr;
+
 };
