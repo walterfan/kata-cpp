@@ -1,4 +1,5 @@
 #include "gtest/gtest.h"
+#include <memory>
 #include <stdint.h>
 #include <string>
 #include <iostream>
@@ -7,38 +8,26 @@
 using namespace std;
 using namespace testing;
 
-struct Packet
+class Packet: public std::enable_shared_from_this<Packet>
 {
+public:
     Packet() = default;
     Packet(uint32_t type, const string& name):mType(type), mName(name) {};
     Packet(uint32_t type, const string& name, std::vector<string> values):mType(type), mName(name), mValues(values) {};
 
     uint32_t mType = 0;
-    //uint32_t mLength;
     string mName;
     std::vector<string> mValues;
 };
 
 
-inline std::ostream& operator<<(std::ostream& o, Packet& packet) {
-    o << "type=" << packet.mType;
-    o << ", name=" <<packet.mName;
-    o << ", values=";
-    for(const auto& value: packet.mValues) {
-        o << value << " ";
-    }
-
-    return o;
-}
-
-
-class InitializationTest : public testing::Test
+class SmartPtrTest : public testing::Test
 {
 public:
-    InitializationTest(): m_strFeature("PacketTest"), m_strTestName("") {
+    SmartPtrTest(): m_strFeature("PacketTest"), m_strTestName("") {
 
     }
-    virtual ~InitializationTest() { }
+    virtual ~SmartPtrTest() { }
 
     virtual void SetUp() {
 
@@ -65,17 +54,15 @@ protected:
 };
 
 
-TEST_F(InitializationTest, testInitByBrace)
+TEST_F(SmartPtrTest, testWeakPtr)
 {
-    RecordTestCase("an object", "initialize it by brace", "the object was initialized");
+    std::weak_ptr<Packet> packetPtr;
 
-    Packet p0{1, "alpha"};
-    cout << p0 << endl;
-    ASSERT_EQ(p0.mType, 1);
-    ASSERT_EQ(p0.mName, "alpha");
-    ASSERT_EQ(p0.mValues.size(), 0);
+    cout << "packetPtr used_count=" << packetPtr.use_count() << endl;
 
-    Packet p1{0, "b", {"1","2", "3"}};
+    if(packetPtr.lock()) {
+        cout << "packetPtr is false" << endl;
+    }
 
 }
 
