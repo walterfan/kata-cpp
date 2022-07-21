@@ -36,6 +36,7 @@ run_example=env.Program(target='./bin/run_example', source=[
 unittest=env.Program(target='./bin/unit_test', source=[
     './test/unit_test.cpp',
     './test/quick_test.cpp',
+    './test/time_point_test.cpp',
     './test/smart_ptr_test.cpp',
 	'./test/emcpp_7.cpp'],
     LIBS = ['gmock','gtest', 'pthread'], LIBPATH = LIB_PATH)
