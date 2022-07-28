@@ -39,6 +39,7 @@ unittest=env.Program(target='./bin/unit_test', source=[
     './test/invoke_test.cpp',
     './test/ntptime_test.cpp',
     './test/time_point_test.cpp',
+    './test/chrono_duration_test.cpp',
     './test/smart_ptr_test.cpp',
 	'./test/emcpp_7.cpp'],
     LIBS = ['gmock','gtest', 'pthread'], LIBPATH = LIB_PATH)
