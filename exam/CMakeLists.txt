@@ -29,6 +29,7 @@ set(SRCS run_example.cpp
     tiny_command.cpp
     AudioLevelCalculator.cpp
     std_visit_demo
+    crtp_demo.cpp
 )
 
 ADD_EXECUTABLE(run_example ${SRCS})

@@ -131,6 +131,13 @@ char * octet_string_hex_string(const void *s, int length);
 int hex_string_to_octet_string(char *raw, char *hex, int len);
 
 namespace wfan {
+    /**
+     * @brief trim string
+     * 
+     * @param str string to trim
+     * @param whitespace space, return, etc.
+     * @return std::string trimmed string
+     */
     std::string trim(const std::string& str, const std::string& whitespace = " \t");
 
     std::string ltrim(const std::string& str, const std::string& whitespace = " \t");
