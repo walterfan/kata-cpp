@@ -1,4 +1,5 @@
-#include "gmock/gmock.h"
+//#include "gmock/gmock.h"
+#include <gtest/gtest.h>
 #include <string>
 #include <iostream>
 #include <stdint.h>
@@ -6,8 +7,8 @@
 using namespace std;
 using namespace testing;
 
-using ::testing::Return;
-using ::testing::Mock;
+//using ::testing::Return;
+//using ::testing::Mock;
 
 class CReferenceControl
 {

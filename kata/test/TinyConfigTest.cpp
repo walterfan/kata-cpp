@@ -7,7 +7,7 @@
 
 #include "TinyConfig.h"
 
-#include "gmock/gmock.h"
+#include <gtest/gtest.h>
 #include <string>
 #include <iostream>
 #include <stdint.h>
@@ -16,8 +16,8 @@ using namespace std;
 using namespace testing;
 using namespace wfan;
 
-using ::testing::Return;
-using ::testing::Mock;
+//using ::testing::Return;
+//using ::testing::Mock;
 
 class TinyConfigTest: public Test {
 public:
@@ -44,7 +44,7 @@ public:
 
 TEST_F (TinyConfigTest, UnitTest1)
 {
-	int ret = m_pConfig->ReadConfigFile("../etc/hfrtc.ini");
+	m_pConfig->ReadConfigFile("../etc/hfrtc.ini");
 	m_pConfig->AddConfigItem("server", "host", "127.0.0.1");
 	m_pConfig->AddConfigItem("misc", "host", "127.0.0.2");
 

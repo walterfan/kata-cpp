@@ -1,8 +1,9 @@
 cmake_minimum_required(VERSION 3.4)
 project(bcpp)
+
 add_subdirectory(exam)
 add_subdirectory(kata)
-
+add_subdirectory(test)
 
 option(BUILD_DOC "Build documentation" ON)
 

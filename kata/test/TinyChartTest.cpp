@@ -3,7 +3,7 @@
 #include <string.h>
 #include <memory>
 
-#include "gmock/gmock.h"
+#include <gtest/gtest.h>
 #include <string>
 #include <iostream>
 #include <fstream>
@@ -26,8 +26,8 @@ using namespace std;
 using namespace testing;
 using namespace wfan;
 
-using ::testing::Return;
-using ::testing::Mock;
+//using ::testing::Return;
+//using ::testing::Mock;
 
 const char*  LATENCY_PNG_FILE = "latency_trendline.png";
 const char*  DISTRIBUTION_PNG_FILE = "users_distribution.png";

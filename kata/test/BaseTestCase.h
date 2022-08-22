@@ -12,7 +12,7 @@
 #include <iostream>
 #include "time.h"
 #include "gtest/gtest.h"
-#include "gmock/gmock.h"
+//#include "gmock/gmock.h"
 
 #ifndef TEST_TRACE
 #define TEST_TRACE(msg) std::cout <<"["<<time(NULL)<<", TEST --"<< __FILE__ << "," << std::dec << __LINE__ << " ]\t"<< msg << std::endl

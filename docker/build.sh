@@ -1,4 +1,2 @@
-echo "docker image build --tag ubuntu-bcpp:auto ."
-echo "docker container run --rm ubuntu-bcpp:auto"
-
-echo "docker run -it -v $PWD/../kata:/opt/bcpp/kata --name ubuntu-bcpp ubuntu-bcpp"
+#!/usr/bin/env bash
+docker build -t walterfan/bcpp:v1.0 -t walterfan/bcpp:latest .

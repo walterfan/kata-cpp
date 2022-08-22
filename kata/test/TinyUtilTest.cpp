@@ -1,4 +1,4 @@
-#include "gmock/gmock.h"
+#include <gtest/gtest.h>
 #include <string>
 #include <iostream>
 #include <stdint.h>
@@ -18,8 +18,8 @@ using namespace std;
 using namespace testing;
 using namespace wfan;
 
-using ::testing::Return;
-using ::testing::Mock;
+//using ::testing::Return;
+//using ::testing::Mock;
 
 
 TEST(TinyUtilTest, RetrieveFiles)

@@ -1,11 +1,12 @@
 FROM ubuntu:20.04
 LABEL Author="Walter Fan <walter.fan@gmail.com>"
 LABEL Description="Docker image for C++ program"
+ENV TZ=Asia/Shanghai \
+    DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update
-
-# General dependencies
-RUN apt-get install -y \
+RUN apt-get update && \
+  apt-get install -y \
+  tzdata \
   git \
   mercurial \
   wget \
@@ -31,22 +32,18 @@ RUN apt-get install -y \
   vtun \
   lxc \
   cmake \
-  libc6-dev
+  libc6-dev \
+  libgd-dev \
+  libgtest-dev \
+  libboost-all-dev
 
 # Create working directory
 RUN mkdir -p /opt
 WORKDIR /opt
 
-# Fetch libevent
-
-RUN wget https://github.com/libevent/libevent/releases/download/release-2.1.12-stable/libevent-2.1.12-stable.tar.gz
-RUN tar xvfz libevent-2.1.12-stable.tar.gz
-RUN cd libevent-2.1.12-stable && ./configure && make && make install
-
 # Cleanup
 RUN apt-get clean && \
-  rm -rf /var/lib/apt && \
-  rm /opt/libevent-2.1.12-stable.tar.gz
+  rm -rf /var/lib/apt
 
 CMD [ "/bin/bash" ]
 

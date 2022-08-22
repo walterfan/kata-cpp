@@ -9,7 +9,7 @@ public:
     Entity(uint32_t id, const std::string& name): m_id(id), m_name(name) {
 
     }
-    std::string& getName() const { return m_name; }
+    const std::string& getName() const { return m_name; }
     uint32_t getId() const { return m_id; }
     std::string toString() const {
 
