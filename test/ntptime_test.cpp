@@ -78,3 +78,28 @@ TEST_F(NtpTimeTest, testInitByBrace)
     ASSERT_EQ(time1.mMsw, time2.mMsw);
 }
 
+
+TEST_F(NtpTimeTest, distance)
+{
+    NtpTime time1 = NtpTime::now();
+
+    auto duration = 2'002'002llu;
+    usleep(duration);
+
+    NtpTime time2 = NtpTime::now();
+
+
+    auto distance = time2.getTime() -  time1.getTime();
+    auto distance1 = distance >> 16;
+    auto distance2 = ((distance >> 32) << 16) + ((distance & 0xFFFFFFFF) >> 16);
+
+    cout <<  time2.getTime()  << "-" << time1.getTime()
+         << "=" << (distance >> 32) << " sec "
+         << ", frac=" << (distance & 0xFFFFFFFF)
+         << ", distance1=" << distance1
+         << ", distance2=" << distance2 << " , and "
+        << time2.getMid32bits() << "-"
+        << time1.getMid32bits()
+         << endl;
+}
+

@@ -35,7 +35,8 @@ RUN apt-get update && \
   libc6-dev \
   libgd-dev \
   libgtest-dev \
-  libboost-all-dev
+  libboost-all-dev \
+  python3-dev
 
 # Create working directory
 RUN mkdir -p /opt

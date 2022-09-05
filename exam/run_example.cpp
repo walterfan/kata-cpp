@@ -17,6 +17,8 @@ extern int asio_timer_demo_3(int argc, char** argv);
 extern int asio_timer_demo_4(int argc, char** argv);
 extern int std_visit_demo(int argc, char** argv);
 
+extern int boost_queue_demo(int argc, char** argv);
+
 //extern int asio_udp_demo(int argc, char** argv);
 extern int crtp_demo(int argc, char** argv);
 
@@ -53,6 +55,7 @@ void ExampleRunner::init() {
     register_example("asio_time_demo_4", asio_timer_demo_4);
     register_example("std_visit_demo", std_visit_demo);
     register_example("crtp_demo", crtp_demo);
+    register_example("boost_queue_demo", crtp_demo);
 }
 
 void ExampleRunner::register_example(const string& name, const exam_func_t &exam)

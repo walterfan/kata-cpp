@@ -13,7 +13,7 @@ typedef enum {
 	MUL_OPT_TOKEN,
 	DIV_OPT_TOKEN,
 	LINE_END_TOKEN
-} TokenKind
+} TokenKind;
 
 const size_t MAX_TOKEN_SIZE = 100;
 
@@ -21,7 +21,7 @@ typedef struct {
 	TokenKind token;
 	double value;
 	char str[MAX_TOKEN_SIZE];
-}
+} TokenValue;
 
 class Calcultor
 {
@@ -30,7 +30,7 @@ public:
 	int parse(char* expression);
 private:
     string m_strExp;
-    int m_nPos
+    int m_nPos;
 };
 
 
