@@ -32,3 +32,15 @@ TEST(QuickTest, testCrash)
     pFailHandler->handleMaasFail2();
     //pFailHandler->handleMaasFail1();
 }
+
+
+TEST(QuickTest, testFormat)
+{
+    MockFailHandler* pFailHandler = nullptr;
+
+    pFailHandler = new MockFailHandler();
+    delete pFailHandler;
+    pFailHandler->handleMaasFail2();
+    //pFailHandler->handleMaasFail1();
+}
+

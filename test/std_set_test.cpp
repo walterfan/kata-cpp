@@ -15,11 +15,15 @@ struct User {
     User(string id, string name):m_id(id), m_name(name) {}
     string m_id;
     string m_name;
+    const std::string& get_id() const
+    {
+        return m_id;
+    }
 };
 
 struct UserCmparator {
     bool operator()(const User& lhs, const User& rhs) const {
-        return lhs.m_id != rhs.m_id;
+        return lhs.get_id() != rhs.get_id();
     }
 };
 
