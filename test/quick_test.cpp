@@ -36,11 +36,7 @@ TEST(QuickTest, testCrash)
 
 TEST(QuickTest, testFormat)
 {
-    MockFailHandler* pFailHandler = nullptr;
-
-    pFailHandler = new MockFailHandler();
-    delete pFailHandler;
-    pFailHandler->handleMaasFail2();
-    //pFailHandler->handleMaasFail1();
+    uint8_t a = 205;
+    cout << "a=" << static_cast<char>(a) << ", "<< static_cast<int>(a) <<" --> 0x" << std::hex << static_cast<int>(a) <<endl;
 }
 
