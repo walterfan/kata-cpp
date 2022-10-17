@@ -35,6 +35,7 @@ run_example=env.Program(target='./bin/run_example', source=[
 
 unittest=env.Program(target='./bin/unit_test', source=[
     './test/unit_test.cpp',
+    './test/test_class.cpp',
     './test/quick_test.cpp',
     './test/invoke_test.cpp',
     './test/ntptime_test.cpp',

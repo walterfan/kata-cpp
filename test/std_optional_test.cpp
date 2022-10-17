@@ -23,6 +23,28 @@ TEST(OptionalTest, testcase1)
 
     ASSERT_NE(s0, s1);
     ASSERT_NE(s1, s2);
-    ASSERT_EQ(s1, s3);
+    ASSERT_EQ(s1.value(), s3.value());
+
+}
+
+
+
+TEST(OptionalTest, testcase2)
+{
+
+
+    auto age0 = std::optional<uint8_t>(22);
+    auto age1 = std::optional<uint8_t>(24);
+    auto age2 = std::optional<uint8_t>(22);
+    std::optional<uint8_t> age3;
+
+    ASSERT_NE(age0, age1);
+    ASSERT_EQ(age0, age2);
+
+    auto s1 = age0.has_value()? Student("a", "b", age0.value()):Student("a", "b");
+
+    ASSERT_EQ(s1.get_age(), 22);
+    ASSERT_FALSE(age3.has_value());
+
 
 }
