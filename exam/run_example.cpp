@@ -18,6 +18,8 @@ extern int asio_timer_demo_4(int argc, char** argv);
 extern int std_visit_demo(int argc, char** argv);
 
 extern int boost_queue_demo(int argc, char** argv);
+extern int lockfree_queue_demo(int argc, char** argv);
+extern int thread_pool_demo(int argc, char** argv);
 
 //extern int asio_udp_demo(int argc, char** argv);
 extern int crtp_demo(int argc, char** argv);
@@ -56,6 +58,9 @@ void ExampleRunner::init() {
     register_example("std_visit_demo", std_visit_demo);
     register_example("crtp_demo", crtp_demo);
     register_example("boost_queue_demo", crtp_demo);
+    register_example("lockfree_queue_demo", lockfree_queue_demo);
+    register_example("thread_pool_demo", thread_pool_demo);
+
 }
 
 void ExampleRunner::register_example(const string& name, const exam_func_t &exam)
@@ -158,6 +163,14 @@ int main(int argc, char** argv)
             }
 
         } while (nChoice > 0);
+    }
+    //a quick test
+    {
+        double param, result;
+        param = 5.0;
+        result = exp (-param/10);
+        printf ("The exponential value of %f is %f.\n", param, result );
+
     }
 
     return 0;

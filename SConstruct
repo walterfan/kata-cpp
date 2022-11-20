@@ -16,12 +16,21 @@ wordbankdemo=env.Program(target='./bin/wordbankdemo',
     LIBS = ['boost_log','boost_timer'],
     LIBPATH = LIB_PATH )
 
+wordbankdemo=env.Program(target='./bin/state_pattern',
+    source=['./pattern/state_pattern.cpp'],
+	CCFLAGS='-fno-elide-constructors -Wall -g -O1 -static -std=c++20 -DBOOST_LOG_DYN_LINK',
+    #LINKFLAGS='-pg',
+    LIBS = ['boost_log','boost_timer'],
+    LIBPATH = LIB_PATH )
+
 run_example=env.Program(target='./bin/run_example', source=[
     './exam/run_example.cpp',
     './exam/boost_function.cpp',
     './exam/boost_memory.cpp',
     './exam/boost_asio_timer.cpp',
     './exam/boost_asio_strand.cpp',
+    './exam/boost_thread_pool.cpp',
+    './exam/boost_lockfree_queue.cpp',
     './exam/std_function_exam.cpp',
     './exam/crtp_demo.cpp',
     './exam/std_lambda.cpp',

@@ -9,8 +9,48 @@
 #include <iterator>
 #include "test_class.h"
 
+
 using namespace std;
 using namespace testing;
+
+class Foo {
+public:
+    Foo(int id): mId(id) {}
+    int mId;
+};
+
+std::ostream& operator<<(std::ostream& os, const Foo& foo) {
+    os << foo.mId;
+    return os;
+}
+
+constexpr const char* NOT_AVAILABLE = "NA";
+
+
+std::ostream& operator<<(std::ostream& os, std::nullopt_t opt ) {
+
+    if (os.good())
+    {
+        os << NOT_AVAILABLE;
+    }
+
+    return os;
+}
+
+
+template<typename T>
+std::ostream& operator<<(std::ostream& os, std::optional<T> const& opt) {
+
+    if (os.good())
+    {
+        if (!opt)
+            os << NOT_AVAILABLE ;
+        else
+            os << *opt ;
+    }
+
+    return os;
+}
 
 
 
@@ -46,5 +86,17 @@ TEST(OptionalTest, testcase2)
     ASSERT_EQ(s1.get_age(), 22);
     ASSERT_FALSE(age3.has_value());
 
+}
+
+TEST(OptionalTest, printOptional)
+{
+    auto age0 = std::optional<uint32_t>(22);
+    auto age1 = std::optional<Foo>(Foo(1));
+    auto age2 = std::optional<Foo>();
+    std::optional<string> age3 = std::nullopt;
+
+
+
+    cout << "age0=" << age0 << ", age1=" << age1 << ", age2=" << age2 << ", age3=" << age3 << endl;
 
 }

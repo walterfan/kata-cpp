@@ -16,20 +16,24 @@
 struct Student {
     std::string m_id;
     std::string m_name;
+
     std::optional<uint8_t> m_age;
+    std::optional<uint16_t> m_height;
 
     Student(const std::string& id, const std::string& name):m_id(id), m_name(name) {}
     Student(const std::string& id, const std::string& name, uint8_t age):m_id(id), m_name(name),m_age(age) {}
 
     const std::string& get_id() { return m_id; }
     const std::string& get_name() { return m_name; }
+
     uint8_t get_age() { return m_age.has_value()? m_age.value(): 0; }
+    uint16_t get_height() { return m_height.has_value()? m_height.value(): 0; }
 
 
 };
 
 inline bool operator==(const Student& lhs, const Student& rhs) {
-    return ((lhs.m_id == rhs.m_id) && (lhs.m_name == rhs.m_name));
+    return ((lhs.m_id == rhs.m_id) && (lhs.m_name == rhs.m_name)&& (lhs.m_age == rhs.m_age)&& (lhs.m_height == rhs.m_height));
 }
 
 inline bool operator!=(const Student& lhs, const Student& rhs) {
