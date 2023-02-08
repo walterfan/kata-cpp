@@ -6,6 +6,7 @@
 #include <iostream>
 #include <vector>
 #include <tuple>
+#include <map>
 #include "test_class.h"
 
 using namespace std;
@@ -64,3 +65,12 @@ TEST(QuickTest, testComparator)
 
 }
 
+TEST(QuickTest, testMapErase) {
+    std::map<uint32_t, uint32_t> packetsMap;
+    packetsMap[111] = 5;
+    packetsMap[222] = 15;
+    packetsMap[333] = 25;
+    auto ret1 = packetsMap.erase(444);
+    auto ret2 = packetsMap.erase(222);
+    cout << "ret1=" << ret1 << ", ret2=" << ret2 << ", map size=" << packetsMap.size() << endl;
+}
