@@ -48,6 +48,8 @@ void Metrics<T>::dump() {
 
 TEST(MetricTest, testAddMetric)
 {
+    //https://en.cppreference.com/w/cpp/types/type_index
+    cout << "type name refer to https://itanium-cxx-abi.github.io/cxx-abi/abi.html#mangling-type "<< endl;
     Metrics<uint32_t> metrics("keyFrames");
     metrics.dump();
 
@@ -58,7 +60,7 @@ TEST(MetricTest, testAddMetric)
     Metrics<float> floatMetrics("keyFrames");
     floatMetrics.dump();
 
-    Metrics<int> intMetrics("keyFrames");
+    Metrics<uint64_t> intMetrics("keyFrames");
     intMetrics.dump();
 }
 
