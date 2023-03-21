@@ -2,6 +2,7 @@
 
 #include <string>
 #include <iostream>
+#include <time.h>
 #include "gtest/gtest.h"
 
 class BaseTestCase : public testing::Test

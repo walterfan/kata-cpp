@@ -7,15 +7,16 @@ extern std::string current_time();
 extern int std_function_test(int argc, char** argv);
 extern int function_demo(int argc, char** argv);
 extern int lambda_demo(int argc, char* argv[]);
-extern int rvalue_demo(int argc, char* argv[]);
-extern int smart_ptr_demo(int argc, char** argv);
 extern int enable_shared_from_this_demo(int argc, char** argv);
 
 extern int asio_timer_demo_1(int argc, char** argv);
 extern int asio_timer_demo_2(int argc, char** argv);
 extern int asio_timer_demo_3(int argc, char** argv);
 extern int asio_timer_demo_4(int argc, char** argv);
+
 extern int std_visit_demo(int argc, char** argv);
+extern int smart_ptr_demo(int argc, char** argv);
+extern int enable_shared_from_this_demo(int argc, char** argv);
 
 extern int boost_queue_demo(int argc, char** argv);
 extern int lockfree_queue_demo(int argc, char** argv);
@@ -25,12 +26,7 @@ extern int thread_pool_demo(int argc, char** argv);
 extern int crtp_demo(int argc, char** argv);
 
 const char* usage = R"name(please specify example name:
-    function_demo
-    or lambda_demo
-    or rvalue_demo
-    or smart_ptr_demo
-    or std_function_test
-    or ...
+e.g. ./bin/run_example --name enable_shared_from_this_demo
 )name";
 
 
@@ -46,20 +42,22 @@ ExampleRunner::~ExampleRunner() {
 
 void ExampleRunner::init() {
     register_example("function_demo", function_demo);
-    register_example("smart_ptr_demo", smart_ptr_demo);
-    register_example("enable_shared_from_this_demo", enable_shared_from_this_demo);
     register_example("lambda_demo", lambda_demo);
-	register_example("rvalue_demo", rvalue_demo);
+
     register_example("std_function_test", std_function_test);
     register_example("asio_time_demo_1", asio_timer_demo_1);
     register_example("asio_time_demo_2", asio_timer_demo_2);
     register_example("asio_time_demo_3", asio_timer_demo_3);
     register_example("asio_time_demo_4", asio_timer_demo_4);
-    register_example("std_visit_demo", std_visit_demo);
+
     register_example("crtp_demo", crtp_demo);
-    register_example("boost_queue_demo", crtp_demo);
+    register_example("boost_queue_demo", boost_queue_demo);
     register_example("lockfree_queue_demo", lockfree_queue_demo);
     register_example("thread_pool_demo", thread_pool_demo);
+
+    register_example("std_visit_demo", std_visit_demo);
+    register_example("enable_shared_from_this_demo", enable_shared_from_this_demo);
+
 
 }
 
@@ -119,7 +117,7 @@ void ExampleRunner::display_menu() const {
 
 int main(int argc, char** argv)
 {
-    unique_ptr<ExampleRunner> runner = my_make_unique<ExampleRunner>();
+    unique_ptr<ExampleRunner> runner = make_unique<ExampleRunner>();
     runner->init();
 
     //c++11 R"raw string"
@@ -163,14 +161,6 @@ int main(int argc, char** argv)
             }
 
         } while (nChoice > 0);
-    }
-    //a quick test
-    {
-        double param, result;
-        param = 5.0;
-        result = exp (-param/10);
-        printf ("The exponential value of %f is %f.\n", param, result );
-
     }
 
     return 0;

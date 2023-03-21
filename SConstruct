@@ -3,7 +3,7 @@ import os
 LIB_PATH = ['/usr/lib', '/usr/local/lib', '/usr/local/opt/openssl/lib']
 
 env = Environment()
-env.Append(CPPPATH=["/usr/local/include", "/usr/include/jsoncpp"] )
+env.Append(CPPPATH=["/usr/local/include", "/usr/include/jsoncpp", "./exan"] )
 env.Append(CCFLAGS = '-fno-elide-constructors -Wall -g -O1 -static -std=c++20 -DBOOST_LOG_DYN_LINK')
 env.Append(LIBPATH=["/usr/local/lib"])
 
@@ -26,19 +26,21 @@ wordbankdemo=env.Program(target='./bin/state_pattern',
 run_example=env.Program(target='./bin/run_example', source=[
     './exam/run_example.cpp',
     './exam/boost_function.cpp',
-    './exam/boost_memory.cpp',
     './exam/boost_asio_timer.cpp',
     './exam/boost_asio_strand.cpp',
     './exam/boost_thread_pool.cpp',
     './exam/boost_lockfree_queue.cpp',
+    './exam/boost_queue_demo.cpp',
     './exam/std_function_exam.cpp',
     './exam/crtp_demo.cpp',
     './exam/std_lambda.cpp',
     './exam/std_thread.cpp',
+    './exam/enable_shared_demo.cpp',
     './exam/std_visit_demo.cpp',
     './exam/tiny_command.cpp',
     './exam/AudioLevelCalculator.cpp'],
     LIBS = ['pthread','boost_log','boost_thread', 'boost_program_options'],
+    CPPPATH = ["./exam"],
     LIBPATH = LIB_PATH)
 
 
@@ -56,8 +58,9 @@ unittest=env.Program(target='./bin/unit_test', source=[
     './test/std_find_test.cpp',
     './test/std_optional_test.cpp',
     './test/override_test.cpp',
+    './test/struct_test.cpp',
 	'./test/emcpp_7.cpp'],
-    LIBS = ['gmock','gtest', 'pthread'], LIBPATH = LIB_PATH)
+    LIBS = ['gmock','gtest', 'pthread'],CPPPATH = ["./exam"], LIBPATH = LIB_PATH)
 
 Default(run_example,
     wordbankdemo,

@@ -19,19 +19,18 @@
 #include <boost/core/noncopyable.hpp>
 #include <boost/assert.hpp>
 
+#ifndef DEBUG_TRACE
+#define DEBUG_TRACE(msg) do { \
+            std::cout <<"["<<time(NULL)<<","<< __FILE__ << "," << __LINE__ << "]\t"<< msg << std::endl; \
+        } while(0)
+#endif
+
 //old function pointer
 //typedef int (*exam_func_ptr)(int argc, char** argv);
 //new function object
 typedef std::function<int(int, char**)> exam_func_t;
 
 using exam_func_ptr = std::function<int(int, char**)>;
-
-template<typename T, typename... Ts>
-std::unique_ptr<T> my_make_unique(Ts&&... params) {
-    return std::unique_ptr<T>(new T(std::forward<Ts>(params)...));
-}
-
-
 
 class ExampleRunner: boost::noncopyable {
 public:
