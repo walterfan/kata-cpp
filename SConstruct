@@ -63,7 +63,13 @@ unittest=env.Program(target='./bin/unit_test', source=[
 	'./test/emcpp_7.cpp'],
     LIBS = ['gmock','gtest', 'pthread'],CPPPATH = ["./exam"], LIBPATH = LIB_PATH)
 
+
+overload_pattern_demo=env.Program(target='./bin/overload_pattern_demo',
+    source=['./pattern/overload_pattern.cpp'])
+
+
 Default(run_example,
-    wordbankdemo,
-    unittest)
+        overload_pattern_demo,
+        wordbankdemo,
+        unittest)
 
