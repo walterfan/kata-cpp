@@ -13,6 +13,13 @@
 #include <optional>
 
 
+struct BandwidthInfo {
+    uint32_t mMinBitrate = 0;
+    uint32_t mMaxBitrate = 0;
+    uint32_t mCurrentBitrate = 0;
+    uint32_t mAllocatedBitrate = 0;
+};
+
 struct Student {
     std::string m_id;
     std::string m_name;

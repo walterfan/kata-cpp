@@ -55,6 +55,7 @@ unittest=env.Program(target='./bin/unit_test', source=[
     './test/chrono_duration_test.cpp',
     './test/smart_ptr_test.cpp',
     './test/std_set_test.cpp',
+    './test/std_map_test.cpp',
     './test/std_find_test.cpp',
     './test/std_optional_test.cpp',
     './test/override_test.cpp',

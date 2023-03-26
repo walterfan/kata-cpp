@@ -4,28 +4,10 @@
 #include <stdint.h>
 #include <string>
 #include <iostream>
-
+#include "test_class.h"
 
 using namespace std;
 using namespace testing;
-
-struct BandwidthInfo {
-    BandwidthInfo(): mMinBitrate(0)
-        , mMaxBitrate(0)
-        , mCurrentBitrate(0)
-        , mAllocatedBitrate(0) {}
-
-    BandwidthInfo(uint32_t minBw, uint32_t maxBw, uint32_t currentBw)
-        : mMinBitrate(minBw)
-        , mMaxBitrate(maxBw)
-        , mCurrentBitrate(currentBw)
-        , mAllocatedBitrate(0) {}
-
-    uint32_t mMinBitrate;
-    uint32_t mMaxBitrate;
-    uint32_t mCurrentBitrate;
-    uint32_t mAllocatedBitrate;
-};
 
 void allocate(const std::shared_ptr<BandwidthInfo>& bwInfo, uint32_t value) {
     bwInfo->mAllocatedBitrate = value;
