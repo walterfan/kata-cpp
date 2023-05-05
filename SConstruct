@@ -67,8 +67,28 @@ unittest=env.Program(target='./bin/unit_test', source=[
 overload_pattern_demo=env.Program(target='./bin/overload_pattern_demo',
     source=['./pattern/overload_pattern.cpp'])
 
+linear_regression_demo=env.Program(target='./bin/linear_regression_demo',
+    source=['./algorithm/linear_regression.cpp'])
+tema_demo=env.Program(target='./bin/tema_demo',
+    source=['./algorithm/tema.cpp'])
+ema_demo=env.Program(target='./bin/ema_demo',
+    source=['./algorithm/ema.cpp'])
+tma_demo=env.Program(target='./bin/tma_demo',
+    source=['./algorithm/tma.cpp'])
+
+leaky_bucket_demo=env.Program(target='./bin/leaky_bucket_demo',
+    source=['./algorithm/leaky_bucket.cpp'])
+token_bucket_demo=env.Program(target='./bin/token_bucket_demo',
+    source=['./algorithm/token_bucket.cpp'])
+
 
 Default(run_example,
+        linear_regression_demo,
+        leaky_bucket_demo,
+        token_bucket_demo,
+        tma_demo,
+        ema_demo,
+        tema_demo,
         overload_pattern_demo,
         wordbankdemo,
         unittest)
