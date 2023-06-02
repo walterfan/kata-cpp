@@ -60,6 +60,7 @@ unittest=env.Program(target='./bin/unit_test', source=[
     './test/std_optional_test.cpp',
     './test/override_test.cpp',
     './test/struct_test.cpp',
+    './test/waltertest.cpp',
 	'./test/emcpp_7.cpp'],
     LIBS = ['gmock','gtest', 'pthread'],CPPPATH = ["./exam"], LIBPATH = LIB_PATH)
 

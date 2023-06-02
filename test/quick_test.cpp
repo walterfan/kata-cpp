@@ -1,5 +1,6 @@
 #include "gtest/gtest.h"
 #include <cstddef>
+#include <cmath>
 #include <memory>
 #include <stdint.h>
 #include <string>
@@ -11,6 +12,9 @@
 
 using namespace std;
 using namespace testing;
+
+static constexpr uint32_t MAX_RTX_BANDWIDTH_PERCENT = 25;
+static constexpr float MAX_RTX_LOSS_RATIO = (float)MAX_RTX_BANDWIDTH_PERCENT/100;
 
 class MockFailHandler {
 public:
@@ -32,6 +36,16 @@ struct StudentComparator {
     }
 };
 
+static uint32_t calculateMediaBitrate(uint32_t totalBitrate, float lossRatio) {
+    float rtxLossRatio = lossRatio * std::pow(1 + lossRatio, 3);
+    rtxLossRatio = std::min(rtxLossRatio, MAX_RTX_LOSS_RATIO);
+    cout << "rtxLossRatio=" << rtxLossRatio << endl;
+    return totalBitrate / (1 + rtxLossRatio);
+}
+
+class QuickTestFixture : public ::testing::Test {
+    // Fixture members and methods
+};
 
 int MockFailHandler::sHandleCount = 0;
 
@@ -73,4 +87,12 @@ TEST(QuickTest, testMapErase) {
     auto ret1 = packetsMap.erase(444);
     auto ret2 = packetsMap.erase(222);
     cout << "ret1=" << ret1 << ", ret2=" << ret2 << ", map size=" << packetsMap.size() << endl;
+}
+
+TEST(QuickTest, testCalculateMediaBitrate) {
+    uint32_t totalBR = 1200'000;
+    float lossRatio = 0.2;
+    uint32_t mediaBR = calculateMediaBitrate(totalBR, lossRatio);
+    cout << "mediaBR=" << mediaBR << endl;
+    ASSERT_EQ(mediaBR, 960'000);
 }
