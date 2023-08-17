@@ -77,29 +77,9 @@ C++ 服务器端编程
 * 多线程并发
 
 
-示例
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. code-block: c++
-
-   std::shared_ptr<Base> p = std::make_shared<Derived>();
-
-
-
-
-
-
-
-
 
 C++ 十大面试题
---------------------------
-
-* Reactor 模式
-* Move semantic
-* 菱形继承
-
-
+==================================
 
 
 
@@ -128,8 +108,19 @@ C++ 十大面试题
 
 2. 一个空的 C++ class ，编译器会为它默认添加哪些东西
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+参见 https://en.cppreference.com/w/cpp/language/rule_of_three
 
-默认构造函数，复制构造函数，析构函数，赋值函数以及取值函数
+默认构造函数，拷贝构造函数，析构函数 赋值操作符以及取值函数
+
+C++ 11 之前, 一般要求实现这3个函数
+
+* user-defined destructor 自定义的析构
+* a user-defined copy constructor 自定义的拷贝构造函数
+* a user-defined copy assignment operator, 自定义的赋值操作符
+
+C++ 11 之后添加了两个方法:
+* 移动构造 move constructor
+* 移动赋值操作符 the move assignment operator
 
 
 .. code-block:: c++
@@ -210,18 +201,25 @@ public, private, protected, friend
     class istream: public virtual ios { ... }
     class ostream: public virtual ios { ... }
 
-7. 什么是模板的特化与偏特化
+7. 为什么提倡用 make_shared, 而不是直接用 shared_ptr<T>(new T)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1) 类型名只需写一遍, 避免冗余
+2) 避免可能造成的内存泄漏, new 出来的对象异常没有放到 shared_ptr 中
+例如 effective mordern c++ 条款 21 中举的例子
+
+3) 性能和效率更高, 只要分配一次单块内存来存储对象和 shared_ptr 控制块
+
+
+8. 什么是奇异模板
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-8. vector, list, dqeue, map(红黑树), hashmap 的区别
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+9. 什么是万能引用和完美转发
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+万能引用就是：即可以绑定到左值引用也可以绑定到右值引用， 并且还会保持左右值的const属性的函数模板参数。形如这样的参数 T&& 就是万能引用
 
 
-9. 什么是 `auto_ptr`, 它有什么缺点，和 `shared_ptr`/`unique_ptr`/`weak_ptr` 有什么不一样？
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-10. 为什么要用 extern c
+10.   为什么要用 extern c
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 由于gcc和g++生成符号表的方式不同，导致在C++项目中如果使用gcc编译的C模块，会出现链接错误。因为链接器会去C模块的（.o）文件中查找，__Z3addii这样的符号。显然在C模块的目标文件(.o)中，不存在__Z3addii这样的符号，它有的只是_add。
@@ -229,9 +227,98 @@ public, private, protected, friend
 
 通过extern "C"，告诉g++编译器，不要对这些函数进行Name mangling，按照C编译器的方式去生成符号表符号。这样在main.c的目标文件(.o)中，参数列表为两个int类型的add函数名称为_add。链接器可以正确找到util.o中的add函数（他们都是_add）。注意参数列表为两个double类型的add函数名称还是__Z3adddd。
 
-11. 锁的类型和用法
+11.  锁的类型和用法
+-----------------------------
+
+互斥锁（mutex）
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+可以避免多个线程在某一时刻同时操作一个共享资源，标准C++库提供了std::unique_lock类模板，实现了互斥锁的RAII惯用语法：
+eg:
+
+std::unique_lock<std::mutex> lk(mtx_sync_);
+
+条件锁（condition_variable）
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+条件锁就是所谓的条件变量，某一个线程因为某个条件未满足时可以使用条件变量使该程序处于阻塞状态。一旦条件满足了，即可唤醒该线程(常和互斥锁配合使用)，唤醒后，需要检查变量，避免虚假唤醒。
+eg:
+
+```
+//线程1：
+// wait ack
+{
+    std::unique_lock<std::mutex> lk(mtx_sync_);
+    if (!cv_sync_.wait_for(lk, 1000ms, [this](){return sync_; })) // wait for 1s
+    {
+        // wait failed
+        printf("wait for notify timeout [%d].\n", cnt);
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+}
+
+//线程2：
+{
+	std::unique_lock<std::mutex> lk(mtx_sync_);
+	sync_ = true;
+}
+// 通知前解锁，可以避免唤醒线程后由于互斥锁的关系又进入了阻塞阶段
+cv_sync_.notify_one();
+```
+
+自旋锁（不推荐使用）
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+自旋锁是一种基础的同步原语，用于保障对共享数据的互斥访问。与互斥锁的相比，在获取锁失败的时候不会使得线程阻塞而是一直自旋尝试获取锁。当线程等待自旋锁的时候，CPU不能做其他事情，而是一直处于轮询忙等的状态。自旋锁主要适用于被持有时间短，线程不希望在重新调度上花过多时间的情况。实际上许多其他类型的锁在底层使用了自旋锁实现，例如多数互斥锁在试图获取锁的时候会先自旋一小段时间，然后才会休眠。如果在持锁时间很长的场景下使用自旋锁，则会导致CPU在这个线程的时间片用尽之前一直消耗在无意义的忙等上，造成计算资源的浪费。
+
+```
+// 用户空间用 atomic_flag 实现自旋互斥
+#include <thread>
+#include <vector>
+#include <iostream>
+#include <atomic>
+ 
+std::atomic_flag lock = ATOMIC_FLAG_INIT;
+ 
+void f(int n)
+{
+    for (int cnt = 0; cnt < 100; ++cnt) {
+        while (lock.test_and_set(std::memory_order_acquire))  // 获得锁
+             ; // 自旋
+        std::cout << "Output from thread " << n << '\n';
+        lock.clear(std::memory_order_release);               // 释放锁
+    }
+}
+ 
+int main()
+{
+    std::vector<std::thread> v;
+    for (int n = 0; n < 10; ++n) {
+        v.emplace_back(f, n);
+    }
+    for (auto& t : v) {
+        t.join();
+    }
+}
+```
+
+递归锁（recursive_mutex）
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+recursive_mutex 类是同步原语，能用于保护共享数据免受从个多线程同时访问。
+
+recursive_mutex 提供排他性递归所有权语义：
+
+调用方线程在从它成功调用 lock 或 try_lock 开始的时期里占有 recursive_mutex 。此时期间，线程可以进行对 lock 或 try_lock 的附加调用。所有权的时期在线程调用 unlock 匹配次数时结束。
+线程占有 recursive_mutex 时，若其他所有线程试图要求 recursive_mutex 的所有权，则它们将阻塞（对于调用 lock ）或收到 false 返回值（对于调用 try_lock ）。
+可锁定 recursive_mutex 次数的最大值是未指定的，但抵达该数后，对 lock 的调用将抛出 std::system_error 而对 try_lock 的调用将返回 false 。
+若 recursive_mutex 在仍为某线程占有时被销毁，则程序行为未定义。 recursive_mutex 类满足互斥 (Mutex) 和标准布局类型 (StandardLayoutType) 的所有要求。
 
 
-12.
+12.  为接收只读字符串的函数选择什么形参类型?
+----------------------------------------------------
+const char* 或者 const std::string& 都不如 std::string_view, 它是前两者的完美替代
+1) std::string_view 不会产生开销, 它从不复制字符串
+2) std::string_view 与 std::string 有几乎相同的接口, 只不过没有 c_str(), 但是有 data() 方法
 
 

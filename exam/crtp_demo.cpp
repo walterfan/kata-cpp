@@ -11,6 +11,7 @@ public:
     }
     const std::string& getName() const { return m_name; }
     uint32_t getId() const { return m_id; }
+
     std::string toString() const {
 
         return static_cast<T*>(this)->toString();
