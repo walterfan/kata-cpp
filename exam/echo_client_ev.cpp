@@ -38,7 +38,7 @@ int main(int argc, char* argv[])
 	while (strcmp(buffer, "q") != 0)
 	{
 	  // Read input from user and send message to the server
-	  gets(buffer);
+	  fgets(buffer, BUFFER_SIZE, stdin);
 	  send(sd, buffer, strlen(buffer), 0);
 
 	  // Receive message from the server

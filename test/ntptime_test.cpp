@@ -2,7 +2,7 @@
 #include <stdint.h>
 #include <string>
 #include <iostream>
-
+#include <arpa/inet.h>
 #include <stdint.h>
 #include <time.h>
 
@@ -23,7 +23,7 @@ struct NtpTime {
 
     static NtpTime now() {
         struct timespec tp;
-        clock_gettime(_CLOCK_REALTIME, &tp);
+        clock_gettime(CLOCK_REALTIME, &tp);
         uint32_t msw = tp.tv_sec;
         uint32_t lsw = uint32_t((tp.tv_nsec << 32ull) / 1000000000ull);
         return NtpTime(msw, lsw);

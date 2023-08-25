@@ -10,17 +10,25 @@ Pattern and Kata are the best methods for computer language learning
 * [Word Bank Example](./note/word_bank_note.md)
 
 
-# Demo and example
+# Build Stpes
 
+## prerequisite
+
+```
+sudo apt install -y libboost1.74-all-dev \
+libgtest-dev \
+libcurl4 \
+libev-dev \
+libgd-dev
+```
+
+## scons
 ```
 scons
 ls ./bin
 ```
-
-# Code Kata
-
+# cmake
 ```
-cd kata
 mkdir bld
 cd bld
 cmake ..

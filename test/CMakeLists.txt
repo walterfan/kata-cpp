@@ -13,7 +13,7 @@ set(CXX_FLAGS
  -Wshadow
  -Wwrite-strings
  -march=native
- -std=c++2a
+ -std=c++20
  )
 
 add_executable(unit_test

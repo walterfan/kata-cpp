@@ -10,7 +10,7 @@
 #define BUFLEN 512
 #define PORT 12345
 
-void err(char *str)
+void err(const char *str)
 {
     perror(str);
     exit(1);

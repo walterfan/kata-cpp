@@ -11,7 +11,7 @@ tinydiagram=env.Program(target='./bin/tiny_diagram', source=['./exam/tiny_diagra
 
 wordbankdemo=env.Program(target='./bin/wordbankdemo',
     source=['./exam/WordBankDemo.cpp', './exam/WordBank.cpp'],
-	CCFLAGS='-fno-elide-constructors -Wall -g -O1 -static -std=c++17 -DBOOST_LOG_DYN_LINK',
+	CCFLAGS='-fno-elide-constructors -Wall -g -O1 -static -std=c++20 -DBOOST_LOG_DYN_LINK',
     #LINKFLAGS='-pg',
     LIBS = ['boost_log','boost_timer'],
     LIBPATH = LIB_PATH )
