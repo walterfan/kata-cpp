@@ -15,6 +15,7 @@ set(CXX_FLAGS
  -march=native
  -std=c++20
  )
+find_package(GTest REQUIRED)
 
 add_executable(unit_test
     unit_test.cpp
@@ -29,5 +30,5 @@ add_executable(unit_test
     override_test.cpp
 	emcpp_7.cpp
 )
-target_link_libraries(unit_test gtest pthread)
+target_link_libraries(unit_test GTest::gtest pthread)
 

@@ -4,6 +4,7 @@ LABEL Description="Docker image for C++ program"
 ENV TZ=Asia/Shanghai \
     DEBIAN_FRONTEND=noninteractive
 
+#RUN sed -i 's/ports.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
 RUN apt-get update && \
   apt-get install -y \
   tzdata \

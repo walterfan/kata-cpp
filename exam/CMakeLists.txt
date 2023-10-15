@@ -2,14 +2,12 @@ include_directories(${CMAKE_SOURCE_DIR}/inc)
 include_directories(/usr/include/x86_64-linux-gnu)
 link_directories(/usr/lib/x86_64-linux-gnu)
 
-# pls run apt install -y libboost1.74-all-dev
-
-set (CMAKE_CXX_STANDARD 17)
+# pls run apt install -y libboost1.74-all-dev or above
 SET(Boost_USE_STATIC_LIBS OFF)
 SET(Boost_USE_MULTITHREAD ON)
 
-SET(GCC_COVERAGE_COMPILE_FLAGS "-fprofile-arcs -ftest-coverage")
-SET(GCC_COVERAGE_LINK_FLAGS    "-lgcov")
+#SET(GCC_COVERAGE_COMPILE_FLAGS "-fprofile-arcs -ftest-coverage")
+#SET(GCC_COVERAGE_LINK_FLAGS    "-lgcov")
 
 
 #SET(PY_COMPILE_FLAGS "-I/Users/yafan/opt/anaconda3/include/python3.9 -I/Users/yafan/opt/anaconda3/include/python3.9")
