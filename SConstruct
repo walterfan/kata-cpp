@@ -1,11 +1,12 @@
 import os
 
-LIB_PATH = ['/usr/lib', '/usr/local/lib', '/usr/local/opt/openssl/lib']
+LIB_PATH = ['/usr/lib', '/usr/local/lib', '/usr/local/opt/openssl/lib', '/opt/homebrew/lib']
+CPP_PATH = ["/usr/local/include", "/usr/include/jsoncpp", "./exam", '/opt/homebrew/include']
 
 env = Environment()
-env.Append(CPPPATH=["/usr/local/include", "/usr/include/jsoncpp", "./exan"] )
+env.Append(CPPPATH=CPP_PATH)
 env.Append(CCFLAGS = '-fno-elide-constructors -Wall -g -O1 -static -std=c++20 -DBOOST_LOG_DYN_LINK')
-env.Append(LIBPATH=["/usr/local/lib"])
+env.Append(LIBPATH=LIB_PATH)
 
 tinydiagram=env.Program(target='./bin/tiny_diagram', source=['./exam/tiny_diagram.cpp'])
 
@@ -39,8 +40,8 @@ run_example=env.Program(target='./bin/run_example', source=[
     './exam/std_visit_demo.cpp',
     './exam/tiny_command.cpp',
     './exam/AudioLevelCalculator.cpp'],
-    LIBS = ['pthread','boost_log','boost_thread', 'boost_program_options'],
-    CPPPATH = ["./exam"],
+    LIBS = ['pthread','boost_log','boost_thread-mt', 'boost_program_options'],
+    CPPPATH = CPP_PATH,
     LIBPATH = LIB_PATH)
 
 
@@ -62,7 +63,7 @@ unittest=env.Program(target='./bin/unit_test', source=[
     './test/struct_test.cpp',
     './test/waltertest.cpp',
 	'./test/emcpp_7.cpp'],
-    LIBS = ['gmock','gtest', 'pthread'],CPPPATH = ["./exam"], LIBPATH = LIB_PATH)
+    LIBS = ['gmock','gtest', 'pthread'],CPPPATH = CPP_PATH, LIBPATH = LIB_PATH)
 
 
 overload_pattern_demo=env.Program(target='./bin/overload_pattern_demo',

@@ -1,0 +1,1 @@
+. "/Users/walter/workspace/walter/code-kata/cpp_kata/build/build/Release/generators/deactivate_conanrunenv-release-armv8.sh"
