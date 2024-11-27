@@ -1,19 +1,21 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>C++ Lambda &mdash; Beautiful C++ 0.1 documentation</title>
-      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=2709fde1"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -26,11 +28,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> Beautiful C++
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Beautiful C++
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -71,9 +77,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">C++ Language</a> &raquo;</li>
-      <li>C++ Lambda</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">C++ Language</a></li>
+      <li class="breadcrumb-item active">C++ Lambda</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/language/cpp_lambda.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -83,13 +89,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="c-lambda">
-<h1>C++ Lambda<a class="headerlink" href="#c-lambda" title="Permalink to this headline"></a></h1>
+  <section id="c-lambda">
+<h1>C++ Lambda<a class="headerlink" href="#c-lambda" title="Link to this heading"></a></h1>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 32%" />
-<col style="width: 68%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Abstract</strong></p></td>
 <td><p>C++</p></td>
@@ -101,17 +103,17 @@
 <td><p>v1</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>Updated</strong></p></td>
-<td><p>2022-05-29</p></td>
+<td><p>2024-11-27</p></td>
 </tr>
 </tbody>
 </table>
-<div class="contents local topic" id="contents">
+<nav class="contents local" id="contents">
 <ul class="simple">
 <li><p><a class="reference internal" href="#overview" id="id1">Overview</a></p></li>
 </ul>
-</div>
-<div class="section" id="overview">
-<h2><a class="toc-backref" href="#id1">Overview</a><a class="headerlink" href="#overview" title="Permalink to this headline"></a></h2>
+</nav>
+<section id="overview">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Overview</a><a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
 <p>lambda 以方括号开始 [], 这个称为 lambda 引入符, 其中可以包含在当前作用域中捕捉到的闭包变量
 其后是小括号(), 其中包含参数，这个可以没有
 其后是大括号 {}， 其中包含 lambda 表达式</p>
@@ -120,14 +122,14 @@
 </pre></div>
 </div>
 <p>例1:</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span> <span class="n">f1</span> <span class="o">=</span> <span class="p">[](</span><span class="kt">int</span> <span class="n">a</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">;</span> <span class="p">}</span>
-<span class="k">auto</span> <span class="n">f2</span> <span class="o">=</span> <span class="p">[](</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">int</span> <span class="p">{</span><span class="k">return</span> <span class="n">a</span> <span class="o">+</span><span class="n">b</span><span class="p">;</span> <span class="p">};</span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">f1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[](</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">f2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[](</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">{</span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="n">b</span><span class="p">;</span><span class="w"> </span><span class="p">};</span>
 </pre></div>
 </div>
 <p>例2:</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span> <span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14</span><span class="p">;</span>
-<span class="k">auto</span> <span class="n">cal_area</span> <span class="o">=</span> <span class="p">[</span><span class="n">pi</span><span class="p">](</span><span class="kt">double</span> <span class="n">r</span><span class="p">)</span> <span class="p">{</span><span class="k">return</span> <span class="n">pi</span> <span class="o">*</span> <span class="nf">pow</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">);</span> <span class="p">};</span>
-<span class="n">BOOST_LOG_TRIVIAL</span><span class="p">(</span><span class="n">trace</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;area: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">cal_area</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span><span class="w"> </span><span class="n">pi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.14</span><span class="p">;</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">cal_area</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">pi</span><span class="p">](</span><span class="kt">double</span><span class="w"> </span><span class="n">r</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="k">return</span><span class="w"> </span><span class="n">pi</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nf">pow</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p">);</span><span class="w"> </span><span class="p">};</span>
+<span class="n">BOOST_LOG_TRIVIAL</span><span class="p">(</span><span class="n">trace</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;area: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">cal_area</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>可以采用两种方式来捕捉所在作用域内的所有变量</p>
@@ -143,8 +145,8 @@
 <li><p><cite>[this]</cite> 捕捉当前对象，在 lambda 表达式体内，即使没有使用 <cite>this-&gt;</cite>， 也可以访问这个对象的成员</p></li>
 <li><p><cite>[*this]</cite> 通过当前对象的副本</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

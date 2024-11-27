@@ -1,19 +1,21 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>flite &mdash; Beautiful C++ 0.1 documentation</title>
-      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=2709fde1"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -26,11 +28,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> Beautiful C++
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Beautiful C++
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -75,9 +81,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">C++ Library</a> &raquo;</li>
-      <li>flite</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">C++ Library</a></li>
+      <li class="breadcrumb-item active">flite</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/library/flite.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -87,14 +93,14 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="flite">
-<h1>flite<a class="headerlink" href="#flite" title="Permalink to this headline"></a></h1>
-<div class="section" id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline"></a></h2>
+  <section id="flite">
+<h1>flite<a class="headerlink" href="#flite" title="Link to this heading"></a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
 <p>Flite: a small run-time speech synthesis engine</p>
-</div>
-<div class="section" id="install">
-<h2>Install<a class="headerlink" href="#install" title="Permalink to this headline"></a></h2>
+</section>
+<section id="install">
+<h2>Install<a class="headerlink" href="#install" title="Link to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">festvox</span><span class="o">/</span><span class="n">flite</span>
 <span class="n">cd</span> <span class="n">flite</span>
 <span class="o">./</span><span class="n">configure</span>
@@ -102,92 +108,92 @@
 <span class="n">make</span> <span class="n">get_voices</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="usage">
-<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline"></a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>FLITEDIR :<span class="o">=</span> ~/workspace/exam/flite-2.0.0-release
-FLITEDIR_LIB :<span class="o">=</span> <span class="k">$(</span>FLITEDIR<span class="k">)</span>/build/x86_64-darwin14.5.0/lib
+</section>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>FLITEDIR<span class="w"> </span>:<span class="o">=</span><span class="w"> </span>~/workspace/exam/flite-2.0.0-release
+FLITEDIR_LIB<span class="w"> </span>:<span class="o">=</span><span class="w"> </span><span class="k">$(</span>FLITEDIR<span class="k">)</span>/build/x86_64-darwin14.5.0/lib
 
 build_flite_test:
-        gcc -Wall -g -o ./flite_test flite_test.c -I<span class="k">$(</span>FLITEDIR<span class="k">)</span>/include -L<span class="k">$(</span>FLITEDIR_LIB<span class="k">)</span> -lflite_cmu_us_kal -lflite_usenglish -lflite_cmulex -lflite -lm
+<span class="w">        </span>gcc<span class="w"> </span>-Wall<span class="w"> </span>-g<span class="w"> </span>-o<span class="w"> </span>./flite_test<span class="w"> </span>flite_test.c<span class="w"> </span>-I<span class="k">$(</span>FLITEDIR<span class="k">)</span>/include<span class="w"> </span>-L<span class="k">$(</span>FLITEDIR_LIB<span class="k">)</span><span class="w"> </span>-lflite_cmu_us_kal<span class="w"> </span>-lflite_usenglish<span class="w"> </span>-lflite_cmulex<span class="w"> </span>-lflite<span class="w"> </span>-lm
 run_flite_test:
-        ./flite_test
+<span class="w">        </span>./flite_test
 clean:
-        rm -f flite_test
-        rm -rf flite_test.dSYM
+<span class="w">        </span>rm<span class="w"> </span>-f<span class="w"> </span>flite_test
+<span class="w">        </span>rm<span class="w"> </span>-rf<span class="w"> </span>flite_test.dSYM
 </pre></div>
 </div>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>  <span class="cp">#include</span> <span class="cpf">&quot;flite.h&quot;</span><span class="cp"></span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;flite.h&quot;</span>
 
-  <span class="n">register_cmu_us_kal</span><span class="p">();</span>
+<span class="w">  </span><span class="n">register_cmu_us_kal</span><span class="p">();</span>
 
-  <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span>
-  <span class="p">{</span>
-      <span class="n">cst_voice</span> <span class="o">*</span><span class="n">v</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">argv</span><span class="p">)</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">      </span><span class="n">cst_voice</span><span class="w"> </span><span class="o">*</span><span class="n">v</span><span class="p">;</span>
 
-      <span class="k">if</span> <span class="p">(</span><span class="n">argc</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">)</span>
-      <span class="p">{</span>
-          <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="s">&quot;usage: flite_test FILE</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
-          <span class="n">exit</span><span class="p">(</span><span class="mi">-1</span><span class="p">);</span>
-      <span class="p">}</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">argc</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">          </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="s">&quot;usage: flite_test FILE</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">          </span><span class="n">exit</span><span class="p">(</span><span class="mi">-1</span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span>
 
-      <span class="n">flite_init</span><span class="p">();</span>
+<span class="w">      </span><span class="n">flite_init</span><span class="p">();</span>
 
-      <span class="n">v</span> <span class="o">=</span> <span class="n">register_cmu_us_kal</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
+<span class="w">      </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">register_cmu_us_kal</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
 
-      <span class="n">flite_file_to_speech</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">v</span><span class="p">,</span><span class="s">&quot;play&quot;</span><span class="p">);</span>
+<span class="w">      </span><span class="n">flite_file_to_speech</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">v</span><span class="p">,</span><span class="s">&quot;play&quot;</span><span class="p">);</span>
 
-  <span class="p">}</span>
-
-
-
-<span class="o">*</span> <span class="n">text2wave</span>
+<span class="w">  </span><span class="p">}</span>
 
 
-<span class="p">..</span> <span class="n">code</span><span class="o">-</span><span class="n">block</span><span class="o">::</span> <span class="n">c</span>
 
-  <span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
-  <span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp"></span>
-  <span class="cp">#include</span> <span class="cpf">&quot;flite/flite.h&quot;</span><span class="cp"></span>
+<span class="o">*</span><span class="w"> </span><span class="n">text2wave</span>
 
-  <span class="kt">void</span> <span class="n">usenglish_init</span><span class="p">(</span><span class="n">cst_voice</span> <span class="o">*</span><span class="n">v</span><span class="p">);</span>
-  <span class="n">cst_lexicon</span> <span class="o">*</span><span class="nf">cmulex_init</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
 
-  <span class="c1">//usage: text2wave(&quot;hello&quot;, &quot;hello.wav&quot;, &quot;./voices&quot;)</span>
-  <span class="kt">int</span> <span class="nf">text2wave</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">text</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">outfile</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">voice_pathname</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">..</span><span class="w"> </span><span class="n">code</span><span class="o">-</span><span class="n">block</span><span class="o">::</span><span class="w"> </span><span class="n">c</span>
 
-      <span class="n">cst_voice</span> <span class="o">*</span><span class="n">v</span><span class="p">;</span>
-      <span class="n">cst_wave</span> <span class="o">*</span><span class="n">w</span><span class="p">;</span>
-      <span class="n">cst_utterance</span> <span class="o">*</span><span class="n">u</span><span class="p">;</span>
-      <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">voice_pathname</span><span class="p">;</span>
+<span class="w">  </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="w">  </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string.h&gt;</span>
+<span class="w">  </span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;flite/flite.h&quot;</span>
 
-      <span class="cm">/* Initialize Flite, and set up language and lexicon */</span>
-      <span class="n">flite_init</span><span class="p">();</span>
-      <span class="n">flite_add_lang</span><span class="p">(</span><span class="s">&quot;eng&quot;</span><span class="p">,</span><span class="n">usenglish_init</span><span class="p">,</span><span class="n">cmulex_init</span><span class="p">);</span>
-      <span class="n">flite_add_lang</span><span class="p">(</span><span class="s">&quot;usenglish&quot;</span><span class="p">,</span><span class="n">usenglish_init</span><span class="p">,</span><span class="n">cmulex_init</span><span class="p">);</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="n">usenglish_init</span><span class="p">(</span><span class="n">cst_voice</span><span class="w"> </span><span class="o">*</span><span class="n">v</span><span class="p">);</span>
+<span class="w">  </span><span class="n">cst_lexicon</span><span class="w"> </span><span class="o">*</span><span class="nf">cmulex_init</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
 
-      <span class="cm">/* Load and select voice */</span>
-      <span class="n">v</span> <span class="o">=</span> <span class="n">flite_voice_select</span><span class="p">(</span><span class="n">voice_pathname</span><span class="p">);</span>
-      <span class="k">if</span> <span class="p">(</span><span class="n">v</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
-      <span class="p">{</span>
-          <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="s">&quot;failed to load voice: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">voice_pathname</span><span class="p">);</span>
-          <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
-      <span class="p">}</span>
+<span class="w">  </span><span class="c1">//usage: text2wave(&quot;hello&quot;, &quot;hello.wav&quot;, &quot;./voices&quot;)</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="nf">text2wave</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">text</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">outfile</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">voice_pathname</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-      <span class="n">u</span> <span class="o">=</span> <span class="n">flite_synth_text</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">v</span><span class="p">);</span>
-      <span class="n">w</span> <span class="o">=</span> <span class="n">utt_wave</span><span class="p">(</span><span class="n">u</span><span class="p">);</span>
+<span class="w">      </span><span class="n">cst_voice</span><span class="w"> </span><span class="o">*</span><span class="n">v</span><span class="p">;</span>
+<span class="w">      </span><span class="n">cst_wave</span><span class="w"> </span><span class="o">*</span><span class="n">w</span><span class="p">;</span>
+<span class="w">      </span><span class="n">cst_utterance</span><span class="w"> </span><span class="o">*</span><span class="n">u</span><span class="p">;</span>
+<span class="w">      </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">voice_pathname</span><span class="p">;</span>
 
-      <span class="cm">/* Play the resulting wave, save it to a filename, or do none of these */</span>
-      <span class="n">cst_wave_save_riff</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">outfile</span><span class="p">);</span>
+<span class="w">      </span><span class="cm">/* Initialize Flite, and set up language and lexicon */</span>
+<span class="w">      </span><span class="n">flite_init</span><span class="p">();</span>
+<span class="w">      </span><span class="n">flite_add_lang</span><span class="p">(</span><span class="s">&quot;eng&quot;</span><span class="p">,</span><span class="n">usenglish_init</span><span class="p">,</span><span class="n">cmulex_init</span><span class="p">);</span>
+<span class="w">      </span><span class="n">flite_add_lang</span><span class="p">(</span><span class="s">&quot;usenglish&quot;</span><span class="p">,</span><span class="n">usenglish_init</span><span class="p">,</span><span class="n">cmulex_init</span><span class="p">);</span>
 
-      <span class="n">delete_utterance</span><span class="p">(</span><span class="n">u</span><span class="p">);</span> <span class="cm">/* will delete w too */</span>
+<span class="w">      </span><span class="cm">/* Load and select voice */</span>
+<span class="w">      </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">flite_voice_select</span><span class="p">(</span><span class="n">voice_pathname</span><span class="p">);</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">v</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">          </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="s">&quot;failed to load voice: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">voice_pathname</span><span class="p">);</span>
+<span class="w">          </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">      </span><span class="p">}</span>
 
-      <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-  <span class="p">}</span>
+<span class="w">      </span><span class="n">u</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">flite_synth_text</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">v</span><span class="p">);</span>
+<span class="w">      </span><span class="n">w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">utt_wave</span><span class="p">(</span><span class="n">u</span><span class="p">);</span>
+
+<span class="w">      </span><span class="cm">/* Play the resulting wave, save it to a filename, or do none of these */</span>
+<span class="w">      </span><span class="n">cst_wave_save_riff</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">outfile</span><span class="p">);</span>
+
+<span class="w">      </span><span class="n">delete_utterance</span><span class="p">(</span><span class="n">u</span><span class="p">);</span><span class="w"> </span><span class="cm">/* will delete w too */</span>
+
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

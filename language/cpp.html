@@ -1,19 +1,21 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>C++ &mdash; Beautiful C++ 0.1 documentation</title>
-      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=2709fde1"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -26,11 +28,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> Beautiful C++
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Beautiful C++
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -40,28 +46,24 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">C++ Language</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">C++</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#c-11">C++ 11 新特性</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id1">改进的对象构造</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id2">其他语言增强</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id3">新的关键字</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id4">对 C++ 库的增强</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">C++ 服务器端编程</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id6">示例</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">C++ 新特性</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#c-11">C++ 11 新特性</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">C++ 服务器端编程</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#id7">C++ 十大面试题</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id8">1. C++中 指针与引用的区别</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#c-class">2. 一个空的 C++ class ，编译器会为它默认添加哪些东西</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id9">3. 封装，访问控制与友元</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id10">4. C++ 虚函数，虚继承与虚函数表</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#c-class">2. 一个空的 C++ class , 编译器会为它默认添加哪些东西</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">3. 封装, 访问控制与友元</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">4. C++ 虚函数, 虚继承与虚函数表</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id11">5. C++ 显示显式类型转换的好处和分类</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id12">6. 如果避免多重继承中的在派生层次中出现多次</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id13">7. 什么是模板的特化与偏特化</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#vector-list-dqeue-map-hashmap">8. vector, list, dqeue, map(红黑树), hashmap 的区别</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#auto-ptr-shared-ptr-unique-ptr-weak-ptr">9. 什么是 <cite>auto_ptr</cite>, 它有什么缺点，和 <cite>shared_ptr</cite>/<cite>unique_ptr</cite>/<cite>weak_ptr</cite> 有什么不一样？</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#extern-c">10. 为什么要用 extern c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#make-shared-shared-ptr-t-new-t">7. 为什么提倡用 make_shared, 而不是直接用 shared_ptr&lt;T&gt;(new T)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id13">8. 什么是奇异模板</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id14">9. 什么是万能引用和完美转发</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#extern-c">10.   为什么要用 extern c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id15">11.  锁的类型和用法</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id17">12.  为接收只读字符串的函数选择什么形参类型?</a></li>
 </ul>
 </li>
 </ul>
@@ -94,9 +96,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">C++ Language</a> &raquo;</li>
-      <li>C++</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">C++ Language</a></li>
+      <li class="breadcrumb-item active">C++</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/language/cpp.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -106,13 +108,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="c">
-<h1>C++<a class="headerlink" href="#c" title="Permalink to this headline"></a></h1>
+  <section id="c">
+<h1>C++<a class="headerlink" href="#c" title="Link to this heading"></a></h1>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 32%" />
-<col style="width: 68%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Abstract</strong></p></td>
 <td><p>C++</p></td>
@@ -124,45 +122,56 @@
 <td><p>v1</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>Updated</strong></p></td>
-<td><p>2022-05-29</p></td>
+<td><p>2024-11-27</p></td>
 </tr>
 </tbody>
 </table>
-<div class="contents local topic" id="contents">
+<nav class="contents local" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#c-11" id="id14">C++ 11 新特性</a></p>
+<li><p><a class="reference internal" href="#id1" id="id18">C++ 新特性</a></p>
 <ul>
-<li><p><a class="reference internal" href="#id1" id="id15">改进的对象构造</a></p></li>
-<li><p><a class="reference internal" href="#id2" id="id16">其他语言增强</a></p></li>
-<li><p><a class="reference internal" href="#id3" id="id17">新的关键字</a></p></li>
-<li><p><a class="reference internal" href="#id4" id="id18">对 C++ 库的增强</a></p></li>
+<li><p><a class="reference internal" href="#c-11" id="id19">C++ 11 新特性</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id2" id="id20">改进的对象构造</a></p></li>
+<li><p><a class="reference internal" href="#id3" id="id21">其他语言增强</a></p></li>
+<li><p><a class="reference internal" href="#id4" id="id22">新的关键字</a></p></li>
+<li><p><a class="reference internal" href="#id5" id="id23">对 C++ 库的增强</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#id5" id="id19">C++ 服务器端编程</a></p>
-<ul>
-<li><p><a class="reference internal" href="#id6" id="id20">示例</a></p></li>
+<li><p><a class="reference internal" href="#id6" id="id24">C++ 服务器端编程</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#id7" id="id21">C++ 十大面试题</a></p>
+<li><p><a class="reference internal" href="#id7" id="id25">C++ 十大面试题</a></p>
 <ul>
-<li><p><a class="reference internal" href="#id8" id="id22">1. C++中 指针与引用的区别</a></p></li>
-<li><p><a class="reference internal" href="#c-class" id="id23">2. 一个空的 C++ class ，编译器会为它默认添加哪些东西</a></p></li>
-<li><p><a class="reference internal" href="#id9" id="id24">3. 封装，访问控制与友元</a></p></li>
-<li><p><a class="reference internal" href="#id10" id="id25">4. C++ 虚函数，虚继承与虚函数表</a></p></li>
-<li><p><a class="reference internal" href="#id11" id="id26">5. C++ 显示显式类型转换的好处和分类</a></p></li>
-<li><p><a class="reference internal" href="#id12" id="id27">6. 如果避免多重继承中的在派生层次中出现多次</a></p></li>
-<li><p><a class="reference internal" href="#id13" id="id28">7. 什么是模板的特化与偏特化</a></p></li>
-<li><p><a class="reference internal" href="#vector-list-dqeue-map-hashmap" id="id29">8. vector, list, dqeue, map(红黑树), hashmap 的区别</a></p></li>
-<li><p><a class="reference internal" href="#auto-ptr-shared-ptr-unique-ptr-weak-ptr" id="id30">9. 什么是 <cite>auto_ptr</cite>, 它有什么缺点，和 <cite>shared_ptr</cite>/<cite>unique_ptr</cite>/<cite>weak_ptr</cite> 有什么不一样？</a></p></li>
-<li><p><a class="reference internal" href="#extern-c" id="id31">10. 为什么要用 extern c</a></p></li>
+<li><p><a class="reference internal" href="#id8" id="id26">1. C++中 指针与引用的区别</a></p></li>
+<li><p><a class="reference internal" href="#c-class" id="id27">2. 一个空的 C++ class , 编译器会为它默认添加哪些东西</a></p></li>
+<li><p><a class="reference internal" href="#id9" id="id28">3. 封装, 访问控制与友元</a></p></li>
+<li><p><a class="reference internal" href="#id10" id="id29">4. C++ 虚函数, 虚继承与虚函数表</a></p></li>
+<li><p><a class="reference internal" href="#id11" id="id30">5. C++ 显示显式类型转换的好处和分类</a></p></li>
+<li><p><a class="reference internal" href="#id12" id="id31">6. 如果避免多重继承中的在派生层次中出现多次</a></p></li>
+<li><p><a class="reference internal" href="#make-shared-shared-ptr-t-new-t" id="id32">7. 为什么提倡用 make_shared, 而不是直接用 shared_ptr&lt;T&gt;(new T)</a></p></li>
+<li><p><a class="reference internal" href="#id13" id="id33">8. 什么是奇异模板</a></p></li>
+<li><p><a class="reference internal" href="#id14" id="id34">9. 什么是万能引用和完美转发</a></p></li>
+<li><p><a class="reference internal" href="#extern-c" id="id35">10.   为什么要用 extern c</a></p></li>
+<li><p><a class="reference internal" href="#id15" id="id36">11.  锁的类型和用法</a></p>
+<ul>
+<li><p><a class="reference internal" href="#mutex" id="id37">互斥锁 (mutex)</a></p></li>
+<li><p><a class="reference internal" href="#condition-variable" id="id38">条件锁 (condition_variable)</a></p></li>
+<li><p><a class="reference internal" href="#id16" id="id39">自旋锁 (不推荐使用)</a></p></li>
+<li><p><a class="reference internal" href="#recursive-mutex" id="id40">递归锁 (recursive_mutex)</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#id17" id="id41">12.  为接收只读字符串的函数选择什么形参类型?</a></p></li>
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="c-11">
-<h2><a class="toc-backref" href="#id14">C++ 11 新特性</a><a class="headerlink" href="#c-11" title="Permalink to this headline"></a></h2>
-<div class="section" id="id1">
-<h3><a class="toc-backref" href="#id15">改进的对象构造</a><a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
+</nav>
+<section id="id1">
+<h2><a class="toc-backref" href="#id18" role="doc-backlink">C++ 新特性</a><a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<section id="c-11">
+<h3><a class="toc-backref" href="#id19" role="doc-backlink">C++ 11 新特性</a><a class="headerlink" href="#c-11" title="Link to this heading"></a></h3>
+<section id="id2">
+<h4><a class="toc-backref" href="#id20" role="doc-backlink">改进的对象构造</a><a class="headerlink" href="#id2" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>继承基类的构造函数</p></li>
 <li><p>默认的成员值</p></li>
@@ -171,9 +180,9 @@
 <li><p>final 关键字</p></li>
 <li><p>统一的初始化 {}</p></li>
 </ul>
-</div>
-<div class="section" id="id2">
-<h3><a class="toc-backref" href="#id16">其他语言增强</a><a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
+</section>
+<section id="id3">
+<h4><a class="toc-backref" href="#id21" role="doc-backlink">其他语言增强</a><a class="headerlink" href="#id3" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>基于范围的 for 循环</p></li>
 <li><p>long long int 类型 (64位)</p></li>
@@ -186,9 +195,9 @@
 <li><p>可变参数模板</p></li>
 <li><p>改善了右尖括号的处理</p></li>
 </ul>
-</div>
-<div class="section" id="id3">
-<h3><a class="toc-backref" href="#id17">新的关键字</a><a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
+</section>
+<section id="id4">
+<h4><a class="toc-backref" href="#id22" role="doc-backlink">新的关键字</a><a class="headerlink" href="#id4" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>auto 自动类型推导</p></li>
 <li><p>constexpr: 表达式常量</p></li>
@@ -196,9 +205,9 @@
 <li><p>nullptr: 空指针</p></li>
 <li><p>thread_local: 线程局部存储</p></li>
 </ul>
-</div>
-<div class="section" id="id4">
-<h3><a class="toc-backref" href="#id18">对 C++ 库的增强</a><a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
+</section>
+<section id="id5">
+<h4><a class="toc-backref" href="#id23" role="doc-backlink">对 C++ 库的增强</a><a class="headerlink" href="#id5" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>stl 容器的列表初始化</p></li>
 <li><p>随机库</p></li>
@@ -208,133 +217,372 @@
 <li><p>元组模板</p></li>
 <li><p>其他的新类型: chrono(时间测量), ratio(有理数分数), complex(复数)</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="id5">
-<h2><a class="toc-backref" href="#id19">C++ 服务器端编程</a><a class="headerlink" href="#id5" title="Permalink to this headline"></a></h2>
+</section>
+</section>
+<section id="id6">
+<h3><a class="toc-backref" href="#id24" role="doc-backlink">C++ 服务器端编程</a><a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>事件驱动</p></li>
 <li><p>多路复用</p></li>
 <li><p>多线程并发</p></li>
 </ul>
-<div class="section" id="id6">
-<h3><a class="toc-backref" href="#id20">示例</a><a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
-</div>
-</div>
-<div class="section" id="id7">
-<h2><a class="toc-backref" href="#id21">C++ 十大面试题</a><a class="headerlink" href="#id7" title="Permalink to this headline"></a></h2>
-<ul class="simple">
-<li><p>Reactor 模式</p></li>
-<li><p>Move semantic</p></li>
-<li><p>菱形继承</p></li>
-</ul>
-<div class="section" id="id8">
-<h3><a class="toc-backref" href="#id22">1. C++中 指针与引用的区别</a><a class="headerlink" href="#id8" title="Permalink to this headline"></a></h3>
+</section>
+</section>
+<section id="id7">
+<h2><a class="toc-backref" href="#id25" role="doc-backlink">C++ 十大面试题</a><a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
+<section id="id8">
+<h3><a class="toc-backref" href="#id26" role="doc-backlink">1. C++中 指针与引用的区别</a><a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
 <p>数组名会自动转换为指向数组第一个元素的指针</p>
 <ul class="simple">
 <li><p>指向 const 对象的指针: 不允许用指针操作来改变其所批的 const 值</p></li>
 </ul>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">const</span> <span class="kt">double</span> <span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14</span><span class="p">;</span>
-<span class="kt">double</span> <span class="o">*</span> <span class="n">ptr</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">pi</span><span class="p">;</span> <span class="c1">//.. error</span>
-<span class="k">const</span> <span class="n">doube</span> <span class="o">*</span> <span class="n">ptr</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">pi</span><span class="p">;</span> <span class="c1">// correct</span>
-<span class="o">*</span><span class="n">ptr</span> <span class="o">=</span> <span class="mf">3.14159</span><span class="p">;</span> <span class="c1">// error</span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">pi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.14</span><span class="p">;</span>
+<span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">pi</span><span class="p">;</span><span class="w"> </span><span class="c1">//.. error</span>
+<span class="k">const</span><span class="w"> </span><span class="n">doube</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">pi</span><span class="p">;</span><span class="w"> </span><span class="c1">// correct</span>
+<span class="o">*</span><span class="n">ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.14159</span><span class="p">;</span><span class="w"> </span><span class="c1">// error</span>
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>const 指针: 指针本身的值不能修改</p></li>
 </ul>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">errorCode</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="kt">int</span> <span class="n">errorCode2</span> <span class="o">=</span> <span class="mi">-1</span><span class="p">;</span>
-<span class="kt">int</span> <span class="o">*</span> <span class="k">const</span> <span class="n">ptrErr</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">errorCode</span><span class="p">;</span>
-<span class="n">ptrErr</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">errorCode2</span><span class="p">;</span> <span class="c1">//error</span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">errorCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">errorCode2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">ptrErr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">errorCode</span><span class="p">;</span>
+<span class="n">ptrErr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">errorCode2</span><span class="p">;</span><span class="w"> </span><span class="c1">//error</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="c-class">
-<h3><a class="toc-backref" href="#id23">2. 一个空的 C++ class ，编译器会为它默认添加哪些东西</a><a class="headerlink" href="#c-class" title="Permalink to this headline"></a></h3>
-<p>默认构造函数，复制构造函数，析构函数，赋值函数以及取值函数</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">User</span>
+</section>
+<section id="c-class">
+<h3><a class="toc-backref" href="#id27" role="doc-backlink">2. 一个空的 C++ class , 编译器会为它默认添加哪些东西</a><a class="headerlink" href="#c-class" title="Link to this heading"></a></h3>
+<p>参见 <a class="reference external" href="https://en.cppreference.com/w/cpp/language/rule_of_three">https://en.cppreference.com/w/cpp/language/rule_of_three</a></p>
+<p>默认构造函数, 拷贝构造函数, 析构函数 赋值操作符以及取值函数</p>
+<p>C++ 11 之前, 一般要求实现这3个函数</p>
+<ul class="simple">
+<li><p>user-defined destructor 自定义的析构</p></li>
+<li><p>a user-defined copy constructor 自定义的拷贝构造函数</p></li>
+<li><p>a user-defined copy assignment operator, 自定义的赋值操作符</p></li>
+</ul>
+<p>C++ 11 之后添加了两个方法:
+* 移动构造 move constructor
+* 移动赋值操作符 the move assignment operator</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">User</span>
 <span class="p">{</span>
 <span class="n">Public</span>
-    <span class="nf">User</span><span class="p">();</span>
-    <span class="n">User</span><span class="p">(</span><span class="k">const</span> <span class="n">User</span><span class="o">&amp;</span><span class="p">);</span>
-    <span class="o">~</span><span class="n">User</span><span class="p">();</span>
-    <span class="n">User</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">User</span><span class="o">&amp;</span><span class="p">)</span>
-    <span class="n">User</span><span class="o">*</span> <span class="k">operator</span><span class="o">&amp;</span><span class="p">();</span>
-    <span class="n">Const</span> <span class="n">User</span><span class="o">*</span> <span class="k">operator</span><span class="o">&amp;</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+<span class="w">    </span><span class="nf">User</span><span class="p">();</span>
+<span class="w">    </span><span class="n">User</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">User</span><span class="o">&amp;</span><span class="p">);</span>
+<span class="w">    </span><span class="o">~</span><span class="n">User</span><span class="p">();</span>
+<span class="w">    </span><span class="n">User</span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">User</span><span class="o">&amp;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">User</span><span class="o">*</span><span class="w"> </span><span class="k">operator</span><span class="o">&amp;</span><span class="p">();</span>
+<span class="w">    </span><span class="n">Const</span><span class="w"> </span><span class="n">User</span><span class="o">*</span><span class="w"> </span><span class="k">operator</span><span class="o">&amp;</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
 
-    <span class="c1">//c++ 11, move constructor</span>
-    <span class="n">User</span><span class="p">(</span><span class="n">User</span><span class="o">&amp;&amp;</span> <span class="n">other</span><span class="p">);</span>
-    <span class="n">User</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="n">User</span><span class="o">&amp;&amp;</span> <span class="n">other</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">//c++ 11, move constructor</span>
+<span class="w">    </span><span class="n">User</span><span class="p">(</span><span class="n">User</span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">other</span><span class="p">);</span>
+<span class="w">    </span><span class="n">User</span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="n">User</span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">other</span><span class="p">);</span>
 
 
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>explicit 构造函数是用来防止隐式转换的</p>
-</div>
-<div class="section" id="id9">
-<h3><a class="toc-backref" href="#id24">3. 封装，访问控制与友元</a><a class="headerlink" href="#id9" title="Permalink to this headline"></a></h3>
+</section>
+<section id="id9">
+<h3><a class="toc-backref" href="#id28" role="doc-backlink">3. 封装, 访问控制与友元</a><a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
 <p>public, private, protected, friend</p>
-</div>
-<div class="section" id="id10">
-<h3><a class="toc-backref" href="#id25">4. C++ 虚函数，虚继承与虚函数表</a><a class="headerlink" href="#id10" title="Permalink to this headline"></a></h3>
-<p>虚函数是通过虚函数表实现的，如果一个类含有虚函数，系统会为这个类分配一个指针成员指向一张虚函数表，表中每一项指向一个虚函数的地址，实现上就是一个函数指针的数组</p>
-<p>在类对象的内存布局中，首先是该类的 vtbl 指针，然后者对象数据，在通过对象指针 调用一个虚函数时，编译器生成的代码将先获取对象类的 vtbl 指针，然后调用  vtbl 中对应的项，从而实现多态性</p>
+</section>
+<section id="id10">
+<h3><a class="toc-backref" href="#id29" role="doc-backlink">4. C++ 虚函数, 虚继承与虚函数表</a><a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<p>虚函数是通过虚函数表实现的, 如果一个类含有虚函数, 系统会为这个类分配一个指针成员指向一张虚函数表, 表中每一项指向一个虚函数的地址, 实现上就是一个函数指针的数组</p>
+<p>在类对象的内存布局中, 首先是该类的 vtbl 指针, 然后者对象数据, 在通过对象指针 调用一个虚函数时, 编译器生成的代码将先获取对象类的 vtbl 指针, 然后调用  vtbl 中对应的项, 从而实现多态性</p>
 <p>构造函数为什么不能是虚函数呢？</p>
 <blockquote>
-<div><p>首先需要了解 vptr指针和虚函数表的概念，以及这两者的关联。</p>
-<p>vptr指针指向虚函数表，执行虚函数的时候，会调用vptr指针指向的虚函数的地址。</p>
-<p>当定义一个对象的时候，首先会分配对象内存空间，然后调用构造函数来初始化对象。vptr变量是在构造函数中进行初始化的。又因为执行虚函数需要通过vptr指针来调用。如果可以定义构造函数为虚函数，那么就会陷入先有鸡还是先有蛋的循环讨论中。</p>
+<div><p>首先需要了解 vptr指针和虚函数表的概念, 以及这两者的关联。</p>
+<p>vptr指针指向虚函数表, 执行虚函数的时候, 会调用vptr指针指向的虚函数的地址。</p>
+<p>当定义一个对象的时候, 首先会分配对象内存空间, 然后调用构造函数来初始化对象。vptr变量是在构造函数中进行初始化的。又因为执行虚函数需要通过vptr指针来调用。如果可以定义构造函数为虚函数, 那么就会陷入先有鸡还是先有蛋的循环讨论中。</p>
 </div></blockquote>
 <p>基类的析构函数为什么必须是虚函数呢？</p>
 <blockquote>
-<div><p>我们都知道，想要回收一个对象申请的资源，那么就需要调用析构函数。虽然我们没有显示地调用析构函数，但是编译器都会默认地为我们执行析构函数。</p>
-<p>那么当我们执行 <cite>BaseClass *base = new BaseClass();</cite> 当我们执行 <cite>delete base</cite> 时，会调用析构函数为我们释放资源。而 我们执行 <cite>BaseClass *sub = new SubClass();</cite> 如果 <cite>BaseClass</cite> 基类的析构函数不是虚函数的时候，<cite>delete sub</cite> 对象的时候，只会释放 <cite>BaseClass</cite> 基类申请的资源，而不是释放 <cite>SubClass</cite> 派生类的资源。原因如下：</p>
-<p>基类指针指向了派生类对象，而基类中的析构函数是非virtual的，而虚构函数是动态绑定的基础。现在析构函数不是virtual的，因此不会发生动态绑定，而是静态绑定，指针的静态类型为基类指针，因此在delete的时候只会调用基类的析构函数，而不会调用派生类的析构函数。这样，在派生类中申请的资源就不会得到释放，就会造成内存泄漏，这是相当危险的：如果系统中有大量的派生类对象被这样创建和销毁，就会有内存不断的泄漏，久而久之，系统就会因为缺少内存而崩溃。</p>
-<p>当然，如果在派生类中没有动态申请有资源的时候，是不会造成内存泄漏的。而当派生类对象的析构函数中有内存需要回收，并且在编程过程中采用了基类指针指向派生类对象，如为了实现多态，并且通过基类指针将对象销毁，这时，就会因为基类的析构函数为非虚函数而不触发动态绑定，从而没有调用派生类的析构函数而导致内存泄漏。</p>
-<p>因此，为了防止这种情况下的内存泄漏的发生，最后将基类的析构函数写成virtual虚析构函数。</p>
+<div><p>我们都知道, 想要回收一个对象申请的资源, 那么就需要调用析构函数。虽然我们没有显示地调用析构函数, 但是编译器都会默认地为我们执行析构函数。</p>
+<p>那么当我们执行 <cite>BaseClass *base = new BaseClass();</cite> 当我们执行 <cite>delete base</cite> 时, 会调用析构函数为我们释放资源。而 我们执行 <cite>BaseClass *sub = new SubClass();</cite> 如果 <cite>BaseClass</cite> 基类的析构函数不是虚函数的时候, <cite>delete sub</cite> 对象的时候, 只会释放 <cite>BaseClass</cite> 基类申请的资源, 而不是释放 <cite>SubClass</cite> 派生类的资源。原因如下：</p>
+<p>基类指针指向了派生类对象, 而基类中的析构函数是非virtual的, 而虚构函数是动态绑定的基础。现在析构函数不是virtual的, 因此不会发生动态绑定, 而是静态绑定, 指针的静态类型为基类指针, 因此在delete的时候只会调用基类的析构函数, 而不会调用派生类的析构函数。这样, 在派生类中申请的资源就不会得到释放, 就会造成内存泄漏, 这是相当危险的：如果系统中有大量的派生类对象被这样创建和销毁, 就会有内存不断的泄漏, 久而久之, 系统就会因为缺少内存而崩溃。</p>
+<p>当然, 如果在派生类中没有动态申请有资源的时候, 是不会造成内存泄漏的。而当派生类对象的析构函数中有内存需要回收, 并且在编程过程中采用了基类指针指向派生类对象, 如为了实现多态, 并且通过基类指针将对象销毁, 这时, 就会因为基类的析构函数为非虚函数而不触发动态绑定, 从而没有调用派生类的析构函数而导致内存泄漏。</p>
+<p>因此, 为了防止这种情况下的内存泄漏的发生, 最后将基类的析构函数写成virtual虚析构函数。</p>
 </div></blockquote>
-</div>
-<div class="section" id="id11">
-<h3><a class="toc-backref" href="#id26">5. C++ 显示显式类型转换的好处和分类</a><a class="headerlink" href="#id11" title="Permalink to this headline"></a></h3>
+</section>
+<section id="id11">
+<h3><a class="toc-backref" href="#id30" role="doc-backlink">5. C++ 显示显式类型转换的好处和分类</a><a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>static_cast 完成相关类型之间的转换</p></li>
 <li><p>reinterpret_cast 处理互不相关类型之间的转换</p></li>
-<li><p>dynamic_cast 将基类类型转换为子类的类型，它涉及运行时检查</p></li>
+<li><p>dynamic_cast 将基类类型转换为子类的类型, 它涉及运行时检查</p></li>
 <li><p>const_cast 转换掉表达式的 const 性质</p></li>
 </ul>
-</div>
-<div class="section" id="id12">
-<h3><a class="toc-backref" href="#id27">6. 如果避免多重继承中的在派生层次中出现多次</a><a class="headerlink" href="#id12" title="Permalink to this headline"></a></h3>
+</section>
+<section id="id12">
+<h3><a class="toc-backref" href="#id31" role="doc-backlink">6. 如果避免多重继承中的在派生层次中出现多次</a><a class="headerlink" href="#id12" title="Link to this heading"></a></h3>
 <p>虚继承,
-比如 istream 继承自 ios， ostream 也继承自 ios, 而 iostream 继承自 istream 和 ostream,
-所以一个 iostream 对象可能会包含两个 ios 对象，所以要用到虚继承。</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">istream</span><span class="o">:</span> <span class="k">public</span> <span class="k">virtual</span> <span class="n">ios</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
-<span class="k">class</span> <span class="nc">ostream</span><span class="o">:</span> <span class="k">public</span> <span class="k">virtual</span> <span class="n">ios</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
+比如 istream 继承自 ios, ostream 也继承自 ios, 而 iostream 继承自 istream 和 ostream,
+所以一个 iostream 对象可能会包含两个 ios 对象, 所以要用到虚继承。</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">istream</span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">ios</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ostream</span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">ios</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id13">
-<h3><a class="toc-backref" href="#id28">7. 什么是模板的特化与偏特化</a><a class="headerlink" href="#id13" title="Permalink to this headline"></a></h3>
-</div>
-<div class="section" id="vector-list-dqeue-map-hashmap">
-<h3><a class="toc-backref" href="#id29">8. vector, list, dqeue, map(红黑树), hashmap 的区别</a><a class="headerlink" href="#vector-list-dqeue-map-hashmap" title="Permalink to this headline"></a></h3>
-</div>
-<div class="section" id="auto-ptr-shared-ptr-unique-ptr-weak-ptr">
-<h3><a class="toc-backref" href="#id30">9. 什么是 <cite>auto_ptr</cite>, 它有什么缺点，和 <cite>shared_ptr</cite>/<cite>unique_ptr</cite>/<cite>weak_ptr</cite> 有什么不一样？</a><a class="headerlink" href="#auto-ptr-shared-ptr-unique-ptr-weak-ptr" title="Permalink to this headline"></a></h3>
-</div>
-<div class="section" id="extern-c">
-<h3><a class="toc-backref" href="#id31">10. 为什么要用 extern c</a><a class="headerlink" href="#extern-c" title="Permalink to this headline"></a></h3>
-<p>由于gcc和g++生成符号表的方式不同，导致在C++项目中如果使用gcc编译的C模块，会出现链接错误。因为链接器会去C模块的（.o）文件中查找，__Z3addii这样的符号。显然在C模块的目标文件(.o)中，不存在__Z3addii这样的符号，它有的只是_add。</p>
-<p>通过extern “C”，告诉g++编译器，不要对这些函数进行Name mangling，按照C编译器的方式去生成符号表符号。这样在main.c的目标文件(.o)中，参数列表为两个int类型的add函数名称为_add。链接器可以正确找到util.o中的add函数（他们都是_add）。注意参数列表为两个double类型的add函数名称还是__Z3adddd。</p>
-<ol class="arabic simple" start="11">
-<li><p>锁的类型和用法</p></li>
-<li></li>
+</section>
+<section id="make-shared-shared-ptr-t-new-t">
+<h3><a class="toc-backref" href="#id32" role="doc-backlink">7. 为什么提倡用 make_shared, 而不是直接用 shared_ptr&lt;T&gt;(new T)</a><a class="headerlink" href="#make-shared-shared-ptr-t-new-t" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>类型名只需写一遍, 避免冗余</p></li>
 </ol>
+<p>2. 避免可能造成的内存泄漏, new 出来的对象异常没有放到 shared_ptr 中
+例如 effective mordern c++ 条款 21 中举的例子</p>
+<ol class="arabic simple" start="3">
+<li><p>性能和效率更高, 只要分配一次单块内存来存储对象和 shared_ptr 控制块</p></li>
+</ol>
+</section>
+<section id="id13">
+<h3><a class="toc-backref" href="#id33" role="doc-backlink">8. 什么是奇异模板</a><a class="headerlink" href="#id13" title="Link to this heading"></a></h3>
+<p>在 C++ 中，”奇异模板” (Curiously Recurring Template Pattern, 简称 CRTP) 是一种常用的模板编程技巧，
+主要用于实现静态多态 (static polymorphism) 或为派生类提供通用的功能。它的名字来源于其递归的结构：一个类使用自己作为模板参数传递给基类。</p>
+<p>CRTP 的基本结构</p>
+<p>CRTP 的核心是定义一个基类模板，并让派生类作为模板参数传递给这个基类。</p>
+<p>基本代码示例</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+
+<span class="c1">// 基类模板</span>
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">Derived</span><span class="o">&gt;</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Base</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">interface</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 调用派生类的方法</span>
+<span class="w">        </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="n">Derived</span><span class="o">*&gt;</span><span class="p">(</span><span class="k">this</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">implementation</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// 默认实现 (可选)</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">implementation</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Base implementation</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+
+<span class="c1">// 派生类</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Derived</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Base</span><span class="o">&lt;</span><span class="n">Derived</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">implementation</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Derived implementation</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Derived</span><span class="w"> </span><span class="n">d</span><span class="p">;</span>
+<span class="w">    </span><span class="n">d</span><span class="p">.</span><span class="n">interface</span><span class="p">();</span><span class="w">  </span><span class="c1">// 输出 &quot;Derived implementation&quot;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
 </div>
+<p>关键点</p>
+<blockquote>
+<div><p>1. 模板参数传递派生类：
+* 基类模板 Base 的模板参数是派生类 Derived。
+* 在 Base 中，通过将 this 指针静态转换为 Derived* 类型，调用派生类中的方法。
+2. 静态多态：
+* 在编译期决定调用的是哪一个类的方法，避免了运行时的虚函数开销。
+* 不同于动态多态 (使用虚函数和 vtable) ，静态多态在编译期直接展开，性能更高。
+3. 递归的奇异性：
+* 派生类引用基类模板，并将自身作为模板参数传递，因此称为”奇异”。</p>
+</div></blockquote>
+<p>使用场景</p>
+<ol class="arabic simple">
+<li><p>实现静态多态</p></li>
+</ol>
+<p>CRTP 通常用于替代虚函数的运行时多态，尤其是性能敏感的场景。</p>
+<p>代码示例</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">Derived</span><span class="o">&gt;</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Shape</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">draw</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="n">Derived</span><span class="o">*&gt;</span><span class="p">(</span><span class="k">this</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">draw_impl</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Circle</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Shape</span><span class="o">&lt;</span><span class="n">Circle</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">draw_impl</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Drawing Circle</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Square</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Shape</span><span class="o">&lt;</span><span class="n">Square</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">draw_impl</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Drawing Square</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Circle</span><span class="w"> </span><span class="n">c</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Square</span><span class="w"> </span><span class="n">s</span><span class="p">;</span>
+<span class="w">    </span><span class="n">c</span><span class="p">.</span><span class="n">draw</span><span class="p">();</span><span class="w"> </span><span class="c1">// 输出 &quot;Drawing Circle&quot;</span>
+<span class="w">    </span><span class="n">s</span><span class="p">.</span><span class="n">draw</span><span class="p">();</span><span class="w"> </span><span class="c1">// 输出 &quot;Drawing Square&quot;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
 </div>
+<ol class="arabic simple" start="2">
+<li><p>代码复用</p></li>
+</ol>
+<p>CRTP 可以用于基类提供一部分通用功能，而派生类专注于实现特定逻辑。</p>
+<p>示例：统计派生类的实例数量</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">Derived</span><span class="o">&gt;</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Counter</span><span class="w"> </span><span class="p">{</span>
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">;</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">Counter</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">++</span><span class="n">count</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="o">~</span><span class="n">Counter</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">--</span><span class="n">count</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">getCount</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">count</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">};</span>
+
+<span class="c1">// 静态成员变量定义</span>
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">Derived</span><span class="o">&gt;</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">Counter</span><span class="o">&lt;</span><span class="n">Derived</span><span class="o">&gt;::</span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MyClass</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Counter</span><span class="o">&lt;</span><span class="n">MyClass</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{};</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">AnotherClass</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Counter</span><span class="o">&lt;</span><span class="n">AnotherClass</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{};</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">MyClass</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<span class="w">    </span><span class="n">AnotherClass</span><span class="w"> </span><span class="n">c</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;MyClass instances: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">MyClass</span><span class="o">::</span><span class="n">getCount</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// 输出 2</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;AnotherClass instances: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">AnotherClass</span><span class="o">::</span><span class="n">getCount</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// 输出 1</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
 </div>
+<ol class="arabic simple" start="3">
+<li><p>控制派生类的行为</p></li>
+</ol>
+<p>基类模板可以对派生类施加一定的约束或统一接口。</p>
+<p>优缺点</p>
+<p>优点</p>
+<p>1. 静态多态：
+* 提高性能，无需虚函数和运行时多态的开销。
+2. 代码复用：
+* 基类模板可以封装通用逻辑，派生类只需专注于具体实现。
+3. 灵活性：
+* 在基类模板中可以为派生类提供默认实现，也可以强制派生类实现特定行为。</p>
+<p>缺点</p>
+<p>1. 可读性降低：
+* 对新手来说，递归的模板结构可能不容易理解。
+2. 类型安全性：
+* 如果使用不当 (例如 static_cast 错误) ，可能引发未定义行为。
+3. 编译时间开销：
+* 模板会增加编译时间，因为 CRTP 是基于模板元编程的。</p>
+<p>总结</p>
+<p>CRTP 是 C++ 模板编程中的一个强大工具，主要用于静态多态和代码复用。它通过将派生类作为模板参数传递给基类，实现了在编译期确定的多态行为，在高性能场景中尤为常见。</p>
+</section>
+<section id="id14">
+<h3><a class="toc-backref" href="#id34" role="doc-backlink">9. 什么是万能引用和完美转发</a><a class="headerlink" href="#id14" title="Link to this heading"></a></h3>
+<p>万能引用就是：即可以绑定到左值引用也可以绑定到右值引用, 并且还会保持左右值的const属性的函数模板参数。形如这样的参数 T&amp;&amp; 就是万能引用</p>
+</section>
+<section id="extern-c">
+<h3><a class="toc-backref" href="#id35" role="doc-backlink">10.   为什么要用 extern c</a><a class="headerlink" href="#extern-c" title="Link to this heading"></a></h3>
+<p>由于gcc和g++生成符号表的方式不同, 导致在C++项目中如果使用gcc编译的C模块, 会出现链接错误。因为链接器会去C模块的 (.o) 文件中查找, __Z3addii这样的符号。显然在C模块的目标文件(.o)中, 不存在__Z3addii这样的符号, 它有的只是_add。</p>
+<p>通过extern “C”, 告诉g++编译器, 不要对这些函数进行Name mangling, 按照C编译器的方式去生成符号表符号。这样在main.c的目标文件(.o)中, 参数列表为两个int类型的add函数名称为_add。链接器可以正确找到util.o中的add函数 (他们都是_add) 。注意参数列表为两个double类型的add函数名称还是__Z3adddd。</p>
+</section>
+<section id="id15">
+<h3><a class="toc-backref" href="#id36" role="doc-backlink">11.  锁的类型和用法</a><a class="headerlink" href="#id15" title="Link to this heading"></a></h3>
+<section id="mutex">
+<h4><a class="toc-backref" href="#id37" role="doc-backlink">互斥锁 (mutex)</a><a class="headerlink" href="#mutex" title="Link to this heading"></a></h4>
+<p>可以避免多个线程在某一时刻同时操作一个共享资源, 标准C++库提供了std::unique_lock类模板, 实现了互斥锁的RAII惯用语法：
+eg: <cite>std::unique_lock&lt;std::mutex&gt; lk(mtx_sync_);</cite></p>
+</section>
+<section id="condition-variable">
+<h4><a class="toc-backref" href="#id38" role="doc-backlink">条件锁 (condition_variable)</a><a class="headerlink" href="#condition-variable" title="Link to this heading"></a></h4>
+<p>条件锁就是所谓的条件变量, 某一个线程因为某个条件未满足时可以使用条件变量使该程序处于阻塞状态。一旦条件满足了, 即可唤醒该线程(常和互斥锁配合使用), 唤醒后, 需要检查变量, 避免虚假唤醒。
+eg:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">//线程1：</span>
+<span class="c1">// wait ack</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">unique_lock</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="o">&gt;</span><span class="w"> </span><span class="n">lk</span><span class="p">(</span><span class="n">mtx_sync_</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">cv_sync_</span><span class="p">.</span><span class="n">wait_for</span><span class="p">(</span><span class="n">lk</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="n">ms</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="k">this</span><span class="p">](){</span><span class="k">return</span><span class="w"> </span><span class="n">sync_</span><span class="p">;</span><span class="w"> </span><span class="p">}))</span><span class="w"> </span><span class="c1">// wait for 1s</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// wait failed</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;wait for notify timeout [%d].</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">cnt</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">//线程2：</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">unique_lock</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="o">&gt;</span><span class="w"> </span><span class="n">lk</span><span class="p">(</span><span class="n">mtx_sync_</span><span class="p">);</span>
+<span class="w">    </span><span class="n">sync_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">// 通知前解锁, 可以避免唤醒线程后由于互斥锁的关系又进入了阻塞阶段</span>
+<span class="n">cv_sync_</span><span class="p">.</span><span class="n">notify_one</span><span class="p">();</span>
+</pre></div>
+</div>
+</section>
+<section id="id16">
+<h4><a class="toc-backref" href="#id39" role="doc-backlink">自旋锁 (不推荐使用)</a><a class="headerlink" href="#id16" title="Link to this heading"></a></h4>
+<p>自旋锁是一种基础的同步原语, 用于保障对共享数据的互斥访问。与互斥锁的相比, 在获取锁失败的时候不会使得线程阻塞而是一直自旋尝试获取锁。当线程等待自旋锁的时候, CPU不能做其他事情, 而是一直处于轮询忙等的状态。自旋锁主要适用于被持有时间短, 线程不希望在重新调度上花过多时间的情况。实际上许多其他类型的锁在底层使用了自旋锁实现, 例如多数互斥锁在试图获取锁的时候会先自旋一小段时间, 然后才会休眠。如果在持锁时间很长的场景下使用自旋锁, 则会导致CPU在这个线程的时间片用尽之前一直消耗在无意义的忙等上, 造成计算资源的浪费。</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// 用户空间用 atomic_flag 实现自旋互斥</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;thread&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;atomic&gt;</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">atomic_flag</span><span class="w"> </span><span class="n">lock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ATOMIC_FLAG_INIT</span><span class="p">;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">cnt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">cnt</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">cnt</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">lock</span><span class="p">.</span><span class="n">test_and_set</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">memory_order_acquire</span><span class="p">))</span><span class="w">  </span><span class="c1">// 获得锁</span>
+<span class="w">            </span><span class="p">;</span><span class="w"> </span><span class="c1">// 自旋</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Output from thread &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+<span class="w">        </span><span class="n">lock</span><span class="p">.</span><span class="n">clear</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">memory_order_release</span><span class="p">);</span><span class="w">               </span><span class="c1">// 释放锁</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="kr">thread</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">v</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">t</span><span class="p">.</span><span class="n">join</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="recursive-mutex">
+<h4><a class="toc-backref" href="#id40" role="doc-backlink">递归锁 (recursive_mutex)</a><a class="headerlink" href="#recursive-mutex" title="Link to this heading"></a></h4>
+<p>recursive_mutex 类是同步原语, 能用于保护共享数据免受从个多线程同时访问。</p>
+<p>recursive_mutex 提供排他性递归所有权语义：</p>
+<p>调用方线程在从它成功调用 lock 或 try_lock 开始的时期里占有 recursive_mutex 。此时期间, 线程可以进行对 lock 或 try_lock 的附加调用。所有权的时期在线程调用 unlock 匹配次数时结束。
+线程占有 recursive_mutex 时, 若其他所有线程试图要求 recursive_mutex 的所有权, 则它们将阻塞 (对于调用 lock ) 或收到 false 返回值 (对于调用 try_lock ) 。
+可锁定 recursive_mutex 次数的最大值是未指定的, 但抵达该数后, 对 lock 的调用将抛出 std::system_error 而对 try_lock 的调用将返回 false 。
+若 recursive_mutex 在仍为某线程占有时被销毁, 则程序行为未定义。 recursive_mutex 类满足互斥 (Mutex) 和标准布局类型 (StandardLayoutType) 的所有要求。</p>
+</section>
+</section>
+<section id="id17">
+<h3><a class="toc-backref" href="#id41" role="doc-backlink">12.  为接收只读字符串的函数选择什么形参类型?</a><a class="headerlink" href="#id17" title="Link to this heading"></a></h3>
+<p>const char* 或者 const std::string&amp; 都不如 std::string_view, 它是前两者的完美替代
+1) std::string_view 不会产生开销, 它从不复制字符串
+2) std::string_view 与 std::string 有几乎相同的接口, 只不过没有 c_str(), 但是有 data() 方法</p>
+</section>
+</section>
+</section>
 
 
            </div>

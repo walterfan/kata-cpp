@@ -1,19 +1,21 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>C++ Interview Questions &mdash; Beautiful C++ 0.1 documentation</title>
-      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=2709fde1"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -26,11 +28,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> Beautiful C++
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Beautiful C++
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -41,16 +47,17 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">C++ Language</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="cpp.html">C++</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">C++ Interview Questions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#faq">FAQ</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#c">C语言</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#char-const-char-char-constconst-char-const">描述char*、const char*、char* const、const char* const的区别？</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#char-const-char-char-constconst-char-const">描述char*、const char*、char* const、const char* const的区别?</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#id1">C++基础知识面试题</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#c-11">C++11新特性</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id2">C++11新特性你都了解多少？可以介绍一下吗？</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#autodecltype">了解auto和decltype吗？</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id3">谈一谈你对左值和右值的了解，了解左值引用和右值引用吗？</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id4">了解移动语义和完美转发吗？</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">C++11新特性你都了解多少?可以介绍一下吗?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#autodecltype">了解auto和decltype吗?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">谈一谈你对左值和右值的了解, 了解左值引用和右值引用吗?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">了解移动语义和完美转发吗?</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#stl">STL系列</a></li>
@@ -87,9 +94,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">C++ Language</a> &raquo;</li>
-      <li>C++ Interview Questions</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">C++ Language</a></li>
+      <li class="breadcrumb-item active">C++ Interview Questions</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/language/cpp_interview.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -99,13 +106,127 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="c-interview-questions">
-<h1>C++ Interview Questions<a class="headerlink" href="#c-interview-questions" title="Permalink to this headline"></a></h1>
-<div class="section" id="c">
-<h2>C语言<a class="headerlink" href="#c" title="Permalink to this headline"></a></h2>
-<p>const的作用有哪些，谈一谈你对const的理解？</p>
-<div class="section" id="char-const-char-char-constconst-char-const">
-<h3>描述char*、const char*、char* const、const char* const的区别？<a class="headerlink" href="#char-const-char-char-constconst-char-const" title="Permalink to this headline"></a></h3>
+  <section id="c-interview-questions">
+<h1>C++ Interview Questions<a class="headerlink" href="#c-interview-questions" title="Link to this heading"></a></h1>
+<section id="faq">
+<h2>FAQ<a class="headerlink" href="#faq" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>请详细阐述 C++ 中右值引用的原理、用途以及它是如何优化程序性能的 (结合移动语义与完美转发概念) ?</p></li>
+</ol>
+<ul class="simple">
+<li><p>原理:</p></li>
+</ul>
+<p>右值引用通过&amp;&amp;声明, 绑定到即将销毁的临时对象 (右值) , 与左值引用 (&amp;) 区分开, 左值引用通常绑定到具名变量等持久存在的左值。
+例如int&amp;&amp; r = 5 + 3;, 这里5 + 3是右值, 被r绑定。</p>
+<ul class="simple">
+<li><p>用途与性能优化:</p></li>
+</ul>
+<p>移动语义方面, 对于像自定义类中管理动态内存资源的情况, 传统拷贝构造函数和赋值运算符会深拷贝资源, 效率低。而移动构造函数 (接受右值引用参数) 能“窃取”源对象即将销毁的资源, 避免不必要拷贝。</p>
+<p>如std::vector扩容时, 旧数据可通过移动而非拷贝到新内存空间。完美转发利用std::forward函数, 在模板函数中, 按照传入参数的原有值类别 (左值或右值) 准确传递给被调用函数, 保持调用语义, 避免额外拷贝开销, 高效传递参数, 典型在工厂函数、代理函数场景提升性能。</p>
+<ol class="arabic simple" start="2">
+<li><p>深度剖析 C++ 标准库中智能指针的实现机制、内存管理细节、循环引用问题及weak_ptr如何解决该问题?</p></li>
+</ol>
+<ul class="simple">
+<li><p>unique_ptr实现独占式资源管理, 内部有个指针指向对象, 析构时自动释放内存, 禁止拷贝构造与赋值 (除非特殊转移语义的move操作) , 确保单一所有权, 内存管理简单直接, 生命周期跟随其作用域, 出作用域自动析构。</p></li>
+<li><p>shared_ptr基于引用计数实现共享式所有权, 有个内部计数器记录指向同一对象的shared_ptr个数, 构造、拷贝、赋值时更新计数, 计数归零才析构对象释放内存。但循环引用场景下, 如两个类相互包含shared_ptr成员, 析构顺序会陷入僵局导致内存泄漏。</p></li>
+<li><p>weak_ptr不控制对象生命周期, 只观测对象是否存活, 通过指向shared_ptr管理的对象, 避免循环引用。它构造时关联shared_ptr, 获取资源需先lock转换为shared_ptr (若对象已析构返回空shared_ptr) , 打破循环强引用闭环, 解决循环引用导致的内存无法释放问题。</p></li>
+</ul>
+<ol class="arabic simple" start="3">
+<li><p>在多线程环境下使用 C++, 阐述如何利用std::atomic、互斥锁 (std::mutex等) 、条件变量 (std::condition_variable)来安全高效地实现一个生产者 - 消费者模型, 详细分析各组件作用及可能遇到的同步、并发问题?</p></li>
+</ol>
+<ul class="simple">
+<li><p>std::atomic用于对简单数据类型 (如int、bool等) 原子操作, 保证读写不可分割, 像共享计数器, 避免多线程下数据竞争导致不一致, 无锁操作性能高, 但操作受限</p></li>
+<li><p>std::mutex提供互斥访问, 生产者线程获取锁往队列添加数据, 消费者获取锁从队列取数据, 防止同时读写共享队列造成混乱, 但频繁加解锁有性能开销, 若锁粒度大还会阻塞并发。</p></li>
+<li><p>std::condition_variable配合std::unique_lock std::mutex使用, 生产者添加数据后通知等待的消费者, 消费者队列为空时等待信号, 避免忙等浪费 CPU 资源, 协调生产者消费者步调。可能问题有虚假唤醒 (需二次检查条件) 、锁争用导致性能瓶颈、队列容量限制引发生产者阻塞等, 要合理设计队列大小、优化锁策略应对。</p></li>
+</ul>
+<ol class="arabic simple" start="4">
+<li><p>解释 C++ 模板元编程的概念、原理, 举例说明如何利用模板元编程实现编译期计算 (如斐波那契数列计算、类型萃取等) , 分析其优缺点?</p></li>
+</ol>
+<ul class="simple">
+<li><p>概念与原理:</p></li>
+</ul>
+<p>模板元编程是在编译期基于 C++ 模板机制进行编程, 将计算从运行时提前到编译时。编译器在实例化模板时展开推导代码逻辑, 把模板参数当常量处理。</p>
+<ul class="simple">
+<li><p>实例:</p></li>
+</ul>
+<p>计算斐波那契数列, 利用模板递归与特化, 像template&lt;int N&gt; struct Fibonacci { static constexpr int value = Fibonacci&lt;N - 1&gt;::value + Fibonacci&lt;N - 2&gt;::value; };, 特化Fibonacci&lt;0&gt;和Fibonacci&lt;1&gt;终止递归, 编译期算出值。类型萃取可定义template&lt;typename T&gt; struct TypeTrait检查类型是否是const、指针等属性, 借助typedef、std::enable_if等工具。</p>
+<ul class="simple">
+<li><p>优点是运行时无计算开销、可优化代码结构、能做静态检查；缺点是编译时间长、编译器报错复杂难懂、代码可读性差、调试困难, 因逻辑在编译阶段展开, 不易追踪问题。</p></li>
+</ul>
+<ol class="arabic simple" start="5">
+<li><p>深入分析 C++ 中虚函数表 (vtable) 和虚函数指针 (vptr) 如何影响对象的内存占用与函数调用效率?</p></li>
+</ol>
+<p>它的底层内存布局、工作机制, 在多重继承下其布局与单继承有何不同?</p>
+<ul class="simple">
+<li><p>内存布局与机制:</p></li>
+</ul>
+<p>类含虚函数时, 编译器生成虚函数表, 存虚函数地址, 类对象内存起始处有虚函数指针指向对应 vtable。
+调用虚函数时, 通过对象 vptr 找 vtable, 再按偏移取目标虚函数地址调用, 实现运行时多态。</p>
+<ul class="simple">
+<li><p>单继承下, 派生类对象内存先布局基类部分 (含 vptr) 再是派生类独有数据, vptr 指向派生类专属 vtable (含重写及新增虚函数地址) , 函数调用按 vptr - vtable 流程高效查找。</p></li>
+</ul>
+<p>多重继承复杂些, 每个父类有独立 vtable 和 vptr, 派生类对象含多个 vptr, 内存按继承顺序依次排列各基类部分, 函数调用依对象指针类型、所指基类区域找对应 vptr 与 vtable, 内存占用多且因间接层次多, 调用效率略降, 有额外偏移计算。</p>
+<ol class="arabic simple" start="6">
+<li><p>剖析 C++ 异常处理机制 (try - catch - throw) 的底层实现原理、栈展开过程, 对程序性能的影响以及如何合理设计异常安全的代码结构(如 RAII 与异常处理结合)?</p></li>
+</ol>
+<ul class="simple">
+<li><p>底层实现:</p></li>
+</ul>
+<p>编译器在编译try块代码时, 插入特殊代码记录栈帧状态, throw执行时逆栈查找匹配catch块, 清理沿途自动对象 (调用析构函数) , 调整栈指针与程序流程。</p>
+<ul class="simple">
+<li><p>栈展开:</p></li>
+</ul>
+<p>从throw点开始, 沿调用栈回溯, 依次析构局部对象, 直至找到匹配catch, 若没匹配且没std::terminate处理则程序异常终止。</p>
+<ul class="simple">
+<li><p>性能影响:</p></li>
+</ul>
+<p>引入额外代码生成、运行时栈操作开销, 频繁异常抛出会降性能。
+合理设计上, 利用 RAII (资源获取即初始化) , 类构造时获取资源, 析构自动释放, 如智能指针管理内存、文件流类管理文件, 确保异常下资源正常释放, 代码块遵循“要么全成功要么无影响”原子性, 避免部分成功部分失败导致数据不一致。</p>
+<ol class="arabic simple" start="7">
+<li><p>在 C++ 中, 给定一个复杂类层次结构 (包含多层继承、多重继承、虚基类等) , 详细说明对象的内存布局是如何确定的, 构造函数与析构函数的调用顺序遵循怎样的规则, 为何这样设计?</p></li>
+</ol>
+<ul class="simple">
+<li><p>内存布局: 单继承下, 派生类内存先排基类成员再是自身, 按声明顺序；多重继承依次排各基类部分 (重复基类按虚基类规则优化) , 同样成员按声明。虚基类特殊, 为避免多重副本, 在派生类内存只有一份, 位置由编译器定 (常居末尾) , 各路径访问通过偏移调整。</p></li>
+<li><p>构造函数顺序: 按继承层次, 先虚基类 (按继承树从根到叶顺序) , 再非虚基类 (从左到右继承顺序) , 最后派生类自身, 保证基类完整初始化供派生类使用。</p></li>
+<li><p>析构函数相反, 先派生类自身清理, 再按构造逆序析构基类, 确保对象层次结构有序销毁, 释放资源, 维持内存安全、避免悬空指针等问题, 依依赖层次设计调用顺序保障完整性与正确性。</p></li>
+</ul>
+<ol class="arabic simple" start="8">
+<li><p>阐述 C++ 中constexpr关键字的作用、适用场景、与常量表达式的关系, 如何利用它在编译期进行复杂逻辑 (如数组大小动态计算、编译期字符串处理等) 的优化?</p></li>
+</ol>
+<ul class="simple">
+<li><p>作用:</p></li>
+</ul>
+<p>修饰变量、函数、对象构造等, 告知编译器在编译期求值生成常量, 变量具constexpr属性则是编译期常量, 函数则可在编译期调用计算。</p>
+<ul class="simple">
+<li><p>适用场景:</p></li>
+</ul>
+<p>定义数组大小 (constexpr int size = 10; int arr[size];) 、初始化常量数据结构 (如编译期构建std::array) 等。与常量表达式关系紧密, constexpr声明旨在参与常量表达式求值, 确保编译期确定值。</p>
+<ul class="simple">
+<li><p>复杂逻辑优化:</p></li>
+</ul>
+<p>编译期字符串处理可定义constexpr函数拼接、截取字符串常量 (借助模板递归、字符数组操作) , 数组动态计算按运行时输入用constexpr函数算合法大小, 生成对应大小数组, 减少运行时动态内存分配与计算开销, 提升性能、利用编译期算力。</p>
+<ol class="arabic simple" start="9">
+<li><p>分析 C++ 标准库中容器 (如std::vector、std::map、std::unordered_map) 的底层数据结构、内存管理策略、扩容机制以及在不同使用场景 (查找频繁、插入频繁、遍历频繁等) 下如何选择最合适的容器, 理由是什么?</p></li>
+</ol>
+<ul class="simple">
+<li><p>std::vector底层是动态数组, 内存连续, 有容量和大小概念, 扩容常按倍数 (如 2 倍) 申请新内存、拷贝旧数据再析构旧空间, 随机访问快 (O(1)) , 尾部插入删除O(1), 中间操作需移动元素O(n), 适合遍历频繁、尾部操作场景。</p></li>
+<li><p>std::map基于红黑树实现, 键值对有序存储, 平衡树特性保证插入、删除、查找O(log n), 内存按需节点分配, 自动平衡树结构, 适合按序遍历、频繁查找修改场景, 有序性方便范围查询。</p></li>
+<li><p>std::unordered_map用哈希表, 内部有桶数组与哈希函数, 键经哈希映射到桶, 平均查找、插入、删除O(1), 但最坏O(n) (哈希冲突严重) , 扩容重哈希分配桶, 适合大量随机查找、不关心顺序且对平均性能有要求场景, 不同场景依操作复杂度、数据特性、顺序需求选容器优化效率。</p></li>
+</ul>
+<ol class="arabic simple" start="10">
+<li><p>当在 C++ 项目中集成第三方库 (如Boost部分组件、OpenCV等) , 面临版本兼容性、命名空间冲突、内存管理差异等问题, 详细阐述应对策略与实际操作方法, 如何保证项目整体稳定性与可维护性?</p></li>
+</ol>
+<ul class="simple">
+<li><p>版本兼容性: 调研库版本发布说明、变更日志, 锁定稳定兼容版, 用包管理工具 (vcpkg、conan等) 规范依赖版本, 定期更新重测, 对重大版本变更评估适配成本, 必要时保留旧版分支过渡。</p></li>
+<li><p>命名空间冲突: 第三方库常用全局命名空间或特定前缀, 通过using声明局部导入所需部分 (避免头文件全局using) , 或全限定名访问 (boost::asio::xxx) , 必要时封装库接口, 隔离命名空间影响。</p></li>
+<li><p>内存管理差异: 若库与项目内存管理习惯不同 (像手动new/delete与智能指针混用) , 在外层封装适配层, 统一接口管理资源, 如用智能指针接管第三方库返回裸指针, 确保释放一致, 加强代码审查、单元测试, 监控内存泄漏、悬空指针等, 维护稳定可维护项目架构。</p></li>
+</ul>
+</section>
+<section id="c">
+<h2>C语言<a class="headerlink" href="#c" title="Link to this heading"></a></h2>
+<p>const的作用有哪些, 谈一谈你对const的理解?</p>
+<section id="char-const-char-char-constconst-char-const">
+<h3>描述char*、const char*、char* const、const char* const的区别?<a class="headerlink" href="#char-const-char-char-constconst-char-const" title="Link to this heading"></a></h3>
 <blockquote>
 <div><p>char* p0;              //指向 char 的指针
 char * const p1;       //指向 char 的 const 指针 - 指针本身不能改动
@@ -113,141 +234,141 @@ char const * p2;       //指向 const char 的指针
 const char* p3；       //指向 const char 的指针
 const char* const p4;  //指向 const char 的 const 指针</p>
 </div></blockquote>
-<p>指针常量和常量指针有什么区别？</p>
-<p>static的作用是什么，什么情况下用到static？</p>
-<p>全局变量与局部变量的区别？</p>
-<p>宏定义的作用是什么？</p>
-<p>内存对齐的概念？</p>
-<p>为什么会有内存对齐？</p>
-<p>inline 内联函数的特点有哪些？它的优缺点是什么？</p>
-<p>如何避免野指针？</p>
-<p>如何计算结构体长度？</p>
-<p>sizeof和strlen有什么区别？</p>
-<p>知道条件变量吗？</p>
-<p>条件变量为什么要和锁配合使用？</p>
-<p>如何用C 实现 C++ 的面向对象特性（封装、继承、多态）</p>
-<p>memcpy怎么实现让它效率更高？</p>
-<p>typedef和define有什么区别？</p>
-<p>extern有什么作用，extern C有什么作用？</p>
-</div>
-</div>
-<div class="section" id="id1">
-<h2>C++基础知识面试题<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<p>指针常量和常量指针有什么区别?</p>
+<p>static的作用是什么, 什么情况下用到static?</p>
+<p>全局变量与局部变量的区别?</p>
+<p>宏定义的作用是什么?</p>
+<p>内存对齐的概念?</p>
+<p>为什么会有内存对齐?</p>
+<p>inline 内联函数的特点有哪些?它的优缺点是什么?</p>
+<p>如何避免野指针?</p>
+<p>如何计算结构体长度?</p>
+<p>sizeof和strlen有什么区别?</p>
+<p>知道条件变量吗?</p>
+<p>条件变量为什么要和锁配合使用?</p>
+<p>如何用C 实现 C++ 的面向对象特性 (封装、继承、多态)</p>
+<p>memcpy怎么实现让它效率更高?</p>
+<p>typedef和define有什么区别?</p>
+<p>extern有什么作用, extern C有什么作用?</p>
+</section>
+</section>
+<section id="id1">
+<h2>C++基础知识面试题<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
 <p>C++ OOP</p>
-<p>C语言和C++有什么区别？</p>
-<p>struct和class有什么区别？</p>
-<p>extern “C”的作用？</p>
-<p>了解RAII吗？介绍一下？RAII可是C++很重要的一个特性。</p>
-<p>函数重载和覆盖有什么区别？</p>
-<p>谈一谈你对多态的理解，运行时多态的实现原理是什么？</p>
-<p>对虚函数机制的理解，单继承、多继承、虚继承条件下虚函数表的结构</p>
-<p>如果虚函数是有效的，那为什么不把所有函数设为虚函数？</p>
-<p>构造函数可以是虚函数吗？析构函数可以是虚函数吗？</p>
-<p>基类的析构函数可以调用虚函数吗？</p>
-<p>基类的构造函数可以调用虚函数吗？</p>
-<p>什么场景需要用到纯虚函数？纯虚函数的作用是什么？</p>
-<p>指针和引用有什么区别？什么情况下用指针，什么情况下用引用？</p>
-<p>new和malloc有什么区别？malloc的内存可以用delete释放吗？malloc出来20字节内存，为什么free不需要传入20呢，不会产生内存泄漏吗？</p>
-<p>new[]和delete[]一定要配对使用吗？为什么？</p>
-<p>类的大小怎么计算？</p>
+<p>C语言和C++有什么区别?</p>
+<p>struct和class有什么区别?</p>
+<p>extern “C”的作用?</p>
+<p>了解RAII吗?介绍一下?RAII可是C++很重要的一个特性。</p>
+<p>函数重载和覆盖有什么区别?</p>
+<p>谈一谈你对多态的理解, 运行时多态的实现原理是什么?</p>
+<p>对虚函数机制的理解, 单继承、多继承、虚继承条件下虚函数表的结构</p>
+<p>如果虚函数是有效的, 那为什么不把所有函数设为虚函数?</p>
+<p>构造函数可以是虚函数吗?析构函数可以是虚函数吗?</p>
+<p>基类的析构函数可以调用虚函数吗?</p>
+<p>基类的构造函数可以调用虚函数吗?</p>
+<p>什么场景需要用到纯虚函数?纯虚函数的作用是什么?</p>
+<p>指针和引用有什么区别?什么情况下用指针, 什么情况下用引用?</p>
+<p>new和malloc有什么区别?malloc的内存可以用delete释放吗?malloc出来20字节内存, 为什么free不需要传入20呢, 不会产生内存泄漏吗?</p>
+<p>new[]和delete[]一定要配对使用吗?为什么?</p>
+<p>类的大小怎么计算?</p>
 <p>volatile关键字的作用</p>
-<p>如何实现一个线程池？说一下基本思路即可！</p>
-<p>了解各种强制类型转换的原理及使用吗？说说？</p>
-</div>
-<div class="section" id="c-11">
-<h2>C++11新特性<a class="headerlink" href="#c-11" title="Permalink to this headline"></a></h2>
-<div class="section" id="id2">
-<h3>C++11新特性你都了解多少？可以介绍一下吗？<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
-</div>
-<div class="section" id="autodecltype">
-<h3>了解auto和decltype吗？<a class="headerlink" href="#autodecltype" title="Permalink to this headline"></a></h3>
-</div>
-<div class="section" id="id3">
-<h3>谈一谈你对左值和右值的了解，了解左值引用和右值引用吗？<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
-<p>左值具有可标识的内存地址并可以长期存在，右值没有可识别的内存地址，仅存储暂时的结果。
-判断一个表达是否是左值就是看它是否可以长期存在，即它是否有一个地址。</p>
+<p>如何实现一个线程池?说一下基本思路即可！</p>
+<p>了解各种强制类型转换的原理及使用吗?说说?</p>
+</section>
+<section id="c-11">
+<h2>C++11新特性<a class="headerlink" href="#c-11" title="Link to this heading"></a></h2>
+<section id="id2">
+<h3>C++11新特性你都了解多少?可以介绍一下吗?<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+</section>
+<section id="autodecltype">
+<h3>了解auto和decltype吗?<a class="headerlink" href="#autodecltype" title="Link to this heading"></a></h3>
+</section>
+<section id="id3">
+<h3>谈一谈你对左值和右值的了解, 了解左值引用和右值引用吗?<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<p>左值具有可标识的内存地址并可以长期存在, 右值没有可识别的内存地址, 仅存储暂时的结果。
+判断一个表达是否是左值就是看它是否可以长期存在, 即它是否有一个地址。</p>
 <p>左值可以转换为右值</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span><span class="mi">2</span><span class="p">;</span>
 <span class="nb">int</span> <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">;</span> <span class="o">//</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="n">隐式转换为右值</span>
 </pre></div>
 </div>
-<p>右值不能转换为左值，但是右值可以产生一个左值。</p>
+<p>右值不能转换为左值, 但是右值可以产生一个左值。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>int arr[] = {1, 2}
 int *p = &amp;arr[0];
-*(p + 1) = 10; // p+1 是右值， *(p + 1) 是一个左值。
+*(p + 1) = 10; // p+1 是右值,  *(p + 1) 是一个左值。
 </pre></div>
 </div>
-<p>一般普通引用都是左值引用， C++11 引入了右值引用，既引用也可以是一个右值，为一个临时表达式的别名, 用 <cite>T&amp;&amp; var = expr</cite> 来表示</p>
+<p>一般普通引用都是左值引用,  C++11 引入了右值引用, 既引用也可以是一个右值, 为一个临时表达式的别名, 用 <cite>T&amp;&amp; var = expr</cite> 来表示</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span> <span class="n">var</span><span class="p">{</span><span class="mi">5</span><span class="p">}</span>
 <span class="nb">int</span><span class="o">&amp;</span> <span class="n">leftRef</span><span class="p">{</span><span class="n">var</span><span class="p">};</span>
 <span class="nb">int</span><span class="o">&amp;&amp;</span> <span class="n">rightRef</span><span class="p">{</span><span class="n">var</span> <span class="o">+</span> <span class="mi">3</span><span class="p">}</span>
 </pre></div>
 </div>
 <p>右值引用主要用于 move 移动语义</p>
-</div>
-<div class="section" id="id4">
-<h3>了解移动语义和完美转发吗？<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
-<p>enum 和 enum class有什么区别？了</p>
-<p>解列表初始化吗？</p>
-<p>对C++11的智能指针了解多少，可以自己实现一个智能指针吗？</p>
-<p>平时会用到function、bind、lambda吗，都什么场景下会用到？</p>
-<p>对C++11的mutex和RAII lock有过了解吗？</p>
-<p>一般什么情况下会出现内存泄漏？出现内存泄漏如何调试？</p>
-<p>unique_ptr如何转换的所有权？</p>
-<p>谈一谈你对面向对象的理解, 什么场景下使用继承方式，什么场景下使用组合？</p>
-</div>
-</div>
-<div class="section" id="stl">
-<h2>STL系列<a class="headerlink" href="#stl" title="Permalink to this headline"></a></h2>
-<p>C++直接使用数组好还是使用std::array好？</p>
-<p>std::array是怎么实现的？</p>
-<p>std::vector最大的特点是什么？它的内部是怎么实现的？resize和reserve的区别是什么？clear是怎么实现的？</p>
-<p>deque的底层数据结构是什么？它的内部是怎么实现的？</p>
-<p>map和unordered_map有什么区别？分别在什么场景下使用？</p>
-<p>list的使用场景？std::find可以传入list对应的迭代器吗？</p>
+</section>
+<section id="id4">
+<h3>了解移动语义和完美转发吗?<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<p>enum 和 enum class有什么区别?了</p>
+<p>解列表初始化吗?</p>
+<p>对C++11的智能指针了解多少, 可以自己实现一个智能指针吗?</p>
+<p>平时会用到function、bind、lambda吗, 都什么场景下会用到?</p>
+<p>对C++11的mutex和RAII lock有过了解吗?</p>
+<p>一般什么情况下会出现内存泄漏?出现内存泄漏如何调试?</p>
+<p>unique_ptr如何转换的所有权?</p>
+<p>谈一谈你对面向对象的理解, 什么场景下使用继承方式, 什么场景下使用组合?</p>
+</section>
+</section>
+<section id="stl">
+<h2>STL系列<a class="headerlink" href="#stl" title="Link to this heading"></a></h2>
+<p>C++直接使用数组好还是使用std::array好?</p>
+<p>std::array是怎么实现的?</p>
+<p>std::vector最大的特点是什么?它的内部是怎么实现的?resize和reserve的区别是什么?clear是怎么实现的?</p>
+<p>deque的底层数据结构是什么?它的内部是怎么实现的?</p>
+<p>map和unordered_map有什么区别?分别在什么场景下使用?</p>
+<p>list的使用场景?std::find可以传入list对应的迭代器吗?</p>
 <p>string的常用函数</p>
-</div>
-<div class="section" id="id5">
-<h2>设计模式<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h2>
-<p>不强求一一列出那23种设计模式，说出几个常见的即可。</p>
+</section>
+<section id="id5">
+<h2>设计模式<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<p>不强求一一列出那23种设计模式, 说出几个常见的即可。</p>
 <p>分别写出饿汉和懒汉线程安全的单例模式</p>
 <p>说出观察者模式类关系和优点</p>
 <p>说出代理模式类关系和优点</p>
 <p>说出工厂模式概念和优点</p>
 <p>说出构造者模式概念</p>
 <p>说出适配器模式概念</p>
-</div>
-<div class="section" id="id6">
-<h2>操作系统<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h2>
-<p>进程和线程的区别？</p>
-<p>操作系统是怎么进行进程管理的？操</p>
-<p>作系统是如何做到进程阻塞的？</p>
-<p>进程之间的通信方式有哪些？</p>
-<p>线程是如何实现的？</p>
-<p>线程之间私有和共享的资源有哪些？</p>
-<p>一般应用程序内存空间的堆和栈的区别是什么？</p>
-<p>进程虚拟空间是怎么布局的？</p>
-<p>虚拟内存是如何映射到物理内存的？</p>
-<p>了解分页内存管理吗？</p>
-<p>什么是上下文切换，操作系统是怎么做的上下文切换？</p>
-<p>什么是大端字节，什么是小端字节？如何转换字节序？</p>
-<p>产生死锁的必要条件有哪些？如何避免死锁？</p>
-<p>信号和信号量的区别是什么？</p>
-<p>锁的性能开销，锁的实现原理？</p>
-</div>
-<div class="section" id="id7">
-<h2>编译原理<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h2>
-<p>gcc hello.c 这行命令具体的执行过程，内部究竟做了什么？</p>
-<p>程序一定会从main函数开始运行吗？</p>
-<p>如何确定某个函数有被编译输出？</p>
-</div>
-<div class="section" id="reference">
-<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline"></a></h2>
+</section>
+<section id="id6">
+<h2>操作系统<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<p>进程和线程的区别?</p>
+<p>操作系统是怎么进行进程管理的?操</p>
+<p>作系统是如何做到进程阻塞的?</p>
+<p>进程之间的通信方式有哪些?</p>
+<p>线程是如何实现的?</p>
+<p>线程之间私有和共享的资源有哪些?</p>
+<p>一般应用程序内存空间的堆和栈的区别是什么?</p>
+<p>进程虚拟空间是怎么布局的?</p>
+<p>虚拟内存是如何映射到物理内存的?</p>
+<p>了解分页内存管理吗?</p>
+<p>什么是上下文切换, 操作系统是怎么做的上下文切换?</p>
+<p>什么是大端字节, 什么是小端字节?如何转换字节序?</p>
+<p>产生死锁的必要条件有哪些?如何避免死锁?</p>
+<p>信号和信号量的区别是什么?</p>
+<p>锁的性能开销, 锁的实现原理?</p>
+</section>
+<section id="id7">
+<h2>编译原理<a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
+<p>gcc hello.c 这行命令具体的执行过程, 内部究竟做了什么?</p>
+<p>程序一定会从main函数开始运行吗?</p>
+<p>如何确定某个函数有被编译输出?</p>
+</section>
+<section id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/fightingwangzq/cpp-learning">https://github.com/fightingwangzq/cpp-learning</a></p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

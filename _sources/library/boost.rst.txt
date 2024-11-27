@@ -7,8 +7,6 @@ Boost
    :maxdepth: 1
    :caption: programming language:
 
-   boost_asio
-
 .. contents::
     :local:
 

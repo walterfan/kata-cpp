@@ -1,19 +1,21 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Resource management &mdash; Beautiful C++ 0.1 documentation</title>
-      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=2709fde1"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -26,11 +28,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> Beautiful C++
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Beautiful C++
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -77,9 +83,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">C++ Language</a> &raquo;</li>
-      <li>Resource management</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">C++ Language</a></li>
+      <li class="breadcrumb-item active">Resource management</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/language/cpp_memory.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -89,10 +95,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="resource-management">
-<h1>Resource management<a class="headerlink" href="#resource-management" title="Permalink to this headline"></a></h1>
-<div class="section" id="resource-management-rule-summary">
-<h2>Resource management rule summary:<a class="headerlink" href="#resource-management-rule-summary" title="Permalink to this headline"></a></h2>
+  <section id="resource-management">
+<h1>Resource management<a class="headerlink" href="#resource-management" title="Link to this heading"></a></h1>
+<section id="resource-management-rule-summary">
+<h2>Resource management rule summary:<a class="headerlink" href="#resource-management-rule-summary" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>R.1: Manage resources automatically using resource handles and RAII (Resource Acquisition Is Initialization)</p></li>
 <li><p>R.2: In interfaces, use raw pointers to denote individual objects (only)</p></li>
@@ -101,9 +107,9 @@
 <li><p>R.5: Prefer scoped objects, don’t heap-allocate unnecessarily</p></li>
 <li><p>R.6: Avoid non-const global variables</p></li>
 </ul>
-</div>
-<div class="section" id="allocation-and-deallocation-rule-summary">
-<h2>Allocation and deallocation rule summary:<a class="headerlink" href="#allocation-and-deallocation-rule-summary" title="Permalink to this headline"></a></h2>
+</section>
+<section id="allocation-and-deallocation-rule-summary">
+<h2>Allocation and deallocation rule summary:<a class="headerlink" href="#allocation-and-deallocation-rule-summary" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>R.10: Avoid malloc() and free()</p></li>
 <li><p>R.11: Avoid calling new and delete explicitly</p></li>
@@ -112,9 +118,9 @@
 <li><p>R.14: Avoid [] parameters, prefer span</p></li>
 <li><p>R.15: Always overload matched allocation/deallocation pairs</p></li>
 </ul>
-</div>
-<div class="section" id="smart-pointer-rule-summary">
-<h2>Smart pointer rule summary:<a class="headerlink" href="#smart-pointer-rule-summary" title="Permalink to this headline"></a></h2>
+</section>
+<section id="smart-pointer-rule-summary">
+<h2>Smart pointer rule summary:<a class="headerlink" href="#smart-pointer-rule-summary" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>R.20: Use unique_ptr or shared_ptr to represent ownership</p></li>
 <li><p>R.21: Prefer unique_ptr over shared_ptr unless you need to share ownership</p></li>
@@ -130,15 +136,15 @@
 <li><p>R.36: Take a const shared_ptr&lt;widget&gt;&amp; parameter to express that it might retain a reference count to the object ???</p></li>
 <li><p>R.37: Do not pass a pointer or reference obtained from an aliased smart pointer</p></li>
 </ul>
-</div>
-<div class="section" id="faq">
-<h2>FAQ<a class="headerlink" href="#faq" title="Permalink to this headline"></a></h2>
-<div class="section" id="id1">
-<h3>什么是完美转发<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
+</section>
+<section id="faq">
+<h2>FAQ<a class="headerlink" href="#faq" title="Link to this heading"></a></h2>
+<section id="id1">
+<h3>什么是完美转发<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
 <p>std::forward通常是用于完美转发的，它会将输入的参数原封不动地传递到下一个函数中，这个“原封不动”指的是，如果输入的参数是左值，那么传递给下一个函数的参数的也是左值；如果输入的参数是右值，那么传递给下一个函数的参数的也是右值。一个经典的完美转发的场景是：</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span><span class="p">...</span> <span class="n">Args</span><span class="o">&gt;</span>
-<span class="kt">void</span> <span class="n">forward</span><span class="p">(</span><span class="n">Args</span><span class="o">&amp;&amp;</span><span class="p">...</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">f</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">forward</span><span class="o">&lt;</span><span class="n">Args</span><span class="o">&gt;</span><span class="p">(</span><span class="n">args</span><span class="p">)...);</span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="p">...</span><span class="w"> </span><span class="n">Args</span><span class="o">&gt;</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">forward</span><span class="p">(</span><span class="n">Args</span><span class="o">&amp;&amp;</span><span class="p">...</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">f</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">forward</span><span class="o">&lt;</span><span class="n">Args</span><span class="o">&gt;</span><span class="p">(</span><span class="n">args</span><span class="p">)...);</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -150,39 +156,39 @@
 ` shared_ptr&lt;X&gt; p1 { new X{2} } ` 会做两次创建
 1）创建 class X
 2）创建 引用计数变量</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">X</span><span class="o">&gt;</span> <span class="n">p1</span> <span class="p">{</span> <span class="k">new</span> <span class="n">X</span><span class="p">{</span><span class="mi">2</span><span class="p">}</span> <span class="p">};</span> <span class="c1">// bad</span>
-<span class="k">auto</span> <span class="n">p</span> <span class="o">=</span> <span class="n">make_shared</span><span class="o">&lt;</span><span class="n">X</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>    <span class="c1">// good</span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">X</span><span class="o">&gt;</span><span class="w"> </span><span class="n">p1</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">X</span><span class="p">{</span><span class="mi">2</span><span class="p">}</span><span class="w"> </span><span class="p">};</span><span class="w"> </span><span class="c1">// bad</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">X</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span><span class="w">    </span><span class="c1">// good</span>
 </pre></div>
 </div>
 <p>为什么呢？
 看看boost 的源码</p>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;</span> <span class="k">class</span> <span class="nc">T</span> <span class="o">&gt;</span> <span class="k">struct</span> <span class="nc">sp_if_not_array</span>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">sp_if_not_array</span>
 <span class="p">{</span>
-    <span class="k">typedef</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span> <span class="n">T</span> <span class="o">&gt;</span> <span class="n">type</span><span class="p">;</span>
+<span class="w">    </span><span class="k">typedef</span><span class="w"> </span><span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">type</span><span class="p">;</span>
 <span class="p">};</span>
 <span class="c1">// Variadic templates, rvalue reference 可变参数模板, 右值引用</span>
-<span class="k">template</span><span class="o">&lt;</span> <span class="k">class</span> <span class="nc">T</span><span class="p">,</span> <span class="k">class</span><span class="p">...</span> <span class="n">Args</span> <span class="o">&gt;</span> <span class="k">typename</span> <span class="nc">boost</span><span class="o">::</span><span class="n">detail</span><span class="o">::</span><span class="n">sp_if_not_array</span><span class="o">&lt;</span> <span class="n">T</span> <span class="o">&gt;::</span><span class="n">type</span> <span class="n">make_shared</span><span class="p">(</span> <span class="n">Args</span> <span class="o">&amp;&amp;</span> <span class="p">...</span> <span class="n">args</span> <span class="p">)</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">T</span><span class="p">,</span><span class="w"> </span><span class="k">class</span><span class="p">...</span><span class="w"> </span><span class="n">Args</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">boost</span><span class="o">::</span><span class="n">detail</span><span class="o">::</span><span class="n">sp_if_not_array</span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;::</span><span class="n">type</span><span class="w"> </span><span class="n">make_shared</span><span class="p">(</span><span class="w"> </span><span class="n">Args</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="n">args</span><span class="w"> </span><span class="p">)</span>
 <span class="p">{</span>
-    <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span> <span class="n">T</span> <span class="o">&gt;</span> <span class="n">pt</span><span class="p">(</span> <span class="k">static_cast</span><span class="o">&lt;</span> <span class="n">T</span><span class="o">*</span> <span class="o">&gt;</span><span class="p">(</span> <span class="mi">0</span> <span class="p">),</span> <span class="n">BOOST_SP_MSD</span><span class="p">(</span> <span class="n">T</span> <span class="p">)</span>
+<span class="w">    </span><span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">pt</span><span class="p">(</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="o">*</span><span class="w"> </span><span class="o">&gt;</span><span class="p">(</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">),</span><span class="w"> </span><span class="n">BOOST_SP_MSD</span><span class="p">(</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="p">)</span>
 <span class="p">);</span>
 
-    <span class="n">boost</span><span class="o">::</span><span class="n">detail</span><span class="o">::</span><span class="n">sp_ms_deleter</span><span class="o">&lt;</span> <span class="n">T</span> <span class="o">&gt;</span> <span class="o">*</span> <span class="n">pd</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">boost</span><span class="o">::</span><span class="n">detail</span><span class="o">::</span><span class="n">sp_ms_deleter</span><span class="o">&lt;</span> <span class="n">T</span> <span class="o">&gt;</span> <span class="o">*&gt;</span><span class="p">(</span> <span class="n">pt</span><span class="p">.</span><span class="n">_internal_get_untyped_deleter</span><span class="p">()</span> <span class="p">);</span>
+<span class="w">    </span><span class="n">boost</span><span class="o">::</span><span class="n">detail</span><span class="o">::</span><span class="n">sp_ms_deleter</span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">pd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="n">boost</span><span class="o">::</span><span class="n">detail</span><span class="o">::</span><span class="n">sp_ms_deleter</span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">*&gt;</span><span class="p">(</span><span class="w"> </span><span class="n">pt</span><span class="p">.</span><span class="n">_internal_get_untyped_deleter</span><span class="p">()</span><span class="w"> </span><span class="p">);</span>
 
-    <span class="kt">void</span> <span class="o">*</span> <span class="n">pv</span> <span class="o">=</span> <span class="n">pd</span><span class="o">-&gt;</span><span class="n">address</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">pv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pd</span><span class="o">-&gt;</span><span class="n">address</span><span class="p">();</span>
 
-    <span class="o">::</span><span class="k">new</span><span class="p">(</span> <span class="n">pv</span> <span class="p">)</span> <span class="n">T</span><span class="p">(</span> <span class="n">boost</span><span class="o">::</span><span class="n">detail</span><span class="o">::</span><span class="n">sp_forward</span><span class="o">&lt;</span><span class="n">Args</span><span class="o">&gt;</span><span class="p">(</span> <span class="n">args</span> <span class="p">)...</span> <span class="p">);</span>
-    <span class="n">pd</span><span class="o">-&gt;</span><span class="n">set_initialized</span><span class="p">();</span>
+<span class="w">    </span><span class="o">::</span><span class="k">new</span><span class="p">(</span><span class="w"> </span><span class="n">pv</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">T</span><span class="p">(</span><span class="w"> </span><span class="n">boost</span><span class="o">::</span><span class="n">detail</span><span class="o">::</span><span class="n">sp_forward</span><span class="o">&lt;</span><span class="n">Args</span><span class="o">&gt;</span><span class="p">(</span><span class="w"> </span><span class="n">args</span><span class="w"> </span><span class="p">)...</span><span class="w"> </span><span class="p">);</span>
+<span class="w">    </span><span class="n">pd</span><span class="o">-&gt;</span><span class="n">set_initialized</span><span class="p">();</span>
 
-    <span class="n">T</span> <span class="o">*</span> <span class="n">pt2</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span> <span class="n">T</span><span class="o">*</span> <span class="o">&gt;</span><span class="p">(</span> <span class="n">pv</span> <span class="p">);</span>
+<span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">pt2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="o">*</span><span class="w"> </span><span class="o">&gt;</span><span class="p">(</span><span class="w"> </span><span class="n">pv</span><span class="w"> </span><span class="p">);</span>
 
-    <span class="n">boost</span><span class="o">::</span><span class="n">detail</span><span class="o">::</span><span class="n">sp_enable_shared_from_this</span><span class="p">(</span> <span class="o">&amp;</span><span class="n">pt</span><span class="p">,</span> <span class="n">pt2</span><span class="p">,</span> <span class="n">pt2</span> <span class="p">);</span>
-    <span class="k">return</span> <span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span> <span class="n">T</span> <span class="o">&gt;</span><span class="p">(</span> <span class="n">pt</span><span class="p">,</span> <span class="n">pt2</span> <span class="p">);</span>
+<span class="w">    </span><span class="n">boost</span><span class="o">::</span><span class="n">detail</span><span class="o">::</span><span class="n">sp_enable_shared_from_this</span><span class="p">(</span><span class="w"> </span><span class="o">&amp;</span><span class="n">pt</span><span class="p">,</span><span class="w"> </span><span class="n">pt2</span><span class="p">,</span><span class="w"> </span><span class="n">pt2</span><span class="w"> </span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">boost</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="p">(</span><span class="w"> </span><span class="n">pt</span><span class="p">,</span><span class="w"> </span><span class="n">pt2</span><span class="w"> </span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
            </div>
