@@ -97,8 +97,8 @@ if (APPLE)
     include_directories(${GST_INCLUDE_DIRS})
     link_directories(${GST_LIBRARY_DIRS})
 
-    set(GTEST_INCLUDE_DIRS /opt/homebrew/Cellar/googletest/1.14.0/include)
-    set(GTEST_LIBRARY_DIRS /opt/homebrew/Cellar/googletest/1.14.0/lib)
+    set(GTEST_INCLUDE_DIRS /opt/homebrew/Cellar/googletest/1.16.0/include)
+    set(GTEST_LIBRARY_DIRS /opt/homebrew/Cellar/googletest/1.16.0/lib)
     include_directories(${GTEST_INCLUDE_DIRS})
     link_directories(${GTEST_LIBRARY_DIRS})
 

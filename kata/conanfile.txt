@@ -1,6 +1,10 @@
 [requires]
 boost/1.84.0
 openssl/3.3.1
+gtest/1.16.0
+gstreamer/1.24.7
+jsoncpp/1.9.6
+libcurl/8.12.1
 [generators]
 CMakeDeps
 CMakeToolchain
