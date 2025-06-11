@@ -41,9 +41,9 @@ endif()
 
 string(REPLACE ";" " " CMAKE_CXX_FLAGS "${CXX_FLAGS}")
 
-if(UNIX AND NOT APPLE)
-  set(CMAKE_CXX_COMPILER "g++-10")
-endif()
+#if(UNIX AND NOT APPLE)
+#  set(CMAKE_CXX_COMPILER "g++-10")
+#endif()
 
 
 set(CMAKE_CXX_FLAGS_DEBUG "-O0")
