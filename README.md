@@ -13,30 +13,13 @@ Pattern and Kata are the best methods for computer language learning
 
 ## Kata
 
-```bash
-cd kata
-./build.sh
+* [example](./kata/example)
+* [chatgpt](./kata/chatgpt)
+* [algorithm](./kata/algorithm)
+* [pattern](./kata/pattern)
 
-```
+## build
 
-## Example
-
-### prerequisite
-
-```
-sudo apt install -y libboost1.74-all-dev \
-libgtest-dev \
-libcurl4 \
-libev-dev \
-libgd-dev
-```
-
-### scons
-```
-scons
-ls ./bin
-```
-## cmake
 ```
 mkdir bld
 cd bld

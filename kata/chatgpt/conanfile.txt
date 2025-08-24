@@ -1,0 +1,14 @@
+[requires]
+openssl/1.1.1w
+libcurl/8.15.0
+jsoncpp/1.9.6
+
+[generators]
+CMakeDeps
+CMakeToolchain
+
+[options]
+openssl/*:shared=False
+curl/*:shared=False
+curl/*:with_ssl=openssl
+curl/*:with_zlib=True

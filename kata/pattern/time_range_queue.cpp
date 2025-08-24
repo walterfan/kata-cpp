@@ -3,16 +3,17 @@
 #include <chrono>
 #include <ctime>
 #include <vector>
+#include <thread>
 
 using namespace std;
 
 class TimeRangeQueue {
 private:
     deque<pair<int, time_t>> q; // Queue container of pairs
-    int max_length; // Maximum number of items in the queue
+    size_t max_length; // Maximum number of items in the queue
     time_t time_range; // Time range in seconds
 public:
-    TimeRangeQueue(int length, int range) : max_length(length), time_range(range) {}
+    TimeRangeQueue(size_t length, int range) : max_length(length), time_range(range) {}
 
     // Function to add an item to the queue
     void push(int data) {
