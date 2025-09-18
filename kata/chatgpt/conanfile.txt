@@ -1,5 +1,5 @@
 [requires]
-openssl/1.1.1w
+openssl/1.1.1s
 libcurl/8.15.0
 jsoncpp/1.9.6
 
