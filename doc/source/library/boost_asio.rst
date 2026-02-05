@@ -13,8 +13,6 @@ Boost asio module
 **Updated**  |date|
 ============ ==========================
 
-.. |date| date::
-
 .. contents::
    :local:
 

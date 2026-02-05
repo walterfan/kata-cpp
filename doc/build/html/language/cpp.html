@@ -1,26 +1,38 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" data-content_root="../">
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>C++ &mdash; Beautiful C++ 0.1 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+  <title>C++ &mdash; 现代 C++ 实战开发指南 1.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=40457be3" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
 
   
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../_static/documentation_options.js?v=2709fde1"></script>
+      <script src="../_static/documentation_options.js?v=f115507d"></script>
       <script src="../_static/doctools.js?v=9bcbadda"></script>
       <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script src="../_static/translations.js?v=beaddf03"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/js/theme.js"></script>
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="C++ Interview Questions" href="cpp_interview.html" />
-    <link rel="prev" title="C++ Language" href="index.html" /> 
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -32,75 +44,45 @@
           
           
           <a href="../index.html" class="icon icon-home">
-            Beautiful C++
+            现代 C++ 实战开发指南
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">C++ Language</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">C++</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">C++ 新特性</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#c-11">C++ 11 新特性</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id6">C++ 服务器端编程</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#id7">C++ 十大面试题</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id8">1. C++中 指针与引用的区别</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#c-class">2. 一个空的 C++ class , 编译器会为它默认添加哪些东西</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id9">3. 封装, 访问控制与友元</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id10">4. C++ 虚函数, 虚继承与虚函数表</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id11">5. C++ 显示显式类型转换的好处和分类</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id12">6. 如果避免多重继承中的在派生层次中出现多次</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#make-shared-shared-ptr-t-new-t">7. 为什么提倡用 make_shared, 而不是直接用 shared_ptr&lt;T&gt;(new T)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id13">8. 什么是奇异模板</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id14">9. 什么是万能引用和完美转发</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#extern-c">10.   为什么要用 extern c</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id15">11.  锁的类型和用法</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id17">12.  为接收只读字符串的函数选择什么形参类型?</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="cpp_interview.html">C++ Interview Questions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cpp_evolution.html">C++ Evolution</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cpp_lambda.html">C++ Lambda</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cpp_memory.html">Resource management</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cpp_stl.html">C++ STL</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cpp_thread.html">C++ Thread</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cpp_rvalue.html">右值引用</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cpp_object_model.html">C++ Object Model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cpp_server.html">C++ Server</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../library/index.html">C++ Library</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tool/index.html">Tools</a></li>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">目录</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../1.basic/index.html">1. 1. 基础知识与陷阱</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.concurrency/index.html">2. 2. 并发编程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.performance/index.html">3. 3. 性能调优</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.memory/index.html">4. 4. 内存管理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5.network/index.html">5. 5. 网络编程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6.library/index.html">6. 6. 常用库</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7.cheatsheet/index.html">7. 7. 速查表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">8. 参考资源</a></li>
 </ul>
 
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">Beautiful C++</a>
+          <a href="../index.html">现代 C++ 实战开发指南</a>
       </nav>
 
       <div class="wy-nav-content">
         <div class="rst-content">
-          <div role="navigation" aria-label="Page navigation">
+          <div role="navigation" aria-label="页面导航">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="index.html">C++ Language</a></li>
       <li class="breadcrumb-item active">C++</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/language/cpp.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/language/cpp.rst.txt" rel="nofollow"> 查看页面源码</a>
       </li>
   </ul>
   <hr/>
@@ -122,56 +104,56 @@
 <td><p>v1</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>Updated</strong></p></td>
-<td><p>2024-11-27</p></td>
+<td><p>2026-02-05</p></td>
 </tr>
 </tbody>
 </table>
-<nav class="contents local" id="contents">
+<nav class="contents local" id="id1">
 <ul class="simple">
-<li><p><a class="reference internal" href="#id1" id="id18">C++ 新特性</a></p>
+<li><p><a class="reference internal" href="#id2" id="id19">C++ 新特性</a></p>
 <ul>
-<li><p><a class="reference internal" href="#c-11" id="id19">C++ 11 新特性</a></p>
+<li><p><a class="reference internal" href="#c-11" id="id20">C++ 11 新特性</a></p>
 <ul>
-<li><p><a class="reference internal" href="#id2" id="id20">改进的对象构造</a></p></li>
-<li><p><a class="reference internal" href="#id3" id="id21">其他语言增强</a></p></li>
-<li><p><a class="reference internal" href="#id4" id="id22">新的关键字</a></p></li>
-<li><p><a class="reference internal" href="#id5" id="id23">对 C++ 库的增强</a></p></li>
+<li><p><a class="reference internal" href="#id3" id="id21">改进的对象构造</a></p></li>
+<li><p><a class="reference internal" href="#id4" id="id22">其他语言增强</a></p></li>
+<li><p><a class="reference internal" href="#id5" id="id23">新的关键字</a></p></li>
+<li><p><a class="reference internal" href="#id6" id="id24">对 C++ 库的增强</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#id6" id="id24">C++ 服务器端编程</a></p></li>
+<li><p><a class="reference internal" href="#id7" id="id25">C++ 服务器端编程</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#id7" id="id25">C++ 十大面试题</a></p>
+<li><p><a class="reference internal" href="#id8" id="id26">C++ 十大面试题</a></p>
 <ul>
-<li><p><a class="reference internal" href="#id8" id="id26">1. C++中 指针与引用的区别</a></p></li>
-<li><p><a class="reference internal" href="#c-class" id="id27">2. 一个空的 C++ class , 编译器会为它默认添加哪些东西</a></p></li>
-<li><p><a class="reference internal" href="#id9" id="id28">3. 封装, 访问控制与友元</a></p></li>
-<li><p><a class="reference internal" href="#id10" id="id29">4. C++ 虚函数, 虚继承与虚函数表</a></p></li>
-<li><p><a class="reference internal" href="#id11" id="id30">5. C++ 显示显式类型转换的好处和分类</a></p></li>
-<li><p><a class="reference internal" href="#id12" id="id31">6. 如果避免多重继承中的在派生层次中出现多次</a></p></li>
-<li><p><a class="reference internal" href="#make-shared-shared-ptr-t-new-t" id="id32">7. 为什么提倡用 make_shared, 而不是直接用 shared_ptr&lt;T&gt;(new T)</a></p></li>
-<li><p><a class="reference internal" href="#id13" id="id33">8. 什么是奇异模板</a></p></li>
-<li><p><a class="reference internal" href="#id14" id="id34">9. 什么是万能引用和完美转发</a></p></li>
-<li><p><a class="reference internal" href="#extern-c" id="id35">10.   为什么要用 extern c</a></p></li>
-<li><p><a class="reference internal" href="#id15" id="id36">11.  锁的类型和用法</a></p>
+<li><p><a class="reference internal" href="#id9" id="id27">1. C++中 指针与引用的区别</a></p></li>
+<li><p><a class="reference internal" href="#c-class" id="id28">2. 一个空的 C++ class , 编译器会为它默认添加哪些东西</a></p></li>
+<li><p><a class="reference internal" href="#id10" id="id29">3. 封装, 访问控制与友元</a></p></li>
+<li><p><a class="reference internal" href="#id11" id="id30">4. C++ 虚函数, 虚继承与虚函数表</a></p></li>
+<li><p><a class="reference internal" href="#id12" id="id31">5. C++ 显示显式类型转换的好处和分类</a></p></li>
+<li><p><a class="reference internal" href="#id13" id="id32">6. 如果避免多重继承中的在派生层次中出现多次</a></p></li>
+<li><p><a class="reference internal" href="#make-shared-shared-ptr-t-new-t" id="id33">7. 为什么提倡用 make_shared, 而不是直接用 shared_ptr&lt;T&gt;(new T)</a></p></li>
+<li><p><a class="reference internal" href="#id14" id="id34">8. 什么是奇异模板</a></p></li>
+<li><p><a class="reference internal" href="#id15" id="id35">9. 什么是万能引用和完美转发</a></p></li>
+<li><p><a class="reference internal" href="#extern-c" id="id36">10.   为什么要用 extern c</a></p></li>
+<li><p><a class="reference internal" href="#id16" id="id37">11.  锁的类型和用法</a></p>
 <ul>
-<li><p><a class="reference internal" href="#mutex" id="id37">互斥锁 (mutex)</a></p></li>
-<li><p><a class="reference internal" href="#condition-variable" id="id38">条件锁 (condition_variable)</a></p></li>
-<li><p><a class="reference internal" href="#id16" id="id39">自旋锁 (不推荐使用)</a></p></li>
-<li><p><a class="reference internal" href="#recursive-mutex" id="id40">递归锁 (recursive_mutex)</a></p></li>
+<li><p><a class="reference internal" href="#mutex" id="id38">互斥锁 (mutex)</a></p></li>
+<li><p><a class="reference internal" href="#condition-variable" id="id39">条件锁 (condition_variable)</a></p></li>
+<li><p><a class="reference internal" href="#id17" id="id40">自旋锁 (不推荐使用)</a></p></li>
+<li><p><a class="reference internal" href="#recursive-mutex" id="id41">递归锁 (recursive_mutex)</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#id17" id="id41">12.  为接收只读字符串的函数选择什么形参类型?</a></p></li>
+<li><p><a class="reference internal" href="#id18" id="id42">12.  为接收只读字符串的函数选择什么形参类型?</a></p></li>
 </ul>
 </li>
 </ul>
 </nav>
-<section id="id1">
-<h2><a class="toc-backref" href="#id18" role="doc-backlink">C++ 新特性</a><a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
-<section id="c-11">
-<h3><a class="toc-backref" href="#id19" role="doc-backlink">C++ 11 新特性</a><a class="headerlink" href="#c-11" title="Link to this heading"></a></h3>
 <section id="id2">
-<h4><a class="toc-backref" href="#id20" role="doc-backlink">改进的对象构造</a><a class="headerlink" href="#id2" title="Link to this heading"></a></h4>
+<h2><a class="toc-backref" href="#id19" role="doc-backlink">C++ 新特性</a><a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<section id="c-11">
+<h3><a class="toc-backref" href="#id20" role="doc-backlink">C++ 11 新特性</a><a class="headerlink" href="#c-11" title="Link to this heading"></a></h3>
+<section id="id3">
+<h4><a class="toc-backref" href="#id21" role="doc-backlink">改进的对象构造</a><a class="headerlink" href="#id3" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>继承基类的构造函数</p></li>
 <li><p>默认的成员值</p></li>
@@ -181,8 +163,8 @@
 <li><p>统一的初始化 {}</p></li>
 </ul>
 </section>
-<section id="id3">
-<h4><a class="toc-backref" href="#id21" role="doc-backlink">其他语言增强</a><a class="headerlink" href="#id3" title="Link to this heading"></a></h4>
+<section id="id4">
+<h4><a class="toc-backref" href="#id22" role="doc-backlink">其他语言增强</a><a class="headerlink" href="#id4" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>基于范围的 for 循环</p></li>
 <li><p>long long int 类型 (64位)</p></li>
@@ -196,8 +178,8 @@
 <li><p>改善了右尖括号的处理</p></li>
 </ul>
 </section>
-<section id="id4">
-<h4><a class="toc-backref" href="#id22" role="doc-backlink">新的关键字</a><a class="headerlink" href="#id4" title="Link to this heading"></a></h4>
+<section id="id5">
+<h4><a class="toc-backref" href="#id23" role="doc-backlink">新的关键字</a><a class="headerlink" href="#id5" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>auto 自动类型推导</p></li>
 <li><p>constexpr: 表达式常量</p></li>
@@ -206,8 +188,8 @@
 <li><p>thread_local: 线程局部存储</p></li>
 </ul>
 </section>
-<section id="id5">
-<h4><a class="toc-backref" href="#id23" role="doc-backlink">对 C++ 库的增强</a><a class="headerlink" href="#id5" title="Link to this heading"></a></h4>
+<section id="id6">
+<h4><a class="toc-backref" href="#id24" role="doc-backlink">对 C++ 库的增强</a><a class="headerlink" href="#id6" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>stl 容器的列表初始化</p></li>
 <li><p>随机库</p></li>
@@ -219,8 +201,8 @@
 </ul>
 </section>
 </section>
-<section id="id6">
-<h3><a class="toc-backref" href="#id24" role="doc-backlink">C++ 服务器端编程</a><a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<section id="id7">
+<h3><a class="toc-backref" href="#id25" role="doc-backlink">C++ 服务器端编程</a><a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>事件驱动</p></li>
 <li><p>多路复用</p></li>
@@ -228,10 +210,10 @@
 </ul>
 </section>
 </section>
-<section id="id7">
-<h2><a class="toc-backref" href="#id25" role="doc-backlink">C++ 十大面试题</a><a class="headerlink" href="#id7" title="Link to this heading"></a></h2>
 <section id="id8">
-<h3><a class="toc-backref" href="#id26" role="doc-backlink">1. C++中 指针与引用的区别</a><a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<h2><a class="toc-backref" href="#id26" role="doc-backlink">C++ 十大面试题</a><a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
+<section id="id9">
+<h3><a class="toc-backref" href="#id27" role="doc-backlink">1. C++中 指针与引用的区别</a><a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
 <p>数组名会自动转换为指向数组第一个元素的指针</p>
 <ul class="simple">
 <li><p>指向 const 对象的指针: 不允许用指针操作来改变其所批的 const 值</p></li>
@@ -253,7 +235,7 @@
 </div>
 </section>
 <section id="c-class">
-<h3><a class="toc-backref" href="#id27" role="doc-backlink">2. 一个空的 C++ class , 编译器会为它默认添加哪些东西</a><a class="headerlink" href="#c-class" title="Link to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id28" role="doc-backlink">2. 一个空的 C++ class , 编译器会为它默认添加哪些东西</a><a class="headerlink" href="#c-class" title="Link to this heading"></a></h3>
 <p>参见 <a class="reference external" href="https://en.cppreference.com/w/cpp/language/rule_of_three">https://en.cppreference.com/w/cpp/language/rule_of_three</a></p>
 <p>默认构造函数, 拷贝构造函数, 析构函数 赋值操作符以及取值函数</p>
 <p>C++ 11 之前, 一般要求实现这3个函数</p>
@@ -285,12 +267,12 @@
 </div>
 <p>explicit 构造函数是用来防止隐式转换的</p>
 </section>
-<section id="id9">
-<h3><a class="toc-backref" href="#id28" role="doc-backlink">3. 封装, 访问控制与友元</a><a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<section id="id10">
+<h3><a class="toc-backref" href="#id29" role="doc-backlink">3. 封装, 访问控制与友元</a><a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
 <p>public, private, protected, friend</p>
 </section>
-<section id="id10">
-<h3><a class="toc-backref" href="#id29" role="doc-backlink">4. C++ 虚函数, 虚继承与虚函数表</a><a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<section id="id11">
+<h3><a class="toc-backref" href="#id30" role="doc-backlink">4. C++ 虚函数, 虚继承与虚函数表</a><a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
 <p>虚函数是通过虚函数表实现的, 如果一个类含有虚函数, 系统会为这个类分配一个指针成员指向一张虚函数表, 表中每一项指向一个虚函数的地址, 实现上就是一个函数指针的数组</p>
 <p>在类对象的内存布局中, 首先是该类的 vtbl 指针, 然后者对象数据, 在通过对象指针 调用一个虚函数时, 编译器生成的代码将先获取对象类的 vtbl 指针, 然后调用  vtbl 中对应的项, 从而实现多态性</p>
 <p>构造函数为什么不能是虚函数呢？</p>
@@ -308,8 +290,8 @@
 <p>因此, 为了防止这种情况下的内存泄漏的发生, 最后将基类的析构函数写成virtual虚析构函数。</p>
 </div></blockquote>
 </section>
-<section id="id11">
-<h3><a class="toc-backref" href="#id30" role="doc-backlink">5. C++ 显示显式类型转换的好处和分类</a><a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<section id="id12">
+<h3><a class="toc-backref" href="#id31" role="doc-backlink">5. C++ 显示显式类型转换的好处和分类</a><a class="headerlink" href="#id12" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>static_cast 完成相关类型之间的转换</p></li>
 <li><p>reinterpret_cast 处理互不相关类型之间的转换</p></li>
@@ -317,8 +299,8 @@
 <li><p>const_cast 转换掉表达式的 const 性质</p></li>
 </ul>
 </section>
-<section id="id12">
-<h3><a class="toc-backref" href="#id31" role="doc-backlink">6. 如果避免多重继承中的在派生层次中出现多次</a><a class="headerlink" href="#id12" title="Link to this heading"></a></h3>
+<section id="id13">
+<h3><a class="toc-backref" href="#id32" role="doc-backlink">6. 如果避免多重继承中的在派生层次中出现多次</a><a class="headerlink" href="#id13" title="Link to this heading"></a></h3>
 <p>虚继承,
 比如 istream 继承自 ios, ostream 也继承自 ios, 而 iostream 继承自 istream 和 ostream,
 所以一个 iostream 对象可能会包含两个 ios 对象, 所以要用到虚继承。</p>
@@ -328,7 +310,7 @@
 </div>
 </section>
 <section id="make-shared-shared-ptr-t-new-t">
-<h3><a class="toc-backref" href="#id32" role="doc-backlink">7. 为什么提倡用 make_shared, 而不是直接用 shared_ptr&lt;T&gt;(new T)</a><a class="headerlink" href="#make-shared-shared-ptr-t-new-t" title="Link to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id33" role="doc-backlink">7. 为什么提倡用 make_shared, 而不是直接用 shared_ptr&lt;T&gt;(new T)</a><a class="headerlink" href="#make-shared-shared-ptr-t-new-t" title="Link to this heading"></a></h3>
 <ol class="arabic simple">
 <li><p>类型名只需写一遍, 避免冗余</p></li>
 </ol>
@@ -338,9 +320,9 @@
 <li><p>性能和效率更高, 只要分配一次单块内存来存储对象和 shared_ptr 控制块</p></li>
 </ol>
 </section>
-<section id="id13">
-<h3><a class="toc-backref" href="#id33" role="doc-backlink">8. 什么是奇异模板</a><a class="headerlink" href="#id13" title="Link to this heading"></a></h3>
-<p>在 C++ 中，”奇异模板” (Curiously Recurring Template Pattern, 简称 CRTP) 是一种常用的模板编程技巧，
+<section id="id14">
+<h3><a class="toc-backref" href="#id34" role="doc-backlink">8. 什么是奇异模板</a><a class="headerlink" href="#id14" title="Link to this heading"></a></h3>
+<p>在 C++ 中，&quot;奇异模板&quot; (Curiously Recurring Template Pattern, 简称 CRTP) 是一种常用的模板编程技巧，
 主要用于实现静态多态 (static polymorphism) 或为派生类提供通用的功能。它的名字来源于其递归的结构：一个类使用自己作为模板参数传递给基类。</p>
 <p>CRTP 的基本结构</p>
 <p>CRTP 的核心是定义一个基类模板，并让派生类作为模板参数传递给这个基类。</p>
@@ -386,7 +368,7 @@
 * 在编译期决定调用的是哪一个类的方法，避免了运行时的虚函数开销。
 * 不同于动态多态 (使用虚函数和 vtable) ，静态多态在编译期直接展开，性能更高。
 3. 递归的奇异性：
-* 派生类引用基类模板，并将自身作为模板参数传递，因此称为”奇异”。</p>
+* 派生类引用基类模板，并将自身作为模板参数传递，因此称为&quot;奇异&quot;。</p>
 </div></blockquote>
 <p>使用场景</p>
 <ol class="arabic simple">
@@ -485,24 +467,24 @@
 <p>总结</p>
 <p>CRTP 是 C++ 模板编程中的一个强大工具，主要用于静态多态和代码复用。它通过将派生类作为模板参数传递给基类，实现了在编译期确定的多态行为，在高性能场景中尤为常见。</p>
 </section>
-<section id="id14">
-<h3><a class="toc-backref" href="#id34" role="doc-backlink">9. 什么是万能引用和完美转发</a><a class="headerlink" href="#id14" title="Link to this heading"></a></h3>
+<section id="id15">
+<h3><a class="toc-backref" href="#id35" role="doc-backlink">9. 什么是万能引用和完美转发</a><a class="headerlink" href="#id15" title="Link to this heading"></a></h3>
 <p>万能引用就是：即可以绑定到左值引用也可以绑定到右值引用, 并且还会保持左右值的const属性的函数模板参数。形如这样的参数 T&amp;&amp; 就是万能引用</p>
 </section>
 <section id="extern-c">
-<h3><a class="toc-backref" href="#id35" role="doc-backlink">10.   为什么要用 extern c</a><a class="headerlink" href="#extern-c" title="Link to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id36" role="doc-backlink">10.   为什么要用 extern c</a><a class="headerlink" href="#extern-c" title="Link to this heading"></a></h3>
 <p>由于gcc和g++生成符号表的方式不同, 导致在C++项目中如果使用gcc编译的C模块, 会出现链接错误。因为链接器会去C模块的 (.o) 文件中查找, __Z3addii这样的符号。显然在C模块的目标文件(.o)中, 不存在__Z3addii这样的符号, 它有的只是_add。</p>
-<p>通过extern “C”, 告诉g++编译器, 不要对这些函数进行Name mangling, 按照C编译器的方式去生成符号表符号。这样在main.c的目标文件(.o)中, 参数列表为两个int类型的add函数名称为_add。链接器可以正确找到util.o中的add函数 (他们都是_add) 。注意参数列表为两个double类型的add函数名称还是__Z3adddd。</p>
+<p>通过extern &quot;C&quot;, 告诉g++编译器, 不要对这些函数进行Name mangling, 按照C编译器的方式去生成符号表符号。这样在main.c的目标文件(.o)中, 参数列表为两个int类型的add函数名称为_add。链接器可以正确找到util.o中的add函数 (他们都是_add) 。注意参数列表为两个double类型的add函数名称还是__Z3adddd。</p>
 </section>
-<section id="id15">
-<h3><a class="toc-backref" href="#id36" role="doc-backlink">11.  锁的类型和用法</a><a class="headerlink" href="#id15" title="Link to this heading"></a></h3>
+<section id="id16">
+<h3><a class="toc-backref" href="#id37" role="doc-backlink">11.  锁的类型和用法</a><a class="headerlink" href="#id16" title="Link to this heading"></a></h3>
 <section id="mutex">
-<h4><a class="toc-backref" href="#id37" role="doc-backlink">互斥锁 (mutex)</a><a class="headerlink" href="#mutex" title="Link to this heading"></a></h4>
+<h4><a class="toc-backref" href="#id38" role="doc-backlink">互斥锁 (mutex)</a><a class="headerlink" href="#mutex" title="Link to this heading"></a></h4>
 <p>可以避免多个线程在某一时刻同时操作一个共享资源, 标准C++库提供了std::unique_lock类模板, 实现了互斥锁的RAII惯用语法：
 eg: <cite>std::unique_lock&lt;std::mutex&gt; lk(mtx_sync_);</cite></p>
 </section>
 <section id="condition-variable">
-<h4><a class="toc-backref" href="#id38" role="doc-backlink">条件锁 (condition_variable)</a><a class="headerlink" href="#condition-variable" title="Link to this heading"></a></h4>
+<h4><a class="toc-backref" href="#id39" role="doc-backlink">条件锁 (condition_variable)</a><a class="headerlink" href="#condition-variable" title="Link to this heading"></a></h4>
 <p>条件锁就是所谓的条件变量, 某一个线程因为某个条件未满足时可以使用条件变量使该程序处于阻塞状态。一旦条件满足了, 即可唤醒该线程(常和互斥锁配合使用), 唤醒后, 需要检查变量, 避免虚假唤醒。
 eg:</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">//线程1：</span>
@@ -531,8 +513,8 @@ eg:</p>
 </pre></div>
 </div>
 </section>
-<section id="id16">
-<h4><a class="toc-backref" href="#id39" role="doc-backlink">自旋锁 (不推荐使用)</a><a class="headerlink" href="#id16" title="Link to this heading"></a></h4>
+<section id="id17">
+<h4><a class="toc-backref" href="#id40" role="doc-backlink">自旋锁 (不推荐使用)</a><a class="headerlink" href="#id17" title="Link to this heading"></a></h4>
 <p>自旋锁是一种基础的同步原语, 用于保障对共享数据的互斥访问。与互斥锁的相比, 在获取锁失败的时候不会使得线程阻塞而是一直自旋尝试获取锁。当线程等待自旋锁的时候, CPU不能做其他事情, 而是一直处于轮询忙等的状态。自旋锁主要适用于被持有时间短, 线程不希望在重新调度上花过多时间的情况。实际上许多其他类型的锁在底层使用了自旋锁实现, 例如多数互斥锁在试图获取锁的时候会先自旋一小段时间, 然后才会休眠。如果在持锁时间很长的场景下使用自旋锁, 则会导致CPU在这个线程的时间片用尽之前一直消耗在无意义的忙等上, 造成计算资源的浪费。</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// 用户空间用 atomic_flag 实现自旋互斥</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;thread&gt;</span>
@@ -566,7 +548,7 @@ eg:</p>
 </div>
 </section>
 <section id="recursive-mutex">
-<h4><a class="toc-backref" href="#id40" role="doc-backlink">递归锁 (recursive_mutex)</a><a class="headerlink" href="#recursive-mutex" title="Link to this heading"></a></h4>
+<h4><a class="toc-backref" href="#id41" role="doc-backlink">递归锁 (recursive_mutex)</a><a class="headerlink" href="#recursive-mutex" title="Link to this heading"></a></h4>
 <p>recursive_mutex 类是同步原语, 能用于保护共享数据免受从个多线程同时访问。</p>
 <p>recursive_mutex 提供排他性递归所有权语义：</p>
 <p>调用方线程在从它成功调用 lock 或 try_lock 开始的时期里占有 recursive_mutex 。此时期间, 线程可以进行对 lock 或 try_lock 的附加调用。所有权的时期在线程调用 unlock 匹配次数时结束。
@@ -575,8 +557,8 @@ eg:</p>
 若 recursive_mutex 在仍为某线程占有时被销毁, 则程序行为未定义。 recursive_mutex 类满足互斥 (Mutex) 和标准布局类型 (StandardLayoutType) 的所有要求。</p>
 </section>
 </section>
-<section id="id17">
-<h3><a class="toc-backref" href="#id41" role="doc-backlink">12.  为接收只读字符串的函数选择什么形参类型?</a><a class="headerlink" href="#id17" title="Link to this heading"></a></h3>
+<section id="id18">
+<h3><a class="toc-backref" href="#id42" role="doc-backlink">12.  为接收只读字符串的函数选择什么形参类型?</a><a class="headerlink" href="#id18" title="Link to this heading"></a></h3>
 <p>const char* 或者 const std::string&amp; 都不如 std::string_view, 它是前两者的完美替代
 1) std::string_view 不会产生开销, 它从不复制字符串
 2) std::string_view 与 std::string 有几乎相同的接口, 只不过没有 c_str(), 但是有 data() 方法</p>
@@ -587,20 +569,17 @@ eg:</p>
 
            </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="index.html" class="btn btn-neutral float-left" title="C++ Language" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="cpp_interview.html" class="btn btn-neutral float-right" title="C++ Interview Questions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
+          <footer>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2020, Walter Fan.</p>
+    <p>&#169; 版权所有 2020 ~ 2035, Walter Fan, Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License。</p>
   </div>
 
-  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
    
 
 </footer>

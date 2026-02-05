@@ -13,8 +13,6 @@ C++ Lambda
 **Updated**  |date|
 ============ ==========================
 
-.. |date| date::
-
 .. contents::
    :local:
 

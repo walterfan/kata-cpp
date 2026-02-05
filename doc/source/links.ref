@@ -1,8 +1,14 @@
-.. _l_rstintro: http://docutils.sourceforge.net/docs/ref/rst/introduction.html
-.. _l_rstspecs: http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html
+.. Common links reference file
 
+.. _cppreference: https://en.cppreference.com/
+.. _isocpp: https://isocpp.org/
+.. _godbolt: https://godbolt.org/
+.. _quick-bench: https://quick-bench.com/
+.. _boost: https://www.boost.org/
+.. _openssl: https://www.openssl.org/
+.. _googletest: https://github.com/google/googletest
+.. _jsoncpp: https://github.com/open-source-parsers/jsoncpp
+.. _libcurl: https://curl.se/libcurl/
 
-.. _Web Audio API: https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API
-
-.. _Insertable Stream Explain: https://github.com/w3c/webrtc-encoded-transform/blob/main/explainer.md
-.. _Enter Audio Worklet: https://developers.google.com/web/updates/2017/12/audio-worklet
+.. GitHub links
+.. _github-kata-cpp: https://github.com/walterfan/kata-cpp

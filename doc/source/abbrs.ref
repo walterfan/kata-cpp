@@ -1,1 +1,15 @@
-.. |a_rst| replace:: reStructuredText
+.. Abbreviations reference file
+
+.. |RAII| replace:: :abbr:`RAII (Resource Acquisition Is Initialization)`
+.. |STL| replace:: :abbr:`STL (Standard Template Library)`
+.. |SFINAE| replace:: :abbr:`SFINAE (Substitution Failure Is Not An Error)`
+.. |CRTP| replace:: :abbr:`CRTP (Curiously Recurring Template Pattern)`
+.. |PIMPL| replace:: :abbr:`PIMPL (Pointer to Implementation)`
+.. |ODR| replace:: :abbr:`ODR (One Definition Rule)`
+.. |UB| replace:: :abbr:`UB (Undefined Behavior)`
+.. |UDL| replace:: :abbr:`UDL (User-Defined Literals)`
+.. |CTAD| replace:: :abbr:`CTAD (Class Template Argument Deduction)`
+.. |NRV| replace:: :abbr:`NRV (Named Return Value)`
+.. |RVO| replace:: :abbr:`RVO (Return Value Optimization)`
+.. |NRVO| replace:: :abbr:`NRVO (Named Return Value Optimization)`
+.. |ADL| replace:: :abbr:`ADL (Argument-Dependent Lookup)`

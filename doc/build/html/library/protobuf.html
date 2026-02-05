@@ -1,26 +1,38 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" data-content_root="../">
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Protobuf &mdash; Beautiful C++ 0.1 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+  <title>Protobuf &mdash; 现代 C++ 实战开发指南 1.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=40457be3" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
 
   
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../_static/documentation_options.js?v=2709fde1"></script>
+      <script src="../_static/documentation_options.js?v=f115507d"></script>
       <script src="../_static/doctools.js?v=9bcbadda"></script>
       <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script src="../_static/translations.js?v=beaddf03"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/js/theme.js"></script>
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="OpenSSL" href="openssl.html" />
-    <link rel="prev" title="libuv" href="libuv.html" /> 
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -32,65 +44,45 @@
           
           
           <a href="../index.html" class="icon icon-home">
-            Beautiful C++
+            现代 C++ 实战开发指南
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../language/index.html">C++ Language</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">C++ Library</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="ace.html">ACE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="flite.html">flite</a></li>
-<li class="toctree-l2"><a class="reference internal" href="boost.html">Boost</a></li>
-<li class="toctree-l2"><a class="reference internal" href="boost_asio.html">Boost asio module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="boost_python.html">Boost Python</a></li>
-<li class="toctree-l2"><a class="reference internal" href="boost_beast.html">Boost beast module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="libevent.html">Libevent</a></li>
-<li class="toctree-l2"><a class="reference internal" href="libuv.html">libuv</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Protobuf</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#defining-a-message-type">Defining A Message Type</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#specifying-field-types">Specifying Field Types</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#assigning-field-numbers">Assigning Field Numbers</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#specifying-field-rules">Specifying Field Rules</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#compile-proto-file">Compile proto file</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id1">参考资料</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="openssl.html">OpenSSL</a></li>
-<li class="toctree-l2"><a class="reference internal" href="opencv.html">opencv</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#overview">Overview</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../tool/index.html">Tools</a></li>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">目录</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../1.basic/index.html">1. 1. 基础知识与陷阱</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.concurrency/index.html">2. 2. 并发编程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.performance/index.html">3. 3. 性能调优</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.memory/index.html">4. 4. 内存管理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5.network/index.html">5. 5. 网络编程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6.library/index.html">6. 6. 常用库</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7.cheatsheet/index.html">7. 7. 速查表</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">8. 参考资源</a></li>
 </ul>
 
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">Beautiful C++</a>
+          <a href="../index.html">现代 C++ 实战开发指南</a>
       </nav>
 
       <div class="wy-nav-content">
         <div class="rst-content">
-          <div role="navigation" aria-label="Page navigation">
+          <div role="navigation" aria-label="页面导航">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="index.html">C++ Library</a></li>
       <li class="breadcrumb-item active">Protobuf</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/library/protobuf.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/library/protobuf.rst.txt" rel="nofollow"> 查看页面源码</a>
       </li>
   </ul>
   <hr/>
@@ -100,17 +92,17 @@
              
   <section id="protobuf">
 <h1>Protobuf<a class="headerlink" href="#protobuf" title="Link to this heading"></a></h1>
-<nav class="contents local" id="contents">
+<nav class="contents local" id="id1">
 <ul class="simple">
-<li><p><a class="reference internal" href="#defining-a-message-type" id="id2">Defining A Message Type</a></p>
+<li><p><a class="reference internal" href="#defining-a-message-type" id="id3">Defining A Message Type</a></p>
 <ul>
-<li><p><a class="reference internal" href="#specifying-field-types" id="id3">Specifying Field Types</a></p></li>
-<li><p><a class="reference internal" href="#assigning-field-numbers" id="id4">Assigning Field Numbers</a></p></li>
-<li><p><a class="reference internal" href="#specifying-field-rules" id="id5">Specifying Field Rules</a></p></li>
+<li><p><a class="reference internal" href="#specifying-field-types" id="id4">Specifying Field Types</a></p></li>
+<li><p><a class="reference internal" href="#assigning-field-numbers" id="id5">Assigning Field Numbers</a></p></li>
+<li><p><a class="reference internal" href="#specifying-field-rules" id="id6">Specifying Field Rules</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#compile-proto-file" id="id6">Compile proto file</a></p></li>
-<li><p><a class="reference internal" href="#id1" id="id7">参考资料</a></p></li>
+<li><p><a class="reference internal" href="#compile-proto-file" id="id7">Compile proto file</a></p></li>
+<li><p><a class="reference internal" href="#id2" id="id8">参考资料</a></p></li>
 </ul>
 </nav>
 <p>数据的序列化可以是文本，也可以是二进制，主要考虑是体积小，解析效率高。</p>
@@ -133,21 +125,21 @@
 </pre></div>
 </div>
 <section id="defining-a-message-type">
-<h2><a class="toc-backref" href="#id2" role="doc-backlink">Defining A Message Type</a><a class="headerlink" href="#defining-a-message-type" title="Link to this heading"></a></h2>
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Defining A Message Type</a><a class="headerlink" href="#defining-a-message-type" title="Link to this heading"></a></h2>
 <section id="specifying-field-types">
-<h3><a class="toc-backref" href="#id3" role="doc-backlink">Specifying Field Types</a><a class="headerlink" href="#specifying-field-types" title="Link to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id4" role="doc-backlink">Specifying Field Types</a><a class="headerlink" href="#specifying-field-types" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>string</p></li>
 <li><p>int32</p></li>
 </ul>
 </section>
 <section id="assigning-field-numbers">
-<h3><a class="toc-backref" href="#id4" role="doc-backlink">Assigning Field Numbers</a><a class="headerlink" href="#assigning-field-numbers" title="Link to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id5" role="doc-backlink">Assigning Field Numbers</a><a class="headerlink" href="#assigning-field-numbers" title="Link to this heading"></a></h3>
 <p>As you can see, each field in the message definition has a unique number.
 These numbers are used to identify your fields in the message binary format, and should not be changed once your message type is in use</p>
 </section>
 <section id="specifying-field-rules">
-<h3><a class="toc-backref" href="#id5" role="doc-backlink">Specifying Field Rules</a><a class="headerlink" href="#specifying-field-rules" title="Link to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id6" role="doc-backlink">Specifying Field Rules</a><a class="headerlink" href="#specifying-field-rules" title="Link to this heading"></a></h3>
 <p>You specify that message fields are one of the following:</p>
 <ul class="simple">
 <li><p>required: a well-formed message must have exactly one of this field.</p></li>
@@ -157,7 +149,7 @@ These numbers are used to identify your fields in the message binary format, and
 </section>
 </section>
 <section id="compile-proto-file">
-<h2><a class="toc-backref" href="#id6" role="doc-backlink">Compile proto file</a><a class="headerlink" href="#compile-proto-file" title="Link to this heading"></a></h2>
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">Compile proto file</a><a class="headerlink" href="#compile-proto-file" title="Link to this heading"></a></h2>
 <p><a class="reference external" href="https://github.com/protocolbuffers/protobuf/releases">https://github.com/protocolbuffers/protobuf/releases</a></p>
 <ol class="arabic simple">
 <li><p>可以在无需重新部署程序的情况下更新数据结构（向前兼容，向后兼容）</p></li>
@@ -181,8 +173,8 @@ These numbers are used to identify your fields in the message binary format, and
 </ol>
 </div></blockquote>
 </section>
-<section id="id1">
-<h2><a class="toc-backref" href="#id7" role="doc-backlink">参考资料</a><a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<section id="id2">
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">参考资料</a><a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>tutorial: <a class="reference external" href="https://developers.google.com/protocol-buffers/docs/tutorials">https://developers.google.com/protocol-buffers/docs/tutorials</a></p></li>
 <li><p>Documentation: <a class="reference external" href="https://developers.google.com/protocol-buffers/">https://developers.google.com/protocol-buffers/</a></p></li>
@@ -193,20 +185,17 @@ These numbers are used to identify your fields in the message binary format, and
 
            </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="libuv.html" class="btn btn-neutral float-left" title="libuv" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="openssl.html" class="btn btn-neutral float-right" title="OpenSSL" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
+          <footer>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2020, Walter Fan.</p>
+    <p>&#169; 版权所有 2020 ~ 2035, Walter Fan, Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License。</p>
   </div>
 
-  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
    
 
 </footer>
