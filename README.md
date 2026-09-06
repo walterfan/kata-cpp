@@ -79,6 +79,7 @@ make html
 - [chatgpt](./kata/chatgpt) - ChatGPT related examples
 - [algorithm](./kata/algorithm) - Algorithm implementations
 - [pattern](./kata/pattern) - Design patterns
+- [apr](./kata/apr) - Apache Portable Runtime (APR) examples
 
 ## Build
 

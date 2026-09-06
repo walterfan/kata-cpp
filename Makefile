@@ -1,7 +1,7 @@
 # Root Makefile for Beautiful C++ (docs + kata examples)
 #
 # Docs: Sphinx in doc/ (see README.md, fabfile.py)
-# Katas: kata/example, kata/chatgpt, kata/algorithm, kata/pattern
+# Katas: kata/example, kata/chatgpt, kata/algorithm, kata/pattern, kata/apr
 
 DOC_DIR       := doc
 DOC_HTML      := $(DOC_DIR)/build/html
@@ -9,13 +9,14 @@ EXAMPLE_DIR   := kata/example
 CHATGPT_DIR   := kata/chatgpt
 ALGORITHM_DIR := kata/algorithm
 PATTERN_DIR   := kata/pattern
+APR_DIR       := kata/apr
 BLD           := bld
 JOBS          ?= 4
 
 .DEFAULT_GOAL := help
 
 .PHONY: help all doc doc-install doc-clean doc-serve livehtml publish-doc \
-        example chatgpt algorithm pattern build clean
+        example chatgpt algorithm pattern apr build clean
 
 help:
 	@echo "Beautiful C++ — make targets"
@@ -33,6 +34,7 @@ help:
 	@echo "    make chatgpt       Build kata/chatgpt (Conan + CMake)"
 	@echo "    make algorithm     Configure and build kata/algorithm"
 	@echo "    make pattern        Configure and build kata/pattern"
+	@echo "    make apr           Configure and build kata/apr (APR demos)"
 	@echo "    make build          Build all kata projects"
 	@echo "    make all            Docs + all katas"
 	@echo "    make clean          Remove kata/doc build directories"
@@ -79,8 +81,11 @@ pattern:
 	cmake -S $(PATTERN_DIR) -B $(PATTERN_DIR)/$(BLD)
 	cmake --build $(PATTERN_DIR)/$(BLD) -j$(JOBS)
 
-build: example chatgpt algorithm pattern
+apr:
+	$(MAKE) -C $(APR_DIR) build JOBS=$(JOBS)
+
+build: example chatgpt algorithm pattern apr
 
 clean: doc-clean
 	rm -rf $(EXAMPLE_DIR)/build $(CHATGPT_DIR)/build \
-		$(ALGORITHM_DIR)/$(BLD) $(PATTERN_DIR)/$(BLD)
+		$(ALGORITHM_DIR)/$(BLD) $(PATTERN_DIR)/$(BLD) $(APR_DIR)/$(BLD)
