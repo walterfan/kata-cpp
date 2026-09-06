@@ -69,7 +69,7 @@ Located in `doc/source/`, organized by topic:
 
 ```bash
 cd doc
-pip install -r requirements.txt
+uv sync
 make html
 ```
 

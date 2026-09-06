@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="11" failures="0" disabled="0" errors="0" time="0.107" timestamp="2026-07-09T09:42:07.599" name="AllTests">
+  <testsuite name="QuickTest" tests="5" failures="0" disabled="0" skipped="0" errors="0" time="0." timestamp="2026-07-09T09:42:07.599">
+    <testcase name="testCrash" file="/Users/walterfan/workspace/walter/code-kata/kata-cpp/kata/example/test/quick_test.cpp" line="52" status="run" result="completed" time="0." timestamp="2026-07-09T09:42:07.599" classname="QuickTest" />
+    <testcase name="testFormat" file="/Users/walterfan/workspace/walter/code-kata/kata-cpp/kata/example/test/quick_test.cpp" line="63" status="run" result="completed" time="0." timestamp="2026-07-09T09:42:07.599" classname="QuickTest" />
+    <testcase name="testComparator" file="/Users/walterfan/workspace/walter/code-kata/kata-cpp/kata/example/test/quick_test.cpp" line="69" status="run" result="completed" time="0." timestamp="2026-07-09T09:42:07.599" classname="QuickTest" />
+    <testcase name="testMapErase" file="/Users/walterfan/workspace/walter/code-kata/kata-cpp/kata/example/test/quick_test.cpp" line="82" status="run" result="completed" time="0." timestamp="2026-07-09T09:42:07.599" classname="QuickTest" />
+    <testcase name="testCalculateMediaBitrate" file="/Users/walterfan/workspace/walter/code-kata/kata-cpp/kata/example/test/quick_test.cpp" line="92" status="run" result="completed" time="0." timestamp="2026-07-09T09:42:07.599" classname="QuickTest" />
+  </testsuite>
+  <testsuite name="TimePointTest" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0.053" timestamp="2026-07-09T09:42:07.599">
+    <testcase name="duration" file="/Users/walterfan/workspace/walter/code-kata/kata-cpp/kata/example/test/time_point_test.cpp" line="39" status="run" result="completed" time="0.052" timestamp="2026-07-09T09:42:07.599" classname="TimePointTest" />
+  </testsuite>
+  <testsuite name="ChronoDuationTest" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0.054" timestamp="2026-07-09T09:42:07.652">
+    <testcase name="testDuration" file="/Users/walterfan/workspace/walter/code-kata/kata-cpp/kata/example/test/chrono_duration_test.cpp" line="43" status="run" result="completed" time="0.054" timestamp="2026-07-09T09:42:07.652" classname="ChronoDuationTest" />
+  </testsuite>
+  <testsuite name="SmartPtrTest" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0." timestamp="2026-07-09T09:42:07.706">
+    <testcase name="testWeakPtr" file="/Users/walterfan/workspace/walter/code-kata/kata-cpp/kata/example/test/smart_ptr_test.cpp" line="58" status="run" result="completed" time="0." timestamp="2026-07-09T09:42:07.706" classname="SmartPtrTest" />
+  </testsuite>
+  <testsuite name="SetTest" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0." timestamp="2026-07-09T09:42:07.706">
+    <testcase name="insert" file="/Users/walterfan/workspace/walter/code-kata/kata-cpp/kata/example/test/std_set_test.cpp" line="32" status="run" result="completed" time="0." timestamp="2026-07-09T09:42:07.706" classname="SetTest" />
+  </testsuite>
+  <testsuite name="OverrideTest" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0." timestamp="2026-07-09T09:42:07.706">
+    <testcase name="testDeconstruct" file="/Users/walterfan/workspace/walter/code-kata/kata-cpp/kata/example/test/override_test.cpp" line="51" status="run" result="completed" time="0." timestamp="2026-07-09T09:42:07.706" classname="OverrideTest" />
+  </testsuite>
+  <testsuite name="InitializationTest" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0." timestamp="2026-07-09T09:42:07.707">
+    <testcase name="testInitByBrace" file="/Users/walterfan/workspace/walter/code-kata/kata-cpp/kata/example/test/emcpp_7.cpp" line="68" status="run" result="completed" time="0." timestamp="2026-07-09T09:42:07.707" classname="InitializationTest">
+      <properties>
+        <property name="feature" value="PacketTest"/>
+        <property name="scenario" value="InitializationTest.testInitByBrace"/>
+        <property name="given" value="an object"/>
+        <property name="when" value="initialize it by brace"/>
+        <property name="then" value="the object was initialized"/>
+        <property name="checkpoints" value=""/>
+      </properties>
+    </testcase>
+  </testsuite>
+</testsuites>

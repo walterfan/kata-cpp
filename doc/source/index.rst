@@ -55,6 +55,14 @@
    7.cheatsheet/index
    references
 
+.. toctree::
+   :maxdepth: 2
+   :caption: 补充笔记
+
+   language/index
+   library/index
+   tool/index
+
 快速导航
 --------
 

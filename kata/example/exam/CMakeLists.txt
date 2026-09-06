@@ -16,8 +16,9 @@ SET(Boost_USE_MULTITHREAD ON)
 SET(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS} ${PY_COMPILE_FLAGS}")
 SET(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} ${GCC_COVERAGE_LINK_FLAGS} ${PY_LINK_FLAGS}")
 
-add_compile_definitions(BOOST_LOG_DYN_LIN)
-ADD_DEFINITIONS(-DBOOST_LOG_DYN_LINK)
+# Conan builds Boost static by default; do NOT force dynamic linking of Boost.Log.
+# add_compile_definitions(BOOST_LOG_DYN_LIN)
+# ADD_DEFINITIONS(-DBOOST_LOG_DYN_LINK)
 
 FIND_PACKAGE(Boost 1.71.0 REQUIRED COMPONENTS thread system regex log program_options)
 
@@ -49,7 +50,14 @@ list (APPEND EXAM_SOURCES
 )
 
 ADD_EXECUTABLE(run_example ${EXAM_SOURCES})
-TARGET_LINK_LIBRARIES( run_example LINK_PUBLIC ${Boost_LIBRARIES} )
+TARGET_LINK_LIBRARIES( run_example LINK_PUBLIC
+    Boost::log
+    Boost::log_setup
+    Boost::thread
+    Boost::system
+    Boost::regex
+    Boost::program_options
+    boost::boost )
 
 
 

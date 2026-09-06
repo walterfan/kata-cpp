@@ -1,8 +1,10 @@
 # Prerequisites
 __pycache__/
+.venv/
 *.d
 .sconsign.dblite
 logs/
+build/
 bin/
 bld/
 build/

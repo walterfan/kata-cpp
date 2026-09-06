@@ -5,7 +5,8 @@
 # You can set these variables from the command line, and also
 # from the environment for the first two.
 SPHINXOPTS    ?=
-SPHINXBUILD   ?= sphinx-build
+UV            ?= uv
+SPHINXBUILD   ?= $(UV) run sphinx-build
 SOURCEDIR     = source
 BUILDDIR      = build
 
@@ -20,13 +21,13 @@ help:
 %: Makefile
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
-# Install dependencies
+# Install dependencies into .venv via uv
 install:
-	pip install -r requirements.txt
+	$(UV) sync
 
 # Live rebuild on changes (requires sphinx-autobuild)
 livehtml:
-	sphinx-autobuild "$(SOURCEDIR)" "$(BUILDDIR)/html" $(SPHINXOPTS) $(O) --port 8000
+	$(UV) run sphinx-autobuild "$(SOURCEDIR)" "$(BUILDDIR)/html" $(SPHINXOPTS) $(O) --port 8000
 
 # Clean all build files
 clean-all:
@@ -34,7 +35,7 @@ clean-all:
 
 # Serve the built documentation
 serve:
-	cd $(BUILDDIR)/html && python -m http.server 8000
+	$(UV) run python -m http.server 8000 --directory "$(BUILDDIR)/html"
 
 # Build and serve
 dev: html serve
